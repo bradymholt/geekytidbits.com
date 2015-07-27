@@ -7,7 +7,7 @@ permalink: /moving-from-wordpress-to-jekyll/
 ![Jekyll](/media/jekyll-logo.png){: .pull-right }
 When I first started blogging, I leveraged WordPress because it was the perfect tool at the time.  It was easy to setup and use and helped me focus on actually blogging rather than getting distracted with tweaking the settings and trying to get it looking good.  WordPress is impressive in its ease of use and amazing community.  There are a ridiculous number of high quality themes and plugins that allow you to do anything easily.  It really is a great platform.
 
-But, being a tinkering, I was itching for a change.  Over time my blog had been become a bit bloated as I had added a bunch of plugins, incorporate bootstrap styling and highly customized my stylesheet.  The last time I made a design change it was more cumbersome than I would have liked because I was fighting competing styles and trying to understand the themplate organization.
+But, being a tinker-er, I was itching for a change.  Over time my blog had been become a bit bloated as I had added a bunch of plugins, incorporated bootstrap styling and highly customized my stylesheet.  The last time I made a design change it was more cumbersome than I would have liked because I was fighting competing styles and trying to understand the template organization.
 
 Anyway, I knew I wanted to try [Ghost](https://ghost.org/) or [Jekyll](http://jekyllrb.com/).  I evaluated both briefly and once I used Jekyll I was sold.  I love that it is simple yet I have the ability to control everything about it.  Also, it's great to have my entire blog in a [GitHub repository](https://github.com/bradyholt/geekytidbits.com); no database!
 
