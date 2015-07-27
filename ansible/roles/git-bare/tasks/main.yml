@@ -1,0 +1,21 @@
+---
+- name: Install git and nodejs
+  apt: name={{ item }} state=present
+  with_items:
+    - git
+    - nodejs
+
+- name: Installs latest available version of jekyll.
+  gem: name=jekyll user_install=yes state=latest
+
+- name: Creates bare repo directory
+  file: path={{ bare_repo_directory }} state=directory owner={{ deploy_user }}
+
+- name: create repositories
+  action: command chdir={{ bare_repo_directory }} creates={{ bare_repo_directory }}/HEAD git init --bare
+
+- name: ensure repositories permisions
+  action: command chdir={{ bare_repo_directory }} chown {{ deploy_user }} -R .
+
+- name: ensure post-receive hooks exists
+  action: template src=post-receive.j2 dest={{ bare_repo_directory }}/hooks/post-receive owner={{ deploy_user }} mode=0755

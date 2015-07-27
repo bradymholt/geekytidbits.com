@@ -1,0 +1,188 @@
+/**
+ * Site header
+ */
+.site-header {
+  border-bottom: 3px solid $brand-outline-color;
+  background-color: $brand-color;
+  padding-bottom: 10px;
+  color: white;
+
+  // Positioning context for the mobile navigation icon
+  position: relative;
+  img {
+    margin-top: 10px;
+  }
+}
+.site-title {
+  font-size: 26px;
+  line-height: 56px;
+  letter-spacing: -1px;
+  margin-bottom: 0;
+}
+.site-description {
+  font-size: 17px;
+}
+
+/**
+ * Site footer
+ */
+.site-footer {
+  padding: 10px 0 $spacing-unit;
+  color: $grey-color;
+  font-style: italic;
+}
+
+/**
+ * Page content
+ */
+.page-content {
+  img {
+    margin: 20px;
+  }
+}
+.page-heading {
+  font-size: 20px;
+}
+.post-list {
+  margin-left: 0;
+  list-style: none;
+  > li {
+    margin-bottom: $spacing-unit;
+  }
+  img {
+    max-height: 100px;
+  }
+}
+.post-meta {
+  font-size: $small-font-size;
+  color: $grey-color;
+}
+.post-link {
+  display: block;
+  font-size: 24px;
+}
+
+/**
+ * Posts
+ */
+.post-header {
+  margin-bottom: 20px;
+}
+.post-title {
+
+}
+.post {
+  .post-meta {
+    display: inline-block;
+    border: 1px solid rgba(0,0,0,0.05);
+    border-left: none;
+    border-right: none;
+    padding: 8px 0 8px 30px;
+    margin-top: 10px;
+    margin-left: -30px;
+  }
+}
+.post-content {
+  margin-bottom: $spacing-unit;
+  img {
+    margin: 20px;
+  }
+  h2 {
+    font-size: 32px;
+    @include media-query($on-laptop) {
+      font-size: 28px;
+    }
+  }
+  h3 {
+    font-size: 26px;
+    @include media-query($on-laptop) {
+      font-size: 22px;
+    }
+  }
+  h4 {
+    font-size: 20px;
+    @include media-query($on-laptop) {
+      font-size: 18px;
+    }
+  }
+}
+
+/**
+ * Sidebar
+ */
+.sidebar {
+  font-size: 16px;
+  position: absolute;
+  left: -195px;
+  width: 175px;
+  ul {
+    margin-left: 10px;
+    list-style: none;
+    li {
+      transition: all 0.2s ease-in-out;
+      &:hover {
+        transform: scale(1.1);
+      }
+      a {
+        text-decoration: none;
+      }
+    }
+  }
+  svg.social {
+    width: 25px;
+    height: 25px;
+    margin: 5px;
+    vertical-align: middle;
+  }
+  .head-shot {
+    background-image: url("http://s.gravatar.com/avatar/ae474dd4a074fd22e897c4c54770c05a?s=145");
+    width: 145px;
+    height: 145px;
+    background-size: 145px 145px;
+    border-radius: 75px;
+    margin: 10px 0;
+    background-repeat: no-repeat;
+  }
+  h3 {
+    margin-bottom: 0;
+    font-weight: bold;
+  }
+  h4 {
+    font-style: italic;
+    font-size: 15px;
+  }
+  .site-nav {
+    font-size: larger;
+    line-height: 30px;
+  }
+  @include media-query-retina {
+    .head-shot {
+      /* Retina image */
+      background-image: url("http://s.gravatar.com/avatar/ae474dd4a074fd22e897c4c54770c05a?s=290");
+    }
+  }
+}
+
+@include media-query($on-palm) {
+  .sidebar {
+    position: static;
+    width:100%;
+    text-align: center;
+    ul {
+      margin-left: 0px;
+    }
+    .head-shot {
+      display: inline-block;
+    }
+  }
+}
+
+/**
+ * Misc
+ */
+.pull-right {
+  float: right;
+}
+.pull-left {
+  float: left;
+}

@@ -1,0 +1,9 @@
+#!/bin/bash -l
+GIT_REPO={{ bare_repo_directory }}
+TMP_GIT_CLONE=/tmp/{{app_name}}
+DEPLOY_DIR={{deploy_directory}}
+
+git clone $GIT_REPO $TMP_GIT_CLONE
+jekyll build --source $TMP_GIT_CLONE --destination $DEPLOY_DIR
+rm -Rf $TMP_GIT_CLONE
+exit

@@ -1,0 +1,29 @@
+---
+- name: Remove apache2, nginx and passenger
+  apt: name={{ item }} state=absent
+  with_items:
+    - apache2
+    - nginx
+
+- name: Install packages
+  apt: name={{ item }} state=present
+  with_items:
+    - nginx-extras
+
+- name: Remove the default app
+  command: rm -rf /etc/nginx/sites-enabled/default
+
+- name: Remove the default app config if exists
+  command: rm -rf /etc/nginx/sites-enabled/default
+
+- name: Remove the app's symlink if exists
+  command: rm -rf /etc/nginx/sites-enabled/{{ app_name }}
+
+- name: Configure nginx for the app
+  template: src=etc_nginx_sites-available.conf.j2 dest=/etc/nginx/sites-available/{{ app_name }} group=www-data owner=www-data force=yes
+
+- name: Enable the app
+  command: ln -s /etc/nginx/sites-available/{{ app_name }} /etc/nginx/sites-enabled/{{ app_name }}
+
+- name: Restart nginx
+  action: service name=nginx state=restarted
