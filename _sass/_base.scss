@@ -178,7 +178,7 @@ pre {
     border-left: solid ($sidebar-width + $spacing-unit) transparent;
     @extend %clearfix;
 
-    @include media-query($on-small-width-device) {
+    @include media-query($on-medium-width-device) {
         width: auto;
         border-left: 0;
     }
