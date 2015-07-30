@@ -170,27 +170,35 @@ pre {
  */
 .wrapper {
     position:relative;
-    max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit} * 2));
-    max-width:         calc(#{$content-width} - (#{$spacing-unit} * 2));
+    width: $content-width;
     margin-right: auto;
     margin-left: auto;
     padding-right: $spacing-unit;
     padding-left: $spacing-unit;
+    border-left: solid $sidebar-content-width transparent;
     @extend %clearfix;
 
     @include media-query($on-small-width-device) {
-        max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit}));
-        max-width:         calc(#{$content-width} - (#{$spacing-unit}));
-        padding-right: $spacing-unit / 2;
-        padding-left: $spacing-unit / 2;
+        width: auto;
+        border-left: 0;
     }
 }
 
 .page-content {
   .wrapper {
+        border-left: solid $sidebar-content-width $background-color;
         background-color: $content-background-color;
         padding-bottom:50px;
+        .home {
+            clear:both;
+        }
   }
+  
+  @include media-query($on-small-width-device) {
+        .wrapper {
+            border-left: 0;
+        }
+    }
 }
 
 /**

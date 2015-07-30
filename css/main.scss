@@ -13,6 +13,8 @@ $text-color:       #444;
 $grey-color:       #828282;
 $background-color: #f7f7f7;
 $content-background-color: #ffffff;
+$sidebar-content-width: 195px;
+$sidebar-padding: 5px;
 
 // Header colors variables
 $brand-color:      #237ab2;
@@ -21,7 +23,8 @@ $brand-outline-color: #f68905;
 
 // Width of the content area
 $content-width:    800px;
-$on-small-width-device: 1200px;
+
+$on-small-width-device: ($content-width + $sidebar-content-width + $sidebar-padding + ($spacing-unit * 2));
 
 // Using media queries with like this:
 // @include media-query($on-palm) {
