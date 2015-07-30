@@ -68,9 +68,6 @@
 .post-header {
   margin-bottom: 20px;
 }
-.post-title {
-
-}
 .post {
   .post-meta {
     display: inline-block;
@@ -113,9 +110,8 @@
 .sidebar {
   font-size: 16px;
   position: absolute;
-  left: -$sidebar-content-width;
-  width: $sidebar-content-width;
-  padding: $sidebar-padding;
+  left: -$sidebar-width;
+  width: $sidebar-width;
   ul {
     margin-left: 10px;
     list-style: none;
@@ -168,19 +164,12 @@
   .sidebar {
     position: static;
     width:100%;
+    text-align: center;
     ul {
       margin-left: 0px;
     }
     .head-shot {
       display: inline-block;
-    }
-    .bio-and-links {
-      float:left;
-      width:200px;
-    }
-    .social-links {
-      p { display:none; }
-      float:right;
     }
   }
 }

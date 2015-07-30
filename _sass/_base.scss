@@ -175,7 +175,7 @@ pre {
     margin-left: auto;
     padding-right: $spacing-unit;
     padding-left: $spacing-unit;
-    border-left: solid $sidebar-content-width transparent;
+    border-left: solid ($sidebar-width + $spacing-unit) transparent;
     @extend %clearfix;
 
     @include media-query($on-small-width-device) {
@@ -186,19 +186,18 @@ pre {
 
 .page-content {
   .wrapper {
-        border-left: solid $sidebar-content-width $background-color;
+        border-left: solid ($sidebar-width + $spacing-unit) $background-color;
         background-color: $content-background-color;
         padding-bottom:50px;
-        .home {
-            clear:both;
+   
+        @include media-query($on-medium-width-device) {
+            width: auto;
         }
-  }
-  
-  @include media-query($on-small-width-device) {
-        .wrapper {
+        
+        @include media-query($on-small-width-device) {
             border-left: 0;
         }
-    }
+  }
 }
 
 /**
