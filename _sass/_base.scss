@@ -89,7 +89,7 @@ h1 {
     font-size: 42px;
     line-height: 1;
     padding-top: 35px;
-    @include media-query($on-laptop) {
+    @include media-query($on-small-width-device) {
       font-size: 36px;
     }
 }
@@ -178,7 +178,7 @@ pre {
     padding-left: $spacing-unit;
     @extend %clearfix;
 
-    @include media-query($on-laptop) {
+    @include media-query($on-small-width-device) {
         max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit}));
         max-width:         calc(#{$content-width} - (#{$spacing-unit}));
         padding-right: $spacing-unit / 2;

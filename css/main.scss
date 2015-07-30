@@ -21,8 +21,7 @@ $brand-outline-color: #f68905;
 
 // Width of the content area
 $content-width:    800px;
-$on-palm:          600px;
-$on-laptop:        800px;
+$on-small-width-device: 1200px;
 
 // Using media queries with like this:
 // @include media-query($on-palm) {
