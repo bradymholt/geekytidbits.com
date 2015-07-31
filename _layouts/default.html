@@ -2,7 +2,7 @@
 <html>
 {% include head.html %}
 
-<body>
+<body{% if page.url == '/index.html' %} class="home"{% endif %}>
   {% include header.html %}
   <div class="page-content">
     <div class="wrapper">

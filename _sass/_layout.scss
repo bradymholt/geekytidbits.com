@@ -33,36 +33,6 @@
 }
 
 /**
- * Page content
- */
-.page-content {
-  img {
-    margin: 20px;
-  }
-}
-.page-heading {
-  font-size: 20px;
-}
-.post-list {
-  margin-left: 0;
-  list-style: none;
-  > li {
-    margin-bottom: $spacing-unit;
-  }
-  img {
-    max-height: 100px;
-  }
-}
-.post-meta {
-  font-size: $small-font-size;
-  color: $grey-color;
-}
-.post-link {
-  display: block;
-  font-size: 24px;
-}
-
-/**
  * Posts
  */
 .post-header {
@@ -80,7 +50,6 @@
   }
 }
 .post-content {
-  margin-bottom: $spacing-unit;
   img {
     margin: 20px;
   }
@@ -103,6 +72,24 @@
     }
   }
 }
+.post-list {
+  margin-left: 0;
+  list-style: none;
+  > li {
+    margin-bottom: $spacing-unit;
+  }
+  img {
+    max-height: 100px;
+  }
+}
+.post-meta {
+  font-size: $small-font-size;
+  color: $grey-color;
+}
+.post-link {
+  display: block;
+  font-size: 24px;
+}
 
 /**
  * Sidebar
@@ -112,6 +99,20 @@
   position: absolute;
   left: -$sidebar-width;
   width: $sidebar-width;
+  
+  @include media-query($on-small-width-device) {
+    position: static;
+    width:100%;
+    text-align: center;
+    display:none; /* Only show sidebar on-small-width-device when on home page */
+    ul {
+      margin-left: 0px;
+    }
+    .head-shot {
+      display: inline-block;
+    }
+  }
+   
   ul {
     margin-left: 10px;
     list-style: none;
@@ -139,6 +140,11 @@
     border-radius: 75px;
     margin: 10px 0;
     background-repeat: no-repeat;
+    
+    @include media-query-retina {
+      /* Retina image */
+      background-image: url("http://s.gravatar.com/avatar/ae474dd4a074fd22e897c4c54770c05a?s=290");
+    }
   }
   h3 {
     margin-bottom: 0;
@@ -152,25 +158,12 @@
     font-size: larger;
     line-height: 30px;
   }
-  @include media-query-retina {
-    .head-shot {
-      /* Retina image */
-      background-image: url("http://s.gravatar.com/avatar/ae474dd4a074fd22e897c4c54770c05a?s=290");
-    }
-  }
 }
 
 @include media-query($on-small-width-device) {
-  .sidebar {
-    position: static;
-    width:100%;
-    text-align: center;
-    ul {
-      margin-left: 0px;
-    }
-    .head-shot {
-      display: inline-block;
-    }
+  /* Only show sidebar on-small-width-device when on home page */
+  body.home .sidebar {
+    display:block;
   }
 }
 
