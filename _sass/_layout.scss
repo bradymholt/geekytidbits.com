@@ -99,22 +99,8 @@
   position: absolute;
   left: -$sidebar-width;
   width: $sidebar-width;
-  
-  @include media-query($on-small-width-device) {
-    position: static;
-    width:100%;
-    text-align: center;
-    display:none; /* Only show sidebar on-small-width-device when on home page */
-    ul {
-      margin-left: 0px;
-    }
-    .head-shot {
-      display: inline-block;
-    }
-  }
-   
   ul {
-    margin-left: 10px;
+    margin-left:0px;
     list-style: none;
     li {
       transition: all 0.2s ease-in-out;
@@ -157,6 +143,24 @@
   .site-nav {
     font-size: larger;
     line-height: 30px;
+  }
+}
+
+@include media-query($on-small-width-device) {
+  .sidebar {
+    position: static;
+    width:100%;
+    text-align: center;
+    display:none; /* Only show sidebar on-small-width-device when on home page */
+    .head-shot {
+      display: inline-block;
+    }
+    ul.social-links {
+      width: 150px;
+      text-align: left;
+      margin: 0 auto;
+      padding-left: 20px;
+    }
   }
 }
 
