@@ -33,6 +33,15 @@
 }
 
 /**
+ * Page
+ */
+.page-content {
+  img {
+    margin: 20px;
+  }
+}
+
+/**
  * Posts
  */
 .post-header {
@@ -50,9 +59,6 @@
   }
 }
 .post-content {
-  img {
-    margin: 20px;
-  }
   h2 {
     font-size: 32px;
     @include media-query($on-small-width-device) {
