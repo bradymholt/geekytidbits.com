@@ -30,7 +30,11 @@ A web-based envelope budgeting application.  This app is built in Rails 3, Boot
   <pre>*/5 * * * * -&gt; "Every 5 minutes"</pre>
 </div>
 
-A C# library that converts cron expressions into localized human readable strings.  It is available as a NuGet package and has been <strong>downloaded over 12k times!</strong>
+A C# library that converts cron expressions into localized human readable strings.  It is available as a NuGet package.
+
+<a href="https://www.nuget.org/packages/CronExpressionDescriptor/">
+<img alt="NuGet Package Downloads" class="no-margin" src="http://nuget-downloads-badge.azurewebsites.net/nuget-downloads-badge.svg/?id=CronExpressionDescriptor" />
+</a>
 
 *First Release: December 2011*
 
