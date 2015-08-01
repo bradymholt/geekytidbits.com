@@ -32,9 +32,9 @@ A web-based envelope budgeting application.  This app is built in Rails 3, Boot
 
 A C# library that converts cron expressions into localized human readable strings.  It is available as a NuGet package.
 
-<a href="https://www.nuget.org/packages/CronExpressionDescriptor/">
-<img alt="NuGet Package Downloads" class="no-margin" src="http://nuget-downloads-badge.azurewebsites.net/nuget-downloads-badge.svg/?id=CronExpressionDescriptor" />
-</a>
+[![Build Status](https://img.shields.io/travis/bradyholt/cron-expression-descriptor.svg?branch=master){:class="no-margin"}](https://travis-ci.org/bradyholt/cron-expression-descriptor)
+[![NuGet Version](https://img.shields.io/nuget/v/CronExpressionDescriptor.svg){:class="no-margin"}](https://www.nuget.org/packages/CronExpressionDescriptor/)
+[![NuGet Downloads count](https://img.shields.io/nuget/dt/CronExpressionDescriptor.svg){:class="no-margin"}](https://www.nuget.org/packages/CronExpressionDescriptor/)
 
 *First Release: December 2011*
 
