@@ -38,7 +38,7 @@ A C# library that converts cron expressions into localized human readable string
 
 *First Release: December 2011*
 
-[Project Page](http://bradyholt.github.io/cron-expression-descriptor/) [NuGet Package](https://www.nuget.org/packages/CronExpressionDescriptor/){:target="_blank"}
+[Project Page](http://cronexpressiondescriptor.azurewebsites.net/) [NuGet Package](https://www.nuget.org/packages/CronExpressionDescriptor/){:target="_blank"}
 
 ### [PicasaWebSync](http://bradyholt.github.io/picasawebsync/){:target="_blank"}
 <div class="pull-right" style="height: 50px; width: 375px;">
