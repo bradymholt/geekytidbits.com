@@ -5,7 +5,7 @@ layout: post
 permalink: /nuget-downloads-badges
 ---
 ![NuGet Downloads Badge](/media/nuget-downloads-badge.png){: .pull-left }
-I've been giving a little love to my OSS project [Cron Expression Descriptor](https://github.com/bradyholt/cron-expression-descriptor) lately by making some updates, pushing a new release and rolling out a newly designed [demo site](https://cronexpressiondescriptor.azurewebsites.net).  
+I've been giving a little love to my OSS project [Cron Expression Descriptor](https://github.com/bradyholt/cron-expression-descriptor) lately by making some updates, pushing a new release and rolling out a newly designed [demo site](http://cronexpressiondescriptor.azurewebsites.net).  
 
 ![Cron Expression](/media/cron-expression.png){: .pull-right }
 Cron Expression Descriptor is a .NET library that converts cron expressions into human readable strings.  It started as a solution to a problem I was facing trying to display cron expressions on a UI to users that most definitely did not and did not want to understand how to interpret them.
