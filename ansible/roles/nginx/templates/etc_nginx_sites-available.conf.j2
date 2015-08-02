@@ -26,6 +26,10 @@ server {
 
     break;
   }
+  
+  location ~ ^/feed/?$ {
+   return 301 /feed.xml;
+  }
 }
 
 server {
