@@ -27,8 +27,8 @@ server {
     break;
   }
   
-  location ~ ^/feed/?$ {
-   return 301 /feed.xml;
+  location ~ ^/feed/? {
+    index index.xml;
   }
 }
 
