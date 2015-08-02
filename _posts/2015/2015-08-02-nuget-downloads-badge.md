@@ -10,7 +10,7 @@ I've been giving a little love to my OSS project [Cron Expression Descriptor](ht
 ![Cron Expression](/media/cron-expression.png){: .pull-right }
 Cron Expression Descriptor is a .NET library that converts cron expressions into human readable strings.  It started as a solution to a problem I was facing trying to display cron expressions on a UI to users that most definitely did not and did not want to understand how to interpret them.
 
-I was pleasantly surprised to see it take off and be adopted by the community.  It has almost reached 17,000 downloads and has been transalted into 11 languages with the help of GitHub Pull Requests submitted but the community.  It's been fun to work on this project and I am proud of it.
+I was pleasantly surprised to see it take off and be adopted by the community.  It has almost reached 17,000 downloads and has been transalted into 11 languages with the help of GitHub Pull Requests submitted by the community.  It's been fun to work on this project and I am proud of it.
 
 Wanting to add a download count badge to the GitHub page, I decided to write a simple ASP.NET IHttpHandler to hit the [NuGet Package feed](https://www.nuget.org/), grab the downloads count and then request an SVG badge from [Shields](http://shields.io/).  I initially tried hitting the NuGet package feed via a XMLHttpRequest request in the browser but the NuGet Package feed is not [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS) friendly so I had to resort to doing it on a server as a pass-through.
 
