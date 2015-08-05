@@ -27,5 +27,5 @@ Fast forward a few months. My Dad took notice of my interest in computers and re
 
 In [Part 3][2], I&#8217;ll explain how I starting getting interested in programming.
 
- [1]: /how-i-got-geeky
+ [1]: /how-i-got-geeky/
  [2]: /how-i-got-geeky-part-3/

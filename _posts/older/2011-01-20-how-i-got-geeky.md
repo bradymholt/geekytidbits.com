@@ -29,4 +29,4 @@ Okay, let&#8217;s recap a bit.  So I bought a $5 CB radio at a garage sale and 
 
 **So, how does any of this have to do with how I became geeky?** You&#8217;ll have to read [Part 2][1] to find out.
 
- [1]: /index.php/how-i-got-geeky-part-2
+ [1]: /how-i-got-geeky-part-2/
