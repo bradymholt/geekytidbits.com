@@ -4,11 +4,13 @@
   <h4>Geek, developer at <a target="_blank" href="http://www.youneedabudget.com/">YNAB</a>, voider of warranties</h4>
   <nav class="site-nav">
     <ul>
-      {% assign pages = site.pages | sort:"weight" %} {% for page in pages %} {% if page.title %}
+      {% assign pages = site.pages | sort:"weight" %} {% for page in pages %}
+      {% if page.weight %}
       <li>
         <a class="page-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
       </li>
-      {% endif %} {% endfor %}
+      {% endif %}
+      {% endfor %}
     </ul>
   </nav>
   <p>Connect with me!</p>
