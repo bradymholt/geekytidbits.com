@@ -2,7 +2,7 @@
 title: NuGet Downloads Badges
 author: Brady
 layout: post
-permalink: /nuget-downloads-badges
+permalink: /nuget-downloads-badges/
 ---
 ![NuGet Downloads Badge](/media/nuget-downloads-badge.png){: .pull-left }
 I've been giving a little love to my OSS project [Cron Expression Descriptor](https://github.com/bradyholt/cron-expression-descriptor) lately by making some updates, pushing a new release and rolling out a newly designed [demo site](http://cronexpressiondescriptor.azurewebsites.net).  
