@@ -8,9 +8,8 @@ server {
 
   client_max_body_size 100M;
 
-  location /robots.txt {}
-
   index index.html;
+  error_page 404 /404.html;
 
   location ~* \.(js|css|png|jpg|jpeg|gif|ico)$ {
     expires 1y;
@@ -26,13 +25,13 @@ server {
 
     break;
   }
-  
+
   location ~ ^/feed/? {
     index index.xml;
   }
 }
 
 server {
-        server_name {{ webserver_name }};
-        rewrite ^ http://www.{{ webserver_name }}$request_uri? permanent;
+    server_name {{ webserver_name }};
+    rewrite ^ http://www.{{ webserver_name }}$request_uri? permanent;
 }
