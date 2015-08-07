@@ -17,7 +17,7 @@ A jQuery plugin to display your Google Photos, including Picasa and Google+ albu
 [Project Page](http://bradyholt.github.io/jquery-googleslides/) [Blog Post](/jquery-googleslides-project/){:target="_blank"}
 
 ### [Bento Budget](http://www.bentobudget.com){:target="_blank"}
-![Alt text](/media/logo-small.png){: .pull-right }
+![Bento Budget](/media/logo-small.png){: .pull-right }
 
 A web-based envelope budgeting application.  This app is built in Rails 3, Bootstrap, MySQL and has a backend REST service built in C# / [Nancy](http://nancyfx.org/){:target="_blank"}.
 

@@ -127,19 +127,11 @@
     margin: 5px;
     vertical-align: middle;
   }
-  .head-shot {
-    background-image: url("http://s.gravatar.com/avatar/ae474dd4a074fd22e897c4c54770c05a?s=145");
+  img.head-shot {
     width: 145px;
     height: 145px;
-    background-size: 145px 145px;
     border-radius: 75px;
     margin: 10px 0;
-    background-repeat: no-repeat;
-    
-    @include media-query-retina {
-      /* Retina image */
-      background-image: url("http://s.gravatar.com/avatar/ae474dd4a074fd22e897c4c54770c05a?s=290");
-    }
   }
   h3 {
     margin-bottom: 0;

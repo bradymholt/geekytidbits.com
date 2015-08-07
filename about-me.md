@@ -5,7 +5,7 @@ layout: page
 weight: 1
 permalink: /about-me/
 ---
-![Family](/media/2014-11-29--Holt Family--102b.jpg){: .pull-right }My name is **Brady Holt**.  I&#8217;m a **software developer** by day and **geek** by night.  Writing software is my profession, hobby and passion.  During the day, I am a developer at [You Need A Budget][2] and at night I am usually spending time with my family or hacking on one of my many pet projects.  My primary development stack is C# / ASP.NET MVC / SQL Server but work with Rails, MySQL, Linux, Node.js and other non-Microsoft centric technologies often.  I am an **open source developer** and have several active [projects][3].
+![Brady Holt and Family](/media/2014-11-29--Holt Family--102b.jpg){: .pull-right }My name is **Brady Holt**.  I&#8217;m a **software developer** by day and **geek** by night.  Writing software is my profession, hobby and passion.  During the day, I am a developer at [You Need A Budget][2] and at night I am usually spending time with my family or hacking on one of my many pet projects.  My primary development stack is C# / ASP.NET MVC / SQL Server but work with Rails, MySQL, Linux, Node.js and other non-Microsoft centric technologies often.  I am an **open source developer** and have several active [projects][3].
 
 ### Some History
 
