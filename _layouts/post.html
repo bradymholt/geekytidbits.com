@@ -13,14 +13,11 @@ comments: true
     {{% if page.comments %}}
     <div id="disqus_thread"></div>
     <script type="text/javascript">
-        { %
-            if page.dsq_thread_id != nil %
-        }
-        var disqus_identifier = '{{ page.dsq_thread_id}}'; { %
-            else %
-        }
-        var disqus_identifier = '{{ page.id}}'; { % endif %
-        }
+        {% if page.dsq_thread_id != nil %}
+        var disqus_identifier = '{{ page.dsq_thread_id}}';
+        {% else %}
+        var disqus_identifier = '{{ page.id}}';
+        {% endif %}
         var disqus_container_id = 'disqus_thread';
         var disqus_shortname = 'geekytidbits';
         var disqus_url = '{{ site.url }}{{ page.url }}';

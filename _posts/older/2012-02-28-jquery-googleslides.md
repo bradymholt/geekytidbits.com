@@ -12,10 +12,31 @@ I previously wrote a syncing tool called <a href="/picasawebsync/" target="_blan
 Anyway, since I have all my albums uploaded and synced automatically I wanted a way to display slideshows on my various websites so I could show some photos off!  I looked around for a nice jQuery plugin to do this, and although there were one or two candidates, I wasn&#8217;t fully happy with them.  And, I thought it would be fun to write my own.
 
 ### Demo
-
 **jQuery googleslides** &#8211; A jQuery plugin to display your Google Photos, including Picasa and Google+ albums.  
-<div class='googleslides' uid='115528839112598673902' aid='5710317752556741025' authkey='' imgmax='460' maxresults='100' random='true' caption='true' albumlink='false' time='5000' fadespeed='1000'></div>
+<div class="google-slides no-margin" style="width:400px;" data-userid="115528839112598673902" data-albumid="5710317752556741025" data-imgmax="400"></div>
 
 ### More Info
+Go to the project page for more info: <a href="http://bradyholt.github.com/jquery-googleslides" target="_blank">http://bradyholt.github.com/jquery-googleslides</a>.
 
-Go to the project page for more info: <strong style="font-size: 13px;"><a href="http://bradyholt.github.com/jquery-googleslides" target="_blank">http://bradyholt.github.com/jquery-googleslides</a>.</strong>
+
+<link href="/lib/googleslides/jquery.googleslides.css" rel="stylesheet" type="text/css" />
+<style>
+    .google-slides img { margin: 0px;}
+</style>
+ <script src="https://code.jquery.com/jquery-2.1.4.min.js" type="text/javascript"></script>
+ <script src="/lib/googleslides/jquery.googleslides.js" type="text/javascript"></script>
+ <script>
+  $(document).ready(function(){
+    $('.google-slides').each(function(index) {
+      var options = {
+         userid: $(this).attr('data-userid'),
+         albumid: $(this).attr('data-albumid'),
+         imgmax: $(this).attr('data-imgmax'),
+         caption: false,
+         maxresults: 100
+      };
+
+      $(this).googleslides(options);
+    });
+  });
+ </script>

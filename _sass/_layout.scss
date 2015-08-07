@@ -39,9 +39,6 @@
   img {
     margin: 20px;
   }
-  img.no-margin {
-    margin:0px;
-  }
 }
 
 /**
@@ -180,4 +177,7 @@
 }
 .pull-left {
   float: left;
+}
+.no-margin {
+  margin:0px;
 }
