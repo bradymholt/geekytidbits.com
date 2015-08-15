@@ -173,11 +173,11 @@
  * Misc
  */
 .pull-right {
-  float: right;
+  float: right !important;
 }
 .pull-left {
-  float: left;
+  float: left !important;
 }
 .no-margin {
-  margin:0px;
+  margin:0px !important;
 }
