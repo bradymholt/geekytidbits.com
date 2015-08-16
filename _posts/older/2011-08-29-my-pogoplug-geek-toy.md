@@ -17,13 +17,13 @@ I got <a href="http://archlinuxarm.org/" target="_blank">Arch Linux ARM</a> runn
 
   * Samba &#8212; shared network drive that shows up on my Windows 7 laptop and contains my Pictures, Music, Movies and Docs.
   * Squid Proxy and DansGuardian Content filter &#8211; I use this to speed up web access and block obscene web content. [Read more][2]
-  * Automatic TV show downloads &#8211; <a href="/2011/07/automatic-tv-show-downloads/" target="_blank">Read more</a>
+  * Automatic TV show downloads &#8211; <a href="/automatic-tv-show-downloads/" target="_blank">Read more</a>
   * Apache web server
   * FTP server
   * Subversion (source control) server
   * Mono &#8211; for running .NET apps.
   * PicasaWebSync &#8211; a little app I wrote that uploads my pictures and videos to Picasa so I can access them. [Read more][3]
-  * House Alarm/Garage Door Interface &#8212; I have several applications running that allows me to control my Honeywell Vista house alarm system and Garage Doors. <a href="/2011/09/iphone-control-house-alarm-and-garage-doors/" target="_blank">Read more</a>
+  * House Alarm/Garage Door Interface &#8212; I have several applications running that allows me to control my Honeywell Vista house alarm system and Garage Doors. <a href="/iphone-control-house-alarm-and-garage-doors/" target="_blank">Read more</a>
   * Backup &#8211; I have two external hard drives connected to it and run a cron job weekly to mirror them for backup purposes.
 
 <div>
@@ -33,5 +33,5 @@ I got <a href="http://archlinuxarm.org/" target="_blank">Arch Linux ARM</a> runn
 *- thanks Matt!
 
  [1]: /wp-content/uploads/pogoplug.jpg
- [2]: /2011/08/transparent-content-filtering-proxy/
- [3]: /2011/04/picasawebsync/
+ [2]: /transparent-content-filtering-proxy/
+ [3]: http://bradyholt.github.io/picasawebsync/

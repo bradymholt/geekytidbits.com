@@ -25,7 +25,7 @@ A web-based envelope budgeting application.  This app is built in Rails 3, Boot
 
 [Website](http://www.bentobudget.com/) [Blog Post](/bento-budget/){:target="_blank"}
 
-### [Cron Expression Descriptor](http://bradyholt.github.io/cron-expression-descriptor/){:target="_blank"}
+### [Cron Expression Descriptor](http://cronexpressiondescriptor.azurewebsites.net/){:target="_blank"}
 <div class="pull-right" style="height: 50px; width: 300px;">
   <pre>*/5 * * * * -&gt; "Every 5 minutes"</pre>
 </div>

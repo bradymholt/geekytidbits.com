@@ -40,6 +40,6 @@ On the Configure Firewall step, create a new security group and add an inbound r
 
 That&#8217;s it. You are now up and running with a CentOS x64 LAMP Server capable of running .NET applications. There is obviously more you will want to do depending on your needs but the steps above give you server that is &#8220;ready to go&#8221;.
 
- [1]: /2011/04/migrating-to-amazon-ec2-web-services/
+ [1]: /migrating-to-amazon-ec2-web-services/
  [2]: http://www.google.com/url?sa=t&#038;source=web&#038;cd=2&#038;ved=0CCsQFjAB&#038;url=http%3A%2F%2Fwww.mono-project.com%2F&#038;ei=FM_KTaOLOYbn0QGCt5noCA&#038;usg=AFQjCNHVts-EqhUHaT4QJLm5yVTUXvWnUA&#038;sig2=36rlF4rMYyxxzPzI3q7cQQ
  [3]: http://docs.amazonwebservices.com/AmazonEC2/gsg/2007-01-19/putty.html

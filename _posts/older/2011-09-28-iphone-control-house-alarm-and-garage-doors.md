@@ -15,7 +15,7 @@ Then I started thinking about writing and interface for the iPhone so that it wo
 
 Searching around, I found that a guy named Tomi Blinnikka reverse engineered the VISTA-ICM and graciously posted a C# library/app to  to interface with it here: [http://bliny.net/blog/post/HoneywellAdemco-Vista-ICM-network.aspx][2] .  Many thanks Tomi!  Looking at his code is pretty interesting because it details how the ICM works by broadcasting UDP multicast packets to communicate what is happening with the alarm.
 
-I wrote several applications that utilize this library to enable me to have full control of my VISTA alarm system.  These apps are running on my &#8220;always on&#8221; <a href="/2011/08/my-pogoplug-geek-toy/" target="_blank">PogoPlug server</a>.
+I wrote several applications that utilize this library to enable me to have full control of my VISTA alarm system.  These apps are running on my &#8220;always on&#8221; <a href="/my-pogoplug-geek-toy/" target="_blank">PogoPlug server</a>.
 
 ## The Solution
 
@@ -45,7 +45,7 @@ With all the apps hooked up and running, I am able to do some pretty cool stuff:
 
 For anyone interested, the solution is here: <span style="text-decoration: line-through;">VISTA_Alarm.zip</span>. **UPDATE: Please [take a look at my updated solution called vistaicm-server][4].**  I have removed / changed all sensitive information (i.e. alarm passwords, IP addresses, Prowl api key, etc.) as I obviously don&#8217;t want this info publicly available!
 
- [1]: /wp-content/uploads/VISTA-ICM.jpg
+ [1]: /media/VISTA-ICM.jpg
  [2]: http://bliny.net/blog/post/h-Vista-ICM-network.aspx
- [3]: /wp-content/uploads/20110827-102534.jpg
+ [3]: /media/20110827-102534.jpg
  [4]: /vistaicm-server/

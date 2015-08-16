@@ -28,4 +28,4 @@ I&#8217;ve providing it here as a download for anyone else that has a similar ma
 
 <strong style="font-size: larger;">> <a href="/media/ffmpeg_git-N-30697-g36204ed.tar.gz">Download ffmpeg built for CentOS 5.4 x86_64</a></strong>
 
- [1]: /2011/06/painless-html5-video-in-wordpress/
+ [1]: /painless-html5-video-in-wordpress/

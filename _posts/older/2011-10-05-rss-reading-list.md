@@ -5,7 +5,7 @@ layout: post
 permalink: /rss-reading-list/
 dsq_thread_id: 715 http://www.geekytidbits.com/?p=715
 ---
-In an earlier post, I listed <a href="/2011/07/my-development-toolbelt/" target="_blank">My Development Toolbelt</a> which is a list of development tools I use daily.  Here, I thought I would list the RSS feeds I subscribe to and read fairly regularly.  This is a direct export from my Google Reader account.  Reading these feeds is a way for me to **keep up with development trends**, **learn new things,** and **stretch my mind**.  Some of these feeds aren&#8217;t updated all that often and some are more useful than others. Maybe you&#8217;ll find one you like and can add to your own list.  If you know of other must reads, please post a comment and share the link.
+In an earlier post, I listed <a href="/my-development-toolbelt/" target="_blank">My Development Toolbelt</a> which is a list of development tools I use daily.  Here, I thought I would list the RSS feeds I subscribe to and read fairly regularly.  This is a direct export from my Google Reader account.  Reading these feeds is a way for me to **keep up with development trends**, **learn new things,** and **stretch my mind**.  Some of these feeds aren&#8217;t updated all that often and some are more useful than others. Maybe you&#8217;ll find one you like and can add to your own list.  If you know of other must reads, please post a comment and share the link.
 
 ## The List
 

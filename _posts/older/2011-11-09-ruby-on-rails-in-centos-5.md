@@ -5,7 +5,7 @@ layout: post
 permalink: /ruby-on-rails-in-centos-5/
 dsq_thread_id: 795 http://www.geekytidbits.com/?p=795
 ---
-I recently started playing around with Ruby on Rails 3.1 to see what all the hype was about.  I&#8217;ve been working on a website for our neighborhood and decided to use RoR for it so I can learn it.  Rather than going the <a href="http://www.heroku.com/" target="_blank">Heroku</a> route, I wanted to host the site on my <a href="/2011/05/setup-lamp-server-amazon-ec2/" target="_blank">Amazon EC2 instance running CentOS 5 64bit</a>.  Getting it setup on my server was a bit of a chore mostly because CentOS doesn&#8217;t have the latest and greatest packages.  Here are the steps I took to get a Rails site up and running.
+I recently started playing around with Ruby on Rails 3.1 to see what all the hype was about.  I&#8217;ve been working on a website for our neighborhood and decided to use RoR for it so I can learn it.  Rather than going the <a href="http://www.heroku.com/" target="_blank">Heroku</a> route, I wanted to host the site on my <a href="/setup-lamp-server-amazon-ec2/" target="_blank">Amazon EC2 instance running CentOS 5 64bit</a>.  Getting it setup on my server was a bit of a chore mostly because CentOS doesn&#8217;t have the latest and greatest packages.  Here are the steps I took to get a Rails site up and running.
 
 ## Ruby
 

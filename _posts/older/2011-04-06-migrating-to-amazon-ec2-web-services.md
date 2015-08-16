@@ -30,7 +30,7 @@ This was a pretty fun process. Next steps:
   http://groovbird.blogspot.com/2011/03/setting-up-mono-on-amazon-ec2.html
 </div>
 
-<span style="background-color: yellow;"><strong>Update: See my more recent post about getting an EC2 LAMP server setup: <a title="How to Setup a LAMP Server on Amazon EC2" href="/2011/05/setup-lamp-server-amazon-ec2/"> How to Setup a LAMP Server on Amazon EC2</a>.</strong></span>
+<span style="background-color: yellow;"><strong>Update: See my more recent post about getting an EC2 LAMP server setup: <a title="How to Setup a LAMP Server on Amazon EC2" href="/setup-lamp-server-amazon-ec2/"> How to Setup a LAMP Server on Amazon EC2</a>.</strong></span>
 
  [1]: http://www.dotnetpark.com/
  [2]: http://aws.amazon.com/free/
