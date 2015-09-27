@@ -7,7 +7,7 @@ permalink: /complexity-creep/
 > "Controlling complexity is the essence of computer programming." — Brian Kernighan
 
 ![Complex Code](/media/i-do-not-understand-code.jpg){: .pull-right }
-The longer I have been developing software, the more I am convinced this quote by Kernighan is true.  And when I am thinking about complexity in software, I like to think about the idea of "fighting" it rather than just controlling it.  Why?  I think it takes real initiaive to keep things simple.  The tendency for things to start out simple and to progressively get more *unnecessarily* complicated seems to be inevitable  (unless you work against it).  To be sure, some things are inherantly complex to solve and demand more than a simplistic solution.  The tendency toward **unnecessary complexity**, however, is what I like to call "complexity creep".
+The longer I have been developing software, the more I am convinced this quote by Kernighan is true.  And when I am thinking about complexity in software, I like to think about the idea of "fighting" it rather than just controlling it.  Why?  I think it takes real initiaive to keep things simple.  The tendency for things to start out simple and to progressively get more *unnecessarily* complicated seems to be inevitable  (unless you work against it).  To be sure, some things are inherently complex to solve and demand more than a simplistic solution.  The tendency toward **unnecessary complexity**, however, is what I like to call "complexity creep".
 
 ## It's a Bad Thing
 Why is complexity creep such a bad thing?  Why is simplicity worth fighting for?  When complexity increases, software becomes:
@@ -16,53 +16,68 @@ Why is complexity creep such a bad thing?  Why is simplicity worth fighting for?
  * **More Fragile** - complex things tend to be more fragile meaning one small change  breaks something else
  * **More Buggy** - Complex code is harder to understand and is more prone to have bugs.  Unit tests help here but there is always opportunity for edge cases to not be under test.
  * **Harder to Debug** - For anyone (including yourself!) trying to debug an application that is overly complex, it can take much longer to determine the root cause of a problem and fix it.  If the problem is in production on a mission critical application, this is a big and stressful problem.
+  * **More Expensive** - Particularly in the case where complexity creep exists in the *process* around developing software such as workflow, rules, and procedures, you can end up in a negative ROI situation where the benefit you receive is overshadowed by the cost that is incurred.
 
      > "Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it." — Brian Kernighan
 
 All of these things mean delivering and supporting your software **is going to take longer and cost more money**.
 
-Think about it.  Let's take a simple example.  Let's say you need to write a "Hello World" function in C#.  Easy right?
+Think about it.  Let's take a simple example.  Let's say you need to write a program that logs the number of milliseconds it takes to send a request to a web application and get the entire response back.  Easy right?  Something like this...
 
     static void Main() {
-     Console.WriteLine("Hello World");
+       WebClient client = new WebClient();
+
+       DateTime startTime = DateTime.Now;
+       string reply = client.DownloadString("http://www.YourAwesomeDomain.com");
+       DateTime endTime = DateTime.Now;
+
+       int millisecondElapsed = (int)((endTime - startTime).TotalMilliseconds);
+       System.IO.File.WriteAllText(@"log.txt", string.Format("{0}: {1}",
+          DateTime.Now.ToString(), millisecondElapsed.ToString()));
     }
 
-Now, let's say this application goes through many revisions, keeping up with ever changing requirements.  And, along the way you pick up some nifty new design patterns and try to keep it testable and flexible. Now, it looks like this:
+Now, let's say this application goes through several revisions, keeping up with some changing requirements.  And, along the way you pick up some nifty new design patterns and try to keep it testable and flexible.  Now, it looks something like this:
 
     const int WORK_QUEUE_BATCH_SIZE = 3;
 
     static void Main() {
-        IOutputStream outputStream = GetOutputStream();
-        IQueueSource queueSource = GetQueueSource();
+        IRequestProvider provider = GetRequestProvider();
+        IWorkQueue queue = GetWorkQueue();
         ILogger logger = BuildLoggerFromConfig();
 
-        queueSource.AddMessage("Hello World");
+        WorkItem item = new WorkItem();
+        item.Protocol = "http";
+        item.Verb = "GET";
+        item.Url = "http://www.YourAwesomeDomain.com";
+        queue.AddWorkItem(item);
 
-        MessageWorkQueueRunner messageWorkRunner = new MessageWorkQueueRunner(queueSource, outputStream, logger);
+        QueueWorker worker = new QueueWorker(provider, queue, logger);
 
         bool moreWork = true;
         while (moreWork) {
-            IWorkQueueStatus status = messageWorkRunner.DoQueueWork(WORK_QUEUE_BATCH_SIZE);
+            IWorkQueueStatus status = worker.DoWork(WORK_QUEUE_BATCH_SIZE);
             moreWork = status.CurrentQueueSize();
         }
     }
 
     ...
 
-    IWorkQueueStatus DoQueueWork(int batchSize) {
+    IWorkQueueStatus DoWork(int batchSize) {
         for (int i = 1; i <= batchSize; i++) {
-            IWorkItem nextItem = queue.GetNextWorkItem();
+            WorkItem nextItem = m_queue.GetNextWorkItem();
             while (nextItem != null) {
-                IWorkItem currentItem = nextItem;
-                m_logger.LogDebug(string.Format("About to DoWork on ID: {0}", currentItem.ID));
-                currentItem.DoWork(m_inputStream, m_outputStream);
-                m_logger.LogDebug(string.Format("Done with DoWork on ID: {0}", currentItem.ID));
-                nextItem = queue.GetNextWorkItem();
+                WorkItem currentItem = nextItem;
+
+                m_logger.Debug(string.Format("About to PerformRequest on ID: {0}", currentItem.ID));
+                currentItem.PerformRequest(provider);
+                m_logger.Debug(string.Format("Done with PerformRequest on ID: {0}", currentItem.ID));
+
+                nextItem = m_queue.GetNextWorkItem();
             }
         }
     }
 
-This thing can now handler more output stream types, logs what it is doing, can handle multiple messages and process them in batch, etc.  But, at the end of the day this thing is supposed to print "Hello World."  Is this complexity necessary.  I would strong argue it is not.
+This thing can now handle more request types, logs more about what it is doing and supports operating in batches.  But, at the end of the day this thing is supposed to log the number of milliseconds it takes to request a web page.  Is this complexity necessary?  I would strongly argue it is not.  This is a hypothetical example but I have seen something simple turn into something overly complex time and time again.
 
 Let's take another (humorous) example that I think does a good job illustrating the point that something that starts simple can get crazy complex.  The [Fizz Buzz Test](http://c2.com/cgi/wiki?FizzBuzzTest) is algorithm prompt used to ensure prospective programmers can write basic code:
 
@@ -82,7 +97,7 @@ Why do things naturally drift towards complexity?  I think there are lots of rea
 
     >"Simple can be harder than complex: You have to work hard to get your thinking clean to make it simple. But it’s worth it in the end because once you get there, you can move mountains.” - Steve Jobs
 
-It's important to note that complexity creep can happen in many different areas of the software development process; not just when you are slinging out some new code or making a modification to a an existing component.  It can happen during planning, such as when you are deciding the approach to take in solving a problem (or whether the problem actually needs to be solved).  It can creep into the development process of your team, such as the steps developers must go through to get code developed and released.  Some of it can be veiled in good intentions like "security", "quality control", "risk mitigation" or "best practice".  It can show up anywhere!
+It's important to note that complexity creep can happen in many different areas of the software development process; not just when you are slinging out some new code or making a modification to a an existing component.  It can happen during planning, such as when you are deciding the approach to take in solving a problem (or whether the problem actually needs to be solved).  It can creep into the development process of your team, such as the steps developers must go through to get code developed and released.  Some of it can be veiled in good intentions like "security", "quality control", "risk mitigation" or "best practice"; these are all good things but processes around them can become unnecessarily complex.  It can show up anywhere!
 
 ## Fight It
 I hope you agree with me that complexity creep is a real thing and that it is a problem.  Here are some strategies I've find that really work to fight the creep.
