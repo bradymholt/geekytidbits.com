@@ -94,6 +94,7 @@ Why do things naturally drift towards complexity?  I think there are lots of rea
 * Trying to be "clever"
 * Misunderstanding of the fundamental problem you are trying to solve - If you don't fully understand the problem you are trying to solve or the algorithm you are implementing, you might write out code that resembles your mixed-up understanding of the problem.
 * Laziness - Many times I think it is harder to design a simple solution than a complex one.  It's a paradox to be sure.
+* Unawareness - When you are not aware of how your problem may have already been solved by someone else or that a tool exists that could be the perfect tool for you job, you may end up adding complexity to your application when it is not necessary to do so.
 
     >"Simple can be harder than complex: You have to work hard to get your thinking clean to make it simple. But it’s worth it in the end because once you get there, you can move mountains.” - Steve Jobs
 
@@ -107,6 +108,7 @@ I hope you agree with me that complexity creep is a real thing and that it is a 
 * **Think Outside the Box** - Talk your change over with someone else; spend some time researching how others have solved a similar problem; don't assume anything; don't just start running with your first idea about how to solve a problem but instead think about it from different angles first.
 * **Do Code Reviews** - Have somebody else look at your code. If they can't understand it you should make it simpler.
 * **Remove Unused Code** - As the amount of code in a system goes up, it becomes hard to maintain it.  When you do system wide refactors you may be touching (and spending time on) code that is not even being used.  I know it is tempting to leave it there or just comment it out because "it might be needed" but I have found that just *removing* it pays huge dividends.  Obviously, you want to be careful and methodical here.
+* **Read and Research** - Keep up with what others are doing to solve problems similar to yours and tools out there that could be leveraged for a fraction of the cost (and complexity!) you would incur if you had to do it yourself.
 * Remember and practice the the wisdom behind these principles:
   - KISS - **K**eep **I**t **S**imple **S**tupid
   - YAGNI - **Y**ou **A**in't **G**onna **N**eed **I**t
