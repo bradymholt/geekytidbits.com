@@ -22,7 +22,7 @@ Why is complexity creep such a bad thing?  Why is simplicity worth fighting for?
 
 All of these things mean delivering and supporting your software **is going to take longer and cost more money**.
 
-Think about it.  Let's take a simple example.  Let's say you need to write a program that logs the number of milliseconds it takes to send a request to a web application and get the entire response back.  Easy right?  Something like this...
+Think about it.  Let's take a simple example.  Let's say you need to write a C# program that logs the number of milliseconds it takes to send a request to a web application and get the entire response back.  Easy right?  Something like this...
 
     static void Main() {
        WebClient client = new WebClient();
