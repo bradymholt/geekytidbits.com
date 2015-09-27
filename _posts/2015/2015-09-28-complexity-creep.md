@@ -64,7 +64,7 @@ Now, let's say this application goes through many revisions, keeping up with eve
 
 This thing can now handler more output stream types, logs what it is doing, can handle multiple messages and process them in batch, etc.  But, at the end of the day this thing is supposed to print "Hello World."  Is this complexity necessary.  I would strong argue it is not.
 
-Let's take another (humorous) example that is not real-world but I think does a good job illustrating the point that something that starts simple can get crazy complex.  The [Fizz Buzz Test](http://c2.com/cgi/wiki?FizzBuzzTest) is algorithm prompt used to ensure prospective programmers can write basic code:
+Let's take another (humorous) example that I think does a good job illustrating the point that something that starts simple can get crazy complex.  The [Fizz Buzz Test](http://c2.com/cgi/wiki?FizzBuzzTest) is algorithm prompt used to ensure prospective programmers can write basic code:
 
 > For numbers 1 through 100: if the number is divisible by 3 print Fizz; if the number is divisible by 5 print Buzz; if the number is divisible by 3 and 5 (15) print FizzBuzz; else, print the number
 
