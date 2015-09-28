@@ -13,10 +13,10 @@ The longer I have been developing software, the more I am convinced this quote b
 Why is complexity creep such a bad thing?  Why is simplicity worth fighting for?  When complexity increases, software becomes:
 
  * **Harder to Maintain** - complex code is hard to maintain.  To make changes or add new functionality you must understand what the code is doing.  If the design is complex it is going to take much more time to a developer to understand the design and make the necessary changes.
- * **More Fragile** - complex things tend to be more fragile meaning one small change  breaks something else
+ * **More Fragile** - complex things tend to be more fragile meaning one small change  breaks something else.
  * **More Buggy** - Complex code is harder to understand and is more prone to have bugs.  Unit tests help here but there is always opportunity for edge cases to not be under test.
+* **More Expensive** - Particularly in the case where complexity creep exists in the *process* around developing software such as workflow, rules, and procedures, you can end up in a negative ROI situation where the benefit you receive is overshadowed by the cost that is incurred.
  * **Harder to Debug** - For anyone (including yourself!) trying to debug an application that is overly complex, it can take much longer to determine the root cause of a problem and fix it.  If the problem is in production on a mission critical application, this is a big and stressful problem.
-  * **More Expensive** - Particularly in the case where complexity creep exists in the *process* around developing software such as workflow, rules, and procedures, you can end up in a negative ROI situation where the benefit you receive is overshadowed by the cost that is incurred.
 
      > "Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it." — Brian Kernighan
 
