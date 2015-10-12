@@ -18,7 +18,7 @@ graph.put_object(settings.facebook_group_id, "feed", {
 })
 </pre>
 
-That's pretty simple.  However, there are two things that are a little tricky.  Notice that you need both the *Group ID* and an *Access Token* to successfully post something.
+That's pretty simple.  However, there are two things that are a little tricky.  Notice that you need both the *Group ID* (`settings.facebook_group_id` in example) and an *Access Token* (`settings.facebook_access_token` in example) to successfully post something.
 
 ## Group ID
 
