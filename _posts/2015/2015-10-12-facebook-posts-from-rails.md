@@ -43,11 +43,7 @@ Anyway, this is what you need to do:
 6. Click "Get Token" > "Get "Access Token" ![Graph API Explorer](/media/fb_graph_explorer.png)
 7. When asked which permissions you will need, select `user_posts` and `publish_actions` (at the very least).
 8. Continue through the prompts; you will be asked to grant your new application some permissions on your own personal Facebook account.
-
 ![Grant Access](/media/fb_grant_access.png)
-
 9. Grant the requested permissions and you will be taken back to the Graph API Explorer and a new *Access Token* will be filled in at the top.  This is a "Short-Live" access token that will expire soon.
-
 ![Grant Access](/media/fb_access_key.png)
-
-10.  Navigate to: **https://graph.facebook.com/oauth/access_token?client_id=<APP_ID>&client_secret=<APP_SECRET>&grant_type=fb_exchange_token&fb_exchange_token=<SHORT_LIVE_ACCESS_TOKEN>** and in the body of the response you will find a new "Long-Live" access token.  This is the access token you need to pass to koala to start posting! 
+10.  Navigate to: **https://graph.facebook.com/oauth/access_token?client_id=<APP_ID>&client_secret=<APP_SECRET>&grant_type=fb_exchange_token&fb_exchange_token=<SHORT_LIVE_ACCESS_TOKEN>** and in the body of the response you will find a new "Long-Live" access token.  This is the access token you need to pass to koala to start posting!
