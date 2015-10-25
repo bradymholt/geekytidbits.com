@@ -46,4 +46,4 @@ Anyway, this is what you need to do:
 ![Grant Access](/media/fb_grant_access.png)
 9. Grant the requested permissions and you will be taken back to the Graph API Explorer and a new *Access Token* will be filled in at the top.  This is a "Short-Live" access token that will expire soon.
 ![Grant Access](/media/fb_access_key.png)
-10.  Navigate to: **https://graph.facebook.com/oauth/access_token?client_id=<APP_ID>&client_secret=<APP_SECRET>&grant_type=fb_exchange_token&fb_exchange_token=<SHORT_LIVE_ACCESS_TOKEN>** and in the body of the response you will find a new "Long-Live" access token.  This is the access token you need to pass to koala to start posting!
+10.  Navigate to: `https://graph.facebook.com/oauth/access_token?client_id=<APP_ID>&client_secret=<APP_SECRET>&grant_type=fb_exchange_token&fb_exchange_token=<SHORT_LIVE_ACCESS_TOKEN>` and in the body of the response you will find a new "Long-Live" access token.  This is the access token you need to pass to koala to start posting!
