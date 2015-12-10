@@ -60,7 +60,16 @@ A Node.js app that works with the VISTA-ICM module to control VISTA (10/15/20/21
 
 [Project Page](https://github.com/bradyholt/vistaicm-server/) [Blog Post](/vistaicm-server){:target="_blank"}
 
+## Other Projects
 
+- [dbup-consolescripts](https://github.com/bradyholt/dbup-consolescripts) - Package Manager Console scripts for [DbUp](https://dbup.github.io/)
+- [dbup-sqlserver-scripting](https://github.com/bradyholt/dbup-sqlserver-scripting) - SQL Server object definition scripting for [DbUp](https://dbup.github.io/)
+- [veritas](https://github.com/bradyholt/veritas) - A web application for social groups to share contact info, calendar events, track attendance and more
+- [openbank](https://github.com/bradyholt/openbank) - A friendly REST service wrapper for OFX bank servers
+- [ansible-rails](https://github.com/bradyholt/ansible-rails) - Ansible playbooks for provisioning and depoying to a Rails webserver
+- [jenkins-neptune-theme](https://github.com/bradyholt/jenkins-neptune-theme) - A Jenkins style theme
+- [picasawebsync](https://github.com/bradyholt/picasawebsync) - Synchronizes local photos and videos to online Picasa Web Albums
+- [pedamorf](https://github.com/bradyholt/pedamorf) - A PDF conversion server for Windows that supports documents, text, images, html and urls
 
 <link href="/lib/googleslides/jquery.googleslides.css" rel="stylesheet" type="text/css" />
  <script src="https://code.jquery.com/jquery-2.1.4.min.js" type="text/javascript"></script>
