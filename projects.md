@@ -5,7 +5,7 @@ layout: page
 weight: 2
 permalink: /projects/
 ---
-Test - In my limited spare time I like to work on open source software projects.  Not only do I find it fun and a great way to keep learning new things, I have benefited greatly from other OSS projects and am glad to give back a little.  Here are the active projects I own and maintain.
+In my limited spare time I like to work on open source software projects.  Not only do I find it fun and a great way to keep learning new things, I have benefited greatly from other OSS projects and am glad to give back a little.  Here are the active projects I own and maintain.
 
 ### [jQuery googleslides](http://bradyholt.github.io/jquery-googleslides/){:target="_blank"}
 <div class="google-slides pull-right" style="width:262px; height:176px;" data-userid="115528839112598673902" data-albumid="5710317752556741025" data-imgmax="260"></div>
