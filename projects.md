@@ -31,19 +31,6 @@ A C# library that converts cron expressions into localized human readable string
 
 [Project Page](http://cronexpressiondescriptor.azurewebsites.net/) [NuGet Package](https://www.nuget.org/packages/CronExpressionDescriptor/){:target="_blank"}
 
-### [PicasaWebSync](http://bradyholt.github.io/picasawebsync/){:target="_blank"}
-<div class="pull-right" style="height: 50px; width: 375px;">
-  <pre>
-  picasawebsync.exe "C:\bholt\pics"
-    -u:me@gmail.com -p:S@cret</pre>
-</div>
-
-A command line tool to synchronize local photos and videos to online Picasa Web Albums.
-
-*First Release: April 2011*
-
-[Project Page](http://bradyholt.github.io/picasawebsync/) [Blog Post](/picasawebsync-project){:target="_blank"}
-
 ### [vistaicm-server](https://github.com/bradyholt/vistaicm-server){:target="_blank"}
 ![vistaicm-server](https://raw.github.com/bradyholt/vistaicm-server/gh-pages/screenshot.png){: .pull-right }
 
