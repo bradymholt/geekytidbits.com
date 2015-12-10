@@ -9,4 +9,4 @@ This blog is powered by [Jekyll](http://jekyllrb.com/), the blog-aware, static s
 
 # Deployment 
 
-- Add pushurl = [user]@www.geekytidbit.com:repos/geekytidbits.git and push.
+- Add pushurl = [user]@www.geekytidbit.com:repos/geekytidbits.git to `.git/config` and `git push`.
