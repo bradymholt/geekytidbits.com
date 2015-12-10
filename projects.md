@@ -16,15 +16,6 @@ A jQuery plugin to display your Google Photos, including Picasa and Google+ albu
 
 [Project Page](http://bradyholt.github.io/jquery-googleslides/) [Blog Post](/jquery-googleslides-project/){:target="_blank"}
 
-### [Bento Budget](http://www.bentobudget.com){:target="_blank"}
-![Bento Budget](/media/logo-small.png){: .pull-right }
-
-A web-based envelope budgeting application.  This app is built in Rails 3, Bootstrap, MySQL and has a backend REST service built in C# / [Nancy](http://nancyfx.org/){:target="_blank"}.
-
-*First Release: December 2013*
-
-[Website](http://www.bentobudget.com/) [Blog Post](/bento-budget/){:target="_blank"}
-
 ### [Cron Expression Descriptor](http://cronexpressiondescriptor.azurewebsites.net/){:target="_blank"}
 <div class="pull-right" style="height: 50px; width: 300px;">
   <pre>*/5 * * * * -&gt; "Every 5 minutes"</pre>
@@ -66,6 +57,7 @@ A Node.js app that works with the VISTA-ICM module to control VISTA (10/15/20/21
 - [dbup-sqlserver-scripting](https://github.com/bradyholt/dbup-sqlserver-scripting) - SQL Server object definition scripting for [DbUp](https://dbup.github.io/)
 - [veritas](https://github.com/bradyholt/veritas) - A web application for social groups to share contact info, calendar events, track attendance and more
 - [openbank](https://github.com/bradyholt/openbank) - A friendly REST service wrapper for OFX bank servers
+- [Bento Budget](https://github.com/bradyholt/bento-budget-app) - Envelope based budgeting web application
 - [ansible-rails](https://github.com/bradyholt/ansible-rails) - Ansible playbooks for provisioning and depoying to a Rails webserver
 - [jenkins-neptune-theme](https://github.com/bradyholt/jenkins-neptune-theme) - A Jenkins style theme
 - [picasawebsync](https://github.com/bradyholt/picasawebsync) - Synchronizes local photos and videos to online Picasa Web Albums
