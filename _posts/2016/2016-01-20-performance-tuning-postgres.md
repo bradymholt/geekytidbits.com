@@ -108,22 +108,23 @@ In the example above, it took 55.009ms to get first record and 55.012ms to finis
 
 There are some really great articles on understanding the output of `EXPLAIN` and rather than attempt to rehash them here, I recommend you invest the time to really understand them more by navigating to these 2 great resources:
 
-- http://www.depesz.com/2013/04/16/explaining-the-unexplainable/
-- https://wiki.postgresql.org/images/4/45/Explaining_EXPLAIN.pdf
+- [http://www.depesz.com/2013/04/16/explaining-the-unexplainable/](http://www.depesz.com/2013/04/16/explaining-the-unexplainable/)
+- [https://wiki.postgresql.org/images/4/45/Explaining_EXPLAIN.pdf](https://wiki.postgresql.org/images/4/45/Explaining_EXPLAIN.pdf)
 
 ## Query Tuning
 
-Now that you know which statements are performing poorly and able see their execution plans, it is time to start tweaking the query to get better performance.  This is where you make changes to the queries and/or add indexes to try and get a better execution plan.
+Now that you know which statements are performing poorly and able see their execution plans, it is time to start tweaking the query to get better performance.  This is where you make changes to the queries and/or add indexes to try and get a better execution plan.  Start with the bottlenecks and see if there are changes you can make that reduce costs and/or execution times.
 
 ### A note about data cache and comparing apples to apples
 
-As you make changes and evaluate the resuling execution plans to see if it is better, it is important to know that subsequent executions might be relying upon data caching that yield better results.  If you run a query once, make a tweak and run it a second time, it is likely it will run much faster even if the execution plan is not more favorable.  This is because PostgreSQL might have cached data used in the first run and is able to use it in the second run.  Therefore, you should run queries at least 3 times and average the results to compare apples to apples. 
+As you make changes and evaluate the resuling execution plans to see if it is better, it is important to know that **subsequent executions might be relying upon data caching that yield the perception of better results**.  If you run a query once, make a tweak and run it a second time, it is likely it will run much faster even if the execution plan is not more favorable.  This is because PostgreSQL might have cached data used in the first run and is able to use it in the second run.  Therefore, you should run queries at least 3 times and average the results to compare apples to apples. 
+
 
 Things I've learned that *may* help get better execution plans:
 
 - Indexes
   - Eliminate Sequential Scans (Seq Scan) by adding indexes (unless table size is small)
-  - If using a multicolumn index, make sure you pay attention to order in which you create the index because queries with a filter on subset of the index columns can only use the index if the leftmost column.  [More info]](http://use-the-index-luke.com/sql/where-clause/the-equals-operator/concatenated-keys)  First column can be used only
+  - If using a multicolumn index, make sure you pay attention to order in which you define the included columns - [More info](http://use-the-index-luke.com/sql/where-clause/the-equals-operator/concatenated-keys)
   - Try to use indexes that are highly selective on commonly-used data.  This will make their use more efficient.
 - WHERE clause
   - Avoid LIKE
@@ -132,8 +133,8 @@ Things I've learned that *may* help get better execution plans:
 - JOINs
   - When joining tables, try to use a simple equality statement in the ON clause (i.e. `a.id = b.person_id`).  Doing so allows more efficient join techniques to be used (i.e. Hash Join rather than Nested Look Join).
   - Convert subqueries to JOIN statements when possible as this usually allows the optimizer to understand the intent and possibly chose a better plan. 
-  - Use JOINs properly: Are you using GROUP BY or DISTINCT just because you are getting duplicate results?  This usually indicates improper JOIN statements and may result in a higher cost.     
-  - If the execution plan is using a Hash Join it can be very slow if table size estimates are wrong.  Therefore, make sure your table statistics are accurate by having a  vacuuming strategy is good (http://www.postgresql.org/docs/current/static/routine-vacuuming.html) 
+  - Use JOINs properly: Are you using GROUP BY or DISTINCT just because you are getting duplicate results?  This usually indicates improper JOIN usage and may result in a higher costs.     
+  - If the execution plan is using a Hash Join it can be very slow if table size estimates are wrong.  Therefore, make sure your table statistics are accurate by reviewing your [vacuuming strategy](http://www.postgresql.org/docs/current/static/routine-vacuuming.html). 
   Subqueries
   - Avoid [correlated subqueries](https://en.wikipedia.org/wiki/Correlated_subquery) where possible; they can significantly increase query cost. 
   - Use [EXISTS](http://www.postgresql.org/docs/current/static/functions-subquery.html) when checking for existence of rows based on criterion because it "short-circuits" (stops processing when it finds at least one match).
@@ -142,5 +143,5 @@ Things I've learned that *may* help get better execution plans:
   - Utilize [Common Table Expressions](http://www.postgresql.org/docs/current/static/queries-with.html) and temporary tables when you need to run chained queries.
   - Avoid LOOP statements and prefer SET operations
   - Avoid COUNT(*) as PostgresSQL does table scans for this ([versions <= 9.1 only](https://wiki.postgresql.org/wiki/FAQ#Why_is_.22SELECT_count.28.2A.29_FROM_bigtable.3B.22_slow.3F))
-  - Avoid ORDER BY, DISTINCT, GROUP BY, UNION when possible or if not needed because these cause high startup costs
+  - Avoid ORDER BY, DISTINCT, GROUP BY, UNION when possible because these cause high startup costs
   
