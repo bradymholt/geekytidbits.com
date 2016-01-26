@@ -23,9 +23,9 @@ SELECT * FROM pg_stat_statements ORDER BY total_time DESC;
 
 user_id | dbid | queryid | query | calls | total_time
 -- | -- | -- | -- | -- | --
-16384 | 16385 |2195435803 |SELECT address_1 FROM addresses a INNER JOIN people p ON a.person_id = p.id WHERE a.state = @state_abbrev; | 39483 |1522466341.67016
-16384 | 16385 |2195435803 |SELECT person_id FROM people WHERE name = @name; | 26483 |1222566341.67016
-16384 | 16385 |2195435803 |SELECT * FROM orders WHERE EXISTS (select * from products where is_featured = true) | 18583 |22466341.67016
+16384 | 16385 |2948 |SELECT address_1 FROM addresses a INNER JOIN people p ON a.person_id = p.id WHERE a.state = @state_abbrev; | 39483 |1522466341.67016
+16384 | 16385 |924 |SELECT person_id FROM people WHERE name = @name; | 26483 |1222566341.67016
+16384 | 16385 |395 |SELECT * FROM orders WHERE EXISTS (select * from products where is_featured = true) | 18583 |22466341.67016
 
 
 ### auto_explain
