@@ -86,7 +86,7 @@ Let's dive in and start understanding the output of `EXPLAIN`.  Here's an exampl
 
 ### Nodes 
 
-The first thing to understand is that each indented block with a preceeding "->" (along with the top line) is called a *node*.  The top *node* is a logical unit of work (a "step" if you will) with an associated cost and execution time.  The costs and times presented at each node are cumulative and roll up all child nodes.  This means that the very top line (node) shows a cumulative cost and actual time for the entire statement.  This is important because you can easily drill down to determine which node(s) are the bottleneck(s).   
+The first thing to understand is that each indented block with a preceeding "->" (along with the top line) is called a *node*.  A *node* is a logical unit of work (a "step" if you will) with an associated cost and execution time.  The costs and times presented at each node are cumulative and roll up all child nodes.  This means that the very top line (node) shows a cumulative cost and actual time for the entire statement.  This is important because you can easily drill down to determine which node(s) are the bottleneck(s).   
 
 ### Cost
 
@@ -134,8 +134,7 @@ Things I've learned that *may* help get better execution plans:
   - When joining tables, try to use a simple equality statement in the ON clause (i.e. `a.id = b.person_id`).  Doing so allows more efficient join techniques to be used (i.e. Hash Join rather than Nested Look Join).
   - Convert subqueries to JOIN statements when possible as this usually allows the optimizer to understand the intent and possibly chose a better plan. 
   - Use JOINs properly: Are you using GROUP BY or DISTINCT just because you are getting duplicate results?  This usually indicates improper JOIN usage and may result in a higher costs.     
-  - If the execution plan is using a Hash Join it can be very slow if table size estimates are wrong.  Therefore, make sure your table statistics are accurate by reviewing your [vacuuming strategy](http://www.postgresql.org/docs/current/static/routine-vacuuming.html). 
-  Subqueries
+  - If the execution plan is using a Hash Join it can be very slow if table size estimates are wrong.  Therefore, make sure your table statistics are accurate by reviewing your [vacuuming strategy](http://www.postgresql.org/docs/current/static/routine-vacuuming.html).
   - Avoid [correlated subqueries](https://en.wikipedia.org/wiki/Correlated_subquery) where possible; they can significantly increase query cost. 
   - Use [EXISTS](http://www.postgresql.org/docs/current/static/functions-subquery.html) when checking for existence of rows based on criterion because it "short-circuits" (stops processing when it finds at least one match).
 - General guidelines
