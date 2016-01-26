@@ -19,7 +19,6 @@ queries that have relatively high `total_time` value.  Focus on these statements
 
 ```
 SELECT * FROM pg_stat_statements ORDER BY total_time DESC;
-
 ```
 
 user_id | dbid | queryid | query | calls | total_time
