@@ -17,6 +17,18 @@ The [pg_stats_statements](http://www.postgresql.org/docs/current/static/pgstatst
 Once you have this module installed, a system view named `pg_stat_statements` will be available with all sorts of goodness.  Once it has had a chance to collect a good amount of data, look for 
 queries that have relatively high `total_time` value.  Focus on these statements first.
 
+```
+SELECT * FROM pg_stat_statements ORDER BY total_time DESC;
+
+```
+
+user_id | dbid | queryid | query | calls | total_time
+-- | -- | -- | -- | -- | --
+16384 | 16385 |2195435803 |SELECT address_1 FROM addresses a INNER JOIN people p ON a.person_id = p.id WHERE a.state = @state_abbrev; | 39483 |1522466341.67016
+16384 | 16385 |2195435803 |SELECT person_id FROM people WHERE name = @name; | 26483 |1222566341.67016
+16384 | 16385 |2195435803 |SELECT * FROM orders WHERE EXISTS (select * from products where is_featured = true) | 18583 |22466341.67016
+
+
 ### auto_explain
 
 The [auto_explain](http://www.postgresql.org/docs/current/static/auto-explain.html) module is also helpful for finding slow queries but has 2 distinct advantages: it logs the actual execution plan and supports logging *nested statements* using the `log_nested_statements` option.  Nested statements are those statements that are executed inside a function.  If you application uses many functions, auto_explain is invaluable for getting detailed execution plans.
