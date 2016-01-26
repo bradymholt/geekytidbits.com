@@ -28,7 +28,7 @@ This is how my mounted antenna looks:
 
 It’s pretty discreet, especially when mounted near other wires and such coming into my house from the utility poles.  It’s less discreet than my multi-colored gate anyway.
 
-Once you have your antenna, you need to mount it and point it in the right direction.  A great resource for determining which direction to mount it is a website called AntennaWeb – [[http://www.antennaweb.org][3](http://www.antennaweb.org][3)].  You simply type in your address and it will give you a map of all the TV station signals in your area and the compass degrees of each.  My map looks like this:
+Once you have your antenna, you need to mount it and point it in the right direction.  A great resource for determining which direction to mount it is a website called AntennaWeb – [http://www.antennaweb.org](http://www.antennaweb.org).  You simply type in your address and it will give you a map of all the TV station signals in your area and the compass degrees of each.  My map looks like this:
 
 [<img class="alignnone wp-image-2091 size-full" src="/media/download.png" alt="AntennaWeb 77018" width="716" height="454" />][4]
 
