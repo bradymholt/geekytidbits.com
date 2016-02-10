@@ -30,7 +30,7 @@ user_id | dbid | queryid | query | calls | total_time
 
 ### auto_explain
 
-The [auto_explain](http://www.postgresql.org/docs/current/static/auto-explain.html) module is also helpful for finding slow queries but has 2 distinct advantages: it logs the actual execution plan and supports logging *nested statements* using the `log_nested_statements` option.  Nested statements are those statements that are executed inside a function.  If you application uses many functions, auto_explain is invaluable for getting detailed execution plans.
+The [auto_explain](http://www.postgresql.org/docs/current/static/auto-explain.html) module is also helpful for finding slow queries but has 2 distinct advantages: it logs the actual execution plan and supports logging *nested statements* using the `log_nested_statements` option.  Nested statements are those statements that are executed inside a function.  If your application uses many functions, auto_explain is invaluable for getting detailed execution plans.
 
 The `log_min_duration` option controls which query execution plans are logged, based on how long they perform.  For example, if you set this to 1000, all statments that run longer than 1 second will be logged.
 
@@ -74,12 +74,12 @@ WHERE idx_scan = 0
     AND indisunique is false;
 ```
 
-### A note about statistic on development environments
+### A note about statistics on development environments
 
  Relying upon statistics generated from a local development database can be problematic.  Ideally you are able to pull the above statistics from your production machine or generate them from a restored production backup.  Why?  Environmental factors can and do change the way Postgres query optimizer works.  Two examples:
  
  - when a machine has less memory PostgreSQL may not be able to perform a Hash Join when otherwise it would be able to and would make the join faster.    
- - if there are not many rows in a table (like in a development database), PostgresSQL may chose to do Sequential Scans on a table rather than utilize an available index.  When table sizes are small, a Seq Scan can be faster.
+ - if there are not many rows in a table (like in a development database), PostgresSQL may chose to do Sequential Scans on a table rather than utilize an available index.  When table sizes are small, a Seq Scan can be faster.  (Note: you can run `SET enable_seqscan = OFF;` in a session to get the optimizer to prefer using indexes even when a Sequential Scan may be faster.  This is useful when working when development databases that do not have much data in them)
 
 ## Understanding Execution Plans
 
