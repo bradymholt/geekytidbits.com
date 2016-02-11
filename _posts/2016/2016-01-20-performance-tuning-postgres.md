@@ -105,7 +105,7 @@ The first thing to understand is that each indented block with a preceeding "->"
 
 The first number is start up cost (cost to retrieve first record) and the second number is the cost encurred to process entire node (total cost from start to finish).
 
-The cost is effectively how much work was required for PostgreSQL to execute the node.  This number is *not* how much time is required, although there is usually direct correlation to time required for execution.  Cost is a combination of 5 work components: sequential fetch, non-sequential (random) fetch, processing of row, processing operator (function), and processing index entry.  The cost represents I/O and CPU activity and the important thing to know here is that a higher cost means PostgresSQL is having to do more work.  **Lower costs are better**.
+The cost is effectively how much work PostgreSQL _estimates_ it will have to do to run the statement.  This number is *not* how much time is required, although there is usually direct correlation to time required for execution.  Cost is a combination of 5 work components used to estimate the work required: sequential fetch, non-sequential (random) fetch, processing of row, processing operator (function), and processing index entry.  The cost represents I/O and CPU activity and the important thing to know here is that a relatively higher cost means PostgresSQL thinks it will have to do more work.  The optimizer makes its decision on which execution plan to use based on the the cost.  Lower costs are preferred by the optimizer.
 
 ### Actual time
 
@@ -142,16 +142,17 @@ Things I've learned that *may* help get better execution plans:
   - Avoid function calls in WHERE clause
   - Avoid large IN() statements
 - JOINs
-  - When joining tables, try to use a simple equality statement in the ON clause (i.e. `a.id = b.person_id`).  Doing so allows more efficient join techniques to be used (i.e. Hash Join rather than Nested Look Join).
-  - Convert subqueries to JOIN statements when possible as this usually allows the optimizer to understand the intent and possibly chose a better plan. 
-  - Use JOINs properly: Are you using GROUP BY or DISTINCT just because you are getting duplicate results?  This usually indicates improper JOIN usage and may result in a higher costs.     
-  - If the execution plan is using a Hash Join it can be very slow if table size estimates are wrong.  Therefore, make sure your table statistics are accurate by reviewing your [vacuuming strategy](http://www.postgresql.org/docs/current/static/routine-vacuuming.html).
-  - Avoid [correlated subqueries](https://en.wikipedia.org/wiki/Correlated_subquery) where possible; they can significantly increase query cost. 
-  - Use [EXISTS](http://www.postgresql.org/docs/current/static/functions-subquery.html) when checking for existence of rows based on criterion because it "short-circuits" (stops processing when it finds at least one match).
+  - When joining tables, try to use a simple equality statement in the ON clause (i.e. `a.id = b.person_id`).  Doing so allows more efficient join techniques to be used (i.e. Hash Join rather than Nested Look Join)
+  - Convert subqueries to JOIN statements when possible as this usually allows the optimizer to understand the intent and possibly chose a better plan 
+  - Use JOINs properly: Are you using GROUP BY or DISTINCT just because you are getting duplicate results?  This usually indicates improper JOIN usage and may result in a higher costs
+  - If the execution plan is using a Hash Join it can be very slow if table size estimates are wrong.  Therefore, make sure your table statistics are accurate by reviewing your [vacuuming strategy](http://www.postgresql.org/docs/current/static/routine-vacuuming.html)
+  - Avoid [correlated subqueries](https://en.wikipedia.org/wiki/Correlated_subquery) where possible; they can significantly increase query cost 
+  - Use [EXISTS](http://www.postgresql.org/docs/current/static/functions-subquery.html) when checking for existence of rows based on criterion because it "short-circuits" (stops processing when it finds at least one match)
 - General guidelines
   - Do more with less; CPU is faster than I/O
-  - Utilize [Common Table Expressions](http://www.postgresql.org/docs/current/static/queries-with.html) and temporary tables when you need to run chained queries.
+  - Utilize [Common Table Expressions](http://www.postgresql.org/docs/current/static/queries-with.html) and temporary tables when you need to run chained queries
   - Avoid LOOP statements and prefer SET operations
   - Avoid COUNT(*) as PostgresSQL does table scans for this ([versions <= 9.1 only](https://wiki.postgresql.org/wiki/FAQ#Why_is_.22SELECT_count.28.2A.29_FROM_bigtable.3B.22_slow.3F))
   - Avoid ORDER BY, DISTINCT, GROUP BY, UNION when possible because these cause high startup costs
+  - Look for a large variance between estimated rows and actual rows in the `EXPLAIN` statement.  If the count is very different, the table statistics could be outdated and PostgreSQL is estimating cost using inaccurate statistics.  For example: `Limit  (cost=282.37..302.01 rows=93 width=22) (actual time=34.35..49.59 rows=2203 loops=1)`.  The estimated row count was 93 and the actual was 2,203.  Therefore, it is likely making a bad plan decision.  You should review your [vacuuming strategy](http://www.postgresql.org/docs/current/static/routine-vacuuming.html) and ensure `ANALYZE` is being run frequently enough.
   
