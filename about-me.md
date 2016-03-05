@@ -26,7 +26,7 @@ To learn even more about me, check out my 3-part post, [How I Got Geeky][4].
 - I play the acoustic guitar.
 - Hawaii is my favorite place to visit.
 - I have a beautiful wife and daughter who I adore.
-- A good word to describe me is _resourceful**_. **
+- A good word to describe me is _resourceful_.
 - Myers-Briggs says I'm an <a href="http://www.16personalities.com/istp-personality" target="_blank">ISTP</a>.
 - I change the oil on my cars.
 - I played soccer and football when I was younger.
