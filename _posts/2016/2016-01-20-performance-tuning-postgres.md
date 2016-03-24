@@ -142,7 +142,7 @@ Things I've learned that *may* help get better execution plans:
   - Avoid function calls in WHERE clause
   - Avoid large IN() statements
 - JOINs
-  - When joining tables, try to use a simple equality statement in the ON clause (i.e. `a.id = b.person_id`).  Doing so allows more efficient join techniques to be used (i.e. Hash Join rather than Nested Look Join)
+  - When joining tables, try to use a simple equality statement in the ON clause (i.e. `a.id = b.person_id`).  Doing so allows more efficient join techniques to be used (i.e. Hash Join rather than Nested Loop Join)
   - Convert subqueries to JOIN statements when possible as this usually allows the optimizer to understand the intent and possibly chose a better plan 
   - Use JOINs properly: Are you using GROUP BY or DISTINCT just because you are getting duplicate results?  This usually indicates improper JOIN usage and may result in a higher costs
   - If the execution plan is using a Hash Join it can be very slow if table size estimates are wrong.  Therefore, make sure your table statistics are accurate by reviewing your [vacuuming strategy](http://www.postgresql.org/docs/current/static/routine-vacuuming.html)
