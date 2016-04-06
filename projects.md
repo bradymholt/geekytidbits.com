@@ -24,8 +24,7 @@ A jQuery plugin to display your Google Photos, including Picasa and Google+ albu
 A C# library that converts cron expressions into localized human readable strings.  It is available as a NuGet package.
 
 [![Build Status](https://img.shields.io/travis/bradyholt/cron-expression-descriptor.svg?branch=master){:class="no-margin"}](https://travis-ci.org/bradyholt/cron-expression-descriptor)
-[![NuGet Version](https://img.shields.io/nuget/v/CronExpressionDescriptor.svg){:class="no-margin"}](https://www.nuget.org/packages/CronExpressionDescriptor/)
-[![NuGet Downloads count](https://img.shields.io/nuget/dt/CronExpressionDescriptor.svg){:class="no-margin"}](https://www.nuget.org/packages/CronExpressionDescriptor/)
+[![NuGet Version and Downloads](https://buildstats.info/nuget/CronExpressionDescriptor){:class="no-margin"}](https://www.nuget.org/packages/CronExpressionDescriptor/)
 
 *First Release: December 2011*
 

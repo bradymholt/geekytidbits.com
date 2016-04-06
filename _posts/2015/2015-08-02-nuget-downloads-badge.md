@@ -20,6 +20,10 @@ Here is the IHttpHandler I ended up with to generate the NuGet Downloads Count b
 
 It takes an ID query parameter as the NuGet package name and response with an SVG image badge.  Easy enough.
 
-**Funny thing**, after I went through the <strike>trouble</strike> fun of doing this, I realized the Shields already does this if you use the URL format: https://img.shields.io/nuget/dt/PACKAGE_ID.svg.  So, for Cron Expression Descriptor it is [https://img.shields.io/nuget/dt/CronExpressionDescriptor.svg](https://img.shields.io/nuget/dt/CronExpressionDescriptor.svg) which results in this badge: ![NuGet Downloads Badge](https://img.shields.io/nuget/dt/CronExpressionDescriptor.svg){: .no-margin}.  It was interesting looking at their [JavaScript approach](https://github.com/badges/shields/blob/dafb6ec286926e4aff8c90f1da8b24e7f9410f18/server.js#L2880) and comparing it to my own approach.
+~~**Funny thing**, after I went through the <strike>trouble</strike> fun of doing this, I realized the Shields already does this if you use the URL format: https://img.shields.io/nuget/dt/PACKAGE_ID.svg.  So, for Cron Expression Descriptor it is [https://img.shields.io/nuget/dt/CronExpressionDescriptor.svg](https://img.shields.io/nuget/dt/CronExpressionDescriptor.svg) which results in this badge: [no longer works].  It was interesting looking at their [JavaScript approach](https://github.com/badges/shields/blob/dafb6ec286926e4aff8c90f1da8b24e7f9410f18/server.js#L2880) and comparing it to my own approach.~~
+
+**Update**:  After building the module above, I learned Shields.io already had a NuGet downloads badge but it has since stopped working.  The good folks at [BuildStats.info](https://buildstats.info/) have one that works great so I am using those now.  For example: 
+![NuGet Downloads Badge](https://buildstats.info/nuget/CronExpressionDescriptor)
+
 
 Oh well, I reinvented the wheel but it was fun and a learned a few things along the way!
