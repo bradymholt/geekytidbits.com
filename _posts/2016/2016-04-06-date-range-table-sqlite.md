@@ -13,4 +13,4 @@ Here is what came up with.  Enjoy!
 
 <script src="https://gist.github.com/bradyholt/cb43793ab1cc4d6f9a7c0c3d1a386736.js"></script>
 
-It's too bad SQLite doesn't have somethinkg like [generate_series(start, stop)](http://www.postgresql.org/docs/9.1/static/functions-srf.html) that PostgreSQL has but the above gets the job done.  
+It's too bad SQLite doesn't have something like [generate_series(start, stop)](http://www.postgresql.org/docs/9.1/static/functions-srf.html) that PostgreSQL has but the above gets the job done.  
