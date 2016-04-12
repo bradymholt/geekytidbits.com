@@ -32,6 +32,6 @@ I got <a href="http://archlinuxarm.org/" target="_blank">Arch Linux ARM</a> runn
 
 *- thanks Matt!
 
- [1]: /wp-content/uploads/pogoplug.jpg
+ [1]: /media/pogoplug.jpg
  [2]: /transparent-content-filtering-proxy/
  [3]: http://bradyholt.github.io/picasawebsync/

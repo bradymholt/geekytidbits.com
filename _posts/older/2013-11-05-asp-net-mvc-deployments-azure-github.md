@@ -55,12 +55,12 @@ When Azure pulls your source from GitHub and compiles it, it will have to resolv
   1. **Check your packages folder (from the solution directory) into GitHub &#8211;** This is straight forward and the least issue prone way to handle references.  Just ensure you commit the packages folder which contain all your assembly .dll references.  If all your external dependencies were added from NuGet you should be good to go.  If you have any assembly references that are not in NuGet you can place them in the packages folder directly and change the reference to point to this location.  This way, when Azure compiles your site, all the assembly .dll files will be available in the packages folder and you&#8217;ll be set.
   2. **Enable NuGet Package Restore** &#8211; To avoid checking in the packages folder (which could be quite large and go against everything that has been pounded in your head about source control best practices), you can <a href="http://blog.maartenballiauw.be/post/2012/06/07/Use-NuGet-Package-Restore-to-avoid-pushing-assemblies-to-Windows-Azure-Websites.aspx" target="_blank">Enable NuGetPackage Restore</a> which will tell Azure to download package references from NuGet.  You need to make sure and commit the **packages.config **file from your project directory so Azure will know which packages to install.
 
- [1]: /wp-content/uploads/aspmvc4.png
+ [1]: /media/aspmvc4.png
  [2]: http://git-scm.com/downloads/guis
- [3]: /wp-content/uploads/azuregithub1.png
- [4]: /wp-content/uploads/azurenew.png
- [5]: /wp-content/uploads/azurenewname.png
- [6]: /wp-content/uploads/azuredashboard.png
- [7]: /wp-content/uploads/azuredeployment.png
- [8]: /wp-content/uploads/azuregithub.png
- [9]: /wp-content/uploads/azuredeploymentsuccess.png
+ [3]: /media/azuregithub1.png
+ [4]: /media/azurenew.png
+ [5]: /media/azurenewname.png
+ [6]: /media/azuredashboard.png
+ [7]: /media/azuredeployment.png
+ [8]: /media/azuregithub.png
+ [9]: /media/azuredeploymentsuccess.png

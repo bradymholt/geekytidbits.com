@@ -80,4 +80,4 @@ To install all the dependencies used in this script simply run the following:
 
 There you have it.  That was fun.  Now go get a Pi of your own and do something fun with it.
 
- [1]: /wp-content/uploads/IMG_0037.jpg
+ [1]: /media/IMG_0037.jpg

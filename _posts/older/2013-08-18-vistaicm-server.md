@@ -16,5 +16,5 @@ It&#8217;s been over 2 years since that post and in the meantime, I have complet
 
 **To learn more and download, visit the <a href="https://github.com/bradyholt/vistaicm-server" target="_blank">project page on GitHub</a>. **
 
- [1]: /wp-content/uploads/screenshot.png
+ [1]: /media/screenshot.png
  [2]: http://controlworks.com/modules/Product.aspx?pid=80

@@ -37,6 +37,6 @@ The installation at first glance seems a bit complex but it is fairly straightfo
 <img src="/media/IMG_20130526_165217.jpg" class="attachment-thumbnail" alt="IMG_20130526_165217" />
 
 
- [1]: /wp-content/uploads/BnvRqIQBGkKGrHqIH-CYEtrM23LFDBLkvQ20FSg_12.jpg
- [2]: /wp-content/uploads/31EEgny54aL.jpg
- [3]: /wp-content/uploads/71JHtDH8xqL._SL1500_.jpg
+ [1]: /media/BnvRqIQBGkKGrHqIH-CYEtrM23LFDBLkvQ20FSg_12.jpg
+ [2]: /media/31EEgny54aL.jpg
+ [3]: /media/71JHtDH8xqL._SL1500_.jpg

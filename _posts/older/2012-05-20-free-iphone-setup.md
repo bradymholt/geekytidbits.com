@@ -130,5 +130,5 @@ Yes, it is not &#8220;as good&#8221; as a full blown iPhone setup, however and f
 
 That&#8217;s it.  I&#8217;m loving my Free iPhone setup and the $ I am saving!
 
- [1]: /wp-content/uploads/Free-iPhone-setup.png
- [2]: /wp-content/uploads/ipod-touch-white2.png
+ [1]: /media/Free-iPhone-setup.png
+ [2]: /media/ipod-touch-white2.png

@@ -61,10 +61,10 @@ Single image
 Time-lapse video
 
 <div style="width: 640px; " class="wp-video">
-  <video class="wp-video-shortcode" id="video-1013-2" width="640" height="360" poster="/media/surveillance_demo_poster.jpg" preload="metadata" controls="controls"><source type="video/mp4" src="/media/surveillance_demo.mp4?_=2" /><a href="/media/surveillance_demo.mp4">/wp-content/uploads/surveillance_demo.mp4</a></video>
+  <video class="wp-video-shortcode" id="video-1013-2" width="640" height="360" poster="/media/surveillance_demo_poster.jpg" preload="metadata" controls="controls"><source type="video/mp4" src="/media/surveillance_demo.mp4?_=2" /><a href="/media/surveillance_demo.mp4">/media/surveillance_demo.mp4</a></video>
 </div>
 
- [1]: /wp-content/uploads/400-20120405071852-00.jpg
- [2]: /wp-content/uploads/41wrIM78PzL._SL500_AA300_.jpg
- [3]: /wp-content/uploads/photo3.png
- [4]: /wp-content/uploads/586-20120406080742-00.jpg
+ [1]: /media/400-20120405071852-00.jpg
+ [2]: /media/41wrIM78PzL._SL500_AA300_.jpg
+ [3]: /media/photo3.png
+ [4]: /media/586-20120406080742-00.jpg

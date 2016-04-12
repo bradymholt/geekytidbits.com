@@ -59,5 +59,5 @@ dsq_thread_id: 656 http://www.geekytidbits.com/?p=656
   * <a href="http://www.troyhunt.com/2010/11/you-deploying-it-wrong-teamcity_25.html" target="_blank">You&#8217;re deploying it wrong! TeamCity, Subversion & Web Deploy part 4: Continuous builds with TeamCity</a>
 
  [1]: http://www.iis.net/download/webdeploy
- [2]: /wp-content/uploads/teamcity_build_parameters1.png
- [3]: /wp-content/uploads/teamcity_build_step.png
+ [2]: /media/teamcity_build_parameters1.png
+ [3]: /media/teamcity_build_step.png

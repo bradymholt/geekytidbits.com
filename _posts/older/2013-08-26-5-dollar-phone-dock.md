@@ -16,5 +16,5 @@ So, I decided to go the easy, simple route.  Enter: the $5 Phone Dock.  Yes, i
 
 &nbsp;
 
- [1]: /wp-content/uploads/IMG_20130818_140702.jpg
- [2]: /wp-content/uploads/IMG_20130818_140847.jpg
+ [1]: /media/IMG_20130818_140702.jpg
+ [2]: /media/IMG_20130818_140847.jpg

@@ -27,4 +27,4 @@ This project was a lot of fun and a *ton* of work.  I learned many useful thin
 
 [<img src="/media/bento-website.png" alt="Bento Budget" />][1]
 
- [1]: /wp-content/uploads/bento-website.png
+ [1]: /media/bento-website.png

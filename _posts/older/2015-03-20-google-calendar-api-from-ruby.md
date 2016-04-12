@@ -25,4 +25,4 @@ Once you create the app and get your client secrets file in place, you are ready
 {% gist bradyholt/944f129fea3d92b8c26b %}
 
  [2]: https://github.com/google/google-api-ruby-client
- [3]: /wp-content/uploads/google_developer_console.png
+ [3]: /media/google_developer_console.png

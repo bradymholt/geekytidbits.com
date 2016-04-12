@@ -27,4 +27,4 @@ If you previously had used the &#8220;Day and name&#8221; setting where the actu
 
 If your .htaccess file contains a  # BEGIN WordPress &#8230; section, you&#8217;ll most definitely want to place this bit below the line containing # END WordPress.
 
- [1]: /wp-content/uploads/permalinks_settings.png
+ [1]: /media/permalinks_settings.png
