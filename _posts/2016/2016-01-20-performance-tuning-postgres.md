@@ -36,7 +36,7 @@ The `log_min_duration` option controls which query execution plans are logged, b
 
 ## Index Tuning
 
-Another important tuning strategy is to ensure indexes are being properly used.  As a prerequsite, we need to use turn on the Statistics Collector.
+Another important tuning strategy is to ensure indexes are being properly used.  As a prerequsite, we need to turn on the Statistics Collector.
  
 The [Postgres Statistics Collector](http://www.postgresql.org/docs/current/static/monitoring-stats.html) is a first class subsystem that collects all sorts of performance statistics that are useful.  
 
