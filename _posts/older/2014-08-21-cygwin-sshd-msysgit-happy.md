@@ -9,12 +9,12 @@ At work, I have use a MacBook Air and run Windows 7 in a VirtualBox VM.  I use 
 
   * Install **[cygwin][1]** with the latest Git package. (My install path is C:\cygwin64)
   * Install the latest version of **[msysGit][2]**. (My install path is C:\Program Files (x86)\Git)
-  * **Rename** C:\cygwin64\bin\**git.exe** to C:\cygwin64\bin\**git_cygwin64.exe** (to back it up)
-  * **Copy** C:\Program Files (x86)\Git\bin\**git.exe** to C:\**cygwin64\bin\**
-  * **Copy** the folder C:\Program Files (x86)\Git\**libexec** to C:\cygwin64\
+  * **Rename** C:\cygwin64\bin\git.exe to C:\cygwin64\bin\**git_cygwin64.exe** (to back it up)
+  * **Copy** C:\Program Files (x86)\Git\bin\git.exe to C:\cygwin64\bin\
+  * **Copy** the folder C:\Program Files (x86)\Git\libexec to C:\cygwin64\
   * From within cygwin environment, run git config &#8211;global color.ui **always**
 
-The only issue I&#8217;m still having is when doing a **git log **command, the paging is not working.  If I run **git log | less** the paging works fine so I am just using this syntax for now.
+The only issue I&#8217;m still having is when doing a **git log** command, the paging is not working.  If I run **git log | less** the paging works fine so I am just using this syntax for now.
 
  [1]: https://www.cygwin.com/
  [2]: http://msysgit.github.io/
