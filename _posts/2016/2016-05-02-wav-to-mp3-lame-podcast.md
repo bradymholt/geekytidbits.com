@@ -2,7 +2,7 @@
 title: Converting WAV to MP3 for a Podcast
 author: Brady
 layout: post
-permalink: /wav-to-mp3-lame-podcadt/
+permalink: /wav-to-mp3-lame-podcast/
 ---
 
 I maintain a podcast and frequently have to convert WAV files to MP3 before publishing a new episode.  I use the [LAME MP3 Encoder](http://lame.sourceforge.net/) for conversion and and have tried quite a few options to get the size/quality balance just right and have found a set of options that I am quite happy with.  
