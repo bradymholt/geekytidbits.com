@@ -21,7 +21,7 @@ He gave me my first tackle task, which was to make some changes to our Jenkins b
 People knew I was starting, they were welcoming and genuinuiely wanted to set me up for success.  **This was a nice start.**
 
 ## Getting to Work
-Over the next 6 months, I got down to business and worked on shipping stuff.  All along the way, the rest of the team was willing to help when I bumped into issues or had a question.  We had daily stand-ups, bi-weekly demos and retrospectives, and there was a weekly 1:1 with my boss, Taylor.  Communication was good and the team was really clicking.
+Over the next year, I got down to business and worked on shipping stuff.  All along the way, the rest of the team was willing to help when I bumped into issues or had a question.  We had daily stand-ups, bi-weekly demos and retrospectives, and there was a weekly 1:1 with my boss, Taylor.  Communication was good and the team was really clicking.
 
 During this time, I mainly worked on mid and back tier pieces (you know, stuff the user doesn't see) and focused on making things perform better and support feature development.  But, I also got to do some stuff on the UI which was fun.
 
