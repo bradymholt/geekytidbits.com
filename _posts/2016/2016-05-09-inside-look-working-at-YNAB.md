@@ -43,6 +43,16 @@ Something I was impressed by was the technical stack YNAB is using.  We use a st
 
 Of particular note, our GitHub/Jenkins/Heroku build process pushes PR branches out to an isolated Heroku app for review.  It's awesome and I love it.
 
+### Tools
+In addition to our tech stack we use all sorts of tools, mainly for communication and process:
+
+- Slack (of couse!)
+- GitHub Issues/PRs
+- Trello
+- Skype
+- Google Handouts (for small meetings)
+- Zoom Cloud (for big meetings) 
+
 ## The Retreat
 One of the things that intrigued me when I first read the job spec from YNAB was that the team did an annual "retreat".  This is where all the full timers get together and hangout for a week, get to know each other and have fun.  Really?  I've never experienced something quite like that before with coworkers.  That sounds fun.
 
