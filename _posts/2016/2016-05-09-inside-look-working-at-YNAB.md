@@ -1,5 +1,5 @@
 ---
-title: An Insider Look at Working for YNAB
+title: An Inside Look at Working for YNAB
 author: Brady
 layout: post
 permalink: /inside-look-working-at-YNAB/
