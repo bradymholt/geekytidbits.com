@@ -28,7 +28,7 @@ During this time, I mainly worked on mid and back tier pieces (you know, stuff t
 During this time, I really appreciated working with such a talented group of people.  Everyone on the product team is _super_ sharp and good at what they do.
 
 ### Tech Stack
-Something I was impressed by was the technical stack YNAB is using.  We use a stack with enough diversity to keep things interesting while not sacrficing modern and fun.
+Something I was impressed by was the technical stack YNAB is using.  We use a stack with enough diversity to keep things interesting, not sacrficing modern or fun.
 
 - Ember.js
 - CoffeeScript/TypeScript 
