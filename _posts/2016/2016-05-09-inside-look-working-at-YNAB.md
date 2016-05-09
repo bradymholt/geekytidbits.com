@@ -50,7 +50,7 @@ In addition to our tech stack we use all sorts of tools, mainly for communicatio
 - GitHub Issues/PRs
 - Trello
 - Skype
-- Google Handouts (for small meetings)
+- Google Hangouts (for small meetings)
 - Zoom Cloud (for big meetings) 
 
 ## The Retreat
