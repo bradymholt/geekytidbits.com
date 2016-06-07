@@ -1,5 +1,5 @@
 
-This blog is powered by [Jekyll](http://jekyllrb.com/), the blog-aware, static site generator built in Ruby.
+This blog is powered by [Jekyll](http://jekyllrb.com/), the blog-aware, static site generator built in Ruby.  It uses the [kramdown markdown engine](http://kramdown.gettalong.org/quickref.html).
 
 # Provisioning
 
