@@ -1,0 +1,15 @@
+{
+    "language": "en",
+    "ignoreWordsList": [],
+    "mistakeTypeToStatus": {
+        "Spelling": "Error",
+        "Passive Voice": "Warning",
+        "Complex Expression": "Warning",
+        "Hyphen Required": "Error"
+    },
+    "languageIDs": [
+        "markdown",
+        "text"
+    ],
+    "ignoreRegExp": []
+}
