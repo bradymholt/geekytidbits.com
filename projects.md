@@ -39,6 +39,7 @@ A Node.js app that works with the VISTA-ICM module to control VISTA (10/15/20/21
 
 ## Other Projects
 
+- [c**r**onstrue](https://github.com/bradyholt/cronstrue) - A JavaScript library that converts cron expressions into human readable descriptions (ported to JavsScript from [cron-expression-descriptor](https://github.com/bradyholt/cron-expression-descriptor)).
 - [dbup-consolescripts](https://github.com/bradyholt/dbup-consolescripts) - NuGet Package Manager Console scripts for [DbUp](https://dbup.github.io/)
 - [dbup-sqlserver-scripting](https://github.com/bradyholt/dbup-sqlserver-scripting) - SQL Server object definition scripting for [DbUp](https://dbup.github.io/) (NuGet, SQL Server)
 - [veritas](https://github.com/bradyholt/veritas) - A web application for social groups to share contact info, calendar events, track attendance and more. (Rails, jQuery, MySQL)
