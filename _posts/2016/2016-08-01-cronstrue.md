@@ -25,7 +25,7 @@ console.log(cronstrue_i18n.toString("*/5 15 * * MON-FRI", { locale: "zh_CN" }));
 
 ~~~
 
-cRonstrue Links:
+## Links
 
 - [cRonstrue on GitHub](fix/ts-module-to-namespace)
 - [cRonstrue on npm](https://www.npmjs.com/package/cronstrue)
