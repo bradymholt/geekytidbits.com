@@ -13,7 +13,7 @@ So, I started work on a JavaScript port which I eventually named [cRonstrue](htt
 
 ## Example Usage
 
-```
+~~~
 var cronstrue = require('cronstrue');
 console.log(cronstrue.toString("23 12 * * SUN#2));
 > "At 12:23 PM, on the second Sunday of the month"
@@ -23,7 +23,7 @@ var cronstrue_i18n = require('cronstrue/i18n');
 console.log(cronstrue_i18n.toString("*/5 15 * * MON-FRI", { locale: "zh_CN" }));
 > "每 5 分钟, 在 03:00 PM, 星期一 到 星期五"
 
-```
+~~~
 
 cRonstrue Links:
 
