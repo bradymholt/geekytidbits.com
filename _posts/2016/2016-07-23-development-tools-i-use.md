@@ -44,7 +44,7 @@ To get code built, tested, and promoted to different environments, the following
 
 ## Database
 - [Navicat](https://www.navicat.com) - I use Navicat for PostgreSQL and SQLite management.
-- [DB Browser for SQLite](https://github.com/sqlitebrowser/sqlitebrowser) - Great tool for super quick access to al SQLite database.  It has very minimal features but is handy for trival things.
+- [DB Browser for SQLite](https://github.com/sqlitebrowser/sqlitebrowser) - Great tool for super quick access to a SQLite database.  It has very minimal features but is handy for trival things.
 
 ## Misc Tools
 - [LICEcap](http://www.cockos.com/licecap/) - Record screen video as an animated GIF.  This is super handy when I want to record my screen and post an animated GIF in a GitHub PR / Issue for others to easily see.  I prefer the simplicity of this tool rather than using something heavier like Jing or CloudApp.
@@ -58,6 +58,6 @@ To get code built, tested, and promoted to different environments, the following
 - [Twitter](https://twitter.com) - Twitter is a great resource for staying up to date with tidbits in software development.  I avoided Twitter for years because I considered it distracting and purely social but it turns out I learn a ton of stuff just by following smart people on there. You can find me [@bradyholt](https://twitter.com/bradymholt).
 - [Hacker News](https://news.ycombinator.com/).  I read this daily, along with everyone else.  You can learn a ton a stuff on here.
 - [Reddit](https://www.reddit.com/r/programming/) - The /r/programming subreddit is a great resource to keep up with interesting articles and news.
-- [Feedly](http://feedly.com/) - When I come across a blog or a site that has great content, I will add it to my Feedly list and read through new articles from time to time.  Also, I have a "Podcast" category in here which is a great way to following the podcasts I like to listen to.
+- [Feedly](http://feedly.com/) - When I come across a blog or a site that has great content, I will add it to my Feedly list and read through new articles from time to time.  Also, I have a "Podcast" category in here which is a great way to follow the podcasts I like to listen to.
 
 Wow, a lot has changed from 5 years ago!
