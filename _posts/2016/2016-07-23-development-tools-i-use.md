@@ -7,17 +7,6 @@ permalink: /development-tools-i-use/
 
 It's been 5 years since I wrote the post [My Development Toolbelt](http://www.geekytidbits.com/my-development-toolbelt/), inspired to do so by the [Hanselman](http://www.hanselman.com/tools).  I thought it was time to write another post on the development tools I use today, in 2016.  So, here we go.
 
-## System
-These are the tools and software I use for my base development machine setup.
-
-- [OS X / El Capitan](http://www.apple.com/osx/) - I switched over to OSX a few years ago as my primary desktop OS for development.
-- [LastPass](https://lastpass.com/) - I was a longtime hold-out from using a password manager but since I dived in, I've never looked back.  In LastPass, I store website passwords, system credentials, software license keys, RSA Key Pairs, and other misc _secret_ stuff I need to reference from time to time.  It's nice having everything centralized and secure.  I tried 1Password for awhile but the Android (my mobile platform of choice) client for LastPass is _much_ better in LastPass.
-- [VirtualBox](https://www.virtualbox.org/wiki/Downloads) - I use VirtualBox to run Windows 10, [vagrant](https://www.vagrantup.com/) boxes and some Linix distros I play around with.
-- [Retina Display Manager](https://github.com/avibrazil/RDM) - When I am out with my laptop somewhere and don't have my external monitors, I just crank my resolution up to something super high so I have more screen real estate.
-- [BetterSnapTool](https://itunes.apple.com/us/app/bettersnaptool/id417375580?mt=12) - I use this to resize windows in OS X, particularly to snap windows to the left/right on my monitors.  It allows you to accomplish what you can do with Windows+<Right> or Windows+<Left> in Windows 10.
-- [Zsh](http://www.zsh.org/) - I prefer Zsh over Bash.  It has a lot of convienent, productive features. 
-- [Oh My Zsh](https://github.com/robbyrussell/oh-my-zsh) - Oh My Zsh manages Zsh config and makes adding in themes and plugins trival.
-
 ## Coding
 When working with actual source code, and the construction of it, these are my go to tools.
 
@@ -45,6 +34,17 @@ To get code built, tested, and promoted to different environments, the following
 ## Database
 - [Navicat](https://www.navicat.com) - I use Navicat for PostgreSQL and SQLite management.
 - [DB Browser for SQLite](https://github.com/sqlitebrowser/sqlitebrowser) - Great tool for super quick access to a SQLite database.  It has very minimal features but is handy for trival things.
+
+## System
+These are the tools and software I use for my base development machine setup.
+
+- [OS X / El Capitan](http://www.apple.com/osx/) - I switched over to OSX a few years ago as my primary desktop OS for development.
+- [LastPass](https://lastpass.com/) - I was a longtime hold-out from using a password manager but since I dived in, I've never looked back.  In LastPass, I store website passwords, system credentials, software license keys, RSA Key Pairs, and other misc _secret_ stuff I need to reference from time to time.  It's nice having everything centralized and secure.  I tried 1Password for awhile but the Android (my mobile platform of choice) client for LastPass is _much_ better in LastPass.
+- [VirtualBox](https://www.virtualbox.org/wiki/Downloads) - I use VirtualBox to run Windows 10, [vagrant](https://www.vagrantup.com/) boxes and some Linix distros I play around with.
+- [Retina Display Manager](https://github.com/avibrazil/RDM) - When I am out with my laptop somewhere and don't have my external monitors, I just crank my resolution up to something super high so I have more screen real estate.
+- [BetterSnapTool](https://itunes.apple.com/us/app/bettersnaptool/id417375580?mt=12) - I use this to resize windows in OS X, particularly to snap windows to the left/right on my monitors.  It allows you to accomplish what you can do with Windows+<Right> or Windows+<Left> in Windows 10.
+- [Zsh](http://www.zsh.org/) - I prefer Zsh over Bash.  It has a lot of convienent, productive features. 
+- [Oh My Zsh](https://github.com/robbyrussell/oh-my-zsh) - Oh My Zsh manages Zsh config and makes adding in themes and plugins trival.
 
 ## Misc Tools
 - [LICEcap](http://www.cockos.com/licecap/) - Record screen video as an animated GIF.  This is super handy when I want to record my screen and post an animated GIF in a GitHub PR / Issue for others to easily see.  I prefer the simplicity of this tool rather than using something heavier like Jing or CloudApp.
