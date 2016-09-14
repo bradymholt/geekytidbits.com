@@ -103,7 +103,7 @@ The first thing to understand is that each indented block with a preceeding "->"
 
 `cost=146.63..148.65`
 
-The first number is start up cost (cost to retrieve first record) and the second number is the cost encurred to process entire node (total cost from start to finish).
+The first number is start up cost (cost to retrieve first record) and the second number is the cost incurred to process entire node (total cost from start to finish).
 
 The cost is effectively how much work PostgreSQL _estimates_ it will have to do to run the statement.  This number is *not* how much time is required, although there is usually direct correlation to time required for execution.  Cost is a combination of 5 work components used to estimate the work required: sequential fetch, non-sequential (random) fetch, processing of row, processing operator (function), and processing index entry.  The cost represents I/O and CPU activity and the important thing to know here is that a relatively higher cost means PostgresSQL thinks it will have to do more work.  The optimizer makes its decision on which execution plan to use based on the the cost.  Lower costs are preferred by the optimizer.
 
