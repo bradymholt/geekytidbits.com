@@ -15,9 +15,10 @@ On the one hand, it is a bit overwhelming to keep track of all of this stuff and
 Anyway, I bounced around some ideas, played with a few things and recalled my mental "I want to play with this" backlog and settled on building a SPA: [ASP.NET Core](https://docs.asp.net/en/latest/intro.html) on the server side for JSON/REST API and React as a web client.  As I started setting up things, the application in particular quickly took a backseat to the technology stack setup itself.  You know, getting the foundation laid with a skeleton/template project.  That's ok, it was fun and I learned a bunch of new things along the way.  I ended up building a template project to build stuff with going forward.  I want to talk a bit about the process of getting this template project laid out.
 
 A few observations I had after going through the setup process:
-- Web development has changed a lot in the last 5 years
-- Web development has gotten a lot more complex in the last 5 years
-- There is a ton of stuff to learn (and re-learn) to get a web application up and running
+
+* Web development has changed a lot in the last 5 years
+* Web development has gotten a lot more complex in the last 5 years
+* There is a ton of stuff to learn (and re-learn) to get a web application up and running
 
 On that last point, just look at this survey of all the tools, technologies, concepts, etc. that went into my template project.  Admittedly, I didn't have to employ all of these but I do think this is a pretty realistic modern day web stack setup. 
 
