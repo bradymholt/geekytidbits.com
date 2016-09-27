@@ -12,7 +12,7 @@ A few weeks ago, I really wanted to build something new.  As I tweeted, I really
 
 On the one hand, it is a bit overwhelming to keep track of all of this stuff and attempt to stay aware of it all.  On the other hand, it's tons of fun to play with different things.
 
-Anyway, I bounced around some ideas, played with a few things and recalled my mental "I want to play with this" backlog and settled on building a SPA: [ASP.NET Core](https://docs.asp.net/en/latest/intro.html) on the server side for JSON/REST API and React as a web client.  As I started setting up things, the application in particular quickly took a backseat to the technology stack setup itself.  You know, getting the foundation laid with a skeleton/template project.  That's ok, it was fun and I learned a bunch of new things along the way.  I ended up building a template project to build stuff with going forward.  I want to talk a bit about the process of getting this template project laid out.
+Anyway, I bounced around some ideas, played with a few things and recalled my mental "I want to play with this" backlog and settled on building a SPA: [ASP.NET Core](https://docs.asp.net/en/latest/intro.html) on the server side for JSON/REST API and React as a web client.  As I started setting up things, the application in particular quickly took a backseat to the technology stack setup itself.  You know, getting the foundation laid with a skeleton/template project.  That's ok, it was fun and I learned a bunch of new things along the way.  I ended up building a template project to build stuff with going forward.  Here's the repository: [https://github.com/bradyholt/aspnet-core-react-template](https://github.com/bradyholt/aspnet-core-react-template). 
 
 A few observations I had after going through the setup process:
 
@@ -72,3 +72,7 @@ Wow, that's a lot of stuff!  The end result though, is a pretty solid template t
 If a picture is worth a thousand words, a video is worth a million, right?  Rather than walking through everything with a bunch of words and screenshots, I think a video might be best suited for showing the pieces to this template.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/jyuLAizmg3U" frameborder="0" allowfullscreen></iframe>
+
+## Source
+
+[https://github.com/bradyholt/aspnet-core-react-template](https://github.com/bradyholt/aspnet-core-react-template)
