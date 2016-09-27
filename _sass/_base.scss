@@ -68,6 +68,14 @@ ul, ol {
     margin-left: $spacing-unit;
 }
 
+ul.condensed {
+  columns: 2;
+  -webkit-columns: 2;
+  -moz-columns: 2;
+  list-style-type: disc;
+  list-style-position: inside;
+}
+
 li {
     > ul,
     > ol {
