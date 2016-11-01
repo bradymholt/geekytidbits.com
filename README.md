@@ -1,6 +1,11 @@
 
 This blog is powered by [Jekyll](http://jekyllrb.com/), the blog-aware, static site generator built in Ruby.  It uses the [kramdown markdown engine](http://kramdown.gettalong.org/quickref.html).
 
+# Development
+
+- Run `jekyll server`
+- Navigate to [http://127.0.0.1:4000/](http://127.0.0.1:4000/)
+
 # Provisioning
 
 - Run ansible-playbook -i production provision.yml from `/ansible` directory
