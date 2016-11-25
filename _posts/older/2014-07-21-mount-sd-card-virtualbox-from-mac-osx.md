@@ -11,17 +11,17 @@ First, insert the SD card into the reader, open a terminal window and type **mo
 
 <img class="alignnone size-full wp-image-1967" src="/media/Screen-Shot-2014-07-20-at-3.10.34-PM-copy.png" alt="Screen Shot 2014-07-20 at 3.10.34 PM copy" width="745" height="171" />
 
-Take note of the SD card device that shows up.  In my case, it was **/dev/disk1s1 **(NO NAME matches the title that showed up in Finder when I inserted the card so this is a hint as to which one is the one I am looking for) listed at the bottom of the mount command.  You don&#8217;t want to get this wrong so make sure it&#8217;s right!  For a sanity check you could always run mount before inserting the card and then after, to see the difference.
+Take note of the SD card device that shows up.  In my case, it was **/dev/disk1s1** (NO NAME matches the title that showed up in Finder when I inserted the card so this is a hint as to which one is the one I am looking for) listed at the bottom of the mount command.  You don&#8217;t want to get this wrong so make sure it&#8217;s right!  For a sanity check you could always run mount before inserting the card and then after, to see the difference.
 
-Next, open up **Disk Utility**, click on the the mounted partition from the card (NO NAME in my case), and then click the **Unmount** button at the top.  Do not click the eject button, just the **Unmount **button.
+Next, open up **Disk Utility**, click on the the mounted partition from the card (NO NAME in my case), and then click the **Unmount** button at the top.  Do not click the eject button, just the **Unmount** button.
 
 <img class="alignnone size-full wp-image-1966" src="/media/Screen-Shot-2014-07-20-at-3.08.37-PM1.png" alt="Screen Shot 2014-07-20 at 3.08.37 PM" width="742" height="640" />
 
-Now, you need to create a VirtualBox vmdk file that points to the SD card so that you can mount it as a device in a virtual machine.  You need to run **sudo VBoxManage internalcommands createrawvmdk -filename ./sd-card.vmdk -rawdisk /dev/disk1**.  Note, when I ran the mount command above, my device name was /dev/disk1**s1 **but in this command I did not include the trailing s1 portion.  The reason for this is that the s1 portion of the device name denotes a partition but I want to create a pointer to the entire device (mine has 2 partitions).  So, just take the first portion of your device name and use it for the -rawdisk parameter.
+Now, you need to create a VirtualBox vmdk file that points to the SD card so that you can mount it as a device in a virtual machine.  You need to run **sudo VBoxManage internalcommands createrawvmdk -filename ./sd-card.vmdk -rawdisk /dev/disk1**.  Note, when I ran the mount command above, my device name was /dev/disk1**s1** but in this command I did not include the trailing s1 portion.  The reason for this is that the s1 portion of the device name denotes a partition but I want to create a pointer to the entire device (mine has 2 partitions).  So, just take the first portion of your device name and use it for the -rawdisk parameter.
 
 <img class="alignnone size-full wp-image-1969" src="/media/Screen-Shot-2014-07-20-at-3.25.23-PM.png" alt="Screen Shot 2014-07-20 at 3.25.23 PM" width="744" height="157" />
 
-Now that you have a vmdk file pointing to your raw SD card device, you need to set permisisons on the vmdk file and /dev/disk1 device.  Run **sudo chmod 777 /dev/disk1 **and **sudo chmod 777 ./sd-card.vmdk**.  This will ensure you are able to access and mount the vmdk file in VirtualBox.
+Now that you have a vmdk file pointing to your raw SD card device, you need to set permisisons on the vmdk file and /dev/disk1 device.  Run **sudo chmod 777 /dev/disk1** and **sudo chmod 777 ./sd-card.vmdk**.  This will ensure you are able to access and mount the vmdk file in VirtualBox.
 
 <img class="alignnone size-full wp-image-1970" src="/media/Screen-Shot-2014-07-20-at-3.26.04-PM.png" alt="Screen Shot 2014-07-20 at 3.26.04 PM" width="744" height="241" />
 
