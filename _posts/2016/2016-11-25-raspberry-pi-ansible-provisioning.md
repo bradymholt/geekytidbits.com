@@ -27,6 +27,6 @@ Thanks to `ansible-vault`, all my provisioning _secrets_ (you know, credentials,
  
 My Pogoplug plug previously had samba and minidlna installed but I decided to attach an external USB hard drive directly to my [ASUS RT-N16](https://www.amazon.com/dp/B00387G6R8) router running [TomatoUSB](http://tomato.groov.pl/) (thanks Jeff Atwood for the [solid router recommendation](https://blog.codinghorror.com/because-everyone-still-needs-a-router/)) and use it for Samba and DLNA because it's trival to set up and the Raspberry Pi doesn't have enough power through its USB to support a USB hard drive without a powered hub.
 
-Here is why my Raspberry Pi looks like, sitting on a shelf in my closet, drawing only about 1W of power.
+Here is what my Raspberry Pi looks like, sitting on a shelf in my closet, drawing only about 1W of power.
 
 ![Raspberry Pi](/media/raspberry-pi-goblin.png){}
