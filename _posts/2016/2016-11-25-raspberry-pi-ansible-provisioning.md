@@ -20,13 +20,15 @@ Currently, the provisioning script does the following:
 - Removes the default `alarm` user
 - Creates a user account with authorized_keys configured to allow key auth for SSH
 - Sets timezone to America/Chicago
-- Installs Node.js
+- Installs Node.js, samba, minidlna, and [insync](https://www.insynchq.com/)
+- Installs some user utilties such as vim, htop, and unzip
 - Installs and configures [vistaicm-server](https://github.com/bradyholt/vistaicm-server) so I can control my alarm system
+- Configures external USB thumb-drive as destination for Google Drive sync via insync
+- Configures samba to allow anonymous share access to media folder
+- Configures minidlna to serve videos from the media folder
 
 Thanks to `ansible-vault`, all my provisioning _secrets_ (you know, credentials, keys, and such) are [stored in an encrpyted file](https://github.com/bradyholt/goblin-provisioning/blob/master/secrets.yml) so that I don't have to keep them in a separate location, and remember where they are.  To rebuild this server, I just need to clone the repo, provide the vault password and run the Ansible playbook and I'm good to go.
  
-My Pogoplug plug previously had samba and minidlna installed but I decided to attach an external USB hard drive directly to my [ASUS RT-N16](https://www.amazon.com/dp/B00387G6R8) router running [TomatoUSB](http://tomato.groov.pl/) (thanks Jeff Atwood for the [solid router recommendation](https://blog.codinghorror.com/because-everyone-still-needs-a-router/)) and use it for Samba and DLNA because it's trival to set up and the Raspberry Pi doesn't have enough power through its USB to support a USB hard drive without a powered hub.
-
 Here is what my Raspberry Pi looks like, sitting on a shelf in my closet, drawing only about 1W of power.
 
 ![Raspberry Pi](/media/raspberry-pi-goblin.png){}
