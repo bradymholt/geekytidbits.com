@@ -13,7 +13,7 @@ When I initially setup the the Pogo, I did it manually and over time.  You know,
 
 This time, however, I was going to use <a href="https://www.ansible.com/">Ansible</a> to automate the provisioning!  I've been using Ansible more and more and find it suitable for project large _and_ small.  It's really nice to have the entire provisioning process scripted and in source control knowing that if the Pi crashed or I needed to rebuild it for any reason, I could be back up and running in a matter of minutes.
 
-The end result is located in this GitHub repository: [https://github.com/bradyholt/goblin-provisioning](https://github.com/bradyholt/goblin-provisioning).
+The end result is located in this GitHub repository: [https://github.com/bradyholt/tiger-provisioning](https://github.com/bradyholt/tiger-provisioning).
 
 Currently, the provisioning script does the following:
 
@@ -27,7 +27,7 @@ Currently, the provisioning script does the following:
 - Configures samba to allow anonymous share access to media folder
 - Configures minidlna to serve videos from the media folder
 
-Thanks to `ansible-vault`, all my provisioning _secrets_ (you know, credentials, keys, and such) are [stored in an encrpyted file](https://github.com/bradyholt/goblin-provisioning/blob/master/secrets.yml) so that I don't have to keep them in a separate location, and remember where they are.  To rebuild this server, I just need to clone the repo, provide the vault password and run the Ansible playbook and I'm good to go.
+Thanks to `ansible-vault`, all my provisioning _secrets_ (you know, credentials, keys, and such) are [stored in an encrpyted file](https://github.com/bradyholt/tiger-provisioning/blob/master/secrets.yml) so that I don't have to keep them in a separate location, and remember where they are.  To rebuild this server, I just need to clone the repo, provide the vault password and run the Ansible playbook and I'm good to go.
  
 Here is what my Raspberry Pi looks like, sitting on a shelf in my closet, drawing only about 1W of power.
 
