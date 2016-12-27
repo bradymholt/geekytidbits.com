@@ -31,4 +31,4 @@ Thanks to `ansible-vault`, all my provisioning _secrets_ (you know, credentials,
  
 Here is what my Raspberry Pi looks like, sitting on a shelf in my closet, drawing only about 1W of power.
 
-![Raspberry Pi](/media/raspberry-pi-goblin.png){}
+![Raspberry Pi](/media/raspberry-pi-goblin.png)
