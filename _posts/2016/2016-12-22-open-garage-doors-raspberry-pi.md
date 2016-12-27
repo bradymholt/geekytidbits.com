@@ -24,7 +24,7 @@ Let's get started.  Here's what you'll need:
 - [2 Channel DC 5V Relay Module](https://www.amazon.com/gp/product/B00E0NTPP4)
 - [Female to Female Jumper Wires](https://www.amazon.com/gp/product/B017NEGTXC)
 
-![Raspberry Pi Relay Parts List](media/raspberry-pi-relay-parts.png)
+![Raspberry Pi Relay Parts List](/media/raspberry-pi-relay-parts.png)
 
 ## Hardware Setup
 
