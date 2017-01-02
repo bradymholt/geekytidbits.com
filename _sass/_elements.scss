@@ -1,0 +1,14 @@
+table { 
+  border-collapse: collapse;
+  margin: 10px 0 20px 0;
+
+  thead tr {
+    border-bottom: solid 1px gray;
+  }
+  th {
+    text-align: left;
+  }
+  th,td {
+    padding:5px;
+  }
+}
