@@ -15,7 +15,7 @@ Most recently I have been using Project Pi in conjunction with Google Voice that
 
 My wife has a Nexus 5X with regular Project Fi voice/text service.  Then, I am using a Nexus 5 with a data-only SIM add-on from her account.  That's right, if you have a Project Fi account you can get up to 10 additional "data-only" SIM cards for use in any device you want!  So, I ordered one for me and have data-only LTE service on my Nexus 5.  Then, I transferred my phone number to Googice Voice and use the Google Hangouts app to make/receive calls and texts from my phone.
 
-Configuring Hangouts to work with Google Voice is easy: once you have your Google Voice service setup, you simple go to the Settings in the Google Hangouts app and toggle "Incoming phone calls" and "Messages" and you are good to go.
+Configuring Hangouts to work with Google Voice is easy: once you have your Google Voice service setup, you simply go to the Settings in the Google Hangouts app and toggle "Incoming phone calls" and "Messages" and you are good to go.
 
 ![Google Voice Google Hangouts Settings](/media/hangouts-settings.png)
 
