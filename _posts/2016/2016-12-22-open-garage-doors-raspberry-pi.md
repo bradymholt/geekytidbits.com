@@ -5,7 +5,7 @@ layout: post
 permalink: /open-garage-doors-raspberry-pi
 ---
 
-About 5 years ago, [I wrote about a solution](iphone-control-house-alarm-and-garage-doors/) I had for controlling my garage doors from my phone.  It was a fun project and generally has been working well.  However, the triggering mechanism relies upon X10 through my Honeywell Vista 20-P alarm panel and is therefore not very transferable to others wanting to do a similar project.  When friends ask about it and the possibility of doing their own similar project, I always have to hestitate a bit and say "well, it's a pretty specific setup to my house and equipment".  I really have wanted to say "sure, here's a blog post showing you each step so you can do a project for yourself".
+About 5 years ago, [I wrote about a solution](/iphone-control-house-alarm-and-garage-doors/) I had for controlling my garage doors from my phone.  It was a fun project and generally has been working well.  However, the triggering mechanism relies upon X10 through my Honeywell Vista 20-P alarm panel and is therefore not very transferable to others wanting to do a similar project.  When friends ask about it and the possibility of doing their own similar project, I always have to hestitate a bit and say "well, it's a pretty specific setup to my house and equipment".  I really have wanted to say "sure, here's a blog post showing you each step so you can do a project for yourself".
 
 I've been having more issues with X10 interference lately and decided to dust off one of my Raspberry Pi devices and put it to use as an alternative solution that should surely be more reliable and a fun project along the way!
 
