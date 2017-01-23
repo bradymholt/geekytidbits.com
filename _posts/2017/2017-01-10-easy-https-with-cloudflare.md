@@ -7,7 +7,7 @@ permalink: /easy-https-with-cloudflare
 
 HTTPS everywhere!  This is the trend of late, and for good reason.  Phishing, connection snooping, man-in-the-middle attacks and hacking in general is pervasive today and security on the web is more important than ever.
 
-I think Google played a bit part in this push, starting with their 2014 [HTTP as a ranking signal](https://webmasters.googleblog.com/2014/08/https-as-ranking-signal.html) post where they announced they would start taking SSL into account in their search rankings.  Although it's weighted only a small amount, in that post they left open the possibility for a heavier weighting in the future.  Then, they put some money behind this call to action by helping to fund [Let's Encrypt](https://letsencrypt.org/), a non-profit certificate authority giving away free SSL certificates.  Finally, in 2016 their [Moving towards a more secure web](https://security.googleblog.com/2016/09/moving-towards-more-secure-web.html) post really struct some fear in site owers everywhere with the announcement they they will eventually start showing regular HTTP connections like this:
+I think Google played a bit part in this push, starting with their 2014 [HTTP as a ranking signal](https://webmasters.googleblog.com/2014/08/https-as-ranking-signal.html) post where they announced they would start taking SSL into account in their search rankings.  Although it's weighted only a small amount, in that post they left open the possibility for a heavier weighting in the future.  Then, they put some money behind this call to action by helping to fund [Let's Encrypt](https://letsencrypt.org/), a non-profit certificate authority giving away free SSL certificates.  Finally, in 2016 their [Moving towards a more secure web](https://security.googleblog.com/2016/09/moving-towards-more-secure-web.html) post really struck some fear in site owners everywhere with the announcement they they will eventually start showing regular HTTP connections like this:
 
 ![Chrome Not Secure Warning](/media/chrome-not-secure.png)
 
@@ -50,7 +50,7 @@ Even if you serve your site over HTTPS, if you have resources or links pointing 
 
 ### Forcing HTTPS
 
-Finally, we'll create a Page Rule to force HTTPS on the site.  This means thet anyone accessing the http:// scheme for your site will be redirected to the https:// scheme. 
+Finally, we'll create a Page Rule to force HTTPS on the site.  This means thet anyone accessing the http:// scheme for your site will be redirected to the https:// scheme.
 
 * Click on the "Page Rules" icon at the top of the site ![Cloudflare Page Rules](/media/cloudflare-page-rules.png)
 
