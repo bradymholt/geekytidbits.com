@@ -2,13 +2,11 @@
     // See https://go.microsoft.com/fwlink/?LinkId=733558
     // for the documentation about the tasks.json format
     "version": "0.1.0",
-    "command": "${workspaceRoot}/.vscode/tasks.sh",
-    "isShellCommand": true,
-    "showOutput": "silent",
-    "suppressTaskName": true,
     "tasks": [
         {
             "taskName": "build",
+            "command": "./.vscode/serve.sh",
+            "isShellCommand": true,
             "isBuildCommand": true
         }
     ]
