@@ -29,9 +29,20 @@ The Action Package I ended up with is fairly simple.
 <pre>
 {
   "name": "tiger",
-  [...]
+  "versionLabel": "tiger",
+  "agentInfo": {
+    "languageCode": "en-US",
+    "projectId": "08f738659b0b6368493346964c66bb01"
+  },
   "actions": [
-    [...]
+    {
+      "description": "Default Welcome Intent",
+      "initialTrigger": {
+        "intent": "assistant.intent.action.MAIN",
+        "queryPatterns": []
+      },
+      "httpExecution": { "url": "https://[fulfillment_service_endpoint_url_here.com]" }
+    },
     {
       "description": "alarm",
       "initialTrigger": {
@@ -42,7 +53,7 @@ The Action Package I ended up with is fairly simple.
             { "queryPattern": "$alarm-status:alarm-status the alarm" }
           ]
       },
-      "httpExecution": { "url": "https://[aws_lambda_endpoint_url_here.com]" }
+      "httpExecution": { "url": "https://[fulfillment_service_endpoint_url_here.com]" }
     },
   ],
   "customTypes": [
@@ -59,7 +70,7 @@ The Action Package I ended up with is fairly simple.
 Let's break down the important parts:
 
 - **name**: This is the name of the Action ("tiger") but _does not_ define the "invocation name" (keyword that Google Assistant uses to launch your Action).  The invocation name is defined at the time the Action package is deployed.
-- **intent**: This is
+- **intent**: This defines the ID for the intent, used by the fulfillment endpoint to identify which action has been triggered.
 - **queryPatterns**: These are the speech patterns that Google Assistant will recognize.
 - **httpExecution**: This is the endpoint URI for the fulfillment service which implements the Conversation API.
 - **customTypes**: These are word variables (if you will) and allow you to define a list of words that can be used in a slot.  You can reference a customType in your queryPatterns.
@@ -109,10 +120,6 @@ function alarmIntent(assistant) {
 }
 
 // Action map: For each intent defined in the Action Package, define the handler for it.
-// The assistant.StandardIntents.MAIN intent is a special and implicitly define intent
-// for when the user engages with the Action but does not give it a specific command that
-// matches one of the query queryPatterns.
-
 actionMap.set(assistant.StandardIntents.MAIN, mainIntent);
 actionMap.set("ALARM", alarmIntent);
 
