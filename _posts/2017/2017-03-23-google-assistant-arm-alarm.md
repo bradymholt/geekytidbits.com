@@ -26,7 +26,7 @@ A Google Assistant Action has 2 main components:
 
 The Action Package I ended up with is fairly simple.
 
-```
+<pre>
 {
   "name": "tiger",
   [...]
@@ -54,7 +54,7 @@ The Action Package I ended up with is fairly simple.
       ]
     }
     [...]
-```
+</pre>
 
 Let's break down the important parts:
 
@@ -76,7 +76,7 @@ There is a npm package called [actions-on-google](https://www.npmjs.com/package/
 
 Here is what my service looks like:
 
-```
+<pre>
 var ActionsSdkAssistant = require('actions-on-google').ActionsSdkAssistant;
 var assistant = new ActionsSdkAssistant({ request: assistantRequest, response: assistantResponse });
 var actionMap = new Map();
@@ -117,7 +117,7 @@ actionMap.set(assistant.StandardIntents.MAIN, mainIntent);
 actionMap.set("ALARM", alarmIntent);
 
 assistant.handleRequest(actionMap);
-```
+</pre>
 
 ## google-action-tiger
 
