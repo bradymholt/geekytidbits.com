@@ -5,40 +5,35 @@ layout: post
 permalink: /postgresql-cross-join-lateral
 ---
 
-PostgresSQL 9.3 introduced a new join type called a LATERAL join.
+PostgresSQL 9.3 introduced a new join type called a LATERAL join.  This is an interesting and powerful join type that is a bit intimidating at first but when you take a closer look I think you'll find it to be quite handy and performant in certain scenarios.
 
-In SQL SERVER, we have CROSS APPLY.
+So, what is a LATERAL join anyway?  From the [PostgreSQL documentation](https://www.postgresql.org/docs/9.3/static/sql-select.html#SQL-FROM):
 
+> The LATERAL key word can precede a sub-SELECT FROM item. This allows the sub-SELECT to refer to columns of FROM items that appear before it in the FROM list. (Without LATERAL, each sub-SELECT is evaluated independently and so cannot cross-reference any other FROM item.)
 
-From https://www.postgresql.org/docs/9.3/static/sql-select.html#SQL-FROM:
+In a gist, it allows you to perform a sub-query in the `FROM` clause and _reference_ column values from other records in the query.
 
-<blockquote>
-The LATERAL key word can precede a sub-SELECT FROM item. This allows the sub-SELECT to refer to columns of FROM items that appear before it in the FROM list. (Without LATERAL, each sub-SELECT is evaluated independently and so cannot cross-reference any other FROM item.)
-</blockquote>
+Quick example: Select 2 most recent orders for each customer
 
-<blockquote>
-...
-</blockquote>
-
-<blockquote>
-When a FROM item contains LATERAL cross-references, evaluation proceeds as follows: for each row of the FROM item providing the cross-referenced column(s), or set of rows of multiple FROM items providing the columns, the LATERAL item is evaluated using that row or row set's values of the columns. The resulting row(s) are joined as usual with the rows they were computed from. This is repeated for each row or set of rows from the column source table(s).
-</blockquote>
-
-### Advantages over correlated sub-query
-
-(From http://stackoverflow.com/a/28557803/626911)
-There are things that a LATERAL join can do, but a (correlated) subquery cannot (easily). A correlated subquery can only return a single value, not multiple columns and not multiple rows - with the exception of bare function calls (which multiply result rows if they return multiple rows). But even certain set-returning functions are only allowed in the FROM clause. Like the new unnest() with multiple parameters
-
-### What can we do with it?
-
-...
-
-### Super useful scenario
-
-<pre>
-SELECT f.value1 + p.pre_calc
-FROM foo f
+```
+SELECT id, o.order_id, o.date, o.amount
+FROM customers c
     CROSS JOIN LATERAL (
-        SELECT (f.value2+ f.value3) as pre_calc
-    ) as p(pre_calc)
-</pre>
+        SELECT id as order_id, date, amount
+        FROM orders
+        WHERE customer_id = c.id
+        ORDER BY date DESC
+        LIMIT 2
+    ) o;
+```
+
+Another use: reuse column aliases
+
+```
+SELECT l.id, c.start_date,  c.end_date, (c.end_date - c.start_date) as days_diff
+FROM log l
+    CROSS JOIN LATERAL (
+        SELECT to_date(l.start_timestamp, 'MM/dd/YYYY'),
+               to_date(l.end_timestamp, 'MM/dd/YYYY')
+    ) as c(start_date, end_date);
+```
