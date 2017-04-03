@@ -16,7 +16,7 @@ In a gist, it allows you to perform a sub-query in the `FROM` clause and _refere
 
 ## Examples
 
-**1. Select 2 most recent orders for each customer**
+**1. Top-N per group**
 
 For each customer, we will return the 2 most recent orders.  Without a `LATERAL` join this type of query would be non-trivial.
 
@@ -35,7 +35,17 @@ ORDER BY c.id;
 
 NOTE: I use `CROSS JOIN LATERAL` above which is eqivalent to `LEFT JOIN LATERAL (...) a ON true` (as shown in LATERAL examples elsewhere) but I find it more readable.  Effectively, it behaves like a `LEFT JOIN`.
 
-**2. Reuse calculated values**
+**2. Call User-Defined Function for each row**
+
+If you have a User-Define function that has advantaged logic that needs to be run for each row of a query, you can use the `LATERAL` join to call it and return multiple values.
+
+<pre>
+SELECT t.id, s. p.pl_amount, p.pl_percentage
+FROM trades t
+    get_trade_pl(t.id) p;
+</pre>
+
+**3. Reuse calculated values**
 
 This is a non-obvious use of `LATERAL` but one I use often.  Since you can reference columns from other records in the query, you can use `LATERAL` to calculate values and then _reuse_ them in the main `SELECT` statement.  Otherwise, you would have to recalculate values for each usage of them in the `SELECT` statement.
 
