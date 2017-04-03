@@ -37,7 +37,7 @@ NOTE: I use `CROSS JOIN LATERAL` above which is eqivalent to `LEFT JOIN LATERAL 
 
 **2. Call User-Defined Function for each row**
 
-If you have a User-Define function that has advantaged logic that needs to be run for each row of a query, you can use the `LATERAL` join to call it and return multiple values.
+If you have a User-Defined function that needs to be run for each row of a query, you can use the `LATERAL` join to call it and return multiple values.
 
 <pre>
 SELECT t.id, s. p.pl_amount, p.pl_percentage
