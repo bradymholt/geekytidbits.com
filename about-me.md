@@ -25,7 +25,7 @@ To learn even more about me, check out my 3-part post, [How I Got Geeky][4].
 - Google has <a href="https://groups.google.com/forum/#!searchin/comp.lang.pascal.borland/%22brady$20holt%22" target="_blank">Usenet history on me back to 1996</a>.
 - I play the acoustic guitar.
 - Hawaii is my favorite place to visit.
-- I have a beautiful wife and daughter who I adore.
+- I have a beautiful wife, daughter, and son.  I adore them.
 - A good word to describe me is _resourceful_.
 - Myers-Briggs says I'm an <a href="http://www.16personalities.com/istp-personality" target="_blank">ISTP</a>.
 - I change the oil on my cars.
@@ -34,7 +34,6 @@ To learn even more about me, check out my 3-part post, [How I Got Geeky][4].
 - I <a href="/iphone-control-house-alarm-and-garage-doors/" target="_blank">open garage doors with my phone</a>.
 - I ran the <a href="http://www.ingnycmarathon.org/" target="_blank">New York Marathon</a> in 2004.
 - I've been skydiving.
-- I love roller coasters.
 
 [2]: http://www.youneedabudget.com/
 [3]: /projects/
