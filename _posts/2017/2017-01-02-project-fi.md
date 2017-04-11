@@ -9,7 +9,7 @@ I love non-standard cell service setups.  Actually, I probably annoy my family a
 
 I've written about a few of the things I've tried [here](http://www.geekytidbits.com/free-iphone-setup/) and [here](http://www.geekytidbits.com/my-free-iphone-setup-2-0/).  Most of the time, the end goal is to save money but a secondary benefit is that it's just fun to play around with different things.
 
-Most recently I have been using [Project Pi](https://g.co/fi/r/E5F490) in conjunction with Google Voice that I want to outline here.
+Most recently I have been using [Project Fi](https://g.co/fi/r/E5F490) in conjunction with Google Voice that I want to outline here.
 
 ## The Setup
 
