@@ -11,7 +11,7 @@ For example, let&#8217;s say you have an e-commerce database that has several ap
 
 I can&#8217;t tell you how many times I have come across an issue that was caused by a trigger.  I&#8217;ve gotten to the point where, when I see a trigger culprit, I raise my fist in the air and say &#8220;damn you, trigger!&#8221;.
 
-Here&#8217;s why I *generally *<span style="color: #000000;">hate them:</span>
+Here&#8217;s why I *generally* hate them:</span>
 
   * They can introduce &#8220;**data bugs**&#8221; that are extremely hard to trace.
   * They can (and usually do) **slow down CRUD operations**.
