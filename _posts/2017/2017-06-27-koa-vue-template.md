@@ -14,7 +14,7 @@ Ok, let's summarize my crazy templating activity lately because it's gotten a li
 |          | Template 1                                              | Template 2                                              | Template 3                                      |
 |----------|---------------------------------------------------------|---------------------------------------------------------|-------------------------------------------------|
 | **Backend**  | ASP.NET Core                                            | ASP.NET Core                                            | Koa 2/Node                                        |
-| **Frontend** | React                                                   | Vue.js                                                  | Vue.je                                          |
+| **Frontend** | React                                                   | Vue.js                                                  | Vue.js                                          |
 |          | [Link](https://github.com/bradyholt/aspnet-core-react-template) | [Link](https://github.com/bradyholt/aspnet-core-vuejs-template) | [Link](https://github.com/bradyholt/koa-vuejs-template) |
 
 Using the same basic _functionality_ for the templates and swapping out the frameworks/languages used has turned out to be effective for learning because I have been able to focus on the ins-and-outs of the technology I am working with instead of getting caught up on the functionality of the app.  Also, it's been fun comparing the implementation differences bettwen them.  For example, setting up JWT authentication with Koa 2/Node was a cake walk compared with getting it to work in ASP.NET Core!
