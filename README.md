@@ -12,7 +12,19 @@ This blog is powered by [Jekyll](http://jekyllrb.com/), the blog-aware, static s
 
 # Deployment 
 
-- Add pushurl = [user]@www.geekytidbit.com:repos/geekytidbits.git to `.git/config` and run `git push`.
+Deployment is handled with a secondary Git push-url.  To configure, add another push-url with this command.
+
+```
+git remote set-url --add --push origin [user]@[ip]:repos/geekytidbits.git
+```
+
+The IP address [ip] is the IP address of the host itself, not www.geekytidbits.com.  Since www.geekytidbits.com is behind CloudFlare, the actual IP address needs to be used.
+
+Then, for each deployment, just run
+
+```
+git push
+```
 
 # CloudFlare Config 
 
