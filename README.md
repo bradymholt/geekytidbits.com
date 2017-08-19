@@ -12,7 +12,7 @@ This blog is powered by [Jekyll](http://jekyllrb.com/), the blog-aware, static s
 
 # Deployment 
 
-Deployment is handled with a secondary Git pushUrl.  When pushing, the commits are pushed to GitHub and also the bare repo on the deployment server.  To configure:
+Deployment is handled with a _secondary_ Git pushUrl.  When pushing, the commits are pushed to GitHub and also the bare repo on the deployment server.  To configure:
 
 ```
 git remote set-url --add --push origin git@github.com:bradyholt/geekytidbits.com.git
