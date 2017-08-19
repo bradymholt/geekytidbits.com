@@ -12,15 +12,7 @@ Last year, an [issue was opened](https://github.com/bradyholt/cron-expression-de
 Searching around for "how to port a .NET Framework library to .NET Core" turned up some results but most of the articles were long and I didn't really understand the _big picture_ of the process.  I didn't understad, for example, what the end result would be.  I had questions like:
 
 - Will I end up with two assemblies, one for .NET Framework and one for .NET Core which will be packaged together in a single NuGet package?
-<<<<<<< HEAD
-- Will I need need to create an entirely separate NuGet package for .NET COre that will stand alone?
-=======
-<<<<<<< HEAD
 - Will I need need to create an entirely separate NuGet package for .NET Core that will stand alone?
-=======
-- Will I need need to create an entirely separate NuGet package for .NET COre that will stand alone?
->>>>>>> Move new posts over to GH
->>>>>>> Merge fix
 - If I am able to build a single assembly that will work on .NET Framework or .NET Core, will I have to use compile flags for features not supported in .NET Core yet?
 - Since .NET Core uses project.json file, will I need one of those and also a .csproj for .NET Framework?  So, I'll need two project files for my library?
 
@@ -59,15 +51,7 @@ Once I made the changes and the library built, I knew it was smooth sailing from
 
 I've used macOS as my primary OS for a several years now and am quite comfortable there.  I feel right at home using VSCode and only booting my Windows 10 VitualBox machine when I have to.  This includes when I need to do work on Cron Expression Descriptor.  I wanted to move over completely to macOS for development moving forward.  So, after some fiddling and Googling, I got everything (build, tests, publishing to NuGet) running on from macOS.  This was huge!  .NET is truly cross-platform!  Now, moving forward, I never have to boot my Windows 10 box to work on this library.  In the [commit history](https://github.com/bradyholt/cron-expression-descriptor/pull/66/commits) you'll see commits related to this switch, namely VSCode tasks setup.
 
-<<<<<<< HEAD
-If you look at my [RELEASING.md](https://github.com/bradyholt/cron-expression-descriptor/blob/master/RELEASING.md) doc, you'll see that as long as you have .NET Core SDK installed (on Windows _or_ macOS _or_ Linux), you can run `./build/release.sh` to run the tests, build the assembly and push up a new package to NuGet.
-=======
-<<<<<<< HEAD
 If you look at my [RELEASING.md](https://github.com/bradyholt/cron-expression-descriptor/blob/master/RELEASING.md) doc, you'll see that as long as you have .NET Core SDK installed (on Windows _or_ macOS _or_ Linux) and bash (via Linux Subsystem on Windows), you can run `./build/release.sh` to run the tests, build the assembly and push up a new package to NuGet.
-=======
-If you look at my [RELEASING.md](https://github.com/bradyholt/cron-expression-descriptor/blob/master/RELEASING.md) doc, you'll see that as long as you have .NET Core SDK installed (on Windows _or_ macOS _or_ Linux), you can run `./build/release.sh` to run the tests, build the assembly and push up a new package to NuGet.
->>>>>>> Move new posts over to GH
->>>>>>> Merge fix
 
 ## The Big Picture
 
