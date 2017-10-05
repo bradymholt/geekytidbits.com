@@ -101,16 +101,15 @@ h1 {
  * Links
  */
 a {
-  color: $brand-color;
+  color: $link-color;
   text-decoration: none;
 
   &:visited {
-    color: darken($brand-color, 15%);
+    color: $link-color;
   }
 
   &:hover {
-    color: $text-color;
-    text-decoration: underline;
+    color: lighten($link-color, 10%);
   }
 }
 
