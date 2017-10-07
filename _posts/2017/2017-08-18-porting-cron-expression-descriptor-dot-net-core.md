@@ -9,7 +9,7 @@ Last year, an [issue was opened](https://github.com/bradyholt/cron-expression-de
 
 ## Getting Standard
 
-Searching around for "how to port a .NET Framework library to .NET Core" turned up some results but most of the articles were long and I didn't really understand the _big picture_ of the process.  I didn't understad, for example, what the end result would be.  I had questions like:
+Searching around for "how to port a .NET Framework library to .NET Core" turned up some results but most of the articles were long and I didn't really understand the _big picture_ of the process.  I didn't understand, for example, what the end result would be.  I had questions like:
 
 - Will I end up with two assemblies, one for .NET Framework and one for .NET Core which will be packaged together in a single NuGet package?
 - Will I need need to create an entirely separate NuGet package for .NET Core that will stand alone?
