@@ -35,7 +35,7 @@ Flora Dai, Engineer at Pandora - She walked through how they used Kafka and Solr
 
 ## People
 
-I really enjoyed getting to meet all sorts of friendly people who are spread all over, working on interesting challenges.  I liked picking their brains a bit about the tools they were using and how they were solving their problems.  I felt like I was getting out of my bubble a bit and having the opportunity to look at things from a fresh perspective.  I met people from GitHub (of course), Microsoft, Weebly, Amazon Web Services, IBM, Credit Karma, Shopify, Heroku, TravisCI, CirleCI and more.
+I really enjoyed getting to meet all sorts of friendly people who are spread all over, working on interesting challenges.  I liked picking their brains a bit about the tools they were using and how they were solving their problems.  I felt like I was getting out of my bubble a bit and having the opportunity to look at things from a fresh perspective.  I met people from GitHub (of course), Microsoft, Weebly, Amazon Web Services, IBM, Credit Karma, Shopify, Heroku, TravisCI, CircleCI and more.
 
 In particular, I ran into Michael Imms and Rob Lourens who work on VSCode at Microsoft.  I shook their hands and thanked them for the great work.  They were very open to feedback and appreciated me talking about how I use VSCode, particularly for debugging TypeScript.  While I was talking with them, Zeke Sikelianos from the Electron team walked up they were doing some real-time collaboration which was fun to witness firsthand.  Michael was telling Zeke there was a bug they were running into that was preventing them from bumping the Electron version.  Cool to observe!
 
