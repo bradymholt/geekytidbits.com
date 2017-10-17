@@ -5,7 +5,7 @@ layout: post
 permalink: /github-universe/
 ---
 
-This past week, I had the opportunity to attend [GitHub Universe 2017](githubuniverse.com).  [YNAB](youneedabudget.com) graciously allowed me to take off from work and attend.  I was really excited about going because it had been awhile since I'd been to a development conference and I had heard good things about Universe.
+This past week, I had the opportunity to attend [GitHub Universe 2017](githubuniverse.com).  [YNAB](http://www.youneedabudget.com) graciously allowed me to take off from work and attend.  I was really excited about going because it had been awhile since I'd been to a development conference and I had heard good things about Universe.
 
 ## Trends
 
