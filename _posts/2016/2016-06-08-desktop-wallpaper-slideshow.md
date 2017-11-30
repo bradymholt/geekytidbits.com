@@ -13,11 +13,11 @@ So, I thought it might be nice to create a script that could automatically chang
 Here is what I came up with.  It's a node script that uses [weighted](https://www.npmjs.com/package/weighted) to randomly pick 1 of 4 photo sources and set my desktop background using the [wallpaper](https://www.npmjs.com/package/wallpaper) module.  The 4 sources are:
 
 1. **Bing Photo of The Day (Archive)**
-2. **Unsplash** - Seriously nice, high-res photos.  Unsplash requires registration to get an API token but it's easy to do.  
+2. **Unsplash** - Seriously nice, high-res photos.  Unsplash requires registration to get an API token but it's easy to do.
 3. **Chromecast Background Archive** - Uses a Chromecast background image archive [on GitHub](https://github.com/dconnolly/chromecast-backgrounds) thanks to [@dconnolly](https://github.com/dconnolly).
 4. **Picasa Web Album** - Uses Google/Picasa Data API to pull photos from a public album
 
-<script src="https://gist.github.com/bradyholt/28c1e9bd27cbee668764b69bc6bc9f80.js"></script>
+<script src="https://gist.github.com/bradymholt/28c1e9bd27cbee668764b69bc6bc9f80.js"></script>
 
 ## Crontab
 

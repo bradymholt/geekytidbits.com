@@ -14,7 +14,7 @@ When working with actual source code, and the construction of it, these are my g
 - [Git](https://git-scm.com/) - Yes, I'm a Git source control guy.  Along with everyone else.
 - [GitHub](http://www.github.com) - Yes, I use GitHub to store Git repos and collaborate, along with everyone else.
 - [Beyond Compare](http://www.scootersoftware.com/) - I'm still using this gem for file diffs and 3-way merges.  I was thrilled to learn they released an OS X version that works great.
-- [mitmproxy](https://mitmproxy.org/) - A simple, CLI based HTTP proxy.  I used to be a [Fiddler](http://www.telerik.com/fiddler) guy when I used Windows primarily but unfortunately the Fiddler version for OS X is straight up bad. 
+- [mitmproxy](https://mitmproxy.org/) - A simple, CLI based HTTP proxy.  I used to be a [Fiddler](http://www.telerik.com/fiddler) guy when I used Windows primarily but unfortunately the Fiddler version for OS X is straight up bad.
 - [RegExr](http://www.regexr.com/) - RegEx made easy.
 - [CSV To Markdown Table](https://donatstudios.com/CsvToMarkdownTable) - This website comes in handy when I have CSV output (say, from a db query) that I need to display in Markdown (say in a GitHub issue).
 - [JSON Formatter and Validator](https://jsonformatter.curiousconcept.com/) - Makes JSON pretty.
@@ -43,14 +43,14 @@ These are the tools and software I use for my base development machine setup.
 - [VirtualBox](https://www.virtualbox.org/wiki/Downloads) - I use VirtualBox to run Windows 10, [vagrant](https://www.vagrantup.com/) boxes and some Linix distros I play around with.
 - [Retina Display Manager](https://github.com/avibrazil/RDM) - When I am out with my laptop somewhere and don't have my external monitors, I just crank my resolution up to something super high so I have more screen real estate.
 - [BetterSnapTool](https://itunes.apple.com/us/app/bettersnaptool/id417375580?mt=12) - I use this to resize windows in OS X, particularly to snap windows to the left/right on my monitors.  It allows you to accomplish what you can do with Windows+<Right> or Windows+<Left> in Windows 10.
-- [Zsh](http://www.zsh.org/) - I prefer Zsh over Bash.  It has a lot of convienent, productive features. 
+- [Zsh](http://www.zsh.org/) - I prefer Zsh over Bash.  It has a lot of convienent, productive features.
 - [Oh My Zsh](https://github.com/robbyrussell/oh-my-zsh) - Oh My Zsh manages Zsh config and makes adding in themes and plugins trival.
 
 ## Misc Tools
 - [LICEcap](http://www.cockos.com/licecap/) - Record screen video as an animated GIF.  This is super handy when I want to record my screen and post an animated GIF in a GitHub PR / Issue for others to easily see.  I prefer the simplicity of this tool rather than using something heavier like Jing or CloudApp.
 - [Page Ruler](https://chrome.google.com/webstore/detail/page-ruler/jlpkojjdgbllmedoapgfodplfhcbnbpn?hl=en) (Chrome Extension) - From the website: "Draw a ruler to get pixel dimensions and positioning, and measure elements on any web page."  Yep, that's what it does.
 - [Awesome Screenshot](https://chrome.google.com/webstore/detail/awesome-screenshot-screen/nlipoenfbbikpbjkfpfillcgkoblgpmj?hl=en)  (Chrome Extension) - I love this tool and can't live without it.  This makes taking screenshots (and optionally annotating them) dead simple.
-- [bash scripts](https://github.com/bradyholt/dotfiles/tree/master/bin) - I have a collection of bash scripts for handy things like abstracting Git commands and `ws` for starting a lightweight webserver from the current directory.
+- [bash scripts](https://github.com/bradymholt/dotfiles/tree/master/bin) - I have a collection of bash scripts for handy things like abstracting Git commands and `ws` for starting a lightweight webserver from the current directory.
 - [Photoshop Elements](http://www.photoshop.com/products/photoshopelements) - I use this for image editing when I need to do something non-trival.
 
 ## Reference

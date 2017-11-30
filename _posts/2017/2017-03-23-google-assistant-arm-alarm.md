@@ -9,7 +9,7 @@ permalink: /google-assistant-arm-alarm
   <a href="https://www.youtube.com/watch?v=V_INz5tQLGI"><img src="http://img.youtube.com/vi/V_INz5tQLGI/0.jpg"/></a>
 </iframe>
 
-I've had a [Google Home](https://madeby.google.com/home/) up and running at the house for about two month and finally decided to create a Google Assistant Action for it.  I already have [vistaicm-server](https://github.com/bradyholt/vistaicm-server) running and connected to my Honeywell Vista 20P alarm panel so I thought I would create an Action so I could arm and disarm my house alarm system with my voice.
+I've had a [Google Home](https://madeby.google.com/home/) up and running at the house for about two month and finally decided to create a Google Assistant Action for it.  I already have [vistaicm-server](https://github.com/bradymholt/vistaicm-server) running and connected to my Honeywell Vista 20P alarm panel so I thought I would create an Action so I could arm and disarm my house alarm system with my voice.
 
 The [Actions Overview](https://developers.google.com/actions/) points you to [API.AI](https://api.ai/) because using it makes Action development very easy.  I started building the Action out in the API.AI interface but I ran into 2 issues:
 - Once deployed for "Preview", the Action is only available for 30 minutes.  That wasn't going to work.  I ended up figuring out how to get around this (and [posted the solution on StackOverflow](http://stackoverflow.com/questions/41088596/make-google-actions-development-project-preview-persist-longer/41205026#41205026)).
@@ -132,21 +132,21 @@ assistant.handleRequest(actionMap);
 
 ## google-action-tiger
 
-After some refining, the final result is a project called [google-action-tiger](https://github.com/bradyholt/google-action-tiger).  This project contains all the necessary parts for the Action: The action package, fulfillment code, and provisioning (i.e. "deploy") script.  I decided to host the fulfillment service on AWS Lambda because it is really suitable for this type of type of application, especially since HTTPS is baked in.
+After some refining, the final result is a project called [google-action-tiger](https://github.com/bradymholt/google-action-tiger).  This project contains all the necessary parts for the Action: The action package, fulfillment code, and provisioning (i.e. "deploy") script.  I decided to host the fulfillment service on AWS Lambda because it is really suitable for this type of type of application, especially since HTTPS is baked in.
 
 ## Usage
 
 In a gist, to get up and running all you need to do is:
 
-1. Install [dependencies](https://github.com/bradyholt/google-action-tiger#dependencies) per the README (including AWS and gactions CLI)
+1. Install [dependencies](https://github.com/bradymholt/google-action-tiger#dependencies) per the README (including AWS and gactions CLI)
 2. Create an AWS Lambda function
 3. Create a config file, using config.example as a template
 4. Run `./deploy.sh`
 
-The detailed instructions are located on the [README](https://github.com/bradyholt/google-action-tiger/blob/master/README.md).
+The detailed instructions are located on the [README](https://github.com/bradymholt/google-action-tiger/blob/master/README.md).
 
 I really like how everything is in a single repository and updates are deployed simply by running `./deploy`.
 
 ### deploy.sh
-I decided to use a bash script for the `deploy.sh` (rather than node) script because the primary interaction is with the AWS and gactions CLI and doing that from node would have ended up just being a bunch of spawning of child processes.  Wanting to use the `config` file for _all_ config but also update the `actions.json` file with the `httpExecution.url` from `config` without creating a node script was a little tricky but I settled on passing straight JavsScript code to node using the `-e` parameter [here](https://github.com/bradyholt/google-action-tiger/blob/master/deploy-google-assistant.sh#L10).  I am quite happy with how the `deploy.sh` file turned out.
+I decided to use a bash script for the `deploy.sh` (rather than node) script because the primary interaction is with the AWS and gactions CLI and doing that from node would have ended up just being a bunch of spawning of child processes.  Wanting to use the `config` file for _all_ config but also update the `actions.json` file with the `httpExecution.url` from `config` without creating a node script was a little tricky but I settled on passing straight JavsScript code to node using the `-e` parameter [here](https://github.com/bradymholt/google-action-tiger/blob/master/deploy-google-assistant.sh#L10).  I am quite happy with how the `deploy.sh` file turned out.
 

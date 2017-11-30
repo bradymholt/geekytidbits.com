@@ -43,7 +43,7 @@ This demo video shows just how easy it is:
 
 The NuGet package is located here: <https://www.nuget.org/packages/dbup-sqlserver-scripting/> and can be installed by running **Install-Package dbup-sqlserver-scripting**.
 
-The GitHub repo is located here: <https://github.com/bradyholt/dbup-sqlserver-scripting>** **and contains more details setup and usage information.
+The GitHub repo is located here: <https://github.com/bradymholt/dbup-sqlserver-scripting>** **and contains more details setup and usage information.
 
 &nbsp;
 

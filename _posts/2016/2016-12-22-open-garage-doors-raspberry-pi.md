@@ -30,12 +30,12 @@ Let's get started.  Here's what you'll need:
 
 Using 4 Female to Female jumper wires, connect the Raspberry Pi to the relay:
 
-| RPi Pin | Relay Pin | 
-|------------------|-------| 
-| Pin 6 (Ground)   | GND   | 
-| Pin 11 (GPIO 0)  | IN1   | 
-| Pin 12 (GPIO 1)  | IN2   | 
-| Pin 2 (5V)       | VCC   | 
+| RPi Pin | Relay Pin |
+|------------------|-------|
+| Pin 6 (Ground)   | GND   |
+| Pin 11 (GPIO 0)  | IN1   |
+| Pin 12 (GPIO 1)  | IN2   |
+| Pin 2 (5V)       | VCC   |
 
 <a href="/media/raspberry-pi-3-pin-connections-relay.png" target="_blank"><img alt="Raspberry Pi Pin Connections to Relay" src="/media/raspberry-pi-3-pin-connections-relay.png"/>
 
@@ -43,7 +43,7 @@ Using 4 Female to Female jumper wires, connect the Raspberry Pi to the relay:
 
 Now that the relay is connected to the pins, it's time to setup the OS and software we will use to control the relays.
 
-[Arch Linux ARM](https://archlinuxarm.org/) will be used as the OS and the [raspberrypi-relay-controller](https://github.com/bradyholt/raspberrypi-relay-controller) project will be used to provision the Pi with Ansible and install all necessary software.  This will make setting up the Raspberry Pi software very straightforward.  Rather than rehashing all the raspberrypi-relay-controller instructions here, simply follow the [README](https://github.com/bradyholt/raspberrypi-relay-controller/blob/master/README.md) step-by-step.  In short, you will doing the following:
+[Arch Linux ARM](https://archlinuxarm.org/) will be used as the OS and the [raspberrypi-relay-controller](https://github.com/bradymholt/raspberrypi-relay-controller) project will be used to provision the Pi with Ansible and install all necessary software.  This will make setting up the Raspberry Pi software very straightforward.  Rather than rehashing all the raspberrypi-relay-controller instructions here, simply follow the [README](https://github.com/bradymholt/raspberrypi-relay-controller/blob/master/README.md) step-by-step.  In short, you will doing the following:
 
 1. Install Arch Linux ARM on SD card and then booting the Raspberry Pi
 2. Setup up key-based authentication for root user
@@ -54,9 +54,9 @@ Once you are done with the instructions, you should be able to open http://[rasp
 ![Relay Web Interface](/media/relay-controller-web-interface.png)
 
 
-Although there are several components at play, the actual control of the relay is handled by a [Node.js process](https://github.com/bradyholt/raspberrypi-relay-controller/blob/master/roles/relay-rest-api/templates/server.js.j2) that utilizies [rpio](https://github.com/jperkin/node-rpio) to trigger the relay temporarily using this block of code:
+Although there are several components at play, the actual control of the relay is handled by a [Node.js process](https://github.com/bradymholt/raspberrypi-relay-controller/blob/master/roles/relay-rest-api/templates/server.js.j2) that utilizies [rpio](https://github.com/jperkin/node-rpio) to trigger the relay temporarily using this block of code:
 
-<script src="https://gist.github.com/bradyholt/996af5dc68a5ed1906c451bd0ff05ce1.js"></script>
+<script src="https://gist.github.com/bradymholt/996af5dc68a5ed1906c451bd0ff05ce1.js"></script>
 
 ## Conection to Garage Door Openers
 
@@ -81,6 +81,6 @@ Here's a video showing the final setup:
 ## Going Further
 
 1. Get a [project box like this one](https://www.amazon.com/dp/B0002BBQUU) and enclose everything nicely.
-2. Fork [raspberrypi-relay-controller](https://github.com/bradyholt/raspberrypi-relay-controller) and customize the web interface, such as [changing the button labels](https://github.com/bradyholt/raspberrypi-relay-controller/blob/master/roles/relay-rest-api/templates/index.html#L41-L42).  Then, simply run `./provision.sh` again to push out the updates.
-3. Integrate with another system utilizing the [simple REST API](https://github.com/bradyholt/raspberrypi-relay-controller/blob/master/roles/relay-rest-api/templates/server.js.j2#L39-L40).
+2. Fork [raspberrypi-relay-controller](https://github.com/bradymholt/raspberrypi-relay-controller) and customize the web interface, such as [changing the button labels](https://github.com/bradymholt/raspberrypi-relay-controller/blob/master/roles/relay-rest-api/templates/index.html#L41-L42).  Then, simply run `./provision.sh` again to push out the updates.
+3. Integrate with another system utilizing the [simple REST API](https://github.com/bradymholt/raspberrypi-relay-controller/blob/master/roles/relay-rest-api/templates/server.js.j2#L39-L40).
 4. Get a [magnetic contact switch like this](https://www.amazon.com/Honeywell-951WG-WH-Recessed-Magnetic-Contact/dp/B001UKY1A4) and use [rpio](https://github.com/jperkin/node-rpio) to detect if the door is open or closed.

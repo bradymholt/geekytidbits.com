@@ -5,7 +5,7 @@ layout: post
 permalink: /koa-vue-template/
 ---
 
-A few months back, I tackled building an [ASP.NET Core / React SPA template](/asp-dotnet-core-react-template-update/).  Then, wanting to play with Vue.js, I created [another template](https://github.com/bradyholt/aspnet-core-vuejs-template) with the same ASP.NET Core backend but switched out the frontend with Vue.js.  Those templates were fun to build and I learned quite a few things along the way.
+A few months back, I tackled building an [ASP.NET Core / React SPA template](/asp-dotnet-core-react-template-update/).  Then, wanting to play with Vue.js, I created [another template](https://github.com/bradymholt/aspnet-core-vuejs-template) with the same ASP.NET Core backend but switched out the frontend with Vue.js.  Those templates were fun to build and I learned quite a few things along the way.
 
 I really enjoyed working with Vue.js and have recently been wanting to play around with [Koa 2](http://koajs.com/), especially since it works with async/await out of the box.  So, I decided to use the Vue.js frontend I had swapped out previously and to swap out the ASP.NET Core backend with Koa.
 
@@ -15,7 +15,7 @@ Ok, let's summarize my crazy templating activity lately because it's gotten a li
 |----------|---------------------------------------------------------|---------------------------------------------------------|-------------------------------------------------|
 | **Backend**  | ASP.NET Core                                            | ASP.NET Core                                            | Koa 2/Node                                        |
 | **Frontend** | React                                                   | Vue.js                                                  | Vue.js                                          |
-|          | [Link](https://github.com/bradyholt/aspnet-core-react-template) | [Link](https://github.com/bradyholt/aspnet-core-vuejs-template) | [Link](https://github.com/bradyholt/koa-vuejs-template) |
+|          | [Link](https://github.com/bradymholt/aspnet-core-react-template) | [Link](https://github.com/bradymholt/aspnet-core-vuejs-template) | [Link](https://github.com/bradymholt/koa-vuejs-template) |
 
 Using the same basic _functionality_ for the templates and swapping out the frameworks/languages used has turned out to be effective for learning because I have been able to focus on the ins-and-outs of the technology I am working with instead of getting caught up on the functionality of the app.  Also, it's been fun comparing the implementation differences bettwen them.  For example, setting up JWT authentication with Koa 2/Node was a cake walk compared with getting it to work in ASP.NET Core!
 
@@ -67,4 +67,4 @@ Here is a survey of all the tools, technologies, concepts, etc. that went into t
 
 ## Source
 
-Here is the GitHub repo with the template source: [https://github.com/bradyholt/koa-vuejs-template](https://github.com/bradyholt/koa-vuejs-template)
+Here is the GitHub repo with the template source: [https://github.com/bradymholt/koa-vuejs-template](https://github.com/bradymholt/koa-vuejs-template)

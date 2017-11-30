@@ -51,7 +51,7 @@ I downloaded a few playbooks, made a few tweaks to my liking and and was able to
 
 I broke the Ansible config up into 2 playbook: 1) provision and 2) deploy. This way I can use the provision script initially to build the new server up and/or to make provisioning type changes when needed. For instance, if I wanted to install a different SMTP server or update the Ruby version I would use the provisioning playbook. The deploy playbook is obviously for deploying the Rails app and will be used much more often. The deploy playbook takes the place of a tool like [Capistrano][3], which most people use to deploy Rails. That&#8217;s the great thing about Ansible; you can use it anything DevOps related.
 
-I created a GitHub repository with the playbooks for others to enjoy here: <https://github.com/bradyholt/ansible-rails>
+I created a GitHub repository with the playbooks for others to enjoy here: <https://github.com/bradymholt/ansible-rails>
 
  [3]: http://capistranorb.com/
  [4]: http://aws.amazon.com/ec2/

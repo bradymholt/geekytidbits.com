@@ -11,10 +11,10 @@ It&#8217;s been over 2 years since that post and in the meantime, I have complet
 
 ## Introducing vistaicm-server
 
-[<img class="size-full wp-image-1765 alignleft" style="margin:15px;" alt="screenshot" src="/media/screenshot.png" width="240" height="262" />][1]  
+[<img class="size-full wp-image-1765 alignleft" style="margin:15px;" alt="screenshot" src="/media/screenshot.png" width="240" height="262" />][1]
 **vistaicm-server** is a server app that works with the [VISTA-ICM][2] module to control VISTA (10/15/20/21/50/128/250) alarm panels. It provides a **clean web interface** and **event handling** through a hook architecture.
 
-**To learn more and download, visit the <a href="https://github.com/bradyholt/vistaicm-server" target="_blank">project page on GitHub</a>. **
+**To learn more and download, visit the <a href="https://github.com/bradymholt/vistaicm-server" target="_blank">project page on GitHub</a>. **
 
  [1]: /media/screenshot.png
  [2]: http://controlworks.com/modules/Product.aspx?pid=80

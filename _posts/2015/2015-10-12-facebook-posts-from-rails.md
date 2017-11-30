@@ -4,9 +4,9 @@ author: Brady
 layout: post
 permalink: /facebook-posts-from-rails/
 ---
-Awhile back I developed a Rails app I call "veritas" ([GitHub](https://github.com/bradyholt/veritas)) that is intended to help organize community around a group of people.  It was primarily developed for the class my wife and I attend at our church.  It allows us to keep a contact list of members with photos, a calendar of events,  signups management (class breakfast, baby meals, etc.), sending of SMS messages, and manages the publishing of our class podcast.  I know, there are bazillion sites out there that can do these things but it was fun to build and I was able to customize it just how I wanted it.  One of the features I added was the ability to post a message to our class Facebook group page when a new podcast is posted or there is a new signup available.  You know, it posts a message to Facebook that says something like, "A new signup is available to brings meals to the Smith's because they just had a baby!  Click here to signup [link]".
+Awhile back I developed a Rails app I call "veritas" ([GitHub](https://github.com/bradymholt/veritas)) that is intended to help organize community around a group of people.  It was primarily developed for the class my wife and I attend at our church.  It allows us to keep a contact list of members with photos, a calendar of events,  signups management (class breakfast, baby meals, etc.), sending of SMS messages, and manages the publishing of our class podcast.  I know, there are bazillion sites out there that can do these things but it was fun to build and I was able to customize it just how I wanted it.  One of the features I added was the ability to post a message to our class Facebook group page when a new podcast is posted or there is a new signup available.  You know, it posts a message to Facebook that says something like, "A new signup is available to brings meals to the Smith's because they just had a baby!  Click here to signup [link]".
 
-To do this, I utilized the well written gem [koala](https://github.com/arsduo/koala) to interface with Facebook's Graph API.  I have an aptly named module called [FacebookGroupPoster](https://github.com/bradyholt/veritas/blob/bcd394ceaf8546f769e58975ccd7a9e1a20a6327/lib/facebook_group_poster.rb)  that encapsulates the usage of koala so I have a clean interface to call from my app.  In a simplified form, posting a message to our Facebook group when a new podcast is published looks like this:
+To do this, I utilized the well written gem [koala](https://github.com/arsduo/koala) to interface with Facebook's Graph API.  I have an aptly named module called [FacebookGroupPoster](https://github.com/bradymholt/veritas/blob/bcd394ceaf8546f769e58975ccd7a9e1a20a6327/lib/facebook_group_poster.rb)  that encapsulates the usage of koala so I have a clean interface to call from my app.  In a simplified form, posting a message to our Facebook group when a new podcast is published looks like this:
 
 <pre>
 podcast_date = podcast.date.strftime('%m/%d')
@@ -36,7 +36,7 @@ Fortunately I found a series of steps that making obtaining an Access Code fairl
 Anyway, this is what you need to do:
 
 1. Go to the Facebook Developers page - [https://developers.facebook.com](https://developers.facebook.com)
-2. Create a new application; when it asks for the type, specify "Website".  
+2. Create a new application; when it asks for the type, specify "Website".
 3. Skip all the other non-required settings it prompts you for
 4. Go to the Graph API Explorer - [https://developers.facebook.com/tools/explorer/](https://developers.facebook.com/tools/explorer/)
 5. Select your new application on the top right
