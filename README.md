@@ -34,3 +34,7 @@ git push
 www.geekytidbits.com is behind CloudFlare CDN and the Caching Level has been changed from the default of "Standard" to "No Query String" so that assets _with_ a query string _will not_ be cached.  This was done so that I could append `?cache_mode=none` to `main.css` to prevent the CSS from being cached. 
 
 ![image](https://cloud.githubusercontent.com/assets/759811/21596349/a954490a-d0ff-11e6-9233-2cc31db61b1b.png)
+
+# Cross Posting
+
+[Zapier](https://zapier.com) is configured to cross post new blog posts found on the RSS feed to Twitter and LinkedIn.
