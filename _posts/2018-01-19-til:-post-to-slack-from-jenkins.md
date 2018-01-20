@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "TIL: Post to Slack from Jenkins"
+title: "TIL: Post to Slack from Jenkins with curl"
 ---
 
 I recently needed to post to Slack from a Jenkins build but since the [Slack Plugin](https://wiki.jenkins.io/display/JENKINS/Slack+Plugin) for Jenkins doesn't provide fine-grained configuration, I used a curl script in a post-build script.
