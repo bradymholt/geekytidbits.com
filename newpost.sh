@@ -4,13 +4,14 @@
 #    folder. Date will be generated according to the current time in
 #    the system. Usage:
 #
-#        ./newpost.sh "My Blog Post Title"
+#        blog "My Blog Post Title"
 #
+# Source https://codereview.stackexchange.com/questions/158124/generate-a-jekyll-blog-post-template-using-shell
 
 title=$1
 
 if [ -z "$title" ]; then
-    echo "usage: newpost.sh \"My New Blog\""
+    echo "usage: blog \"My New Blog\""
     exit 1
 fi
 
@@ -24,9 +25,7 @@ if [ -f filepath ]; then
     exit 1
 fi
 
-touch $filepath
-
-cat > $filepath <<DELIM
+cat >> $filepath <<DELIM
 ---
 layout: post
 title: "$title"
@@ -34,3 +33,14 @@ title: "$title"
 DELIM
 
 echo "Blog created: $filepath"
+$EDITOR $filepath --wait
+
+read -p "Post? [Y/n] " -n 1 -r
+if [[ $REPLY =~ ^[Yy]$ ]] || [[ $REPLY = "" ]]
+then
+    git add --all :/
+    git commit -m "New blog: ${}"
+    git push
+#else
+#    echo "Not published"
+fi
