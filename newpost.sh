@@ -38,8 +38,8 @@ $EDITOR $filepath --wait
 read -p "Post? [Y/n] " -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]] || [[ $REPLY = "" ]]
 then
-    git add --all :/
-    git commit -m "New blog: ${}"
+    git add $filepath
+    git commit -m "New blog: ${title}"
     git push
 #else
 #    echo "Not published"
