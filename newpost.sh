@@ -2,11 +2,11 @@
 #
 #    This script creates a new blog post with metadata in ./_posts
 #    folder. Date will be generated according to the current time in
-#    the system. Usage:
+#    the system.  Source: https://codereview.stackexchange.com/questions/158124/generate-a-jekyll-blog-post-template-using-shell
 #
-#        blog "My Blog Post Title"
+# Usage:
+#   newpost.sh "My Blog Post Title"
 #
-# Source https://codereview.stackexchange.com/questions/158124/generate-a-jekyll-blog-post-template-using-shell
 
 title=$1
 
@@ -20,11 +20,7 @@ url=$(echo "$title" | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
 filename="$(date +"%Y-%m-%d")-$url.md"
 filepath=$bloghome/_posts/$filename
 
-if [ -f filepath ]; then
-    echo "$filepath already exists."
-    exit 1
-fi
-
+# Create post file
 cat >> $filepath <<DELIM
 ---
 layout: post
@@ -32,12 +28,15 @@ title: "$title"
 ---
 DELIM
 
-echo "Blog created: $filepath"
+echo "Post file created: $filepath"
+
+# Open in editor
 $EDITOR $filepath --wait
 
-read -p "Post? [Y/n] " -n 1 -r
+read -p "Do you want to publish this post? [Y/n] " -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]] || [[ $REPLY = "" ]]
 then
+    # Commit and push
     git add $filepath
     git commit -m "New blog: ${title}"
     git push
