@@ -1,7 +1,22 @@
 /**
  * Reset some basic elements
  */
-body, h1, h2, h3, h4, h5, h6, p, blockquote, pre, hr, dl, dd, ol, ul, figure {
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+hr,
+dl,
+dd,
+ol,
+ul,
+figure {
   margin: 0;
   padding: 0;
   -webkit-font-smoothing: antialiased;
@@ -62,7 +77,8 @@ figcaption {
 /**
  * Lists
  */
-ul, ol {
+ul,
+ol {
   margin-left: $spacing-unit;
 }
 
@@ -75,7 +91,8 @@ ul.condensed {
 }
 
 li {
-  > ul, > ol {
+  > ul,
+  > ol {
     margin-bottom: 0;
   }
 }
@@ -83,7 +100,11 @@ li {
 /**
  * Headings
  */
-h2, h3, h4, h5, h6 {
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: 300;
 }
 
@@ -128,15 +149,6 @@ blockquote {
   }
 }
 
-/**
- * Code formatting
- */
-pre, code {
-  font-size: 15px;
-  border-radius: 3px;
-  background-color: #eef;
-}
-
 code {
   padding: 1px 5px;
 }
@@ -144,12 +156,6 @@ code {
 pre {
   padding: 8px 12px;
   overflow-x: scroll;
-
-  > code {
-    border: 0;
-    padding-right: 0;
-    padding-left: 0;
-  }
 }
 
 /**
