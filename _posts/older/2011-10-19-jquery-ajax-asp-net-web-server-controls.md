@@ -5,6 +5,7 @@ layout: post
 permalink: /jquery-ajax-asp-net-web-server-controls/
 dsq_thread_id: 744 http://www.geekytidbits.com/?p=744
 ---
+
 I have been a pretty heavy user of the ASP.NET AJAX UpdatePanel. It makes Ajax ridiculously easy. You just drop a ScriptManager and UpdatePanel on a page and you magically have Ajax. But, as I have been paying more and more attention to the resulting page markup and payload size of the XMLHttpRequest / XMLHttpResponse calls, I have been raising my eyebrow. Fire up <a href=&#8221;http://getfirebug.com/&#8221; target=&#8221;_blank&#8221;>FireBugor <a href="http://www.fiddler2.com/fiddler2/" target="_blank">Fiddler</a> and have a look. That&#8217;s a whole bunch of data traveling back and forth just to update a portion of the page. The overhead of the UpdatePanel is very large. I&#8217;ve always thought the UpdatePanel seemed a bit sluggish but deemed it acceptable in light of how easy it is to setup and use. As web applications are getting better and faster each day I have been looking around for another solution that has less overhead but it still easy to use.
 
 Over the last year or so I have been embracing the <a href="http://jquery.com/" target="_blank">jQuery</a> JavaScript library. It generally takes the pain out of JavaScript and has great Ajax support. I have learned to really love it. One of the pain points I ran into with using jQuery with ASP.NET, though, was partial updates of Web Server controls (like a GridView or Repeater). Since server controls are required by ASP.NET to be inside of a form tag in an .aspx page or in a UserControl included on the page, this was problematic as partial updates using <a href=&#8221;http://api.jquery.com/load/&#8221; target=&#8221;_blank&#8221;>jQuery .load()</a> should only contain html fragments. If the fragment contains a form tag then a second form would be added to the parent page DOM and make ASP.NET freak out because there is more than one form on the page. It gets ugly fast.
@@ -17,13 +18,14 @@ I finally came upon a great solution to this problem after searching around and 
 
 #### Animals.aspx
 
-<pre class="brush: html;">&lt;%@ Page Language="C#"%&gt;
-&lt;!doctype html&gt;
-&lt;html lang="en"&gt;
-&lt;head&gt;
-     &lt;title&gt;Animals&lt;/title&gt;
-    &lt;script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"&gt;&lt;/script&gt;
-    &lt;script type="text/javascript"&gt;
+```html
+<%@ Page Language="C#"%>
+<!doctype html>
+<html lang="en">
+<head>
+     <title>Animals</title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+    <script type="text/javascript">
         var AnimalDataHelper = {
             update: function () {
                 $('#animals').html('Loading...');
@@ -37,24 +39,26 @@ I finally came upon a great solution to this problem after searching around and 
                 AnimalDataHelper.update();
             });
         });
-    &lt;/script&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;form id="form1" runat="server"&gt;
-    &lt;input type="button" id="refresh" value="Update" /&gt;
-    &lt;div id="animals"&gt;
-    &lt;/div&gt;
-    &lt;/form&gt;
-&lt;/body&gt;
-&lt;/html&gt;</pre>
+    </script>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <input type="button" id="refresh" value="Update" />
+    <div id="animals">
+    </div>
+    </form>
+</body>
+</html>
+```
 
 #### AnimalDataPartial.aspx
 
-<pre class="brush: html">&lt;%@ Page Language="C#"%&gt;
-&lt;script runat="server"&gt;
+```html
+<%@ Page Language="C#"%>
+<script runat="server">
    protected void Page_Load(object sender, EventArgs e)
    {
-     List&lt;string&gt; data = new List&lt;string&gt;() { "dog", "cat", "monkey" };
+     List<string> data = new List<string>() { "dog", "cat", "monkey" };
      animalsGrid.DataSource = data;
      animalsGrid.DataBind();
    }
@@ -64,9 +68,10 @@ I finally came upon a great solution to this problem after searching around and 
      //DO NOT REMOVE THIS METHOD
      //allows web server controls to not be in form runat='server'
    }
-&lt;/script&gt;
-&lt;asp:GridView runat="server" ID="animalsGrid" AutoGenerateColumns="true"&gt;&lt;/asp:GridView&gt;
-Last Updated: &lt;%=DateTime.Now.ToLongTimeString() %&gt;</pre>
+</script>
+<asp:GridView runat="server" ID="animalsGrid" AutoGenerateColumns="true"></asp:GridView>
+Last Updated: <%=DateTime.Now.ToLongTimeString() %>
+```
 
 ### Wrapping Up
 

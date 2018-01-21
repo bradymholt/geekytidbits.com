@@ -17,7 +17,80 @@ Wanting to add a download count badge to the GitHub page, I decided to write a s
 
 Here is the IHttpHandler I ended up with to generate the NuGet Downloads Count badge:
 
-{% gist bradymholt/08b9d9ce29b95cb93989 %}
+```csharp
+using System;
+using System.Net;
+using System.Web;
+
+namespace NuGetDownloadsBadge
+{
+    public class BadgeImageHandler : IHttpHandler
+    {
+        private const string CACHE_KEY_PREFIX = "downloadsCount-";
+        private const int CACHE_DURATION_MINUTES = 5;
+        private const string NUGET_FEED_URL_FORMAT = "https://www.nuget.org/api/v2/Packages()?$orderby=LastUpdated%20desc&$filter=Id%20eq%20%27{0}%27&$top=1&$select=DownloadCount";
+        private const string SHIELDS_BADGE_URL_FORMAT = "http://img.shields.io/badge/nuget-{0}%20downloads-{1}.svg";
+        private const string BADGE_DEFAULT_COLOR = "blue";
+
+        public void ProcessRequest(HttpContext context)
+        {
+            // Grab query parameters and set set defaults
+            string id = context.Request.QueryString["id"];
+            string color = BADGE_DEFAULT_COLOR;
+            if (!string.IsNullOrEmpty(context.Request.QueryString["color"])){
+                color = context.Request.QueryString["color"];
+            }
+
+            // Check to see if the download counts is already cached
+            int count = 0;
+            object cachedCount = context.Cache[CACHE_KEY_PREFIX + id];
+            if (cachedCount != null)
+            {
+                //We have a cached count so use it
+                count = Convert.ToInt32(cachedCount);
+            }
+            else
+            {
+                //We need the downloads count; go get it from NuGet.
+                WebClient nugetClient = new WebClient();
+                nugetClient.Headers[HttpRequestHeader.Accept] = "application/atom+json,application/json";
+                string requestUrl = string.Format(NUGET_FEED_URL_FORMAT, id);
+
+                string oDataResponseRaw = nugetClient.DownloadString(requestUrl);
+                dynamic oDataResponseParsed = Newtonsoft.Json.JsonConvert.DeserializeObject(oDataResponseRaw);
+                count = oDataResponseParsed.d[0].DownloadCount;
+
+                context.Cache.Add(CACHE_KEY_PREFIX + id, count,
+                    null, DateTime.Now.AddMinutes(CACHE_DURATION_MINUTES),
+                    System.Web.Caching.Cache.NoSlidingExpiration,
+                    System.Web.Caching.CacheItemPriority.Normal,
+                    null);
+            }
+
+            //Go grab badge image from Shields
+            string badgeImageUrl = string.Format(SHIELDS_BADGE_URL_FORMAT, count.ToString("N0"), color);
+            WebClient shieldsClient = new WebClient();
+
+            byte[] image = shieldsClient.DownloadData(badgeImageUrl);
+
+            // Respond with our shiny shield badge SVG image
+            context.Response.ContentType = "image/svg+xml";
+            context.Response.AppendHeader("Content-Length", image.Length.ToString());
+            context.Response.AppendHeader("Access-Control-Allow-Origin", "*");
+            context.Response.BinaryWrite(image);
+            context.Response.End();
+        }
+
+        public bool IsReusable
+        {
+            get
+            {
+                return true;
+            }
+        }
+    }
+}
+```
 
 It takes an ID query parameter as the NuGet package name and response with an SVG image badge. Easy enough.
 

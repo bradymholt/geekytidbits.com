@@ -5,6 +5,7 @@ layout: post
 permalink: /asp-net-mvc-deployments-azure-github/
 dsq_thread_id: 1870 http://www.geekytidbits.com/?p=1870
 ---
+
 Windows Azure keeps getting better and better.  It&#8217;s been available for over 3 years and most of that time I have glossed over it in favor of Amazon Web Services.  The big discouraging factors for me were cost, limited services and the horrible Silverlight management interface it used to have.  A lot has changed in Azure over the last few years and I continue to be impressed.
 
 They finally dumped the Silverlight management interface and went to a modern (and awesome, actually) HTML5 interface.  It is very functional and has some impressive UX features.  I like it a lot.  Also, Azure has fully embraced **Git**.  To be honest, this surprises me because Microsoft has traditionally been so closed and promoting of their own tool chain (i.e. TFS for source control).  But, this seems to be in line with a broader shift I&#8217;ve seen in the Microsoft Developer Division in recent years.  Kudos to Microsoft because I think this is the right direction.
@@ -15,7 +16,7 @@ Here&#8217;s an example of  how you do it:
 
 ### Create ASP.NET MVC Solution
 
-Normally you&#8217;ll already have a solution you&#8217;re working with you want to use but for demonstration purposes I will create new ASP.NET MVC 4 Solution called *foo* and save it locally.
+Normally you&#8217;ll already have a solution you&#8217;re working with you want to use but for demonstration purposes I will create new ASP.NET MVC 4 Solution called _foo_ and save it locally.
 
 [<img class="wp-image-1876 alignnone" alt="aspmvc4" src="/media/aspmvc4.png" width="613" height="160" />][1]
 
@@ -27,11 +28,13 @@ You can (obviously) do this with the Git command line  or one of the [Git GUIs�
 
 After you create the GitHub repo, there will be a screen that shows how to init a local repo and connect it to your new GitHub repo and it looks similar to this:
 
-<pre>cd C:\dev\foo
+```shell
+cd C:\dev\foo
 git init
 git commit -m "first commit"
 git remote add origin git@github.com:username/foo.git
 git push -u origin master</pre>
+```
 
 ### Setup new Azure Website
 
@@ -47,20 +50,19 @@ You&#8217;ll want to pull up the new web site you just created and then go to th
 
 [<img class="size-full wp-image-1888 alignnone" style="display: block;" alt="azuredeployment" src="/media/azuredeployment.png" width="262" height="235" />][7][<img class="alignnone" style="display: block;" alt="azuregithub" src="/media/azuregithub.png" width="491" height="318" />][8][<img class="alignnone size-full wp-image-1889" style="display: block;" alt="azuredeploymentsuccess" src="/media/azuredeploymentsuccess.png" width="613" height="203" />][9]
 
-
 ### A Note About Dependencies
 
 When Azure pulls your source from GitHub and compiles it, it will have to resolve any assembly references.  There are two ways to handle this:
 
-  1. **Check your packages folder (from the solution directory) into GitHub &#8211;** This is straight forward and the least issue prone way to handle references.  Just ensure you commit the packages folder which contain all your assembly .dll references.  If all your external dependencies were added from NuGet you should be good to go.  If you have any assembly references that are not in NuGet you can place them in the packages folder directly and change the reference to point to this location.  This way, when Azure compiles your site, all the assembly .dll files will be available in the packages folder and you&#8217;ll be set.
-  2. **Enable NuGet Package Restore** &#8211; To avoid checking in the packages folder (which could be quite large and go against everything that has been pounded in your head about source control best practices), you can <a href="http://blog.maartenballiauw.be/post/2012/06/07/Use-NuGet-Package-Restore-to-avoid-pushing-assemblies-to-Windows-Azure-Websites.aspx" target="_blank">Enable NuGetPackage Restore</a> which will tell Azure to download package references from NuGet.  You need to make sure and commit the **packages.config **file from your project directory so Azure will know which packages to install.
+1. **Check your packages folder (from the solution directory) into GitHub &#8211;** This is straight forward and the least issue prone way to handle references.  Just ensure you commit the packages folder which contain all your assembly .dll references.  If all your external dependencies were added from NuGet you should be good to go.  If you have any assembly references that are not in NuGet you can place them in the packages folder directly and change the reference to point to this location.  This way, when Azure compiles your site, all the assembly .dll files will be available in the packages folder and you&#8217;ll be set.
+2. **Enable NuGet Package Restore** &#8211; To avoid checking in the packages folder (which could be quite large and go against everything that has been pounded in your head about source control best practices), you can <a href="http://blog.maartenballiauw.be/post/2012/06/07/Use-NuGet-Package-Restore-to-avoid-pushing-assemblies-to-Windows-Azure-Websites.aspx" target="_blank">Enable NuGetPackage Restore</a> which will tell Azure to download package references from NuGet.  You need to make sure and commit the **packages.config **file from your project directory so Azure will know which packages to install.
 
- [1]: /media/aspmvc4.png
- [2]: http://git-scm.com/downloads/guis
- [3]: /media/azuregithub1.png
- [4]: /media/azurenew.png
- [5]: /media/azurenewname.png
- [6]: /media/azuredashboard.png
- [7]: /media/azuredeployment.png
- [8]: /media/azuregithub.png
- [9]: /media/azuredeploymentsuccess.png
+[1]: /media/aspmvc4.png
+[2]: http://git-scm.com/downloads/guis
+[3]: /media/azuregithub1.png
+[4]: /media/azurenew.png
+[5]: /media/azurenewname.png
+[6]: /media/azuredashboard.png
+[7]: /media/azuredeployment.png
+[8]: /media/azuregithub.png
+[9]: /media/azuredeploymentsuccess.png

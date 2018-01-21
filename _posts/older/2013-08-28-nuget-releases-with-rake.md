@@ -14,9 +14,8 @@ The first thing I did was run &#8216;**gem install albacore&#8217; **to install
 
 This Rakefile does all the dirty work including updating the AssemblyInfo with the **version** number (passed in as parameter), **building** in Release mode, **packaging **the NuGet package, **pushing **NuGet repository, and **tagging** my Git repository with the current release number.  Releases are a breeze now!
 
-{% gist bradymholt/6366339 %}
-
-<pre style="display: none;">#Rakefile for .NET project
+```ruby
+#Rakefile
 #Example usage: rake release["1.7.0"]
 
 require 'albacore'
@@ -25,37 +24,38 @@ project_name = "CronExpressionDescriptor"
 
 task :version, [:version_number] do |t, args|
   desc "Version the assembly"
-  	assemblyinfo :version do |asm|
-		asm.version = args.version_number
-		asm.file_version = args.version_number
-		asm.input_file = './Properties/AssemblyInfo.cs'
-		asm.output_file = './Properties/AssemblyInfo.cs'
- 	end
+    assemblyinfo :version do |asm|
+    asm.version = args.version_number
+    asm.file_version = args.version_number
+    asm.input_file = './Properties/AssemblyInfo.cs'
+    asm.output_file = './Properties/AssemblyInfo.cs'
+   end
 end
 
 task :build do
-	desc 'Build the solution in the Release configuration'
-	msbuild :build do |msb|
-		msb.solution = project_name + '.csproj'
-		msb.targets = [ :Clean, :Build ]
-		msb.properties = { :Configuration =&gt; 'Release' }
- 	end
+  desc 'Build the solution in the Release configuration'
+  msbuild :build do |msb|
+    msb.solution = project_name + '.csproj'
+    msb.targets = [ :Clean, :Build ]
+    msb.properties = { :Configuration => 'Release' }
+   end
 end
 
-task :package =&gt; [:build] do
-	desc "create the nuget package"
-	sh "nuget.exe pack #{project_name}.csproj -Prop Configuration=Release -OutputDirectory bin\\Release -Verbosity normal"
+task :package => [:build] do
+  desc "create the nuget package"
+  sh "nuget.exe pack #{project_name}.csproj -Prop Configuration=Release -OutputDirectory bin\\Release -Verbosity normal"
 end
 
 task :push, [:version_number] do |t, args|
-	sh "nuget.exe push bin\\Release\\#{project_name}.#{args.version_number}.nupkg"
+  sh "nuget.exe push bin\\Release\\#{project_name}.#{args.version_number}.nupkg"
 end
 
 task :tag, [:version_number] do |t, args|
-	sh "git tag v#{args.version_number}"
-	sh "git push --tags"
+  sh "git tag v#{args.version_number}"
+  sh "git push --tags"
 end
 
-task :release, [:version_number] =&gt; [:version, :package, :push, :tag] do |t, args|
-	desc "v#{args.version_number} Released!"
-end</pre>
+task :release, [:version_number] => [:version, :package, :push, :tag] do |t, args|
+  desc "v#{args.version_number} Released!"
+end
+```

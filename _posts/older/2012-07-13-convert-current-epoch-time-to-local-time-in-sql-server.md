@@ -5,12 +5,15 @@ layout: post
 permalink: /convert-current-epoch-time-to-local-time-in-sql-server/
 dsq_thread_id: 1187 http://www.geekytidbits.com/?p=1187
 ---
+
 Epoch, or <a href="http://en.wikipedia.org/wiki/Unix_time" target="_blank">Unix time</a>, is a measure of time represented by the number of seconds since  midnight on January 1, 1970 (UTC).  It is used in various places, especially in POSIX systems such as Unix, Linux, BSD, etc.  I recently came across an integration project where I had the need to convert current epoch time to the &#8216;local&#8217; timezone in SQL Server.  Here is what I ended up with.
 
-<pre class="brush:sql;">DECLARE @epoch int
+```sql
+DECLARE @epoch int
 SET @epoch = 1342189899 --7/13/2012 14:31:39 UTC
 PRINT DATEADD(minute, DATEDIFF(minute, getutcdate(), getdate()), DATEADD(s, @epoch, '19700101 00:00:00:000'))
---output: Jul 13 2012  9:31AM</pre>
+--output: Jul 13 2012  9:31AM
+```
 
 See it in action on **SQL Fiddle** here: <a href="http://sqlfiddle.com/#!3/d41d8/2617/0" target="_blank">http://sqlfiddle.com/#!3/d41d8/2617/0</a>
 

@@ -19,7 +19,38 @@ The article [Associations in EF Code First CTP5: Part 1 – Complex Types][2] wa
 
 Here is a gist demonstrating what it looks like.
 
-{% gist bradymholt/22f9cfa419feb984bba2 %}
+_ef-complextypes.cs_
+
+```csharp
+public class Person {
+  public string FirstName {get;set;}
+  public string LastName  {get;set;}
+  public Address = new Address();   // << It's important to instantiate Address.
+}
+
+[ComplexType]  // <<  This attribute is important.
+public class Address {
+  public string Address1 {get;set;}
+  public string Address2 {get;set;}
+  public string City {get;set;}
+}
+
+/*Example usage:
+   Person p = new Person();
+   p.Address.Address1 = "1848 Willow Drive";
+   p.Address.Address2 = "Unit 105";
+   p.Address.Address1 = "Houston";
+*/
+
+/*  Table structure
+   dbo.Person
+      FirstName varchar(50),
+      LastName varchar(50),
+      Address1 varchar(50),
+      Address2 varchar(50),
+      City varchar(50)
+*/
+```
 
 [1]: /entity-framework-tech-talk/
 [2]: http://weblogs.asp.net/manavi/entity-association-mapping-with-code-first-part-1-one-to-one-associations

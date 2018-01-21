@@ -5,6 +5,7 @@ layout: post
 permalink: /ec2-fedora-lamp/
 dsq_thread_id: 815 http://www.geekytidbits.com/?p=815
 ---
+
 New to EC2?  Take a look at the <a href="http://ec2dream.webs.com/AWS-Management-Console.pdf" target="_blank">Getting Started Guide</a>.
 
 <li style="text-align: left;">
@@ -21,13 +22,15 @@ New to EC2?  Take a look at the <a href="http://ec2dream.webs.com/AWS-Manageme
   * **Connect** to your new instance using the ssh client of your choice. Note, you’ll need to use the Key Pair your generated when you launched your instance to connect. When asked for the username enter **ec2-user**. I use PuTTY from Windows and it was a little tricky to get connected but the [Appendix: PuTTY][1] helped.  The thing is, you need to use puttygen.exe to convert a .pem key pair file to .ppk format so that Putty can use it.
   * **Install** the needed software with yum.
 
-<pre style="padding-left: 60px;">sudo yum install httpd mysql mysql-server php
-sudo chkconfig --levels 235 httpd on
-sudo service httpd start
-sudo chkconfig --levels 235 mysqld on
-sudo service mysqld start
-mysql_secure_installation</pre>
+    ```shell
+    sudo yum install httpd mysql mysql-server php
+    sudo chkconfig --levels 235 httpd on
+    sudo service httpd start
+    sudo chkconfig --levels 235 mysqld on
+    sudo service mysqld start
+    mysql_secure_installation
+    ```
 
-  * **Test** apache by firing up a browser and navigating to the Public DNS name of your server listed in the EC2 instance properties.  It usually looks something like ec2-52-15-148-17.compute-1.amazonaws.com.  If you get the Apache test page you are in business.
+* **Test** apache by firing up a browser and navigating to the Public DNS name of your server listed in the EC2 instance properties.  It usually looks something like ec2-52-15-148-17.compute-1.amazonaws.com.  If you get the Apache test page you are in business.
 
- [1]: http://docs.amazonwebservices.com/AmazonEC2/gsg/2007-01-19/putty.html
+[1]: http://docs.amazonwebservices.com/AmazonEC2/gsg/2007-01-19/putty.html

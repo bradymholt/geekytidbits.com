@@ -5,6 +5,7 @@ layout: post
 permalink: /copy-sql-server-database-smo/
 dsq_thread_id: 837 http://www.geekytidbits.com/?p=837
 ---
+
 I recently came across the need the copy a SQL Server database structure and data to a new database.  I could use the <a href="http://msdn.microsoft.com/en-us/library/ms190436.aspx" target="_blank">Backup/Restore</a> method but I needed to be able to do this on an automated basis with ease.  I also needed the flexibility to change object names and generally have more control when creating the database copy.
 
 Searching around, I found <a href="http://msdn.microsoft.com/en-us/library/ms162169.aspx" target="_blank">SQL Server Management Objects (SMO)</a> which are .NET assemblies that can be used to interact with SQL Server directly.  Actually, SQL Server Management Studio (SSMS) uses SMO under the hood for many operations such as the &#8220;Generate Scripts&#8221; screen.  SMO assemblies are installed in the folder C:\Program Files (x86)\Microsoft SQL Server\100\SDK\Assemblies\ when you select the &#8220;Client Tools SDK&#8221; during SQL Server install.  If you don&#8217;t have the assemblies installed and need help take a look at <a href="http://msdn.microsoft.com/en-us/library/ms162189.aspx" target="_blank">Installing SMO</a>.
@@ -13,17 +14,18 @@ Getting the SMO objects to do what I wanted was a bit tricky because the MSDN do
 
 The first thing you need to do is add references to the following SMO assemblies:
 
-  * C:\Program Files (x86)\Microsoft SQL Server\100\SDK\Assemblies\Microsoft.SqlServer.ConnectionInfo.dll
-  * C:\Program Files (x86)\Microsoft SQL Server\100\SDK\Assemblies\Microsoft.SqlServer.Management.Sdk.Sfc.dll
-  * C:\Program Files (x86)\Microsoft SQL Server\100\SDK\Assemblies\Microsoft.SqlServer.Smo.dll
-  * C:\Program Files (x86)\Microsoft SQL Server\100\SDK\Assemblies\Microsoft.SqlServer.SmoExtended.dll
-  * C:\Program Files (x86)\Microsoft SQL Server\100\SDK\Assemblies\Microsoft.SqlServer.SqlEnum.dll
+* C:\Program Files (x86)\Microsoft SQL Server\100\SDK\Assemblies\Microsoft.SqlServer.ConnectionInfo.dll
+* C:\Program Files (x86)\Microsoft SQL Server\100\SDK\Assemblies\Microsoft.SqlServer.Management.Sdk.Sfc.dll
+* C:\Program Files (x86)\Microsoft SQL Server\100\SDK\Assemblies\Microsoft.SqlServer.Smo.dll
+* C:\Program Files (x86)\Microsoft SQL Server\100\SDK\Assemblies\Microsoft.SqlServer.SmoExtended.dll
+* C:\Program Files (x86)\Microsoft SQL Server\100\SDK\Assemblies\Microsoft.SqlServer.SqlEnum.dll
 
 <div>
   Here is the C# program I used to script out the database structure and data to .sql files, create the destination database, and run the scripts to build up the database copy.
 </div>
 
-<pre class="brush: c-sharp">using System;
+```csharp
+using System;
 using Microsoft.SqlServer.Management.Smo;
 using Microsoft.SqlServer.Management.Common;
 using System.IO;
@@ -136,4 +138,5 @@ class Program
         string script = File.ReadAllText(destinationFileName);
         return script;
     }
-}</pre>
+}
+```

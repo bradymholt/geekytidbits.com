@@ -5,6 +5,7 @@ layout: post
 permalink: /raspberry-pi-unattended-audio-recordings/
 dsq_thread_id: 1314 http://www.geekytidbits.com/?p=1314
 ---
+
 Have you heard about the new Raspberry Pi computer?  From the <a href="http://www.raspberrypi.org/" target="_blank">website</a>: &#8220;The Raspberry Pi is a credit-card sized computer that plugs into your TV and a keyboard. It’s a capable little PC which can be used for many of the things that your desktop PC does, like spreadsheets, word-processing and games. It also plays high-definition video.&#8221;
 
 **Basically, it&#8217;s an insanely cheap computer ($35) that you can do all sorts of geeky things with.  Go get one NOW (and then come back).**
@@ -21,14 +22,15 @@ So, that&#8217;s exactly what I did.  It turned out to be a fun project and has
 
 I have cron running the following script every Sunday morning at 11:00AM (when class starts) to record for one hour (podcast-record.sh 3600).  Obviously, I took out my credentials and such but this should be enough to give you an idea of what I&#8217;m doing.  This script does the following:
 
-  * Record audio from mic using arecord
-  * Use sox to convert stereo to mono for smaller file size
-  * Use lame to encode to mp3 at 64kbps bit rate
-  * Upload to Amazon S3 storage
-  * Write a record to my mysql database.  I have a web app running on top of this database that generates the podcast xml feed.
-  * Send a &#8216;success&#8217; email notifying me it all worked
+* Record audio from mic using arecord
+* Use sox to convert stereo to mono for smaller file size
+* Use lame to encode to mp3 at 64kbps bit rate
+* Upload to Amazon S3 storage
+* Write a record to my mysql database.  I have a web app running on top of this database that generates the podcast xml feed.
+* Send a &#8216;success&#8217; email notifying me it all worked
 
-<pre class="brush: bash;"># Unattended podcast record process
+```shell
+# Unattended podcast record process
 # Author: brady@geekytidbits.com
 # Notes: Invoke with seconds parameter specifying how many seconds to record, ex. 'podcast-record.sh 10'
 
@@ -72,12 +74,15 @@ mysql -h www.mydomain.com -D MY_DB_NAME -u MY_DB_USERNAME -pMY_DB_PASSWORD --exe
 mv ./upload/${FILENAME}.mp3 ./complete/
 
 #send email
-echo "Done!" | mail -s "Podcast ${DATE} - Upload Complete" $NOTIFY_EMAIL</pre>
+echo "Done!" | mail -s "Podcast ${DATE} - Upload Complete" $NOTIFY_EMAIL
+```
 
 To install all the dependencies used in this script simply run the following:
 
-<pre class="brush:bash;">pacman -S sudo alsa-utils sox lame s3cmd mysql</pre>
+```shell
+pacman -S sudo alsa-utils sox lame s3cmd mysql
+```
 
 There you have it.  That was fun.  Now go get a Pi of your own and do something fun with it.
 
- [1]: /media/IMG_0037.jpg
+[1]: /media/IMG_0037.jpg
