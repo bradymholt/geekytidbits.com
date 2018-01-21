@@ -5,6 +5,3 @@ description: Tidbits on software development, technology and other geeky stuff.
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://www.geekytidbits.com" # the base hostname & protocol for your site
 exclude: ["ansible"]
-
-# Build settings
-markdown: kramdown
