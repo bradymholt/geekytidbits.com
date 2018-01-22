@@ -1,7 +1,7 @@
-<!-- ---
+---
 layout: post
 title: "10 Reasons to Blog"
---- -->
+---
 
 I have been blogging for just over 8 years and recently thought about why I continue to blog. It's entirely by choice, after all, but I keep doing it and here are 10 reasons why (in no particular order):
 
