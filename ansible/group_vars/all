@@ -3,4 +3,4 @@ bare_repo_directory: "/home/{{ deploy_user }}/repos/{{ app_name }}.git"
 deploy_directory: "/home/{{ deploy_user }}/apps/{{ app_name }}"
 
 rvm1_rubies:
-  - 'ruby-2.2.2'
+  - 'ruby-2.5.0'

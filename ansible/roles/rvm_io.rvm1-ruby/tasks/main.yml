@@ -1,4 +1,2 @@
----
-
-- include: 'rvm.yml'
-- include: 'rubies.yml'
+- import_tasks: 'rvm.yml'
+- import_tasks: 'rubies.yml'
