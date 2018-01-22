@@ -1,7 +1,7 @@
----
+<!-- ---
 layout: post
 title: "10 Reasons to Blog"
----
+--- -->
 
 I have been blogging for just over 8 years and recently thought about why I continue to blog. It's entirely by choice, after all, but I keep doing it and here are 10 reasons why (in no particular order):
 
@@ -14,4 +14,4 @@ I have been blogging for just over 8 years and recently thought about why I cont
 1. **Career opportunities** - maintaining a blog a is a great way to impress prospective employers - to demonstrate expertise and passion.
 1. **Fun** - I find it fun to maintain a blogging platform; the endless tweaking and such.
 1. Give back
-1. Learn things
+1. **Learn things** - You can't blog about things a
