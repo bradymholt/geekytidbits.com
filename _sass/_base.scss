@@ -70,10 +70,6 @@ figure > img {
   display: block;
 }
 
-figcaption {
-  font-size: $small-font-size;
-}
-
 /**
  * Lists
  */
@@ -150,6 +146,7 @@ blockquote {
 }
 
 pre {
+  font-size: 1em;
   padding: 8px 12px;
   overflow-x: scroll;
 }
