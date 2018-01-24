@@ -11,6 +11,7 @@ comments: true
         {{ content }}
     </article>
     <div id="disqus_thread"></div>
+    {% if layout.comments or page.comments %}
     <script type="text/javascript">
         {% if page.dsq_thread_id != nil %}
         var disqus_identifier = '{{ page.dsq_thread_id}}';
@@ -31,4 +32,5 @@ comments: true
     <noscript>Please enable JavaScript to view the
         <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
     </noscript>
+    {% endif %}
 </div>
