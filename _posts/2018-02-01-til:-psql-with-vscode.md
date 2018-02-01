@@ -19,13 +19,4 @@ More Googling and fiddling and I found that I needed to add the `-w` parameter w
 export PSQL_EDITOR="code -w"
 ```
 
-Now when I enter `\e` from psql, VSCode launches with the contents of my current or last executed query and saving the file results in psql executing the query.  Awesome!---
-layout: post
-title: "TIL: psql with VSCode"
-permanlink: /til:-psql-with-vscode/
----
----
-layout: post
-title: "TIL: psql with VSCode"
-permanlink: /til:-psql-with-vscode/
----
+Now when I enter `\e` from psql, VSCode launches with the contents of my current or last executed query and saving the file results in psql executing the query.  Awesome!
