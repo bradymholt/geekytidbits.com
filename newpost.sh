@@ -25,7 +25,7 @@ cat >> $filepath <<DELIM
 ---
 layout: post
 title: "$title"
-permanlink: /$url/
+permalink: /$url/
 ---
 DELIM
 

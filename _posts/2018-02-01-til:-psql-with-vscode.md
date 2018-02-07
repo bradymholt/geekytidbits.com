@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "TIL: psql with VSCode"
-permanlink: /til:-psql-with-vscode/
+permalink: /til:-psql-with-vscode/
 ---
 
 I was catching up on my Feedly yesterday and ran across [Postgres Hidden Gems](http://www.craigkerstiens.com/2018/01/31/postgres-hidden-gems/) by Craig Kerstein.  There are some really neat things in that list!
