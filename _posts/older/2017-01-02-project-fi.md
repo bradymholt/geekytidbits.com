@@ -2,7 +2,7 @@
 title: My Phone Setup with Project Fi
 author: Brady
 layout: post
-permalink: /project-fi
+permalink: /project-fi/
 ---
 
 I love non-standard cell service setups.  Actually, I probably annoy my family and friends because I am constantly trying different things, talking about it, and sometimes asking them to bear with me during a transition time when they can't get ahold of me.

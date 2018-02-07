@@ -2,7 +2,7 @@
 title: Ansible Provisioning for my Raspberry Pi
 author: Brady
 layout: post
-permalink: /raspberry-pi-ansible-provisioning
+permalink: /raspberry-pi-ansible-provisioning/
 ---
 
 A few years back, I bought a <a href="/my-pogoplug-geek-toy/">Pogoplug</a> and got <a href="https://archlinuxarm.org/">Arch Linux ARM</a> running on it.  It was a lot of fun to work on and I eventually got it configured as a Samba file server, DLNA media server, and running my <a href="/vistaicm-server">vistaicm-server</a> project to control my Honeywell Alarm System.  It was suprisingly stable and I learned to love Arch Linux while fiddling with it.

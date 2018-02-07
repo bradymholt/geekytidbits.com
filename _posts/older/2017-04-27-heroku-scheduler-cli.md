@@ -2,7 +2,7 @@
 title: Running Heroku CLI from Heroku Scheduler
 author: Brady
 layout: post
-permalink: /heroku-scheduler-cli
+permalink: /heroku-scheduler-cli/
 ---
 
 The Heroku Scheduler is a simple and handy add-on for any Heroku application, to run recurring commands. I recently had the need to run a Heroku CLI command from within the Scheduler itself. Why would you need to do such a thing? In my case, at [YNAB](https://youneedabudget.com), we have an app pipeline which includes a staging app for our marketing site. We don't want this staging app running all the time for various reasons, including not wanting others to accidently stuble upon it and not wanting search engines to crawl it. So, we wanted to put the app in maintenace mode on a scheduled basis. When we deploy an update to the staging app we take the app out of maintenance mode as part of the deployment process but then we want the Scheduler to automatically take it back into maintence mode.

@@ -2,7 +2,7 @@
 title: Using Google Assistant to Arm my House Alarm
 author: Brady
 layout: post
-permalink: /google-assistant-arm-alarm
+permalink: /google-assistant-arm-alarm/
 ---
 
 <iframe width="560" height="315" style="margin-bottom:10px;" src="https://www.youtube.com/embed/V_INz5tQLGI" frameborder="0" allowfullscreen>

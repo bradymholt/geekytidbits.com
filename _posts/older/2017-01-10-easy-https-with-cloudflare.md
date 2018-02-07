@@ -2,7 +2,7 @@
 title: Easy HTTPS with Cloudflare
 author: Brady
 layout: post
-permalink: /easy-https-with-cloudflare
+permalink: /easy-https-with-cloudflare/
 ---
 
 HTTPS everywhere!  This is the trend of late, and for good reason.  Phishing, connection snooping, man-in-the-middle attacks and hacking in general is pervasive today and security on the web is more important than ever.

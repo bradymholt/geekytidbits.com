@@ -2,7 +2,7 @@
 title: The LATERAL join
 author: Brady
 layout: post
-permalink: /lateral-join
+permalink: /lateral-join/
 ---
 
 The LATERAL join is an interesting and powerful join type that is a bit intimidating at first but when you take a closer look it is very useful in certain scenarios.
