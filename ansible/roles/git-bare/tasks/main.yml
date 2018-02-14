@@ -15,7 +15,9 @@
   action: command chdir={{ bare_repo_directory }} creates={{ bare_repo_directory }}/HEAD git init --bare
 
 - name: ensure repositories permisions
-  action: command chdir={{ bare_repo_directory }} chown {{ deploy_user }} -R .
+  file:
+    owner: "{{ deploy_user }}"
+    path: "{{ bare_repo_directory }}"
 
 - name: ensure post-receive hooks exists
   action: template src=post-receive.j2 dest={{ bare_repo_directory }}/hooks/post-receive owner={{ deploy_user }} mode=0755
