@@ -4,6 +4,11 @@ TMP_GIT_CLONE=/tmp/{{app_name}}
 DEPLOY_DIR={{deploy_directory}}
 
 git clone $GIT_REPO $TMP_GIT_CLONE
-jekyll build --source $TMP_GIT_CLONE --destination $DEPLOY_DIR
+cd $TMP_GIT_CLONE
+
+# Add link from $TMP_GIT_CLONE/_site to $TMP_GIT_CLONE to fix issue with amp-jekyll not being able to find images 
+ln -s $TMP_GIT_CLONE _site
+
+jekyll build --destination $DEPLOY_DIR
 rm -Rf $TMP_GIT_CLONE
 exit
