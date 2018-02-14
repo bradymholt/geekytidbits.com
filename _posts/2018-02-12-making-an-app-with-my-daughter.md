@@ -13,7 +13,7 @@ Once the time came, we got busy.  I showed her what I had so far.  It was really
 
 ## Demo
 Here's the working app:
-![painting-app](../media/painting-app.gif) 
+![painting-app](../media/painting-app.gif){:height="451" width="691"}
 
 And, of course, I had to publish it GitHub for her: [https://github.com/bradymholt/the-painting-app](https://github.com/bradymholt/the-painting-app).  We also made a shortened URL to the GitHub Page driven app url: [https://tiny.cc/kaylagrace](https://tiny.cc/kaylagrace).
 
