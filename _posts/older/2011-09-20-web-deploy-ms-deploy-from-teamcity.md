@@ -29,12 +29,11 @@ dsq_thread_id: 656 http://www.geekytidbits.com/?p=656
 
 ## Setup Steps
 
-  1. Install the [Web Deployment Tool][1] on your TeamCity server and the server you want to deploy your web application to (&#8220;target server&#8221;).
+  1. Install the [Web Deployment Tool](http://www.iis.net/download/webdeploy) on your TeamCity server and the server you want to deploy your web application to (&#8220;target server&#8221;).
   2. On your target server, setup an administrator user account for use by TeamCity.
   3. Create a new project in TeamCity.
   4. Under Project Configuration, select &#8220;Build Parameters&#8221; option.
-  5. Add Configuration Parameters and System Properties per the example below. [  
-    <img class="alignnone  wp-image-665" style="border-width: 1px; border-color: black; border-style: solid;" title="teamcity_build_parameters" alt="" src="/media/teamcity_build_parameters1.png" width="494" height="594" />][2]
+  5. Add Configuration Parameters and System Properties per the example below. ![Configuration Parameters](/media/teamcity_build_parameters1.png)    
   6. Change the values highlighted in yellow above to your own values. A few notes:
       * **build.file.directory** = this is the *relative checkout path *of the folder which contains your web application .csproj file
       * **system.DeployIISAppPath** = the IIS website name on the target server which you want to deploy to. Yes, this means you need to configure IIS ahead of time if you are going to use anything other than the &#8220;Default Web Site&#8221; in IIS.
@@ -42,7 +41,7 @@ dsq_thread_id: 656 http://www.geekytidbits.com/?p=656
       * **system.UserName / system.Password** = the username and password of the administrator account you setup earlier for the target server.
   7. Under Project Configuration, select &#8220;Build Steps&#8221; option and add a new Build Step (MSBuild runner type).
   8. Configure the new build step per the example below:  
-    [<img class="alignnone size-full wp-image-685" style="border-width: 1px; border-color: black; border-style: solid;" title="teamcity_build_step" alt="" src="/media/teamcity_build_step.png" width="570" height="398" />][3]
+    ![Build Step](/media/teamcity_build_step.png)
   9. Save the new TeamCity project.
  10. Run the project build and you&#8217;re done! The web application will be compiled and deployed to your server running IIS.
 
@@ -57,7 +56,3 @@ dsq_thread_id: 656 http://www.geekytidbits.com/?p=656
 
   * <a href="http://weblogs.asp.net/scottgu/archive/2010/09/13/automating-deployment-with-microsoft-web-deploy.aspx" target="_blank">Automating Deployment with Microsoft Web Deploy</a>
   * <a href="http://www.troyhunt.com/2010/11/you-deploying-it-wrong-teamcity_25.html" target="_blank">You&#8217;re deploying it wrong! TeamCity, Subversion & Web Deploy part 4: Continuous builds with TeamCity</a>
-
- [1]: http://www.iis.net/download/webdeploy
- [2]: /media/teamcity_build_parameters1.png
- [3]: /media/teamcity_build_step.png

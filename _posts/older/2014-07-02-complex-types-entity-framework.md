@@ -11,7 +11,7 @@ Last week I gave a [tech talk on Entity Framework][1]. One of the questions that
 I had to dig around a bit to figure out how to get it to work but it is definitely possible.  You just need to:
 
 * Define the complex type class
-* Decorate the type with <span style="color: #008080;">[ComplexType]</span>
+* Decorate the type with  `[ComplexType]`
 * Add a member of this type to the container type (i.e. add Address property to Person class)
 * Make sure the type is always instantiated (either at declaration or in constructor).  This seems a bit odd but if you don&#8217;t do this EF will throw an exception at runtime.
 
