@@ -7,5 +7,5 @@ task :provision do
 end
 
 task :deploy do
-  sh 'jekyll build && rsync -vr _site 45.55.125.52:/home/bholt/apps/geekytidbits.com'
+  sh 'jekyll build && rsync -vr _site/ 45.55.125.52:/home/bholt/apps/geekytidbits'
 end

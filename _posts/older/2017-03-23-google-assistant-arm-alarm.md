@@ -5,7 +5,7 @@ layout: post
 permalink: /google-assistant-arm-alarm/
 ---
 
-<iframe width="560" height="315" style="margin-bottom:10px;" src="https://www.youtube.com/embed/V_INz5tQLGI" frameborder="0" allowfullscreen>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/V_INz5tQLGI" frameborder="0" allowfullscreen>
   <a href="https://www.youtube.com/watch?v=V_INz5tQLGI"><img src="https://img.youtube.com/vi/V_INz5tQLGI/0.jpg"/></a>
 </iframe>
 
