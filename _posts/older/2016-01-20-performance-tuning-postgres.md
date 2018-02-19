@@ -56,7 +56,7 @@ SELECT
   seq_scan - idx_scan AS too_much_seq,
   CASE
     WHEN
-      seq_scan - idx_scan > 0
+      seq_scan - coalesce(idx_scan, 0) > 0
     THEN
       'Missing Index?'
     ELSE
