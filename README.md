@@ -15,7 +15,7 @@ Code formatting is handled by [rouge](https://github.com/jneen/rouge). Simply us
 
 # Provisioning
 
-* Run ansible-playbook -i production provision.yml from `/ansible` directory
+* Run ansible-playbook -i production provision.yml from `/ops` directory
 
 # Deployment
 

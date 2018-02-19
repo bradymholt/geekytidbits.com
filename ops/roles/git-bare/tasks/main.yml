@@ -8,9 +8,6 @@
 - name: Install latest available version of jekyll.
   gem: name=jekyll user_install=yes state=latest
 
-- name: Install amp-jekyll gem
-  gem: name=amp-jekyll state=latest
-
 - name: Create bare repo directory
   file: path={{ bare_repo_directory }} state=directory owner={{ deploy_user }}
 
