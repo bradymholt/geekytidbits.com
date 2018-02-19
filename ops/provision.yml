@@ -3,9 +3,6 @@
   hosts: all
   gather_facts: false
   remote_user: root
-
   roles:
     - webserver
-    - rvm_io.rvm1-ruby
     - nginx
-    - git-bare

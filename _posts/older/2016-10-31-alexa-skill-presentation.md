@@ -11,9 +11,8 @@ The topic was "Controlling the Amazon Echo with JavaScript" and my goal was intr
 
 Here is the [presentation](https://docs.google.com/presentation/d/1ICOJPCjiYj8cF1lPOZHCuHUz8TwKD915yghO2yA0PAw/edit?usp=sharing):
 
-<div style="margin: 20px 0 20px 0;">
-    <iframe src="https://docs.google.com/presentation/d/1ICOJPCjiYj8cF1lPOZHCuHUz8TwKD915yghO2yA0PAw/embed?start=false&loop=false&delayms=3000" frameborder="0" width="750" height="450" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
-</div>
+<iframe src="https://docs.google.com/presentation/d/1ICOJPCjiYj8cF1lPOZHCuHUz8TwKD915yghO2yA0PAw/embed?start=false&loop=false&delayms=3000" frameborder="0" width="750" height="450" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+
 The skill I used during the presentation was called "Guitar Ace" and is a skill that plays guitar chords and helps you tune your guitar.  The repository for the skill is located here: [https://github.com/bradymholt/alexa-guitar-ace](https://github.com/bradymholt/alexa-guitar-ace) and the bulk of the code is shown below:
 
 ```js

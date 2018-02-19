@@ -1,0 +1,12 @@
+all:
+  vars:
+    # The following vars apply globally; additional config is in group_vars/all.
+    app_name: geekytidbits      # name of application
+    deploy_user: bholt          # name of the remote user account for provisioning and deployment
+    gh_pubkey_user: bradymholt  # the Public key for this GitHub user will be added to authorized_keys for deploy_user
+    ruby_version: ruby-2.5.0    # version of Ruby
+production:
+  hosts:
+    45.55.81.129                # The hostname or IP address of the remote server
+  vars:
+    webserver_name: geekytidbits.com  # Virtual server name for Nginx config 

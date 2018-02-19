@@ -6,7 +6,7 @@ This blog is powered by [Jekyll](http://jekyllrb.com/), the blog-aware, static s
 
 # Development
 
-* Run `jekyll server`
+* Run `rake serve`
 * Navigate to [http://127.0.0.1:4000/](http://127.0.0.1:4000/)
 
 ## Code Formatting
@@ -15,26 +15,11 @@ Code formatting is handled by [rouge](https://github.com/jneen/rouge). Simply us
 
 # Provisioning
 
-* Run ansible-playbook -i production provision.yml from `/ops` directory
+* Run `rake provision`
 
 # Deployment
 
-Deployment is handled with a _secondary_ Git pushUrl. When pushing, the commits are pushed to GitHub and also the bare repo on the deployment server. To configure:
-
-```
-git remote set-url --add --push origin git@github.com:bradyholt/geekytidbits.com.git
-git remote set-url --add --push origin bholt@[ip]:repos/geekytidbits.git
-```
-
-`55.55.55.55` above should be replaced wit the IP address of the destination deployment server.
-
-The IP address [ip] is the IP address of the host itself, not www.geekytidbits.com. Since www.geekytidbits.com is behind CloudFlare, the actual IP address needs to be used.
-
-Then, for each deployment, just run
-
-```
-git push
-```
+Run `rake deploy`
 
 ## CloudFlare Config
 

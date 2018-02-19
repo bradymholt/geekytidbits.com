@@ -10,8 +10,7 @@ permalink: /asp-dotnet-core-react-template/
 
 A few weeks ago, I really wanted to build something new.  As I tweeted, I really wanted to build something as an excuse to play with some new tools.  There are so many languages, frameworks, tools out there today for building software!
 
-<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Have an idea...now, which 🔨🔨🔨  to use.  <a href="https://twitter.com/elixirphoenix">@elixirphoenix</a> <a href="https://twitter.com/aspnet">@aspnet</a> (core) <a href="https://twitter.com/golang">@golang</a> <a href="https://twitter.com/meteorjs">@meteorjs</a> <a href="https://twitter.com/reactjs">@reactjs</a> <a href="https://twitter.com/angularjs">@angularjs</a> <a href="https://twitter.com/Ember">@ember</a> So many fun options!</p>&mdash; Brady Holt (@bradymholt) <a href="https://twitter.com/bradymholt/status/773991219470995457">September 8, 2016</a></blockquote>
-<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+![Twitter Post](/media/dotnet-core-react-twitter.png)
 
 On the one hand, it is a bit overwhelming to keep track of all of this stuff and attempt to stay aware of it all.  On the other hand, it's tons of fun to play with different things.
 
