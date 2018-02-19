@@ -6,7 +6,7 @@ permalink: /google-assistant-arm-alarm/
 ---
 
 <iframe width="560" height="315" style="margin-bottom:10px;" src="https://www.youtube.com/embed/V_INz5tQLGI" frameborder="0" allowfullscreen>
-  <a href="https://www.youtube.com/watch?v=V_INz5tQLGI"><img src="http://img.youtube.com/vi/V_INz5tQLGI/0.jpg"/></a>
+  <a href="https://www.youtube.com/watch?v=V_INz5tQLGI"><img src="https://img.youtube.com/vi/V_INz5tQLGI/0.jpg"/></a>
 </iframe>
 
 I've had a [Google Home](https://madeby.google.com/home/) up and running at the house for about two month and finally decided to create a Google Assistant Action for it. I already have [vistaicm-server](https://github.com/bradymholt/vistaicm-server) running and connected to my Honeywell Vista 20P alarm panel so I thought I would create an Action so I could arm and disarm my house alarm system with my voice.
