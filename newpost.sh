@@ -41,6 +41,8 @@ then
     git add $filepath
     git commit -m "New blog: ${title}"
     git push
-#else
-#    echo "Not published"
+
+    rake deploy
+else
+    echo "Not published"
 fi
