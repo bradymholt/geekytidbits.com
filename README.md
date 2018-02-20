@@ -15,7 +15,7 @@ Code formatting is handled by [rouge](https://github.com/jneen/rouge). Simply us
 
 # Provisioning
 
-* Run `rake provision`
+Run `rake provision`
 
 # Deployment
 
