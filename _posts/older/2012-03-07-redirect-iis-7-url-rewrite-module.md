@@ -12,8 +12,8 @@ An elegant way to handle change when it comes to renaming and moving pages aroun
 
 Here&#8217;s how to get it setup:
 
-* Make sure you have the **<a href="http://www.iis.net/download/URLRewrite" target="_blank">URL Rewrite module</a>** installed in IIS 7.
-* Add a file called **Web.RewriteMaps.config** to your web application root.  This is the file that will contain all your redirect mappings.  It should look like this:
+* Make sure you have the <a href="http://www.iis.net/download/URLRewrite" target="_blank">URL Rewrite module</a> installed in IIS 7.
+* Add a file called `Web.RewriteMaps.config` to your web application root.  This is the file that will contain all your redirect mappings.  It should look like this:
 
   ```xml
   <rewriteMaps>
@@ -24,7 +24,7 @@ Here&#8217;s how to get it setup:
   </rewriteMaps>
   ```
 
-* Add the following to the **<system.webServer/>** section of your **web.config **file.  If you already have a <rewrite/> section don&#8217;t duplicate but merge the following in.
+* Add the following to the `<system.webServer/>` section of your `web.config` file.  If you already have a `<rewrite/>` section don&#8217;t duplicate but merge the following in.
 
   ```xml
   <rewrite>
@@ -41,4 +41,4 @@ Here&#8217;s how to get it setup:
   </rewrite>
   ```
 
-* That&#8217;s it.  Now IIS will read you Web.RewriteMaps.config file and perform a &#8220;301 Moved Permanently&#8221; on all your old pages and redirect the user to the new page.
+* That&#8217;s it.  Now IIS will read you `Web.RewriteMaps.config` file and perform a `301 Moved Permanently` on all your old pages and redirect the user to the new page.
