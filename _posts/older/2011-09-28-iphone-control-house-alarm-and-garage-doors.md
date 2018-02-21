@@ -24,7 +24,7 @@ I wrote several applications that utilize this library to enable me to have full
     **
   3. **AlarmWeb** &#8211; An iPhone optimized HTML5 web app that provides a web client for the AlarmServer.  It took several iterations to get this app just how I wanted it but it now works very well.  The display  (i.e. &#8220;Ready to Arm&#8221;, &#8220;ARMED STAY&#8221;, etc.) is updated quickly with a long polling request.  Here is what it looks like on my phone:
 
-[<img class="size-full aligncenter" style="border-width: 1px; border-color: black; border-style: solid;" alt="20110827-102534.jpg" src="/media/20110827-102534.jpg" width="384" height="576" />][3]
+[<img class="size-full aligncenter" alt="20110827-102534.jpg" src="/media/20110827-102534.jpg" width="384" height="576" />][3]
 
 ## Garage Door Control
 
@@ -43,7 +43,7 @@ With all the apps hooked up and running, I am able to do some pretty cool stuff:
 
 ## Download
 
-For anyone interested, the solution is here: <span style="text-decoration: line-through;">VISTA_Alarm.zip</span>. **UPDATE: Please [take a look at my updated solution called vistaicm-server][4].**  I have removed / changed all sensitive information (i.e. alarm passwords, IP addresses, Prowl api key, etc.) as I obviously don&#8217;t want this info publicly available!
+For anyone interested, the solution is here: <strike>VISTA_Alarm.zip</strike>. **UPDATE: Please [take a look at my updated solution called vistaicm-server][4].**  I have removed / changed all sensitive information (i.e. alarm passwords, IP addresses, Prowl api key, etc.) as I obviously don&#8217;t want this info publicly available!
 
  [1]: /media/VISTA-ICM.jpg
  [2]: http://bliny.net/blog/post/h-Vista-ICM-network.aspx
