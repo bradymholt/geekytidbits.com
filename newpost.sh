@@ -32,7 +32,7 @@ DELIM
 echo "Post file created: $filepath"
 
 # Open in editor
-code $filepath --wait
+code --goto $filepath:6 $bloghome --wait
 
 read -p "Do you want to publish this post? [Y/n] " -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]] || [[ $REPLY = "" ]]
