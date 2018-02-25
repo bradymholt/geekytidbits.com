@@ -6,6 +6,7 @@ module Jekyll
     def amp_all(input, responsive = true, wi = nil, he = nil)
       output = amp_images(input, responsive, wi, he)
       output = amp_iframe(output)
+      output = amp_video(output)
       output
     end
 
@@ -92,9 +93,10 @@ module Jekyll
 
     def amp_iframe(input)
       doc = Nokogiri::HTML.fragment(input);
-      # Add width and height to img elements lacking them
       doc.css('iframe').each do |iframe|
         iframe.remove_attribute('allowfullscreen')
+        iframe.remove_attribute('mozallowfullscreen')
+        iframe.remove_attribute('webkitallowfullscreen')
         iframe.remove_attribute('frameborder')
         iframe['layout'] = 'responsive'
 
@@ -116,6 +118,23 @@ module Jekyll
 
           iframe.add_child(placeholder)
         end
+      end
+
+      # Return the html as plaintext string
+      doc.to_s
+    end
+
+    def amp_video(input)
+      doc = Nokogiri::HTML.fragment(input);
+      doc.css('video').each do |iframe|
+        iframe['layout'] = 'responsive'
+        iframe.name = 'amp-video'
+
+        placeholder = Nokogiri::XML::Node.new "div", doc
+        placeholder.set_attribute('placeholder', 'placeholder')
+        placeholder.inner_html = 'Loading...'
+
+        iframe.add_child(placeholder)
       end
 
       # Return the html as plaintext string

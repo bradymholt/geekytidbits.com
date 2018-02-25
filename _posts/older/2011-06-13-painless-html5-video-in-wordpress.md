@@ -14,13 +14,12 @@ In this post, I explain how to setup and configure a combination of software and
 
 Watch the video below to see a demo of just how painless it is!
 
-<div style="text-align: center;">
-  <video src="/media/painless_html5_video.m4v" autoplay poster="posterimage.jpg">
+<video width="780" height="380" autoplay poster="/media/painless_poster.png">
+  <source src="/media/painless_html5_video.m4v" type="video/mp4">
   Sorry, your browser doesn't support embedded videos,
   but don't worry, you can <a href="/media/painless_html5_video.m4v">download it</a>
   and watch it with your favorite video player!
-  </video>
-</div>
+</video>
 
 ### Assumptions
 
@@ -132,7 +131,7 @@ fi
 /var/www/html/wordpress/wp-content/uploads IN_CLOSE_WRITE,IN_MOVED_TO,IN_NO_LOOP /usr/local/bin/convert_video_html5 $@/$#
 ```
 
-You should change _<span style="text-decoration: underline;">/var/www/html/wordpress/wp-content/uploads</span>_ above to be the wp-content/uploads folder location of your own WordPress installation.</li>
+You should change _/var/www/html/wordpress/wp-content/uploads_ above to be the wp-content/uploads folder location of your own WordPress installation.</li>
 
 * The action entry above tells incron to execute /usr/local/bin/convert_video_html5 when a file is either written to (IN_CLOSE_WRITE) or moved (IN_MOVED_TO) into the /var/www/html/wordpress/wp-content/uploads folder.  $@/$# tells incron to pass in the full path of the created/moved file to our conversion script.</ol> </li>
 
