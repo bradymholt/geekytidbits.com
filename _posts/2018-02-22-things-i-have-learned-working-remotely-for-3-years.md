@@ -4,6 +4,8 @@ title: "Things I have learned working remotely for 3 years"
 permalink: /things-i-have-learned-working-remotely-for-3-years/
 ---
 
+![Laptop on Test](/media/laptop-on-desk.jpeg)
+
 About 3 years ago, I [joined the YNAB team](https://www.geekytidbits.com/joining-you-need-a-budget/). This was my first remote work experience and although I have come to really enjoy working remotely, it hasn't been without some challenges.  I did some things wrong early on, a few things right, and I am still learning as I go.
 
 ## I really like it
