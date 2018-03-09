@@ -19,7 +19,8 @@ npm install ts-node
 Then, create your TypeScript module file that will contain your CLI logic.
 
 **cli.ts**
-```
+
+```js
 export function run() {
   const message: string = "Hello from TypeScript!";
   console.log(message);
@@ -31,7 +32,7 @@ Now, create your entry script.  This is the script you will run from your shell.
 
 **my-script**
 
-```
+```js
 #!/usr/bin/env node
 
 require('ts-node').register();
@@ -42,7 +43,7 @@ You need to make this file executable first, so run `chmod +x ./my-script`.
 
 Now, you can run `./my-script` from your shell:
 
-```
+```shell
 > ./my-script
 Hello from TypeScript
 ```
