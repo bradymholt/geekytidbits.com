@@ -43,7 +43,7 @@ You need to make this file executable first, so run `chmod +x ./my-script`.
 
 Now, you can run `./my-script` from your shell:
 
-```shell
+```bash
 > ./my-script
 Hello from TypeScript!
 ```

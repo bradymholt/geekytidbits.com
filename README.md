@@ -11,7 +11,7 @@ This blog is powered by [Jekyll](http://jekyllrb.com/), the blog-aware, static s
 
 ## Code Formatting
 
-Code formatting is handled by [rouge](https://github.com/jneen/rouge). Simply use the tripe backtick Markdown syntax (```). To change the styling, update the \_sass/\_syntax-highlighting.scss file with one of the [pygments-css theme files](https://github.com/richleland/pygments-css).
+Code formatting is handled by [rouge](https://github.com/jneen/rouge). Simply use the tripe backtick Markdown syntax (```). To change the styling, update the \_sass/\_syntax-highlighting.scss file with one of the [pygments-css theme files](https://github.com/richleland/pygments-css).  Also, here is the [list of supported languages](https://github.com/jneen/rouge/wiki/List-of-supported-languages-and-lexers).
 
 # Provisioning
 
