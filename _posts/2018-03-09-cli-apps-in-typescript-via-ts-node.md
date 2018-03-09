@@ -20,7 +20,7 @@ Then, create your TypeScript module file that will contain your CLI logic.
 
 **cli.ts**
 
-```js
+```ts
 export function run() {
   const message: string = "Hello from TypeScript!";
   console.log(message);
