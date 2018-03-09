@@ -48,8 +48,4 @@ Now, you can run `./my-script` from your shell:
 Hello from TypeScript!
 ```
 
-If you make changes to the cli.ts file, they will be picked up the next time you run my-script because the latest is running through ts-node.---
-layout: post
-title: "CLI apps in TypeScript via ts-node"
-permalink: /cli-apps-in-typescript-via-ts-node/
----
+If you make changes to the cli.ts file, they will be picked up the next time you run my-script because the latest is running through ts-node.
