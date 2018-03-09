@@ -45,7 +45,7 @@ Now, you can run `./my-script` from your shell:
 
 ```shell
 > ./my-script
-Hello from TypeScript
+Hello from TypeScript!
 ```
 
 If you make changes to the cli.ts file, they will be picked up the next time you run my-script because the latest is running through ts-node.---
