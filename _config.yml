@@ -4,5 +4,7 @@ email: brady.holt@gmail.com
 description: Tidbits on software development, technology and other geeky stuff.
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "https://www.geekytidbits.com" # the base hostname & protocol for your site
+sass:
+  style: compressed
 exclude: ["ops"]
 ampdir: amp/

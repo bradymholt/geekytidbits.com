@@ -1,28 +1,24 @@
----
----
-
 @charset "utf-8";
 
 // Our variables
-$base-font-family: 'Poly', serif;
-$base-font-size:   1.2em;
-$small-font-size:  1.0em;
+$base-font-family: "Poly", serif;
+$base-font-size: 1.2em;
+$small-font-size: 1em;
 $base-line-height: 1.5;
-$spacing-unit:     30px;
-$text-color:       #444;
-$grey-color:       #828282;
+$spacing-unit: 30px;
+$text-color: #444;
+$grey-color: #828282;
 $background-color: #f7f7f7;
 $content-background-color: #ffffff;
 $sidebar-width: 195px;
 
 // Header colors variables
-$brand-color:   #237ab2;
-$link-color:    #126ca6;
+$brand-color: #237ab2;
+$link-color: #126ca6;
 $brand-outline-color: #f68905;
 
-
 // Width of the content area
-$content-width:    800px;
+$content-width: 800px;
 $on-medium-width-device: $content-width + $sidebar-width + ($spacing-unit * 3);
 $on-small-width-device: 600px;
 
@@ -34,28 +30,19 @@ $on-small-width-device: 600px;
 //     }
 // }
 @mixin media-query($device) {
-    @media screen and (max-width: $device) {
-        @content;
-    }
-}
-
-
-
-@mixin media-query-retina {
-  @media only screen and (-Webkit-min-device-pixel-ratio: 1.5),
-  only screen and (-moz-min-device-pixel-ratio: 1.5),
-  only screen and (-o-min-device-pixel-ratio: 3/2),
-  only screen and (min-device-pixel-ratio: 1.5) {
-        @content;
+  @media screen and (max-width: $device) {
+    @content;
   }
 }
 
-
+@mixin media-query-retina {
+  @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+    only screen and (-moz-min-device-pixel-ratio: 1.5),
+    only screen and (-o-min-device-pixel-ratio: 3/2),
+    only screen and (min-device-pixel-ratio: 1.5) {
+    @content;
+  }
+}
 
 // Import partials from `sass_dir` (defaults to `_sass`)
-@import
-        "base",
-        "layout",
-        "elements",
-        "syntax-highlighting"
-;
+@import "base", "layout", "elements", "syntax-highlighting";

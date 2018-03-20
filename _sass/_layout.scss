@@ -50,7 +50,7 @@
 .post {
   .post-meta {
     display: inline-block;
-    border: 1px solid rgba(0,0,0,0.05);
+    border: 1px solid rgba(0, 0, 0, 0.05);
     border-left: none;
     border-right: none;
     padding: 8px 0 8px 30px;
@@ -106,7 +106,7 @@
   left: -$sidebar-width;
   width: $sidebar-width;
   ul {
-    margin-left:0px;
+    margin-left: 0px;
     list-style: none;
     li {
       transition: all 0.2s ease-in-out;
@@ -147,9 +147,9 @@
 @include media-query($on-small-width-device) {
   .sidebar {
     position: static;
-    width:100%;
+    width: 100%;
     text-align: center;
-    display:none; /* Only show sidebar on-small-width-device when on home page */
+    display: none; /* Only show sidebar on-small-width-device when on home page */
     .head-shot {
       display: inline-block;
     }
@@ -165,7 +165,7 @@
 @include media-query($on-small-width-device) {
   /* Only show sidebar on-small-width-device when on home page */
   body.home .sidebar {
-    display:block;
+    display: block;
   }
 
   ul.condensed {
@@ -188,5 +188,5 @@
   display: block;
 }
 .no-margin {
-  margin:0px !important;
+  margin: 0px !important;
 }
