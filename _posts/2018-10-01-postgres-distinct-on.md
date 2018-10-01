@@ -20,7 +20,7 @@ INNER JOIN (
 
 That `INNER JOIN` with a subquery is used to determine the last timestamp for each URL.  Then, the outer query is pulling from the log table and using the results of that subquery to limit the results to only the last requests by URL.  There are several ways this could be done as well including using a `WHERE IN` clause (assuming there is a single identifier that could be used), a `LATERAL` join or a `WINDOW` function.  These approaches work but all of them require some type of 2 step query where the first step is identifying the target row and the second step is actually pulling that target row.  This isn't terriby complex SQL but it can become a bit cumbersome.
 
-Let's think about the `DISTINCT` clause for a moment.  When you use a `SELECT DISTINCT` clause, you are discarding duplicate rows and only retaining a single one.  But, the one that is kept is identical to the rest.  What if you could tell `DISTINCT` to only consider _some_ fields for distinction and then which row you want to pull from this group of mostly similar but slightly varying rows?  This is what `SELECT DISTINCT ON` does.
+Let's think about a regular `SELECT DISTINCT` clause for a moment.  When you use a `SELECT DISTINCT` clause, you are discarding duplicate rows and only retaining a single one.  But, the one that is kept is identical to the rest.  What if you could tell `DISTINCT` to only consider _some_ fields for distinction and then which row you want to pull from this group of mostly similar but slightly varying rows?  This is what `SELECT DISTINCT ON` does.
 
 **With `DISTINCT ON`, You tell PostgreSQL to return a single row for each distinct group defined by the `ON` clause.  _Which_ row in that group is returned is specified with the `ORDER BY` clause.**
 
