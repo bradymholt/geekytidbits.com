@@ -4,7 +4,7 @@ title: "SELECT DISTINCT ON in PostgreSQL"
 permalink: /postgres-distinct-on/
 ---
 
-PostgreSQL has a really interesting and powerful construct called `SELECT DISTINCT ON`.  No, this is not a typical `DISTINCT`.  This is different.  It is perfect when you have groups of data that are similar and want to pull a single record out of each group, based a specific ordering.
+PostgreSQL has a really interesting and powerful construct called `SELECT DISTINCT ON`.  No, this is not a typical `DISTINCT`.  This is different.  It is perfect when you have groups of data that are similar and want to pull a single record out of each group, based on a specific ordering.
 
 Let's take a an example of some log data.  You have a log table that stores the `url` of a request and the `request_duration`, which is how long it took to process the request for that URL.  It also contains a `timestamp` column.  If you wanted to answer the question "what is the most recent duration for each unique URL?" you might end up with a query that looks something like this:
 
