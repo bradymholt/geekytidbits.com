@@ -32,4 +32,4 @@ FROM logs
 ORDER BY timestamp DESC
 ```
 
-That's it!  We're telling PostgreSQL to "put the logs into groups unqiue by url (`ON (url)`), sort each of these groups by most recent (`ORDER BY timestamp DESC`) and then return fields for the firest record in each of these groups (`url, request_duration`).
+That's it!  We're telling PostgreSQL to "put the logs into groups unique by url (`ON (url)`), sort each of these groups by most recent (`ORDER BY timestamp DESC`) and then return fields for the firest record in each of these groups (`url, request_duration`).
