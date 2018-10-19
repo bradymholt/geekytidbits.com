@@ -21,11 +21,12 @@ I use the primary for editing code and doing my, well, "primary" work.
 
 ## Center
 
+
 My external display above my MacBook is front and center, right _above_ my MacBook.  It is very easy for my eyes to travel from the MacBook up to this display.  Having it _centered_ above the laptop is important to me.  I have worked with 2 external display setups before that had the joining of the displays right in front of me.  This is such a waste and forces me to turn my head or move my eyes to see the screens.
 
 I use this display with two application windows side-by-side with Slack on the left and my browser on the right.  I also have a secondary desktop (Desktop 2) on this display with a full screen browser that has my browser DevTools open for debugging.  I can easily get to to Desktop 2 on macOS with a 3-finger swipe to the left.
 
 ## Vertical Aside
 
-The display on the left is obviously rotated 45 degrees.  This allows me to not have to turn my neck too far to see it but still gives me the benefit 
+The display on the left is obviously rotated 90 degrees.  This allows me to not have to turn my neck too far to see it but still gives me the benefit 
 of a larger display.  I use this display for my terminal and source control GUI.  I don't look at this display as often which is why it is to the side.
