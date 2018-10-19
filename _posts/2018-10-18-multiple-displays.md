@@ -15,7 +15,7 @@ My MacBook Pro is front and center.  I use it as my _primary_ screen, keyboard, 
 - I love the MacBook trackpad.  It's the best trackpad on a laptop, bar-none.
 - I like the proximity of the trackpad in relation to the keyboard.  I like that I do not need to move my fingers far to switch between the keys and the trackpad.  I feel that less hand travel makes me more productive.
 - Since I work remotely, from time to time I take my laptop out of my house and work from other locations like coffee shops.  When I am there, I only have my laptop.  If I use my laptop screen as my primary display / keyboard / trackpad when at home I feel just as comfortable when I am without my external displays.  No need to reorient myself with a new setup when I swap back and forth.
-- Having my MacBook centered _underneath_ one of my external displays is an efficient way to have 2 external displays within close visual range.  I simply pan my eyes up and down rather than side or side and possiblly having to rotate my neck.
+- Having my MacBook centered _underneath_ one of my external displays is an efficient way to have 2 external displays within close visual range.  I simply pan my eyes up and down rather than side or side and possibly having to rotate my neck.
 
 I use the primary for editing code and doing my, well, "primary" work.
 
