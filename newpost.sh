@@ -32,17 +32,6 @@ DELIM
 echo "Post file created: $filepath"
 
 # Open in editor
-code --goto $filepath:6 $bloghome --wait
+code --goto $filepath:6 $bloghome
 
-read -p "Do you want to publish this post? [Y/n] " -n 1 -r
-if [[ $REPLY =~ ^[Yy]$ ]] || [[ $REPLY = "" ]]
-then
-    # Commit and push
-    git add $filepath
-    git commit -m "New blog: ${title}"
-    git push
-
-    rake deploy
-else
-    echo "Not published"
-fi
+echo "Once finished, save and then run `rake publish`"
