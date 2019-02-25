@@ -4,7 +4,7 @@ title: "A Fresh Look at TypeScript"
 permalink: /a-fresh-look-at-typescript/
 ---
 
-More and more people and projects are using TypeScript today!  That's interesting because in the world of JavaScript it's not too common for a project's use to accelate _years after_ it was released (2012).  
+More and more people and projects are using TypeScript today!  That's interesting because in the world of JavaScript it's not too common for a project's use to accelerate _years after_ it was released (2012).  
 
 In the [2018 GitHub Octoverse Report](https://octoverse.github.com/), TypeScript reached "#7 among top languages used on the platform overall, after making its way in the top 10 for the first time last year".  It is also the #3 fastest growing language on GitHub.
 
