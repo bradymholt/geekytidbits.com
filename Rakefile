@@ -13,7 +13,7 @@ end
 task :commit_push do
   # Commit and push
   sh 'git add --all'
-  git commit -m "Updates from rake commit_push"
+  sh  'git commit -m "Updates from rake commit_push"'
   sh 'git push'  
 end
 
