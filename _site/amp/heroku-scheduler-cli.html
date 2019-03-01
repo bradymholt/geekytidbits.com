@@ -1,0 +1,109 @@
+<!doctype html>
+<html amp lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Running Heroku CLI from Heroku Scheduler</title>
+    <link rel="canonical" href="https://www.geekytidbits.com/heroku-scheduler-cli/" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Poly' rel='stylesheet'>
+    <style amp-custom>
+        body { font-family: 'Poly', serif; }
+        .site-header { background-color: #237ab2; color: #e7e9ec; padding: 5px; font-weight: 100; border-bottom: 3px solid #f68905; }
+        .site-description { font-size: .5em;}        
+        .post-content { padding: 10px; }
+    </style>
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+    <script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>
+    <script async custom-element="amp-video" src="https://cdn.ampproject.org/v0/amp-video-0.1.js"></script>
+    <script async custom-element="amp-youtube" src="https://cdn.ampproject.org/v0/amp-youtube-0.1.js"></script>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+</head>
+
+<body>
+    
+    <h1 class="post-title">
+        <header class="site-header">
+    <div class="wrapper">
+        <a class="site-title" href="/">
+            <amp-img src="/media/geekytidbits.png" width="383" height="46" alt="Geeky Tidbits Logo" layout="responsive"><noscript><img src="/media/geekytidbits.png" width="383" height="46" alt="Geeky Tidbits Logo"></noscript></amp-img>
+        </a>
+        <div class="site-description">Tidbits on software development, technology, and other geeky stuff.</div>
+    </div>
+</header>
+
+    </h1>
+    <div class="post-content">
+      <span>
+          <i>Apr 27, 2017</i>
+      </span>
+      <p>The Heroku Scheduler is a simple and handy add-on for any Heroku application, to run recurring commands. I recently had the need to run a Heroku CLI command from within the Scheduler itself. Why would you need to do such a thing? In my case, at <a href="https://youneedabudget.com">YNAB</a>, we have an app pipeline which includes a staging app for our marketing site. We don’t want this staging app running all the time for various reasons, including not wanting others to accidently stuble upon it and not wanting search engines to crawl it. So, we wanted to put the app in maintenace mode on a scheduled basis. When we deploy an update to the staging app we take the app out of maintenance mode as part of the deployment process but then we want the Scheduler to automatically take it back into maintence mode.</p>
+
+<p>There are other uses cases for this as well:</p>
+
+<ol>
+  <li>Automatically promoting apps within a pipeline</li>
+  <li>Database management such as forking, attaching to another app, etc.</li>
+  <li>Management of any third-party addons</li>
+  <li>Scaling up/down on a scheduled basis (scale up to 2 dynos in the morning; back down to 1 in the evening)</li>
+</ol>
+
+<p>Here’s a how I got it to work.</p>
+
+<ol>
+  <li>First, head to your <em>Manage Account</em> page within Heroku and grab your <strong>API Key</strong>. You’ll need to click the <em>Reveal</em> button first to see it and to be able to copy it.
+<amp-img src="/media/heroku_api_key.png" alt="Heroku API Key" class="block" width="789" height="162" layout="responsive"><noscript><img src="/media/heroku_api_key.png" alt="Heroku API Key" class="block" width="789" height="162"></noscript></amp-img>
+</li>
+  <li>Now, head over to app <em>Settings</em> page and click <strong>Config Vars</strong>.
+<amp-img src="/media/heroku_config_vars.png" alt="Heroku Config Vars" class="block" width="670" height="338" layout="responsive"><noscript><img src="/media/heroku_config_vars.png" alt="Heroku Config Vars" class="block" width="670" height="338"></noscript></amp-img>
+</li>
+  <li>Add a new var with the KEY of <code class="highlighter-rouge">HEROKU_API_KEY</code> and VALUE of the API Key you copied earlier. Click the <em>Add</em> button to save it.
+<amp-img src="/media/heroku_config_var_new.png" alt="Heroku New Config Var" class="block" width="812" height="59" layout="responsive"><noscript><img src="/media/heroku_config_var_new.png" alt="Heroku New Config Var" class="block" width="812" height="59"></noscript></amp-img>
+</li>
+  <li>On the app <em>Resources</em> page, click on <em>Heroku Scheduler</em> (add it as an Add-on first if you haven’t already done so) to manage its settings.
+<amp-img src="/media/heroku_scheduler.png" alt="Heroku Scheduler" class="block" width="396" height="172" layout="responsive"><noscript><img src="/media/heroku_scheduler.png" alt="Heroku Scheduler" class="block" width="396" height="172"></noscript></amp-img>
+</li>
+  <li>Click “Add New Job” and then enter this command:
+    <div class="language-shell highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>curl <span class="nt">-s</span> https://s3.amazonaws.com/assets.heroku.com/heroku-client/heroku-client.tgz <span class="se">\</span>
+  | <span class="nb">tar </span>xz <span class="o">&amp;&amp;</span> ./heroku-client/bin/heroku <span class="o">[</span><span class="nb">command</span><span class="o">]</span> <span class="nt">-a</span> <span class="o">[</span>app_name]
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<p>In my above described scenario where I want to put my app in mainteannce mode, my command looks like this:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-s</span> https://s3.amazonaws.com/assets.heroku.com/heroku-client/heroku-client.tgz <span class="se">\</span>
+  | <span class="nb">tar </span>xz <span class="o">&amp;&amp;</span> ./heroku-client/bin/heroku maintenance:on <span class="nt">-a</span> stark-bakin-2764
+</code></pre></div></div>
+
+<p><amp-img src="/media/heroku_add_job.png" alt="Heroku Add Jost" class="block" width="763" height="200" layout="responsive"><noscript><img src="/media/heroku_add_job.png" alt="Heroku Add Jost" class="block" width="763" height="200"></noscript></amp-img></p>
+
+<ol>
+  <li>Save the new job and you are done. It will now run on a schedule.</li>
+</ol>
+
+    </div>
+    
+    <footer class="site-footer">
+    © 2019 Brady Holt
+</footer>
+
+    <amp-analytics type="googleanalytics">
+        <script type="application/json">
+        {
+            "vars": {
+            "account": "UA-19416043-2"
+            },
+            "triggers": {
+            "trackPageview": {
+                "on": "visible",
+                "request": "pageview"
+            }
+            }
+        }
+        </script>
+    </amp-analytics>
+</body>
+
+</html>

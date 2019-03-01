@@ -1,0 +1,118 @@
+<!doctype html>
+<html amp lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>ASP.NET MVC Deployments to Azure via GitHub</title>
+    <link rel="canonical" href="https://www.geekytidbits.com/asp-net-mvc-deployments-azure-github/" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Poly' rel='stylesheet'>
+    <style amp-custom>
+        body { font-family: 'Poly', serif; }
+        .site-header { background-color: #237ab2; color: #e7e9ec; padding: 5px; font-weight: 100; border-bottom: 3px solid #f68905; }
+        .site-description { font-size: .5em;}        
+        .post-content { padding: 10px; }
+    </style>
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+    <script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>
+    <script async custom-element="amp-video" src="https://cdn.ampproject.org/v0/amp-video-0.1.js"></script>
+    <script async custom-element="amp-youtube" src="https://cdn.ampproject.org/v0/amp-youtube-0.1.js"></script>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+</head>
+
+<body>
+    
+    <h1 class="post-title">
+        <header class="site-header">
+    <div class="wrapper">
+        <a class="site-title" href="/">
+            <amp-img src="/media/geekytidbits.png" width="383" height="46" alt="Geeky Tidbits Logo" layout="responsive"><noscript><img src="/media/geekytidbits.png" width="383" height="46" alt="Geeky Tidbits Logo"></noscript></amp-img>
+        </a>
+        <div class="site-description">Tidbits on software development, technology, and other geeky stuff.</div>
+    </div>
+</header>
+
+    </h1>
+    <div class="post-content">
+      <span>
+          <i>Nov 5, 2013</i>
+      </span>
+      <p>Windows Azure keeps getting better and better.  It’s been available for over 3 years and most of that time I have glossed over it in favor of Amazon Web Services.  The big discouraging factors for me were cost, limited services and the horrible Silverlight management interface it used to have.  A lot has changed in Azure over the last few years and I continue to be impressed.</p>
+
+<p>They finally dumped the Silverlight management interface and went to a modern (and awesome, actually) HTML5 interface.  It is very functional and has some impressive UX features.  I like it a lot.  Also, Azure has fully embraced <strong>Git</strong>.  To be honest, this surprises me because Microsoft has traditionally been so closed and promoting of their own tool chain (i.e. TFS for source control).  But, this seems to be in line with a broader shift I’ve seen in the Microsoft Developer Division in recent years.  Kudos to Microsoft because I think this is the right direction.</p>
+
+<p>Anyway, I recently found that you could** tie an Azure website to a GitHub repository for deployments**.  This is way cool because I love me some GitHub and this integration makes deployments so easy.</p>
+
+<p>Here’s an example of  how you do it:</p>
+
+<h3 id="create-aspnet-mvc-solution">Create ASP.NET MVC Solution</h3>
+
+<p>Normally you’ll already have a solution you’re working with you want to use but for demonstration purposes I will create new ASP.NET MVC 4 Solution called <em>foo</em> and save it locally.</p>
+
+<p><a href="/media/aspmvc4.png"><amp-img class="wp-image-1876 alignnone" alt="aspmvc4" src="/media/aspmvc4.png" width="613" height="160" layout="responsive"><noscript><img class="wp-image-1876 alignnone" alt="aspmvc4" src="/media/aspmvc4.png" width="613" height="160"></noscript></amp-img></a></p>
+
+<h3 id="create-git-repository-and-push-to-github">Create Git Repository and Push to GitHub</h3>
+
+<p>You can (obviously) do this with the Git command line  or one of the <a href="http://git-scm.com/downloads/guis">Git GUIs </a>but you basically just want to init a new local Git repo and push it to a new remote GitHub repo.  I usually start out by going directly to GitHub and creating a new repo and then following the instructions to connect it with a local repo.</p>
+
+<p><a href="/media/azuregithub1.png"><amp-img class="alignnone  wp-image-1896" alt="azuregithub1" src="/media/azuregithub1.png" width="554" height="383" layout="responsive"><noscript><img class="alignnone  wp-image-1896" alt="azuregithub1" src="/media/azuregithub1.png" width="554" height="383"></noscript></amp-img></a></p>
+
+<p>After you create the GitHub repo, there will be a screen that shows how to init a local repo and connect it to your new GitHub repo and it looks similar to this:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>C:<span class="se">\d</span>ev<span class="se">\f</span>oo
+git init
+git commit <span class="nt">-m</span> <span class="s2">"first commit"</span>
+git remote add origin git@github.com:username/foo.git
+git push <span class="nt">-u</span> origin master&lt;/pre&gt;
+</code></pre></div></div>
+
+<h3 id="setup-new-azure-website">Setup new Azure Website</h3>
+
+<p>If you know how to use the Azure Management interface then you know this is easy.  Just click “Web Sites” on the left bar, then click “New” at the bottom left.  Click “Quick Create”, give it a name and then you are good to go.  It will initialize and be ready in a matter of seconds.</p>
+
+<p><a href="/media/azurenew.png"><amp-img class="size-full wp-image-1880 alignnone" alt="azurenew" src="/media/azurenew.png" width="504" height="360" layout="responsive"><noscript><img class="size-full wp-image-1880 alignnone" alt="azurenew" src="/media/azurenew.png" width="504" height="360"></noscript></amp-img></a><a href="/media/azurenewname.png"><amp-img class="size-full wp-image-1881 alignnone" style="margin-top: 20px;" alt="azurenewname" src="/media/azurenewname.png" width="653" height="119" layout="responsive"><noscript><img class="size-full wp-image-1881 alignnone" style="margin-top: 20px;" alt="azurenewname" src="/media/azurenewname.png" width="653" height="119"></noscript></amp-img></a></p>
+
+<h3 id="link-azure-website-to-github">Link Azure Website to GitHub</h3>
+
+<p>You’ll want to pull up the new web site you just created and then go to the “Dashboard” page.  On the right side under “quick glance” you should see an option called “Setup deployment from source control”.  Click this, select GitHub as the source and then select your repo.  Follow the screens and your ASP.NET MVC website should be automatically deployed to Azure within seconds. Also, <strong>each time you update the GitHub repo it will trigger a new deployment on Azure!</strong></p>
+
+<p><a href="/media/azuredashboard.png"><amp-img class="alignnone size-full wp-image-1887" style="display: block;" alt="azuredashboard" src="/media/azuredashboard.png" width="453" height="174" layout="responsive"><noscript><img class="alignnone size-full wp-image-1887" style="display: block;" alt="azuredashboard" src="/media/azuredashboard.png" width="453" height="174"></noscript></amp-img></a></p>
+
+<p><a href="/media/azuredeployment.png"><amp-img class="size-full wp-image-1888 alignnone" style="display: block;" alt="azuredeployment" src="/media/azuredeployment.png" width="262" height="235" layout="responsive"><noscript><img class="size-full wp-image-1888 alignnone" style="display: block;" alt="azuredeployment" src="/media/azuredeployment.png" width="262" height="235"></noscript></amp-img></a><a href="/media/azuregithub.png"><amp-img class="alignnone" style="display: block;" alt="azuregithub" src="/media/azuregithub.png" width="491" height="318" layout="responsive"><noscript><img class="alignnone" style="display: block;" alt="azuregithub" src="/media/azuregithub.png" width="491" height="318"></noscript></amp-img></a><a href="/media/azuredeploymentsuccess.png"><amp-img class="alignnone size-full wp-image-1889" style="display: block;" alt="azuredeploymentsuccess" src="/media/azuredeploymentsuccess.png" width="613" height="203" layout="responsive"><noscript><img class="alignnone size-full wp-image-1889" style="display: block;" alt="azuredeploymentsuccess" src="/media/azuredeploymentsuccess.png" width="613" height="203"></noscript></amp-img></a></p>
+
+<h3 id="a-note-about-dependencies">A Note About Dependencies</h3>
+
+<p>When Azure pulls your source from GitHub and compiles it, it will have to resolve any assembly references.  There are two ways to handle this:</p>
+
+<ol>
+  <li>
+<strong>Check your packages folder (from the solution directory) into GitHub –</strong> This is straight forward and the least issue prone way to handle references.  Just ensure you commit the packages folder which contain all your assembly .dll references.  If all your external dependencies were added from NuGet you should be good to go.  If you have any assembly references that are not in NuGet you can place them in the packages folder directly and change the reference to point to this location.  This way, when Azure compiles your site, all the assembly .dll files will be available in the packages folder and you’ll be set.</li>
+  <li>
+<strong>Enable NuGet Package Restore</strong> – To avoid checking in the packages folder (which could be quite large and go against everything that has been pounded in your head about source control best practices), you can <a href="http://blog.maartenballiauw.be/post/2012/06/07/Use-NuGet-Package-Restore-to-avoid-pushing-assemblies-to-Windows-Azure-Websites.aspx" target="_blank">Enable NuGetPackage Restore</a> which will tell Azure to download package references from NuGet.  You need to make sure and commit the **packages.config **file from your project directory so Azure will know which packages to install.</li>
+</ol>
+
+
+    </div>
+    
+    <footer class="site-footer">
+    © 2019 Brady Holt
+</footer>
+
+    <amp-analytics type="googleanalytics">
+        <script type="application/json">
+        {
+            "vars": {
+            "account": "UA-19416043-2"
+            },
+            "triggers": {
+            "trackPageview": {
+                "on": "visible",
+                "request": "pageview"
+            }
+            }
+        }
+        </script>
+    </amp-analytics>
+</body>
+
+</html>

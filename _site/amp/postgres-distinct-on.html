@@ -1,0 +1,91 @@
+<!doctype html>
+<html amp lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>SELECT DISTINCT ON in PostgreSQL</title>
+    <link rel="canonical" href="https://www.geekytidbits.com/postgres-distinct-on/" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Poly' rel='stylesheet'>
+    <style amp-custom>
+        body { font-family: 'Poly', serif; }
+        .site-header { background-color: #237ab2; color: #e7e9ec; padding: 5px; font-weight: 100; border-bottom: 3px solid #f68905; }
+        .site-description { font-size: .5em;}        
+        .post-content { padding: 10px; }
+    </style>
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+    <script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>
+    <script async custom-element="amp-video" src="https://cdn.ampproject.org/v0/amp-video-0.1.js"></script>
+    <script async custom-element="amp-youtube" src="https://cdn.ampproject.org/v0/amp-youtube-0.1.js"></script>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+</head>
+
+<body>
+    
+    <h1 class="post-title">
+        <header class="site-header">
+    <div class="wrapper">
+        <a class="site-title" href="/">
+            <amp-img src="/media/geekytidbits.png" width="383" height="46" alt="Geeky Tidbits Logo" layout="responsive"><noscript><img src="/media/geekytidbits.png" width="383" height="46" alt="Geeky Tidbits Logo"></noscript></amp-img>
+        </a>
+        <div class="site-description">Tidbits on software development, technology, and other geeky stuff.</div>
+    </div>
+</header>
+
+    </h1>
+    <div class="post-content">
+      <span>
+          <i>Oct 1, 2018</i>
+      </span>
+      <p>PostgreSQL has a really interesting and powerful construct called <code class="highlighter-rouge">SELECT DISTINCT ON</code>.  No, this is not a typical <code class="highlighter-rouge">DISTINCT</code>.  This is different.  It is perfect when you have groups of data that are similar and want to pull a single record out of each group, based on a specific ordering.</p>
+
+<p>Let’s take a an example of some log data.  You have a log table that stores the <code class="highlighter-rouge">url</code> of a request and the <code class="highlighter-rouge">request_duration</code>, which is how long it took to process the request for that URL.  It also contains a <code class="highlighter-rouge">timestamp</code> column.  If you wanted to answer the question “what is the most recent duration for each unique URL?” you might end up with a query that looks something like this:</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">l</span><span class="p">.</span><span class="n">url</span><span class="p">,</span> <span class="n">l</span><span class="p">.</span><span class="n">request_duration</span>
+<span class="k">FROM</span> <span class="n">log</span> <span class="n">l</span>
+<span class="k">INNER</span> <span class="k">JOIN</span> <span class="p">(</span>
+  <span class="k">SELECT</span> <span class="n">url</span><span class="p">,</span> <span class="k">MAX</span><span class="p">(</span><span class="k">timestamp</span><span class="p">)</span> <span class="k">as</span> <span class="n">max_timestamp</span>
+  <span class="k">FROM</span> <span class="n">log</span>
+  <span class="k">GROUP</span> <span class="k">BY</span> <span class="n">url</span>
+<span class="p">)</span> <span class="n">last_by_url</span> <span class="k">ON</span> <span class="n">l</span><span class="p">.</span><span class="n">url</span> <span class="o">=</span> <span class="n">last_by_url</span><span class="p">.</span><span class="n">url</span> <span class="k">AND</span> <span class="n">l</span><span class="p">.</span><span class="k">timestamp</span> <span class="o">=</span> <span class="n">last_by_url</span><span class="p">.</span><span class="n">max_timestamp</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>That <code class="highlighter-rouge">INNER JOIN</code> with a subquery is used to determine the last timestamp for each URL.  Then, the outer query is pulling from the log table and using the results of that subquery to limit the results to only the last requests by URL.  There are several ways this could be done as well including using a <code class="highlighter-rouge">WHERE IN</code> clause (assuming there is a single identifier that could be used), a <code class="highlighter-rouge">LATERAL</code> join or a <code class="highlighter-rouge">WINDOW</code> function.  These approaches work but all of them require some type of 2 step query where the first step is identifying the target row and the second step is actually pulling that target row.  This isn’t terriby complex SQL but it can become a bit cumbersome.</p>
+
+<p>Let’s think about a regular <code class="highlighter-rouge">SELECT DISTINCT</code> clause for a moment.  When you use a <code class="highlighter-rouge">SELECT DISTINCT</code> clause, you are discarding duplicate rows and only retaining a single one.  But, the one that is kept is identical to the rest.  What if you could tell <code class="highlighter-rouge">DISTINCT</code> to only consider <em>some</em> fields for distinction and then which row you want to pull from this group of mostly similar but slightly varying rows?  This is what <code class="highlighter-rouge">SELECT DISTINCT ON</code> does.</p>
+
+<p><strong>With <code class="highlighter-rouge">DISTINCT ON</code>, You tell PostgreSQL to return a single row for each distinct group defined by the <code class="highlighter-rouge">ON</code> clause.  <em>Which</em> row in that group is returned is specified with the <code class="highlighter-rouge">ORDER BY</code> clause.</strong></p>
+
+<p>Back to our log example.  To acomplish what we did above with <code class="highlighter-rouge">SELECT DISTINCT ON</code>, it looks like this:</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="k">DISTINCT</span> <span class="k">ON</span> <span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="n">url</span><span class="p">,</span> <span class="n">request_duration</span>
+<span class="k">FROM</span> <span class="n">logs</span>
+<span class="k">ORDER</span> <span class="k">BY</span> <span class="k">timestamp</span> <span class="k">DESC</span>
+</code></pre></div></div>
+
+<p>That’s it!  We’re telling PostgreSQL to “put the logs into groups unique by url (<code class="highlighter-rouge">ON (url)</code>), sort each of these groups by most recent (<code class="highlighter-rouge">ORDER BY timestamp DESC</code>) and then return fields for the first record in each of these groups (<code class="highlighter-rouge">url, request_duration</code>).</p>
+
+    </div>
+    
+    <footer class="site-footer">
+    © 2019 Brady Holt
+</footer>
+
+    <amp-analytics type="googleanalytics">
+        <script type="application/json">
+        {
+            "vars": {
+            "account": "UA-19416043-2"
+            },
+            "triggers": {
+            "trackPageview": {
+                "on": "visible",
+                "request": "pageview"
+            }
+            }
+        }
+        </script>
+    </amp-analytics>
+</body>
+
+</html>

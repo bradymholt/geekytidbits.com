@@ -1,0 +1,97 @@
+<!doctype html>
+<html amp lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>My PogoPlug Geek Toy</title>
+    <link rel="canonical" href="https://www.geekytidbits.com/my-pogoplug-geek-toy/" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Poly' rel='stylesheet'>
+    <style amp-custom>
+        body { font-family: 'Poly', serif; }
+        .site-header { background-color: #237ab2; color: #e7e9ec; padding: 5px; font-weight: 100; border-bottom: 3px solid #f68905; }
+        .site-description { font-size: .5em;}        
+        .post-content { padding: 10px; }
+    </style>
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+    <script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>
+    <script async custom-element="amp-video" src="https://cdn.ampproject.org/v0/amp-video-0.1.js"></script>
+    <script async custom-element="amp-youtube" src="https://cdn.ampproject.org/v0/amp-youtube-0.1.js"></script>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+</head>
+
+<body>
+    
+    <h1 class="post-title">
+        <header class="site-header">
+    <div class="wrapper">
+        <a class="site-title" href="/">
+            <amp-img src="/media/geekytidbits.png" width="383" height="46" alt="Geeky Tidbits Logo" layout="responsive"><noscript><img src="/media/geekytidbits.png" width="383" height="46" alt="Geeky Tidbits Logo"></noscript></amp-img>
+        </a>
+        <div class="site-description">Tidbits on software development, technology, and other geeky stuff.</div>
+    </div>
+</header>
+
+    </h1>
+    <div class="post-content">
+      <span>
+          <i>Aug 29, 2011</i>
+      </span>
+      <p><strong>About a year ago, a friend* at work sent me a link about something called a PogoPlug.</strong></p>
+
+<p><a href="/media/pogoplug.jpg"><amp-img class="size-full wp-image-654 aligncenter" title="pogoplug" src="/media/pogoplug.jpg" alt="" width="220" height="220" layout="responsive"><noscript><img class="size-full wp-image-654 aligncenter" title="pogoplug" src="/media/pogoplug.jpg" alt="" width="220" height="220"></noscript></amp-img></a></p>
+
+<p>It’s a “plug computer” which is an extremely small full blown computer running a Marvell Sheeva 1.2Ghz processor. It’s got 256MB of memory and has 4 USB slots. The PogoPlug is sold as a “media sharing” device and has the Cloud Engine’s (vendor) own software running on it allowing you to easily access photos, music, videos, etc. from other locations and from your mobile device. At first glance I thought it was ugly (pink?!) but pretty cool because it was so small. I saw one at MicroCenter one day and decided to try it out. It was only about $75 bucks. Boy am I glad I did! This thing has turned out to be one of my favorite geek toys.</p>
+
+<p>After playing with it for awhile, I found some websites talking about how to get full blown Linux running on the thing. This was cool because you could have a silent, tiny, “always on” server running with 4 watts of power in you closet. The possibilities were many. The wheels in my brains were spinning full speed ahead.</p>
+
+<p>I got <a href="http://archlinuxarm.org/" target="_blank">Arch Linux ARM</a> running on it and setup the following on it:</p>
+
+<ul>
+  <li>Samba — shared network drive that shows up on my Windows 7 laptop and contains my Pictures, Music, Movies and Docs.</li>
+  <li>Squid Proxy and DansGuardian Content filter – I use this to speed up web access and block obscene web content. <a href="/transparent-content-filtering-proxy/">Read more</a>
+</li>
+  <li>Automatic TV show downloads – <a href="/automatic-tv-show-downloads/" target="_blank">Read more</a>
+</li>
+  <li>Apache web server</li>
+  <li>FTP server</li>
+  <li>Subversion (source control) server</li>
+  <li>Mono – for running .NET apps.</li>
+  <li>PicasaWebSync – a little app I wrote that uploads my pictures and videos to Picasa so I can access them. <a href="http://bradyholt.github.io/picasawebsync/">Read more</a>
+</li>
+  <li>House Alarm/Garage Door Interface — I have several applications running that allows me to control my Honeywell Vista house alarm system and Garage Doors. <a href="/iphone-control-house-alarm-and-garage-doors/" target="_blank">Read more</a>
+</li>
+  <li>Backup – I have two external hard drives connected to it and run a cron job weekly to mirror them for backup purposes.</li>
+</ul>
+
+<div>
+  <strong>Want one too? <a href="http://www.google.com/products/catalog?hl=en&amp;safe=active&amp;q=pogoplug&amp;gs_upl=4936l5040l0l5248l2l2l0l0l0l1l183l183l0.1l1l0&amp;um=1&amp;ie=UTF-8&amp;tbm=shop&amp;cid=8086923100599712541&amp;sa=X&amp;ei=6P5bTtCJMM2PsALksrmtDA&amp;ved=0CIEBEPMCMAs%20%20" target="_blank">Here’s some places to get one</a>.</strong>
+</div>
+
+<p>*- thanks Matt!</p>
+
+
+    </div>
+    
+    <footer class="site-footer">
+    © 2019 Brady Holt
+</footer>
+
+    <amp-analytics type="googleanalytics">
+        <script type="application/json">
+        {
+            "vars": {
+            "account": "UA-19416043-2"
+            },
+            "triggers": {
+            "trackPageview": {
+                "on": "visible",
+                "request": "pageview"
+            }
+            }
+        }
+        </script>
+    </amp-analytics>
+</body>
+
+</html>

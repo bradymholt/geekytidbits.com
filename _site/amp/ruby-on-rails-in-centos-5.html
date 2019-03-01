@@ -1,0 +1,159 @@
+<!doctype html>
+<html amp lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Ruby on Rails in CentOS 5</title>
+    <link rel="canonical" href="https://www.geekytidbits.com/ruby-on-rails-in-centos-5/" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Poly' rel='stylesheet'>
+    <style amp-custom>
+        body { font-family: 'Poly', serif; }
+        .site-header { background-color: #237ab2; color: #e7e9ec; padding: 5px; font-weight: 100; border-bottom: 3px solid #f68905; }
+        .site-description { font-size: .5em;}        
+        .post-content { padding: 10px; }
+    </style>
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+    <script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>
+    <script async custom-element="amp-video" src="https://cdn.ampproject.org/v0/amp-video-0.1.js"></script>
+    <script async custom-element="amp-youtube" src="https://cdn.ampproject.org/v0/amp-youtube-0.1.js"></script>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+</head>
+
+<body>
+    
+    <h1 class="post-title">
+        <header class="site-header">
+    <div class="wrapper">
+        <a class="site-title" href="/">
+            <amp-img src="/media/geekytidbits.png" width="383" height="46" alt="Geeky Tidbits Logo" layout="responsive"><noscript><img src="/media/geekytidbits.png" width="383" height="46" alt="Geeky Tidbits Logo"></noscript></amp-img>
+        </a>
+        <div class="site-description">Tidbits on software development, technology, and other geeky stuff.</div>
+    </div>
+</header>
+
+    </h1>
+    <div class="post-content">
+      <span>
+          <i>Nov 9, 2011</i>
+      </span>
+      <p>I recently started playing around with Ruby on Rails 3.1 to see what all the hype was about.  I’ve been working on a website for our neighborhood and decided to use RoR for it so I can learn it.  Rather than going the <a href="http://www.heroku.com/" target="_blank">Heroku</a> route, I wanted to host the site on my <a href="/setup-lamp-server-amazon-ec2/" target="_blank">Amazon EC2 instance running CentOS 5 64bit</a>.  Getting it setup on my server was a bit of a chore mostly because CentOS doesn’t have the latest and greatest packages.  Here are the steps I took to get a Rails site up and running.</p>
+
+<h2 id="ruby">Ruby</h2>
+
+<p>The latest package offered by yum in CentOS 5 is too old to work with Rails 3.1 so we must build a newer one.</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> /tmp
+wget http://ftp.ruby-lang.org/pub/ruby/1.9/ruby-1.9.2-p290.tar.gz
+<span class="nb">tar</span> <span class="nt">-zxvf</span> ruby-1.9.2-p290.tar.gz
+<span class="nb">cd </span>ruby-1.9.2-p290
+./configure <span class="nt">--prefix</span><span class="o">=</span>/opt/ruby192 <span class="o">&amp;&amp;</span> make <span class="o">&amp;&amp;</span> make <span class="nb">install
+export </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:/opt/ruby192/bin
+<span class="nb">echo</span> <span class="s1">'export PATH=$PATH:/opt/ruby192/bin'</span> &amp;gt<span class="p">;</span> /etc/profile.d/ruby192.sh
+</code></pre></div></div>
+
+<h2 id="rubygems">RubyGems</h2>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> /tmp
+wget http://rubyforge.org/frs/download.php/75309/rubygems-1.8.10.tgz
+<span class="nb">tar</span> <span class="nt">-zxvf</span> rubygems-1.8.10.tar.gz
+<span class="nb">cd </span>rubygems-1.8.10
+ruby setup.rb
+</code></pre></div></div>
+
+<h2 id="rails">Rails</h2>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem <span class="nb">install </span>rails
+</code></pre></div></div>
+
+<h2 id="sqlite3">SQLite3</h2>
+
+<p>Although CentOS 5 has SQLite3 installed out of the box it is an older version so we must build a new one.</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> /tmp
+wget http://www.sqlite.org/sqlite-autoconf-3070800.tar.gz
+<span class="nb">tar</span> <span class="nt">-zxvf</span> sqlite-autoconf-3070800.tar.gz
+<span class="nb">cd </span>sqlite-autoconf-3070800
+./configure <span class="nt">--prefix</span><span class="o">=</span>/opt/sqlite3 <span class="o">&amp;&amp;</span> make <span class="o">&amp;&amp;</span> make <span class="nb">install</span>
+</code></pre></div></div>
+
+<h2 id="passenger">Passenger</h2>
+
+<p><a href="http://www.modrails.com/" target="_blank">Phusion Passenger</a> makes running rails apps with Apache a cinch.  Run the following:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem <span class="nb">install </span>passenger
+passenger-install-apache2-module
+</code></pre></div></div>
+
+<p>The installation has nice walk-through instructions.  Basically, after the install, you will be placing the following in a new apache config file such as /etc/httpd/conf.d/rails_whatever.conf</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>LoadModule passenger_module /opt/ruby192/lib/ruby/gems/1.9.1/gems/passenger-3.0.9/ext/apache2/mod_passenger.so
+PassengerRoot /opt/ruby192/lib/ruby/gems/1.9.1/gems/passenger-3.0.9
+PassengerRuby /opt/ruby192/bin/ruby
+
+&lt;VirtualHost *:80&gt;
+ ServerName www.yourhost.com
+ DocumentRoot /opt/somewhere/public    # &lt;-- be sure to point to 'public'!
+ &lt;Directory /opt/somewhere/public&gt;
+   AllowOverride all              # &lt;-- relax Apache security settings
+   Options -MultiViews            # &lt;-- MultiViews must be turned off
+ &lt;/Directory&gt;
+&lt;/VirtualHost&gt;
+</code></pre></div></div>
+
+<h2 id="new-rails-site">New Rails Site</h2>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> /opt
+rails new somewhere
+</code></pre></div></div>
+
+<p>So at this point I got a bundle error about problems installing sqlite-ruby. Don’t fret.  Add the following to /opt/somewhere/Gemfile below gem ‘rails’, ‘3.1.1’:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem <span class="s1">'execjs'</span>
+gem <span class="s1">'therubyracer'</span>
+</code></pre></div></div>
+
+<p>Now run the following:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle config build.sqlite3 <span class="nt">--with-sqlite3-include</span><span class="o">=</span>/opt/sqlite3 <span class="nt">--with-sqlite3-lib</span><span class="o">=</span>/opt/sqlite3
+ <span class="nt">--with-sqlite3-dir</span><span class="o">=</span>/opt/sqlite3
+bundle update
+<span class="nb">chown</span> <span class="nt">-R</span> apache /opt/somewhere
+</code></pre></div></div>
+
+<h2 id="create-database">Create Database</h2>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rake db:migrate <span class="nv">RAILS_ENV</span><span class="o">=</span><span class="s2">"production"</span>
+</code></pre></div></div>
+
+<h2 id="fire-it-up">Fire it Up</h2>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>service httpd restart
+</code></pre></div></div>
+
+<p>Open a browser and go to www.yoursite.com.  If you see the Rails test page then you are up and running!</p>
+
+    </div>
+    
+    <footer class="site-footer">
+    © 2019 Brady Holt
+</footer>
+
+    <amp-analytics type="googleanalytics">
+        <script type="application/json">
+        {
+            "vars": {
+            "account": "UA-19416043-2"
+            },
+            "triggers": {
+            "trackPageview": {
+                "on": "visible",
+                "request": "pageview"
+            }
+            }
+        }
+        </script>
+    </amp-analytics>
+</body>
+
+</html>

@@ -1,0 +1,198 @@
+<!doctype html>
+<html amp lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Desktop Wallpaper Slideshow</title>
+    <link rel="canonical" href="https://www.geekytidbits.com/desktop-wallpaper-slideshow/" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Poly' rel='stylesheet'>
+    <style amp-custom>
+        body { font-family: 'Poly', serif; }
+        .site-header { background-color: #237ab2; color: #e7e9ec; padding: 5px; font-weight: 100; border-bottom: 3px solid #f68905; }
+        .site-description { font-size: .5em;}        
+        .post-content { padding: 10px; }
+    </style>
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+    <script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>
+    <script async custom-element="amp-video" src="https://cdn.ampproject.org/v0/amp-video-0.1.js"></script>
+    <script async custom-element="amp-youtube" src="https://cdn.ampproject.org/v0/amp-youtube-0.1.js"></script>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+</head>
+
+<body>
+    
+    <h1 class="post-title">
+        <header class="site-header">
+    <div class="wrapper">
+        <a class="site-title" href="/">
+            <amp-img src="/media/geekytidbits.png" width="383" height="46" alt="Geeky Tidbits Logo" layout="responsive"><noscript><img src="/media/geekytidbits.png" width="383" height="46" alt="Geeky Tidbits Logo"></noscript></amp-img>
+        </a>
+        <div class="site-description">Tidbits on software development, technology, and other geeky stuff.</div>
+    </div>
+</header>
+
+    </h1>
+    <div class="post-content">
+      <span>
+          <i>Jun 8, 2016</i>
+      </span>
+      <p>A coworker <a href="https://twitter.com/ynab">@ynab</a> recently posted on Slack about how they loved the <a href="https://chrome.google.com/webstore/detail/national-park-new-tab/kbhpocomjebacaaofccpbkaglnhnghee">National Park New Tab Chrome Extenstion</a>. I gave it a try and yes, I love it too. I also have a Chromecast and am often calling my wife in the room to see the amazing photo that just popped on as the latest Chromecast background. Being a left-brain person, pretty pictures usually don’t get me juiced up but hey, I like what I like.</p>
+
+<p>So, I thought it might be nice to create a script that could automatically change my Desktop Wallpaper on an interval and pull from various sources. You know, a Desktop Wallpaper Slideshow of sorts. I thought it would be fun and might even get my creative juices flowing during the day when I see that amazing photo pop up.</p>
+
+<h2 id="the-script">The Script</h2>
+
+<p>Here is what I came up with. It’s a node script that uses <a href="https://www.npmjs.com/package/weighted">weighted</a> to randomly pick 1 of 4 photo sources and set my desktop background using the <a href="https://www.npmjs.com/package/wallpaper">wallpaper</a> module. The 4 sources are:</p>
+
+<ol>
+  <li><strong>Bing Photo of The Day (Archive)</strong></li>
+  <li>
+<strong>Unsplash</strong> - Seriously nice, high-res photos. Unsplash requires registration to get an API token but it’s easy to do.</li>
+  <li>
+<strong>Chromecast Background Archive</strong> - Uses a Chromecast background image archive <a href="https://github.com/dconnolly/chromecast-backgrounds">on GitHub</a> thanks to <a href="https://github.com/dconnolly">@dconnolly</a>.</li>
+  <li>
+<strong>Picasa Web Album</strong> - Uses Google/Picasa Data API to pull photos from a public album</li>
+</ol>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#!/usr/bin/env node
+</span>
+<span class="s2">"use strict"</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">got</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"got"</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">tempfile</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"tempfile"</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">wallpaper</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"wallpaper"</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"path"</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"fs"</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">weighted</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"weighted"</span><span class="p">);</span>
+
+<span class="kd">function</span> <span class="nx">setWallpaper</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Setting wallpaper to: "</span> <span class="o">+</span> <span class="nx">url</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">file</span> <span class="o">=</span> <span class="nx">tempfile</span><span class="p">(</span><span class="nx">path</span><span class="p">.</span><span class="nx">extname</span><span class="p">(</span><span class="nx">url</span><span class="p">));</span>
+
+  <span class="nx">got</span>
+    <span class="p">.</span><span class="nx">stream</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">fs</span><span class="p">.</span><span class="nx">createWriteStream</span><span class="p">(</span><span class="nx">file</span><span class="p">))</span>
+    <span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">"finish"</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">wallpaper</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="nx">file</span><span class="p">);</span>
+    <span class="p">});</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">setBing</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Using Source: Bing Photo of the Day"</span><span class="p">);</span>
+
+  <span class="kd">let</span> <span class="nx">lastBingPhotoCount</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+  <span class="nx">request</span><span class="p">(</span>
+    <span class="p">{</span>
+      <span class="na">url</span><span class="p">:</span> <span class="s2">`http://www.bing.com/HPImageArchive.aspx?format=js&amp;idx=0&amp;n=</span><span class="p">${</span><span class="nx">lastBingPhotoCount</span><span class="p">}</span><span class="s2">&amp;mkt=en-US`</span><span class="p">,</span>
+      <span class="na">json</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">error</span> <span class="o">&amp;&amp;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span> <span class="o">===</span> <span class="mi">200</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">randomPhoto</span> <span class="o">=</span>
+          <span class="nx">body</span><span class="p">.</span><span class="nx">images</span><span class="p">[</span><span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span> <span class="o">*</span> <span class="nx">body</span><span class="p">.</span><span class="nx">images</span><span class="p">.</span><span class="nx">length</span><span class="p">)];</span>
+        <span class="nx">setWallpaper</span><span class="p">(</span><span class="s2">"http://www.bing.com"</span> <span class="o">+</span> <span class="nx">randomPhoto</span><span class="p">.</span><span class="nx">url</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">setUnsplash</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Using Source: Unsplash"</span><span class="p">);</span>
+
+  <span class="kd">var</span> <span class="nx">api_key</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">UNSPLASH_API_KEY</span><span class="p">;</span>
+  <span class="nx">request</span><span class="p">(</span>
+    <span class="p">{</span>
+      <span class="na">url</span><span class="p">:</span> <span class="s2">"https://api.unsplash.com/photos/random?client_id="</span> <span class="o">+</span> <span class="nx">api_key</span><span class="p">,</span>
+      <span class="na">json</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">error</span> <span class="o">&amp;&amp;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span> <span class="o">===</span> <span class="mi">200</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">setWallpaper</span><span class="p">(</span><span class="nx">body</span><span class="p">.</span><span class="nx">urls</span><span class="p">.</span><span class="nx">full</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">setChromecast</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Using Source: Chromecast Backgrounds"</span><span class="p">);</span>
+
+  <span class="nx">request</span><span class="p">(</span>
+    <span class="p">{</span>
+      <span class="na">url</span><span class="p">:</span>
+        <span class="s2">"https://raw.githubusercontent.com/mattburns/chromecast-backgrounds/master/backgrounds.json"</span><span class="p">,</span>
+      <span class="na">json</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">error</span> <span class="o">&amp;&amp;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span> <span class="o">===</span> <span class="mi">200</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">randomPhoto</span> <span class="o">=</span> <span class="nx">body</span><span class="p">[</span><span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span> <span class="o">*</span> <span class="nx">body</span><span class="p">.</span><span class="nx">length</span><span class="p">)];</span>
+        <span class="nx">setWallpaper</span><span class="p">(</span><span class="nx">randomPhoto</span><span class="p">.</span><span class="nx">url</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">setGooglePhoto</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Using Source: Picasa Web Album"</span><span class="p">);</span>
+
+  <span class="kd">var</span> <span class="nx">userId</span> <span class="o">=</span> <span class="s2">"115528839112598673902"</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">albumId</span> <span class="o">=</span> <span class="s2">"5710317752556741025"</span><span class="p">;</span>
+  <span class="nx">request</span><span class="p">(</span>
+    <span class="p">{</span>
+      <span class="na">url</span><span class="p">:</span>
+        <span class="s2">"https://picasaweb.google.com/data/feed/base/user/"</span> <span class="o">+</span>
+        <span class="nx">userId</span> <span class="o">+</span>
+        <span class="s2">"/albumid/"</span> <span class="o">+</span>
+        <span class="nx">albumId</span> <span class="o">+</span>
+        <span class="s2">"?alt=json&amp;kind=photo&amp;max-results=100&amp;hl=en_US&amp;imgmax=1600"</span><span class="p">,</span>
+      <span class="na">json</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">error</span> <span class="o">&amp;&amp;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span> <span class="o">===</span> <span class="mi">200</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">randomPhoto</span> <span class="o">=</span>
+          <span class="nx">body</span><span class="p">.</span><span class="nx">feed</span><span class="p">.</span><span class="nx">entry</span><span class="p">[</span><span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span> <span class="o">*</span> <span class="nx">body</span><span class="p">.</span><span class="nx">feed</span><span class="p">.</span><span class="nx">entry</span><span class="p">.</span><span class="nx">length</span><span class="p">)];</span>
+        <span class="nx">setWallpaper</span><span class="p">(</span><span class="nx">randomPhoto</span><span class="p">.</span><span class="nx">content</span><span class="p">.</span><span class="nx">src</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">wallpaperHandlers</span> <span class="o">=</span> <span class="p">[</span><span class="nx">setBing</span><span class="p">,</span> <span class="nx">setUnsplash</span><span class="p">,</span> <span class="nx">setChromecast</span><span class="p">,</span> <span class="nx">setGooglePhoto</span><span class="p">],</span>
+  <span class="nx">weights</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">];</span>
+
+<span class="kd">let</span> <span class="nx">currentHandler</span> <span class="o">=</span> <span class="nx">weighted</span><span class="p">.</span><span class="nx">select</span><span class="p">(</span><span class="nx">wallpaperHandlers</span><span class="p">,</span> <span class="nx">weights</span><span class="p">);</span>
+<span class="nx">currentHandler</span><span class="p">();</span>
+</code></pre></div></div>
+
+<h2 id="crontab">Crontab</h2>
+
+<p>To change the wallpaper every 5 minutes I added the following crontab entry (<code class="highlighter-rouge">crontab -e</code>).</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">*</span>/5 <span class="k">*</span> <span class="k">*</span> <span class="k">*</span> <span class="k">*</span> <span class="nb">.</span> ~/.zshrc<span class="p">;</span> /usr/local/bin/node ~/bin/wallpaper-changer.js
+</code></pre></div></div>
+
+    </div>
+    
+    <footer class="site-footer">
+    © 2019 Brady Holt
+</footer>
+
+    <amp-analytics type="googleanalytics">
+        <script type="application/json">
+        {
+            "vars": {
+            "account": "UA-19416043-2"
+            },
+            "triggers": {
+            "trackPageview": {
+                "on": "visible",
+                "request": "pageview"
+            }
+            }
+        }
+        </script>
+    </amp-analytics>
+</body>
+
+</html>

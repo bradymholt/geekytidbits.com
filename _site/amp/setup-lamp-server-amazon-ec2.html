@@ -1,0 +1,130 @@
+<!doctype html>
+<html amp lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>How to Setup a LAMP Server on Amazon EC2</title>
+    <link rel="canonical" href="https://www.geekytidbits.com/setup-lamp-server-amazon-ec2/" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Poly' rel='stylesheet'>
+    <style amp-custom>
+        body { font-family: 'Poly', serif; }
+        .site-header { background-color: #237ab2; color: #e7e9ec; padding: 5px; font-weight: 100; border-bottom: 3px solid #f68905; }
+        .site-description { font-size: .5em;}        
+        .post-content { padding: 10px; }
+    </style>
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+    <script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>
+    <script async custom-element="amp-video" src="https://cdn.ampproject.org/v0/amp-video-0.1.js"></script>
+    <script async custom-element="amp-youtube" src="https://cdn.ampproject.org/v0/amp-youtube-0.1.js"></script>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+</head>
+
+<body>
+    
+    <h1 class="post-title">
+        <header class="site-header">
+    <div class="wrapper">
+        <a class="site-title" href="/">
+            <amp-img src="/media/geekytidbits.png" width="383" height="46" alt="Geeky Tidbits Logo" layout="responsive"><noscript><img src="/media/geekytidbits.png" width="383" height="46" alt="Geeky Tidbits Logo"></noscript></amp-img>
+        </a>
+        <div class="site-description">Tidbits on software development, technology, and other geeky stuff.</div>
+    </div>
+</header>
+
+    </h1>
+    <div class="post-content">
+      <span>
+          <i>May 11, 2011</i>
+      </span>
+      <p>In an <a href="/migrating-to-amazon-ec2-web-services/">earlier post</a>, I explained that I migrated from my regular web host over to Amazon EC2 for the purpose of running my various websites. Here, I will detail how I got up and running and configured with a full blown CentOS 5 LAMP (Linux, Apache, MySql, PHP) server including support for .NET via <a href="http://www.google.com/url?sa=t&amp;source=web&amp;cd=2&amp;ved=0CCsQFjAB&amp;url=http%3A%2F%2Fwww.mono-project.com%2F&amp;ei=FM_KTaOLOYbn0QGCt5noCA&amp;usg=AFQjCNHVts-EqhUHaT4QJLm5yVTUXvWnUA&amp;sig2=36rlF4rMYyxxzPzI3q7cQQ">Mono</a>.</p>
+
+<p>First off, if you are new to Amazon’s Elastic Compute Cloud (EC2) then I highly recommend taking a look at t their <a href="http://ec2dream.webs.com/AWS-Management-Console.pdf" target="_blank">Getting Started Guide</a> first.</p>
+
+<ol>
+  <li>
+    <p><strong>Signup </strong>for Amazon EC2 if you haven’t already done so. The <a href="http://docs.amazonwebservices.com/AWSEC2/latest/GettingStartedGuide/index.html?SignUp.html">Sign Up for EC2 guide</a> is helpful here.</p>
+  </li>
+  <li>
+    <p><strong>Launch</strong> a new EC2 instance from the <span class="value">AWS Management Console</span>:
+I recommend using the community AMI ID <strong>ami-48f90621 </strong>which is CentOS 5, 64 bit. To select this AMI when launching, click “Community AMIs” and search for the ID. See the screen shot below.<a href="/media/request_instances_centos.png"><amp-img class="alignnone size-full wp-image-252" style="border: 1px solid lightgrey;" title="request_instances_centos" src="/media/request_instances_centos.png" alt="" width="733" height="230" layout="responsive"><noscript><img class="alignnone size-full wp-image-252" style="border: 1px solid lightgrey;" title="request_instances_centos" src="/media/request_instances_centos.png" alt="" width="733" height="230"></noscript></amp-img></a></p>
+  </li>
+</ol>
+
+<p>On the Configure Firewall step, create a new security group and add an inbound rule for ports 80 (HTTP) and 22 (SSH).<a href="/media/firewall.png"><amp-img class="alignnone size-full wp-image-274" style="border: 1px solid lightgrey;" title="ec2_security_group" src="/media/firewall.png" alt="" width="677" height="366" layout="responsive"><noscript><img class="alignnone size-full wp-image-274" style="border: 1px solid lightgrey;" title="ec2_security_group" src="/media/firewall.png" alt="" width="677" height="366"></noscript></amp-img></a></p>
+
+<ol>
+  <li>
+<strong>Connect</strong> to your new instance using the ssh client of your choice. Note, you’ll need to use the Key Pair your generated when you launched your instance to connect. When asked for the username enter <strong>root</strong>. I use PuTTY from Windows and it was a little tricky to get connected but the <a href="http://docs.amazonwebservices.com/AmazonEC2/gsg/2007-01-19/putty.html">Appendix: PuTTY</a> helped.</li>
+  <li>
+<strong>Prepare</strong> for software installation. In order to install Mono, you’ll need to add the Novell Mono Repository to yum so the mono packages can be found.
+    * Create the file <strong>/etc/yum.repos.d/mono.repo</strong> (i.e. <em>nano /etc/yum.repos.d/mono.repo</em>) with the following contents. <em>Optionally, you can run the following command and skip this step to make things a bit easier:</em>
+       <strong>wget /wp-content/uploads/mono.repo /etc/yum.repos.d/</strong>
+</li>
+</ol>
+<pre class="brush: text;">[novel]
+  Name=Novell Mono Repository
+  baseurl=http://ftp.novell.com/pub/mono/download-stable/RHEL_5/
+  enabled=1
+  gpgcheck=0</pre>
+<ol>
+  <li>
+<strong>Install software</strong> packages by issuing the following commands from the shell:
+    <ol>
+      <li>
+<strong>yum install httpd</strong> [enter]</li>
+      <li>
+<strong>yum install php</strong> [enter]</li>
+      <li>
+<strong>yum install mysql-server mysql</strong>[enter]</li>
+      <li>
+<strong>yum install mono* –disablerepo=epel,extras</strong>[enter]</li>
+      <li>
+<strong>yum install mod_mono* –disablerepo=epel,extras</strong>[enter]</li>
+    </ol>
+  </li>
+  <li>
+<strong>Start services</strong> by issuing the following command:
+    <ol>
+      <li>
+<strong>service httpd start</strong> [enter]</li>
+      <li>
+<strong>service mysql start</strong> [enter]</li>
+    </ol>
+  </li>
+  <li>
+<strong>Configure</strong> PATH environment variable for mono by running this command: <strong>export PATH=/opt/novell/mono/bin:$PATH **. To persist this after a system bounce, add the same line to the end of the /etc/profile file.<br>
+    **</strong>
+</li>
+  <li>
+<strong>Test</strong> your server by opening a browser and navigating to your “Public DNS” domain (i.e. http://<span class="value">ec2-00-00-00-000.compute-1.amazonaws.com). The Public DNS domain can be found on the properties of your EC2 instance in the AWS Management Console. If you get a page that says “Apache 2 Test Page” you are good to go.<br> </span>
+</li>
+</ol>
+
+<p>That’s it. You are now up and running with a CentOS x64 LAMP Server capable of running .NET applications. There is obviously more you will want to do depending on your needs but the steps above give you server that is “ready to go”.</p>
+
+
+    </div>
+    
+    <footer class="site-footer">
+    © 2019 Brady Holt
+</footer>
+
+    <amp-analytics type="googleanalytics">
+        <script type="application/json">
+        {
+            "vars": {
+            "account": "UA-19416043-2"
+            },
+            "triggers": {
+            "trackPageview": {
+                "on": "visible",
+                "request": "pageview"
+            }
+            }
+        }
+        </script>
+    </amp-analytics>
+</body>
+
+</html>

@@ -1,0 +1,90 @@
+<!doctype html>
+<html amp lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Conditional Serialization with Json.NET</title>
+    <link rel="canonical" href="https://www.geekytidbits.com/conditional-serialization-with-json-net/" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Poly' rel='stylesheet'>
+    <style amp-custom>
+        body { font-family: 'Poly', serif; }
+        .site-header { background-color: #237ab2; color: #e7e9ec; padding: 5px; font-weight: 100; border-bottom: 3px solid #f68905; }
+        .site-description { font-size: .5em;}        
+        .post-content { padding: 10px; }
+    </style>
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+    <script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>
+    <script async custom-element="amp-video" src="https://cdn.ampproject.org/v0/amp-video-0.1.js"></script>
+    <script async custom-element="amp-youtube" src="https://cdn.ampproject.org/v0/amp-youtube-0.1.js"></script>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+</head>
+
+<body>
+    
+    <h1 class="post-title">
+        <header class="site-header">
+    <div class="wrapper">
+        <a class="site-title" href="/">
+            <amp-img src="/media/geekytidbits.png" width="383" height="46" alt="Geeky Tidbits Logo" layout="responsive"><noscript><img src="/media/geekytidbits.png" width="383" height="46" alt="Geeky Tidbits Logo"></noscript></amp-img>
+        </a>
+        <div class="site-description">Tidbits on software development, technology, and other geeky stuff.</div>
+    </div>
+</header>
+
+    </h1>
+    <div class="post-content">
+      <span>
+          <i>Jan 6, 2015</i>
+      </span>
+      <p>In ASP.NET MVC, I typically use <a href="http://lostechies.com/jimmybogard/2012/04/10/asp-net-web-api-mvc-viewmodels-and-formatters/">View Models</a> along with the <a href="http://james.newtonking.com/json">Json.NET</a> library to get JSON back to the client.  When I want some members to be omitted from serialization I will simply add the [JsonIgnore] attribute to the target property.  This works great for static omission but sometimes I come across the need to perform <em>conditional </em>(i.e. at runtime) omission.  To do this, you can use the largely undocumented <strong>[bool *ShouldSerialize{MemberName}()] *</strong>approach.</p>
+
+<p>Simply add a bool return method named ShouldSerialize{MemberName} to the model class.  The {MemberName} portion of the name should match the member name that will be conditionally omitted.  Json.NET will check for the existence of this method and conditionally serialize the corresponding member value.  I also like to use an additional property (with [JsonIgnore]) that I set externally which is used by the ShouldSerialize methods.  In the example below, this property is called <em>SerializeSensitiveInfo.</em></p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">UserViewModel</span> <span class="p">{</span>
+
+  <span class="k">public</span> <span class="kt">string</span> <span class="n">FirstName</span> <span class="p">{</span><span class="k">get</span><span class="p">;</span><span class="k">set</span><span class="p">;}</span>
+  <span class="k">public</span> <span class="kt">string</span> <span class="n">LastName</span> <span class="p">{</span><span class="k">get</span><span class="p">;</span><span class="k">set</span><span class="p">;}</span>
+  <span class="k">public</span> <span class="kt">string</span> <span class="n">Username</span> <span class="p">{</span><span class="k">get</span><span class="p">;</span><span class="k">set</span><span class="p">;}</span> <span class="c1">//conditional serialization!</span>
+  <span class="k">public</span> <span class="kt">string</span> <span class="n">SecurityQuestion</span> <span class="p">{</span><span class="k">get</span><span class="p">;</span><span class="k">set</span><span class="p">;}</span> <span class="c1">//conditional serialization!</span>
+
+  <span class="k">public</span> <span class="kt">bool</span> <span class="nf">ShouldSerializeUsername</span><span class="p">(){</span>
+    <span class="c1">//only serialize Username if SerializeSensitiveInfo == true</span>
+    <span class="k">return</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">SerializeSensitiveInfo</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="k">public</span> <span class="kt">bool</span> <span class="nf">ShouldSerializeSecurityQuestion</span><span class="p">(){</span>
+    <span class="c1">//only serialize SecurityQuestion if SerializeSensitiveInfo == true</span>
+    <span class="k">return</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">SerializeSensitiveInfo</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="p">[</span><span class="n">JsonIgnore</span><span class="p">]</span>
+  <span class="k">public</span> <span class="kt">bool</span> <span class="n">SerializeSensitiveInfo</span> <span class="p">{</span><span class="k">get</span><span class="p">;</span><span class="k">set</span><span class="p">;}</span> <span class="c1">//this property allows control of serialization at runtime</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+
+    </div>
+    
+    <footer class="site-footer">
+    © 2019 Brady Holt
+</footer>
+
+    <amp-analytics type="googleanalytics">
+        <script type="application/json">
+        {
+            "vars": {
+            "account": "UA-19416043-2"
+            },
+            "triggers": {
+            "trackPageview": {
+                "on": "visible",
+                "request": "pageview"
+            }
+            }
+        }
+        </script>
+    </amp-analytics>
+</body>
+
+</html>

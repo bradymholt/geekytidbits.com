@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Complexity Creep | Geeky Tidbits</title>
+    <meta name="description" content="  “Controlling complexity is the essence of computer programming.” — Brian Kernighan">
+    <link href='//fonts.googleapis.com/css?family=IBM+Plex+Serif' rel='stylesheet' type='text/css'>
+    <style>body,h1,h2,h3,h4,h5,h6,p,blockquote,pre,hr,dl,dd,ol,ul,figure{margin:0;padding:0;-webkit-font-smoothing:antialiased}body{font-family:"IBM Plex Serif",serif;font-size:1.2em;line-height:1.5;font-weight:300;color:#444;background-color:#f7f7f7;-webkit-text-size-adjust:100%}h1,h2,h3,h4,h5,h6,p,blockquote,pre,ul,ol,dl,figure{margin-bottom:15px}img{max-width:100%;vertical-align:middle}figure>img{display:block}ul,ol{margin-left:30px}ul.condensed{columns:2;-webkit-columns:2;-moz-columns:2;list-style-type:disc;list-style-position:inside}li>ul,li>ol{margin-bottom:0}h2,h3,h4,h5,h6{font-weight:300}h1{font-weight:600;font-size:42px;line-height:1;padding-top:35px}@media screen and (max-width: 600px){h1{font-size:36px}}a{color:#126ca6;text-decoration:none}a:visited{color:#126ca6}a:hover{color:#178ad4}blockquote{color:#828282;padding-left:15px;font-size:18px;letter-spacing:-1px;font-style:italic}blockquote>:last-child{margin-bottom:0}pre{font-size:1em;padding:8px 12px;overflow-x:scroll}code{background-color:#f8f8f8}time{margin-right:10px}.wrapper{position:relative;width:800px;margin-right:auto;margin-left:auto;padding-right:30px;padding-left:30px;border-left:solid 225px transparent}@media screen and (max-width: 1085px){.wrapper{width:auto;border-left:0}}.page-content .wrapper{border-left:solid 225px #f7f7f7;background-color:#fff;padding-bottom:50px}@media screen and (max-width: 1085px){.page-content .wrapper{width:auto}}@media screen and (max-width: 600px){.page-content .wrapper{border-left:0}}.wrapper:after{content:"";display:table;clear:both}.icon>svg{display:inline-block;width:16px;height:16px;vertical-align:middle}.icon>svg path{fill:#828282}.site-header{border-bottom:3px solid #f68905;background-color:#237ab2;padding-bottom:10px;color:white;position:relative}.site-header img{margin-top:10px}.site-title{font-size:26px;line-height:56px;letter-spacing:-1px;margin-bottom:0}.site-description{font-size:17px}.site-footer{padding:10px 0 30px;color:#828282;font-style:italic}.page-content img{margin:20px}.post-header{margin-bottom:20px}.post .post-meta{display:inline-block;border:1px solid rgba(0,0,0,0.05);border-left:none;border-right:none;padding:8px 0 8px 30px;margin-top:10px;margin-left:-30px}.post-content h2{font-size:32px}@media screen and (max-width: 600px){.post-content h2{font-size:28px}}.post-content h3{font-size:26px}@media screen and (max-width: 600px){.post-content h3{font-size:22px}}.post-content h4{font-size:20px}@media screen and (max-width: 600px){.post-content h4{font-size:18px}}.post-list{margin-left:0;list-style:none}.post-list>li{margin-bottom:30px}.post-list img{max-height:100px}.post-meta{font-size:1em;color:#828282}.post-link{display:block;font-size:24px}.sidebar{font-size:16px;position:absolute;left:-195px;width:195px}.sidebar ul{margin-left:0px;list-style:none}.sidebar ul li{transition:all 0.2s ease-in-out}.sidebar ul li:hover{transform:scale(1.1)}.sidebar ul li a{text-decoration:none}.sidebar svg.social{width:25px;height:25px;margin:5px;vertical-align:middle}.sidebar img.head-shot{width:145px;height:145px;border-radius:75px;margin:10px 0}.sidebar h3{margin-bottom:0;font-weight:bold}.sidebar h4{font-style:italic;font-size:15px}.sidebar .site-nav{font-size:larger;line-height:30px}@media screen and (max-width: 600px){.sidebar{position:static;width:100%;text-align:center;display:none}.sidebar .head-shot{display:inline-block}.sidebar ul.social-links{width:150px;text-align:left;margin:0 auto;padding-left:20px}}@media screen and (max-width: 600px){body.home .sidebar{display:block}ul.condensed{columns:1;-webkit-columns:1;-moz-columns:1}}.pull-right{float:right !important}.pull-left{float:left !important}.block{display:block}.no-margin{margin:0px !important}table{table-layout:fixed;width:100%;border-collapse:collapse;margin:10px 0 20px 0}table th{text-align:left}table th,table td{padding:5px;border:1px solid lightgray}.highlight .hll{background-color:#ffffcc}.highlight{background:#f8f8f8}.highlight .c{color:#408080;font-style:italic}.highlight .err{border:1px solid #ff0000}.highlight .k{color:#008000;font-weight:bold}.highlight .o{color:#666666}.highlight .ch{color:#408080;font-style:italic}.highlight .cm{color:#408080;font-style:italic}.highlight .cp{color:#bc7a00}.highlight .cpf{color:#408080;font-style:italic}.highlight .c1{color:#408080;font-style:italic}.highlight .cs{color:#408080;font-style:italic}.highlight .gd{color:#a00000}.highlight .ge{font-style:italic}.highlight .gr{color:#ff0000}.highlight .gh{color:#000080;font-weight:bold}.highlight .gi{color:#00a000}.highlight .go{color:#888888}.highlight .gp{color:#000080;font-weight:bold}.highlight .gs{font-weight:bold}.highlight .gu{color:#800080;font-weight:bold}.highlight .gt{color:#0044dd}.highlight .kc{color:#008000;font-weight:bold}.highlight .kd{color:#008000;font-weight:bold}.highlight .kn{color:#008000;font-weight:bold}.highlight .kp{color:#008000}.highlight .kr{color:#008000;font-weight:bold}.highlight .kt{color:#b00040}.highlight .m{color:#666666}.highlight .s{color:#ba2121}.highlight .na{color:#7d9029}.highlight .nb{color:#008000}.highlight .nc{color:#0000ff;font-weight:bold}.highlight .no{color:#880000}.highlight .nd{color:#aa22ff}.highlight .ni{color:#999999;font-weight:bold}.highlight .ne{color:#d2413a;font-weight:bold}.highlight .nf{color:#0000ff}.highlight .nl{color:#a0a000}.highlight .nn{color:#0000ff;font-weight:bold}.highlight .nt{color:#008000;font-weight:bold}.highlight .nv{color:#19177c}.highlight .ow{color:#aa22ff;font-weight:bold}.highlight .w{color:#bbbbbb}.highlight .mb{color:#666666}.highlight .mf{color:#666666}.highlight .mh{color:#666666}.highlight .mi{color:#666666}.highlight .mo{color:#666666}.highlight .sa{color:#ba2121}.highlight .sb{color:#ba2121}.highlight .sc{color:#ba2121}.highlight .dl{color:#ba2121}.highlight .sd{color:#ba2121;font-style:italic}.highlight .s2{color:#ba2121}.highlight .se{color:#bb6622;font-weight:bold}.highlight .sh{color:#ba2121}.highlight .si{color:#bb6688;font-weight:bold}.highlight .sx{color:#008000}.highlight .sr{color:#bb6688}.highlight .s1{color:#ba2121}.highlight .ss{color:#19177c}.highlight .bp{color:#008000}.highlight .fm{color:#0000ff}.highlight .vc{color:#19177c}.highlight .vg{color:#19177c}.highlight .vi{color:#19177c}.highlight .vm{color:#19177c}.highlight .il{color:#666666}
+</style>
+    <link rel="canonical" href="https://www.geekytidbits.com/complexity-creep/">
+    <link rel="alternate" type="application/rss+xml" title="Geeky Tidbits" href="https://www.geekytidbits.com/feed/" />
+    <link rel="amphtml" href="https://www.geekytidbits.com/amp/complexity-creep.html">
+</head>
+
+<body>
+    <header class="site-header">
+    <div class="wrapper">
+        <a class="site-title" href="/">
+            <img src="/media/geekytidbits.png" width="383" height="46" alt="Geeky Tidbits Logo" />
+        </a>
+        <div class="site-description">Tidbits on software development, technology, and other geeky stuff.</div>
+    </div>
+</header>
+
+    <div class="page-content">
+        <div class="wrapper">
+            <div class="sidebar">
+    <img class="head-shot" alt="Brady Holt" width="145px" height="145px" src="//s.gravatar.com/avatar/ae474dd4a074fd22e897c4c54770c05a?s=290">
+    <h3>Brady Holt</h3>
+    <h4>Geek, developer at <a target="_blank" href="http://www.youneedabudget.com/">YNAB</a>, voider of warranties</h4>
+    <nav class="site-nav">
+        <ul> 
+            <li>
+                <a class="page-link" href="/about-me/">About Me</a>
+            </li>
+            <li>
+                <a class="page-link" href="/projects/">Projects</a>
+            </li>
+            <li>
+                <a class="page-link" href="/posts/">Posts</a>
+            </li>
+        </ul>
+    </nav>
+    <p>Connect with me!</p>
+    <ul class="social-links">
+        <li>
+            <a href="http://github.com/bradymholt">
+                <svg class="social" viewBox="0 0 35 35">
+                    <path fill="#444444" d="M16 0c-8.837 0-16 7.163-16 16s7.163 16 16 16 16-7.163 16-16-7.163-16-16-16zM25.502 25.502c-1.235 1.235-2.672 2.204-4.272 2.881-0.406 0.172-0.819 0.323-1.238 0.453v-2.398c0-1.26-0.432-2.188-1.297-2.781 0.542-0.052 1.039-0.125 1.492-0.219s0.932-0.229 1.438-0.406 0.958-0.388 1.359-0.633 0.786-0.563 1.156-0.953 0.68-0.833 0.93-1.328 0.448-1.089 0.594-1.781 0.219-1.456 0.219-2.289c0-1.615-0.526-2.99-1.578-4.125 0.479-1.25 0.427-2.609-0.156-4.078l-0.391-0.047c-0.271-0.031-0.758 0.083-1.461 0.344s-1.492 0.688-2.367 1.281c-1.24-0.344-2.526-0.516-3.859-0.516-1.344 0-2.625 0.172-3.844 0.516-0.552-0.375-1.075-0.685-1.57-0.93s-0.891-0.411-1.188-0.5-0.573-0.143-0.828-0.164-0.419-0.026-0.492-0.016-0.125 0.021-0.156 0.031c-0.583 1.479-0.635 2.839-0.156 4.078-1.052 1.135-1.578 2.51-1.578 4.125 0 0.833 0.073 1.596 0.219 2.289s0.344 1.286 0.594 1.781 0.56 0.938 0.93 1.328 0.755 0.708 1.156 0.953 0.854 0.456 1.359 0.633 0.984 0.313 1.438 0.406 0.95 0.167 1.492 0.219c-0.854 0.583-1.281 1.51-1.281 2.781v2.445c-0.472-0.14-0.937-0.306-1.394-0.5-1.6-0.677-3.037-1.646-4.272-2.881s-2.204-2.672-2.881-4.272c-0.7-1.655-1.055-3.414-1.055-5.23s0.355-3.575 1.055-5.23c0.677-1.6 1.646-3.037 2.881-4.272s2.672-2.204 4.272-2.881c1.655-0.7 3.415-1.055 5.23-1.055s3.575 0.355 5.23 1.055c1.6 0.677 3.037 1.646 4.272 2.881s2.204 2.672 2.881 4.272c0.7 1.655 1.055 3.415 1.055 5.23s-0.355 3.575-1.055 5.23c-0.677 1.6-1.646 3.037-2.881 4.272z"></path>
+                </svg>GitHub
+            </a>
+        </li>
+        <li>
+            <a href="http://stackoverflow.com/users/626911/brady?tab=profile">
+                <svg class="social" viewBox="0 0 35 35">
+                    <path fill="#444444" d="M32 20v12h-32v-12h4v8h24v-8zM6 22h20v4h-20zM6.473 17.671l0.866-3.905 19.526 4.328-0.866 3.905zM8.739 9.642l1.69-3.625 18.126 8.452-1.69 3.625zM30.991 11.296l-2.435 3.173-15.867-12.175 1.761-2.294h1.82z"></path>
+                </svg>Stack Overflow
+            </a>
+        </li>
+        <li>
+            <a href="http://twitter.com/bradymholt">
+                <svg class="social" viewBox="0 0 35 35">
+                    <path fill="#444444" d="M32 6.076c-1.177 0.522-2.443 0.875-3.771 1.034 1.355-0.813 2.396-2.099 2.887-3.632-1.269 0.752-2.674 1.299-4.169 1.593-1.198-1.276-2.904-2.073-4.792-2.073-3.626 0-6.565 2.939-6.565 6.565 0 0.515 0.058 1.016 0.17 1.496-5.456-0.274-10.294-2.888-13.532-6.86-0.565 0.97-0.889 2.097-0.889 3.301 0 2.278 1.159 4.287 2.921 5.465-1.076-0.034-2.088-0.329-2.974-0.821-0.001 0.027-0.001 0.055-0.001 0.083 0 3.181 2.263 5.834 5.266 6.437-0.551 0.15-1.131 0.23-1.73 0.23-0.423 0-0.834-0.041-1.235-0.118 0.835 2.608 3.26 4.506 6.133 4.559-2.247 1.761-5.078 2.81-8.154 2.81-0.53 0-1.052-0.031-1.566-0.092 2.905 1.863 6.356 2.95 10.064 2.95 12.076 0 18.679-10.004 18.679-18.68 0-0.285-0.006-0.568-0.019-0.849 1.283-0.926 2.396-2.082 3.276-3.398z"></path>
+                </svg>Twitter
+            </a>
+        </li>
+        <li>
+            <a href="http://www.linkedin.com/in/bradymholt">
+                <svg class="social" viewBox="0 0 35 35">
+                    <path fill="#444444" d="M12 12h5.535v2.837h0.079c0.77-1.381 2.655-2.837 5.464-2.837 5.842 0 6.922 3.637 6.922 8.367v9.633h-5.769v-8.54c0-2.037-0.042-4.657-3.001-4.657-3.005 0-3.463 2.218-3.463 4.509v8.688h-5.767v-18z"></path>
+                    <path fill="#444444" d="M2 12h6v18h-6v-18z"></path>
+                    <path fill="#444444" d="M8 7c0 1.657-1.343 3-3 3s-3-1.343-3-3c0-1.657 1.343-3 3-3s3 1.343 3 3z"></path>
+                </svg>LinkedIn
+            </a>
+        </li>
+        <li>
+            <a href="/feed/">
+                <svg class="social" viewBox="0 0 35 35">
+                    <path fill="#444444" d="M4.259 23.467c-2.35 0-4.259 1.917-4.259 4.252 0 2.349 1.909 4.244 4.259 4.244 2.358 0 4.265-1.895 4.265-4.244-0-2.336-1.907-4.252-4.265-4.252zM0.005 10.873v6.133c3.993 0 7.749 1.562 10.577 4.391 2.825 2.822 4.384 6.595 4.384 10.603h6.16c-0-11.651-9.478-21.127-21.121-21.127zM0.012 0v6.136c14.243 0 25.836 11.604 25.836 25.864h6.152c0-17.64-14.352-32-31.988-32z"></path>
+                </svg>Feed
+            </a>
+        </li>
+    </ul>
+</div>
+ <div class="post">
+    <header class="post-header">
+        <h1 class="post-title">Complexity Creep</h1>
+        <p class="post-meta">Sep 28, 2015</p>
+    </header>
+    <article class="post-content">
+        <blockquote>
+  <p>“Controlling complexity is the essence of computer programming.” — Brian Kernighan</p>
+</blockquote>
+
+<p><img src="/media/i-do-not-understand-code.jpg" alt="Complex Code" class="pull-right" />
+The longer I have been developing software, the more I am convinced this quote by Kernighan is true. And when I am thinking about complexity in software, I like to think about the idea of “fighting” it rather than just controlling it. Why? I think it takes real initiative to keep things simple. The tendency for things to start out simple and to progressively get more <em>unnecessarily</em> complicated seems to be inevitable (unless you work against it). To be sure, some things are inherently complex to solve and demand more than a simplistic solution. The tendency toward <strong>unnecessary complexity</strong>, however, is what I like to call “complexity creep”.</p>
+
+<h2 id="its-a-bad-thing">It’s a Bad Thing</h2>
+
+<p>Why is complexity creep such a bad thing? Why is simplicity worth fighting for? When complexity increases, software becomes:</p>
+
+<ul>
+  <li><strong>Harder to Maintain</strong> - complex code is hard to maintain. To make changes or add new functionality you must understand what the code is doing. If the design is complex it is going to take much more time to a developer to understand the design and make the necessary changes.</li>
+  <li><strong>More Fragile</strong> - complex things tend to be more fragile meaning one small change breaks something else.</li>
+  <li><strong>More Buggy</strong> - Complex code is harder to understand and is more prone to have bugs. Unit tests help here but there is always opportunity for edge cases to not be under test.</li>
+  <li><strong>More Expensive</strong> - Particularly in the case where complexity creep exists in the <em>process</em> around developing software such as workflow, rules, and procedures, you can end up in a negative ROI situation where the benefit you receive is overshadowed by the cost that is incurred.</li>
+  <li>
+    <p><strong>Harder to Debug</strong> - For anyone (including yourself!) trying to debug an application that is overly complex, it can take much longer to determine the root cause of a problem and fix it. If the problem is in production on a mission critical application, this is a big and stressful problem.</p>
+
+    <blockquote>
+      <p>“Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it.” — Brian Kernighan</p>
+    </blockquote>
+  </li>
+</ul>
+
+<p>All of these things mean delivering and supporting your software <strong>is going to take longer and cost more money</strong>.</p>
+
+<p>Think about it. Let’s take a simple example. Let’s say you need to write a C# program that logs the number of milliseconds it takes to send a request to a web application and get the entire response back. Easy right? Something like this…</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">WebClient</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">WebClient</span><span class="p">();</span>
+
+  <span class="n">DateTime</span> <span class="n">startTime</span> <span class="p">=</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span><span class="p">;</span>
+  <span class="kt">string</span> <span class="n">reply</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">DownloadString</span><span class="p">(</span><span class="s">"http://www.YourAwesomeDomain.com"</span><span class="p">);</span>
+  <span class="n">DateTime</span> <span class="n">endTime</span> <span class="p">=</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span><span class="p">;</span>
+
+  <span class="kt">int</span> <span class="n">millisecondElapsed</span> <span class="p">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)((</span><span class="n">endTime</span> <span class="p">-</span> <span class="n">startTime</span><span class="p">).</span><span class="n">TotalMilliseconds</span><span class="p">);</span>
+  <span class="n">System</span><span class="p">.</span><span class="n">IO</span><span class="p">.</span><span class="n">File</span><span class="p">.</span><span class="nf">WriteAllText</span><span class="p">(</span><span class="s">@"log.txt"</span><span class="p">,</span> <span class="kt">string</span><span class="p">.</span><span class="nf">Format</span><span class="p">(</span><span class="s">"{0}: {1}"</span><span class="p">,</span>
+    <span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span><span class="p">.</span><span class="nf">ToString</span><span class="p">(),</span> <span class="n">millisecondElapsed</span><span class="p">.</span><span class="nf">ToString</span><span class="p">()));</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Now, let’s say this application goes through several revisions, keeping up with some changing requirements. And, along the way you pick up some nifty new design patterns and try to keep it testable and flexible. Now, it looks something like this:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">const</span> <span class="kt">int</span> <span class="n">WORK_QUEUE_BATCH_SIZE</span> <span class="p">=</span> <span class="m">3</span><span class="p">;</span>
+
+<span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">IRequestProvider</span> <span class="n">provider</span> <span class="p">=</span> <span class="nf">GetRequestProvider</span><span class="p">();</span>
+  <span class="n">IWorkQueue</span> <span class="n">queue</span> <span class="p">=</span> <span class="nf">GetWorkQueue</span><span class="p">();</span>
+  <span class="n">ILogger</span> <span class="n">logger</span> <span class="p">=</span> <span class="nf">BuildLoggerFromConfig</span><span class="p">();</span>
+
+  <span class="n">WorkItem</span> <span class="n">item</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">WorkItem</span><span class="p">();</span>
+  <span class="n">item</span><span class="p">.</span><span class="n">Protocol</span> <span class="p">=</span> <span class="s">"http"</span><span class="p">;</span>
+  <span class="n">item</span><span class="p">.</span><span class="n">Verb</span> <span class="p">=</span> <span class="s">"GET"</span><span class="p">;</span>
+  <span class="n">item</span><span class="p">.</span><span class="n">Url</span> <span class="p">=</span> <span class="s">"http://www.YourAwesomeDomain.com"</span><span class="p">;</span>
+  <span class="n">queue</span><span class="p">.</span><span class="nf">AddWorkItem</span><span class="p">(</span><span class="n">item</span><span class="p">);</span>
+
+  <span class="n">QueueWorker</span> <span class="n">worker</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">QueueWorker</span><span class="p">(</span><span class="n">provider</span><span class="p">,</span> <span class="n">queue</span><span class="p">,</span> <span class="n">logger</span><span class="p">);</span>
+
+  <span class="kt">bool</span> <span class="n">moreWork</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
+  <span class="k">while</span> <span class="p">(</span><span class="n">moreWork</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">IWorkQueueStatus</span> <span class="n">status</span> <span class="p">=</span> <span class="n">worker</span><span class="p">.</span><span class="nf">DoWork</span><span class="p">(</span><span class="n">WORK_QUEUE_BATCH_SIZE</span><span class="p">);</span>
+    <span class="n">moreWork</span> <span class="p">=</span> <span class="n">status</span><span class="p">.</span><span class="nf">CurrentQueueSize</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="p">...</span>
+
+<span class="n">IWorkQueueStatus</span> <span class="nf">DoWork</span><span class="p">(</span><span class="kt">int</span> <span class="n">batchSize</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">1</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;=</span> <span class="n">batchSize</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span> <span class="p">{</span>
+    <span class="n">WorkItem</span> <span class="n">nextItem</span> <span class="p">=</span> <span class="n">m_queue</span><span class="p">.</span><span class="nf">GetNextWorkItem</span><span class="p">();</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">nextItem</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">WorkItem</span> <span class="n">currentItem</span> <span class="p">=</span> <span class="n">nextItem</span><span class="p">;</span>
+
+      <span class="n">m_logger</span><span class="p">.</span><span class="nf">Debug</span><span class="p">(</span><span class="kt">string</span><span class="p">.</span><span class="nf">Format</span><span class="p">(</span><span class="s">"About to PerformRequest on ID: {0}"</span><span class="p">,</span> <span class="n">currentItem</span><span class="p">.</span><span class="n">ID</span><span class="p">));</span>
+      <span class="n">currentItem</span><span class="p">.</span><span class="nf">PerformRequest</span><span class="p">(</span><span class="n">provider</span><span class="p">);</span>
+      <span class="n">m_logger</span><span class="p">.</span><span class="nf">Debug</span><span class="p">(</span><span class="kt">string</span><span class="p">.</span><span class="nf">Format</span><span class="p">(</span><span class="s">"Done with PerformRequest on ID: {0}"</span><span class="p">,</span> <span class="n">currentItem</span><span class="p">.</span><span class="n">ID</span><span class="p">));</span>
+
+      <span class="n">nextItem</span> <span class="p">=</span> <span class="n">m_queue</span><span class="p">.</span><span class="nf">GetNextWorkItem</span><span class="p">();</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>This thing can now handle more request types, logs more about what it is doing and supports operating in batches. But, at the end of the day this thing is supposed to log the number of milliseconds it takes to request a web page. Is this complexity necessary? I would strongly argue it is not. This is a hypothetical example but I have seen something simple turn into something overly complex time and time again.</p>
+
+<p>Let’s take another (humorous) example that I think does a good job illustrating the point that something that starts simple can get crazy complex. The <a href="http://c2.com/cgi/wiki?FizzBuzzTest">Fizz Buzz Test</a> is algorithm prompt used to ensure prospective programmers can write basic code:</p>
+
+<blockquote>
+  <p>For numbers 1 through 100: if the number is divisible by 3 print Fizz; if the number is divisible by 5 print Buzz; if the number is divisible by 3 and 5 (15) print FizzBuzz; else, print the number</p>
+</blockquote>
+
+<p>Some clever developer took this prompt to an extreme and came up with <a href="https://github.com/EnterpriseQualityCoding/FizzBuzzEnterpriseEdition">Fizz Buzz Enterprise Edition</a>. It has 3,913 lines of code to implement an algorithm that should take more like 15 lines of code. It’s funny but demonstrates complexity creep. To be clear, complexity has nothing to do with how much code is used to implement a solution. <strong>An overly complex solution could be extremely verbose or it could be surprisingly terse.</strong></p>
+
+<h2 id="how-it-happens">How it Happens</h2>
+
+<p>Why do things naturally drift towards complexity? I think there are lots of reasons but the ones I have experienced first hand are:</p>
+
+<ul>
+  <li>Premature optimization</li>
+  <li>Anticipating future needs that never arise</li>
+  <li>Not refactoring - Sometimes a changing requirement warrants a redesign of a component that could end up being less complex in the end compared to “tacking on” something to the existing design.</li>
+  <li>Trying to be “clever”</li>
+  <li>Misunderstanding of the fundamental problem you are trying to solve - If you don’t fully understand the problem you are trying to solve or the algorithm you are implementing, you might write out code that resembles your mixed-up understanding of the problem.</li>
+  <li>Laziness - Many times I think it is harder to design a simple solution than a complex one. It’s a paradox to be sure.</li>
+  <li>
+    <p>Unawareness - When you are not aware of how your problem may have already been solved by someone else or that a tool exists that could be the perfect tool for you job, you may end up adding complexity to your application when it is not necessary to do so.</p>
+
+    <blockquote>
+      <p>“Simple can be harder than complex: You have to work hard to get your thinking clean to make it simple. But it’s worth it in the end because once you get there, you can move mountains.” - Steve Jobs</p>
+    </blockquote>
+  </li>
+</ul>
+
+<p>It’s important to note that complexity creep can happen in many different areas of the software development process; not just when you are slinging out some new code or making a modification to a an existing component. It can happen during planning, such as when you are deciding the approach to take in solving a problem (or whether the problem actually needs to be solved). It can creep into the development process of your team, such as the steps developers must go through to get code developed and released. Some of it can be veiled in good intentions like “security”, “quality control”, “risk mitigation” or “best practice”; these are all good things but processes around them can become unnecessarily complex. It can show up anywhere!</p>
+
+<h2 id="fight-it">Fight It</h2>
+
+<p>I hope you agree with me that complexity creep is a real thing and that it is a problem. Here are some strategies I’ve find that really work to fight the creep.</p>
+
+<ul>
+  <li><strong>Value Simplicity</strong> - If you are aware of the pitfalls of complexity creep and begin to value simplicity, you will put effort into fighting complexity creep.</li>
+  <li><strong>Have Courage</strong> - To fight complexity creep, there will be times you have to roll up your sleeves and do some heavy lifting. It could be hard to make that refactor. It could take time to think through a solution that is more straight-forward. You might step on some toes (like the guy who wrote the original version of the component) and have to justify the time spent to your manager. You might have to ask “why” in a meeting where it seems like doing so would not be welcome. This all takes courage.</li>
+  <li><strong>Think Outside the Box</strong> - Talk your change over with someone else; spend some time researching how others have solved a similar problem; don’t assume anything; don’t just start running with your first idea about how to solve a problem but instead think about it from different angles first.</li>
+  <li><strong>Do Code Reviews</strong> - Have somebody else look at your code. If they can’t understand it you should make it simpler.</li>
+  <li><strong>Remove Unused Code</strong> - As the amount of code in a system goes up, it becomes hard to maintain it. When you do system wide refactors you may be touching (and spending time on) code that is not even being used. I know it is tempting to leave it there or just comment it out because “it might be needed” but I have found that just <em>removing</em> it pays huge dividends. Obviously, you want to be careful and methodical here.</li>
+  <li><strong>Read and Research</strong> - Keep up with what others are doing to solve problems similar to yours and tools out there that could be leveraged for a fraction of the cost (and complexity!) you would incur if you had to do it yourself.</li>
+  <li>Remember and practice the the wisdom behind these principles:
+    <ul>
+      <li>KISS - <strong>K</strong>eep <strong>I</strong>t <strong>S</strong>imple <strong>S</strong>tupid</li>
+      <li>YAGNI - <strong>Y</strong>ou <strong>A</strong>in’t <strong>G</strong>onna <strong>N</strong>eed <strong>I</strong>t</li>
+      <li>DRY - <strong>D</strong>on’t <strong>R</strong>epeat <strong>Y</strong>ourself</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="dont-be-a-jerk">Don’t Be A Jerk</h3>
+
+<p>It is worth noting, you may have some opposition in your effort to avoid complexity creep. Your team might disagree with your approach and you might ruffle some feathers. However, I’ve learned that if you communicate with your team about why you are doing what you are doing they will usually be supportive (and if they are always fighting you on this then maybe you are not on the right team). It’s important to remind each other that you are on the same team and and the end game is shipping quality software in a timely manner. Sometimes your team will disagree and the consensus will not be in your favor. Pick your battles and don’t be a jerk.</p>
+
+<h3 id="examples-of-killing-complexity">Examples of Killing Complexity</h3>
+
+<h4 id="the-one-off-report-that-was-going-to-take-6-weeks">The one-off report that was going to take 6 weeks</h4>
+
+<p>I was once on a team that received a “high priority” request to create a few custom reports for a <strong>single</strong> client. These reports couldn’t be generated within the existing reporting structure so the product owner and a developer starting going down the path of making major and fundamental changes to our reporting system to support these new one off custom reports for the <strong>single</strong> client. And these changes were going to make our reporting system significantly more complex. It was a large task and was going to take an absurd amount of time. During one of our stand-ups, I had an idea of how to avoid the complexity creep. Why not create a separate stand-alone reporting application that could generate the reports for the client and be done with it? It ended up taking 3 days to do this and the client was happy. Funny thing, that client went bankrupt 6 months later.</p>
+
+<h4 id="the-application-where-only-15-of-the-code-was-in-use">The application where only 15% of the code was in use</h4>
+
+<p>A few years back I was tasked with taking over a mission critical application that was old (10+ years) and “a mess”. It didn’t take long for me to realize that there was tons of code that wasn’t being used anymore and if I was going to reign this application in, I needed to identify and remove this code. I found that any time I needed to make a change, I had to wade through a huge amount of code, much of which was never even used. The goal was to reduce the size and complexity of the system. The problem was that no single person knew what was used and what was not. So, I implemented analytics to track usage of features so I could determine what was used and what was not used. Then, I started <strong>removing code</strong>. Not commenting it out, removing it. Source control had the history so I could get it back if I really needed it. There were a handful of times I removed a feature/page that was used twice a year that I had to restore but the end result was a <em>much</em> leaner application that was so much easier to maintain.</p>
+
+<p>You know, when I was looking for a good “complexity” quote for this post I found a <a href="http://www.goodreads.com/quotes/tag/simplicity">very large number of quotes on complexity</a>. That’s why I have so many quotes in this post, because I liked a lot of them! I was actually surprised by all the quotes out there, especially how many of them were from famous people like da Vinci and Einstein. Anyway, I drew my own conclusion that it is not a coincidence; a lot of successful people have found that fighting complexity is a key to success. I’ll leave you with a few more good ones.</p>
+
+<blockquote>
+  <p>“Simplicity is the ultimate sophistication.” — Leonardo da Vinci</p>
+</blockquote>
+
+<blockquote>
+  <p>“Everything should be as simple as possible, but not simpler.” - Albert Einstein</p>
+</blockquote>
+
+<blockquote>
+  <p>“Complexity is your enemy. Any fool can make something complicated. It is hard to make something simple.” - Richard Branson</p>
+</blockquote>
+
+<blockquote>
+  <p>“Any intelligent fool can make things bigger and more complex… It takes a touch of genius — and a lot of courage to move in the opposite direction.” - Albert Einstein</p>
+</blockquote>
+
+    </article>
+    <div id="disqus_thread"></div>
+    
+    <script type="text/javascript">
+        
+        var disqus_identifier = '/complexity-creep';
+        
+        var disqus_container_id = 'disqus_thread';
+        var disqus_shortname = 'geekytidbits';
+        var disqus_url = 'https://www.geekytidbits.com/complexity-creep/';
+        (function () {
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the
+        <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+    </noscript>
+    
+</div>
+        </div>
+    </div>
+    <div class="wrapper">
+        <footer class="site-footer">
+    &copy; 2019 Brady Holt
+</footer>
+
+    </div>
+    <script>
+        (function(i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function() {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-19416043-2', 'auto');
+        ga('send', 'pageview');
+    </script>
+    </body>
+</html>

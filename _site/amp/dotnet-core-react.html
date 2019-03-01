@@ -1,0 +1,138 @@
+<!doctype html>
+<html amp lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>ASP.NET Core / React SPA Template</title>
+    <link rel="canonical" href="https://www.geekytidbits.com/asp-dotnet-core-react-template/" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Poly' rel='stylesheet'>
+    <style amp-custom>
+        body { font-family: 'Poly', serif; }
+        .site-header { background-color: #237ab2; color: #e7e9ec; padding: 5px; font-weight: 100; border-bottom: 3px solid #f68905; }
+        .site-description { font-size: .5em;}        
+        .post-content { padding: 10px; }
+    </style>
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+    <script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>
+    <script async custom-element="amp-video" src="https://cdn.ampproject.org/v0/amp-video-0.1.js"></script>
+    <script async custom-element="amp-youtube" src="https://cdn.ampproject.org/v0/amp-youtube-0.1.js"></script>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+</head>
+
+<body>
+    
+    <h1 class="post-title">
+        <header class="site-header">
+    <div class="wrapper">
+        <a class="site-title" href="/">
+            <amp-img src="/media/geekytidbits.png" width="383" height="46" alt="Geeky Tidbits Logo" layout="responsive"><noscript><img src="/media/geekytidbits.png" width="383" height="46" alt="Geeky Tidbits Logo"></noscript></amp-img>
+        </a>
+        <div class="site-description">Tidbits on software development, technology, and other geeky stuff.</div>
+    </div>
+</header>
+
+    </h1>
+    <div class="post-content">
+      <span>
+          <i>Sep 26, 2016</i>
+      </span>
+      <p><strong>Update</strong> - I have updated this template and <a href="/asp-dotnet-core-react-template-update/">wrote about it here</a>.</p>
+
+<p>A few weeks ago, I really wanted to build something new.  As I tweeted, I really wanted to build something as an excuse to play with some new tools.  There are so many languages, frameworks, tools out there today for building software!</p>
+
+<p><amp-img src="/media/dotnet-core-react-twitter.png" alt="Twitter Post" width="508" height="210" layout="responsive"><noscript><img src="/media/dotnet-core-react-twitter.png" alt="Twitter Post" width="508" height="210"></noscript></amp-img></p>
+
+<p>On the one hand, it is a bit overwhelming to keep track of all of this stuff and attempt to stay aware of it all.  On the other hand, it’s tons of fun to play with different things.</p>
+
+<p>Anyway, I bounced around some ideas, played with a few things and recalled my mental “I want to play with this” backlog and settled on building a SPA: <a href="https://docs.asp.net/en/latest/intro.html">ASP.NET Core</a> on the server side for JSON/REST API and React as a web client.  As I started setting up things, the application in particular quickly took a backseat to the technology stack setup itself.  You know, getting the foundation laid with a skeleton/template project.  That’s ok, it was fun and I learned a bunch of new things along the way.  I ended up building a template project to build stuff with going forward.  Here’s the repository: <a href="https://github.com/bradymholt/aspnet-core-react-template">https://github.com/bradymholt/aspnet-core-react-template</a>.</p>
+
+<p>A few observations I had after going through the setup process:</p>
+
+<ul>
+  <li>Web development has changed a lot in the last 5 years</li>
+  <li>Web development has gotten a lot more complex in the last 5 years</li>
+  <li>There is a ton of stuff to learn (and re-learn) to get a web application up and running</li>
+</ul>
+
+<p>On that last point, just look at this survey of all the tools, technologies, concepts, etc. that went into my template project.  Admittedly, I didn’t have to employ all of these but I do think this is a pretty realistic modern day web stack setup.</p>
+
+<h2 id="server">Server</h2>
+
+<ul class="condensed">
+<li>.NET Core</li>
+<li>ASP.NET Core</li>
+<li>Entity Framework Core</li>
+<li>Entity Framework Migrations</li>
+<li>OpenIddict (for JWT auth)</li>
+<li>REST</li>
+<li>PostgresSQL</li>
+<li>Docker for development PostgresSQL database</li>
+</ul>
+
+<h2 id="web--client">Web / Client</h2>
+<ul class="condensed">
+<li>Node.js / npm</li>
+<li>Webpack</li>
+<li>HMR (Webpack Hot module Replacement)</li>
+<li>Stylus/CSS</li>
+<li>CSS Modules</li>
+<li>TypeScript</li>
+<li>React</li>
+<li>Flux</li>
+<li>React Router</li>
+</ul>
+
+<h2 id="testing">Testing</h2>
+<ul class="condensed">
+<li>xUnit for .NET Core</li>
+<li>Enzyme/Mocha/Chai for React</li>
+</ul>
+
+<h2 id="devops">DevOps</h2>
+<ul class="condensed">
+<li>Ansible</li>
+<li>Docker</li>
+<li>Let's Encrypt (for SSL certs)</li>
+<li>PostgresSQL</li>
+<li>Nginx</li>
+<li>Supervisor (supervisord)</li>
+<li>Digital Ocean</li>
+</ul>
+
+<p>Wow, that’s a lot of stuff!  The end result though, is a pretty solid template to build apps with.  Just about everything is baked in including asset bundling, database migrations, testings, DevOps scripts for provisioning and deployment.  Also, the ASP.NET Core SpaServices support for Webpack HMR feels very productive: just fire up the server with <code class="highlighter-rouge">npm start</code> and everythng just works.</p>
+
+<h2 id="demo">Demo</h2>
+
+<p>If a picture is worth a thousand words, a video is worth a million, right?  Rather than walking through everything with a bunch of words and screenshots, I think a video might be best suited for showing the pieces to this template.</p>
+
+<amp-youtube width="805" height="453" layout="responsive" data-videoid="jyuLAizmg3U"></amp-youtube>
+
+<h2 id="source">Source</h2>
+
+<p><a href="https://github.com/bradymholt/aspnet-core-react-template">https://github.com/bradymholt/aspnet-core-react-template</a></p>
+
+    </div>
+    
+    <footer class="site-footer">
+    © 2019 Brady Holt
+</footer>
+
+    <amp-analytics type="googleanalytics">
+        <script type="application/json">
+        {
+            "vars": {
+            "account": "UA-19416043-2"
+            },
+            "triggers": {
+            "trackPageview": {
+                "on": "visible",
+                "request": "pageview"
+            }
+            }
+        }
+        </script>
+    </amp-analytics>
+</body>
+
+</html>

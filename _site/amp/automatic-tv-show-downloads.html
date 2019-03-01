@@ -1,0 +1,97 @@
+<!doctype html>
+<html amp lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Automatic TV Show Downloads</title>
+    <link rel="canonical" href="https://www.geekytidbits.com/automatic-tv-show-downloads/" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Poly' rel='stylesheet'>
+    <style amp-custom>
+        body { font-family: 'Poly', serif; }
+        .site-header { background-color: #237ab2; color: #e7e9ec; padding: 5px; font-weight: 100; border-bottom: 3px solid #f68905; }
+        .site-description { font-size: .5em;}        
+        .post-content { padding: 10px; }
+    </style>
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+    <script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>
+    <script async custom-element="amp-video" src="https://cdn.ampproject.org/v0/amp-video-0.1.js"></script>
+    <script async custom-element="amp-youtube" src="https://cdn.ampproject.org/v0/amp-youtube-0.1.js"></script>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+</head>
+
+<body>
+    
+    <h1 class="post-title">
+        <header class="site-header">
+    <div class="wrapper">
+        <a class="site-title" href="/">
+            <amp-img src="/media/geekytidbits.png" width="383" height="46" alt="Geeky Tidbits Logo" layout="responsive"><noscript><img src="/media/geekytidbits.png" width="383" height="46" alt="Geeky Tidbits Logo"></noscript></amp-img>
+        </a>
+        <div class="site-description">Tidbits on software development, technology, and other geeky stuff.</div>
+    </div>
+</header>
+
+    </h1>
+    <div class="post-content">
+      <span>
+          <i>Jul 14, 2011</i>
+      </span>
+      <p>Believe it or not my wife and I don’t have cable.  I know, it’s craziness, especially considering only <a href="http://blog.nielsen.com/nielsenwire/wp-content/uploads/2010/04/TVA_2009-for-Wire.pdf" target="_blank">11% of households with televisions don’t have cable or satellite</a>, but just think about how much $$ we save ($75.00/month * 12 months = $900/year).  Also, we save a lot of time by not being lured into watching a bunch of stupid stuff  across 100’s of channels.  We use an antenna to get high quality HDTV signals over-the-air.  It usually works great but sometimes the signal won’t come in for a show recording and the recording will be all messed up.  Also, there are some shows freely available that don’t get broadcast to us where we live.</p>
+
+<p>That got be thinking about a way to automatically download our favorite shows so that we would always have backup copies and so we could get shows otherwise unavailable (like MythBusters!).  I figured out a completely hands-off solution which works amazingly well.  Credit obviously goes to the various programs and services mentioned below.</p>
+
+<p>It’s awesome to randomly look in my tv folder add see recent episodes of our favorite shows ready to be watched.  Although not necessary, I took it one step further and have all of this running on a server with a Samba share setup.  We use Windows Media Center hooked up to our TV and when I add the Samba shared tv folder from the server it is easy to navigate through MCE and watch our downloaded shows.  Pretty cool!</p>
+
+<p>Here are the steps:</p>
+
+<ol>
+  <li>Register for an account at <a href="http://showrss.karmorra.info/" target="_blank">showRSS</a>.  Make a donation while you’re there to support them!</li>
+  <li>Add some shows to your list.</li>
+  <li>Note “Your feed address” from the feeds page.  It looks something like this: **** http://showrss.karmorra.info/rss.php?user_id=00000&amp;hd=null&amp;proper=null</li>
+  <li>Install your favorite BitTorrent client that supports “watch directories”.  I use <a href="http://www.transmissionbt.com/" target="_blank">Transmission</a> on Linux but <a href="http://www.utorrent.com/" target="_blank">uTorrent</a> on Windows will work fine.</li>
+  <li>Install <a href="http://flexget.com/wiki/Install" target="_blank">FlexGet</a>
+</li>
+  <li>
+    <p>Create FlexGet configuration file (config.yml).  Mine looks like this:</p>
+
+    <div class="language-yaml highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="na">feeds</span><span class="pi">:</span>
+ <span class="na">tv-shows</span><span class="pi">:</span>
+ <span class="na">rss</span><span class="pi">:</span> <span class="s">http://showrss.karmorra.info/rss.php?user_id=00000&amp;amp;hd=null&amp;amp;proper=null</span>
+ <span class="na">all_series</span><span class="pi">:</span> <span class="s">yes</span>
+ <span class="na">download</span><span class="pi">:</span> <span class="s">/transmission/watch/</span>
+</code></pre></div>    </div>
+
+    <p>You’ll obviously want to use your own feed url from showRSS (showrss.karmorra).  I stripped out my specific user_id above.  Also, you need to change “/transmission/watch” to be the directory your BitTorrent client uses at its “watch folder”.</p>
+  </li>
+  <li>Fire up your BitTorrent client.</li>
+  <li>Run FlexGet from the command line so that it will download .torrent files from your showRSS feed and drop them in your BitTorrent client’s watch folder.</li>
+  <li>Check your BitTorrent client to ensure it starts to download some shows.</li>
+  <li>Since FlexGet is not a service/daemon, you’ll need to setup a mechanism to run FlexGet on a regular basis so it will grab new shows once they become available.  If on Windows you could use a Scheduled Task and if on Linux you could use cron.&lt;/ol&gt;</li>
+</ol>
+
+    </div>
+    
+    <footer class="site-footer">
+    © 2019 Brady Holt
+</footer>
+
+    <amp-analytics type="googleanalytics">
+        <script type="application/json">
+        {
+            "vars": {
+            "account": "UA-19416043-2"
+            },
+            "triggers": {
+            "trackPageview": {
+                "on": "visible",
+                "request": "pageview"
+            }
+            }
+        }
+        </script>
+    </amp-analytics>
+</body>
+
+</html>

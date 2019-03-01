@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>start-stop-daemon with mono-service2 | Geeky Tidbits</title>
+    <meta name="description" content="I wrote a .NET service (i.e. System.ServiceProcess.ServiceBase) and was running it in Arch Linux with the help of mono-service2. I wanted it to behave like a...">
+    <link href='//fonts.googleapis.com/css?family=IBM+Plex+Serif' rel='stylesheet' type='text/css'>
+    <style>body,h1,h2,h3,h4,h5,h6,p,blockquote,pre,hr,dl,dd,ol,ul,figure{margin:0;padding:0;-webkit-font-smoothing:antialiased}body{font-family:"IBM Plex Serif",serif;font-size:1.2em;line-height:1.5;font-weight:300;color:#444;background-color:#f7f7f7;-webkit-text-size-adjust:100%}h1,h2,h3,h4,h5,h6,p,blockquote,pre,ul,ol,dl,figure{margin-bottom:15px}img{max-width:100%;vertical-align:middle}figure>img{display:block}ul,ol{margin-left:30px}ul.condensed{columns:2;-webkit-columns:2;-moz-columns:2;list-style-type:disc;list-style-position:inside}li>ul,li>ol{margin-bottom:0}h2,h3,h4,h5,h6{font-weight:300}h1{font-weight:600;font-size:42px;line-height:1;padding-top:35px}@media screen and (max-width: 600px){h1{font-size:36px}}a{color:#126ca6;text-decoration:none}a:visited{color:#126ca6}a:hover{color:#178ad4}blockquote{color:#828282;padding-left:15px;font-size:18px;letter-spacing:-1px;font-style:italic}blockquote>:last-child{margin-bottom:0}pre{font-size:1em;padding:8px 12px;overflow-x:scroll}code{background-color:#f8f8f8}time{margin-right:10px}.wrapper{position:relative;width:800px;margin-right:auto;margin-left:auto;padding-right:30px;padding-left:30px;border-left:solid 225px transparent}@media screen and (max-width: 1085px){.wrapper{width:auto;border-left:0}}.page-content .wrapper{border-left:solid 225px #f7f7f7;background-color:#fff;padding-bottom:50px}@media screen and (max-width: 1085px){.page-content .wrapper{width:auto}}@media screen and (max-width: 600px){.page-content .wrapper{border-left:0}}.wrapper:after{content:"";display:table;clear:both}.icon>svg{display:inline-block;width:16px;height:16px;vertical-align:middle}.icon>svg path{fill:#828282}.site-header{border-bottom:3px solid #f68905;background-color:#237ab2;padding-bottom:10px;color:white;position:relative}.site-header img{margin-top:10px}.site-title{font-size:26px;line-height:56px;letter-spacing:-1px;margin-bottom:0}.site-description{font-size:17px}.site-footer{padding:10px 0 30px;color:#828282;font-style:italic}.page-content img{margin:20px}.post-header{margin-bottom:20px}.post .post-meta{display:inline-block;border:1px solid rgba(0,0,0,0.05);border-left:none;border-right:none;padding:8px 0 8px 30px;margin-top:10px;margin-left:-30px}.post-content h2{font-size:32px}@media screen and (max-width: 600px){.post-content h2{font-size:28px}}.post-content h3{font-size:26px}@media screen and (max-width: 600px){.post-content h3{font-size:22px}}.post-content h4{font-size:20px}@media screen and (max-width: 600px){.post-content h4{font-size:18px}}.post-list{margin-left:0;list-style:none}.post-list>li{margin-bottom:30px}.post-list img{max-height:100px}.post-meta{font-size:1em;color:#828282}.post-link{display:block;font-size:24px}.sidebar{font-size:16px;position:absolute;left:-195px;width:195px}.sidebar ul{margin-left:0px;list-style:none}.sidebar ul li{transition:all 0.2s ease-in-out}.sidebar ul li:hover{transform:scale(1.1)}.sidebar ul li a{text-decoration:none}.sidebar svg.social{width:25px;height:25px;margin:5px;vertical-align:middle}.sidebar img.head-shot{width:145px;height:145px;border-radius:75px;margin:10px 0}.sidebar h3{margin-bottom:0;font-weight:bold}.sidebar h4{font-style:italic;font-size:15px}.sidebar .site-nav{font-size:larger;line-height:30px}@media screen and (max-width: 600px){.sidebar{position:static;width:100%;text-align:center;display:none}.sidebar .head-shot{display:inline-block}.sidebar ul.social-links{width:150px;text-align:left;margin:0 auto;padding-left:20px}}@media screen and (max-width: 600px){body.home .sidebar{display:block}ul.condensed{columns:1;-webkit-columns:1;-moz-columns:1}}.pull-right{float:right !important}.pull-left{float:left !important}.block{display:block}.no-margin{margin:0px !important}table{table-layout:fixed;width:100%;border-collapse:collapse;margin:10px 0 20px 0}table th{text-align:left}table th,table td{padding:5px;border:1px solid lightgray}.highlight .hll{background-color:#ffffcc}.highlight{background:#f8f8f8}.highlight .c{color:#408080;font-style:italic}.highlight .err{border:1px solid #ff0000}.highlight .k{color:#008000;font-weight:bold}.highlight .o{color:#666666}.highlight .ch{color:#408080;font-style:italic}.highlight .cm{color:#408080;font-style:italic}.highlight .cp{color:#bc7a00}.highlight .cpf{color:#408080;font-style:italic}.highlight .c1{color:#408080;font-style:italic}.highlight .cs{color:#408080;font-style:italic}.highlight .gd{color:#a00000}.highlight .ge{font-style:italic}.highlight .gr{color:#ff0000}.highlight .gh{color:#000080;font-weight:bold}.highlight .gi{color:#00a000}.highlight .go{color:#888888}.highlight .gp{color:#000080;font-weight:bold}.highlight .gs{font-weight:bold}.highlight .gu{color:#800080;font-weight:bold}.highlight .gt{color:#0044dd}.highlight .kc{color:#008000;font-weight:bold}.highlight .kd{color:#008000;font-weight:bold}.highlight .kn{color:#008000;font-weight:bold}.highlight .kp{color:#008000}.highlight .kr{color:#008000;font-weight:bold}.highlight .kt{color:#b00040}.highlight .m{color:#666666}.highlight .s{color:#ba2121}.highlight .na{color:#7d9029}.highlight .nb{color:#008000}.highlight .nc{color:#0000ff;font-weight:bold}.highlight .no{color:#880000}.highlight .nd{color:#aa22ff}.highlight .ni{color:#999999;font-weight:bold}.highlight .ne{color:#d2413a;font-weight:bold}.highlight .nf{color:#0000ff}.highlight .nl{color:#a0a000}.highlight .nn{color:#0000ff;font-weight:bold}.highlight .nt{color:#008000;font-weight:bold}.highlight .nv{color:#19177c}.highlight .ow{color:#aa22ff;font-weight:bold}.highlight .w{color:#bbbbbb}.highlight .mb{color:#666666}.highlight .mf{color:#666666}.highlight .mh{color:#666666}.highlight .mi{color:#666666}.highlight .mo{color:#666666}.highlight .sa{color:#ba2121}.highlight .sb{color:#ba2121}.highlight .sc{color:#ba2121}.highlight .dl{color:#ba2121}.highlight .sd{color:#ba2121;font-style:italic}.highlight .s2{color:#ba2121}.highlight .se{color:#bb6622;font-weight:bold}.highlight .sh{color:#ba2121}.highlight .si{color:#bb6688;font-weight:bold}.highlight .sx{color:#008000}.highlight .sr{color:#bb6688}.highlight .s1{color:#ba2121}.highlight .ss{color:#19177c}.highlight .bp{color:#008000}.highlight .fm{color:#0000ff}.highlight .vc{color:#19177c}.highlight .vg{color:#19177c}.highlight .vi{color:#19177c}.highlight .vm{color:#19177c}.highlight .il{color:#666666}
+</style>
+    <link rel="canonical" href="https://www.geekytidbits.com/start-stop-daemon-with-mono-service2/">
+    <link rel="alternate" type="application/rss+xml" title="Geeky Tidbits" href="https://www.geekytidbits.com/feed/" />
+    <link rel="amphtml" href="https://www.geekytidbits.com/amp/start-stop-daemon-with-mono-service2.html">
+</head>
+
+<body>
+    <header class="site-header">
+    <div class="wrapper">
+        <a class="site-title" href="/">
+            <img src="/media/geekytidbits.png" width="383" height="46" alt="Geeky Tidbits Logo" />
+        </a>
+        <div class="site-description">Tidbits on software development, technology, and other geeky stuff.</div>
+    </div>
+</header>
+
+    <div class="page-content">
+        <div class="wrapper">
+            <div class="sidebar">
+    <img class="head-shot" alt="Brady Holt" width="145px" height="145px" src="//s.gravatar.com/avatar/ae474dd4a074fd22e897c4c54770c05a?s=290">
+    <h3>Brady Holt</h3>
+    <h4>Geek, developer at <a target="_blank" href="http://www.youneedabudget.com/">YNAB</a>, voider of warranties</h4>
+    <nav class="site-nav">
+        <ul> 
+            <li>
+                <a class="page-link" href="/about-me/">About Me</a>
+            </li>
+            <li>
+                <a class="page-link" href="/projects/">Projects</a>
+            </li>
+            <li>
+                <a class="page-link" href="/posts/">Posts</a>
+            </li>
+        </ul>
+    </nav>
+    <p>Connect with me!</p>
+    <ul class="social-links">
+        <li>
+            <a href="http://github.com/bradymholt">
+                <svg class="social" viewBox="0 0 35 35">
+                    <path fill="#444444" d="M16 0c-8.837 0-16 7.163-16 16s7.163 16 16 16 16-7.163 16-16-7.163-16-16-16zM25.502 25.502c-1.235 1.235-2.672 2.204-4.272 2.881-0.406 0.172-0.819 0.323-1.238 0.453v-2.398c0-1.26-0.432-2.188-1.297-2.781 0.542-0.052 1.039-0.125 1.492-0.219s0.932-0.229 1.438-0.406 0.958-0.388 1.359-0.633 0.786-0.563 1.156-0.953 0.68-0.833 0.93-1.328 0.448-1.089 0.594-1.781 0.219-1.456 0.219-2.289c0-1.615-0.526-2.99-1.578-4.125 0.479-1.25 0.427-2.609-0.156-4.078l-0.391-0.047c-0.271-0.031-0.758 0.083-1.461 0.344s-1.492 0.688-2.367 1.281c-1.24-0.344-2.526-0.516-3.859-0.516-1.344 0-2.625 0.172-3.844 0.516-0.552-0.375-1.075-0.685-1.57-0.93s-0.891-0.411-1.188-0.5-0.573-0.143-0.828-0.164-0.419-0.026-0.492-0.016-0.125 0.021-0.156 0.031c-0.583 1.479-0.635 2.839-0.156 4.078-1.052 1.135-1.578 2.51-1.578 4.125 0 0.833 0.073 1.596 0.219 2.289s0.344 1.286 0.594 1.781 0.56 0.938 0.93 1.328 0.755 0.708 1.156 0.953 0.854 0.456 1.359 0.633 0.984 0.313 1.438 0.406 0.95 0.167 1.492 0.219c-0.854 0.583-1.281 1.51-1.281 2.781v2.445c-0.472-0.14-0.937-0.306-1.394-0.5-1.6-0.677-3.037-1.646-4.272-2.881s-2.204-2.672-2.881-4.272c-0.7-1.655-1.055-3.414-1.055-5.23s0.355-3.575 1.055-5.23c0.677-1.6 1.646-3.037 2.881-4.272s2.672-2.204 4.272-2.881c1.655-0.7 3.415-1.055 5.23-1.055s3.575 0.355 5.23 1.055c1.6 0.677 3.037 1.646 4.272 2.881s2.204 2.672 2.881 4.272c0.7 1.655 1.055 3.415 1.055 5.23s-0.355 3.575-1.055 5.23c-0.677 1.6-1.646 3.037-2.881 4.272z"></path>
+                </svg>GitHub
+            </a>
+        </li>
+        <li>
+            <a href="http://stackoverflow.com/users/626911/brady?tab=profile">
+                <svg class="social" viewBox="0 0 35 35">
+                    <path fill="#444444" d="M32 20v12h-32v-12h4v8h24v-8zM6 22h20v4h-20zM6.473 17.671l0.866-3.905 19.526 4.328-0.866 3.905zM8.739 9.642l1.69-3.625 18.126 8.452-1.69 3.625zM30.991 11.296l-2.435 3.173-15.867-12.175 1.761-2.294h1.82z"></path>
+                </svg>Stack Overflow
+            </a>
+        </li>
+        <li>
+            <a href="http://twitter.com/bradymholt">
+                <svg class="social" viewBox="0 0 35 35">
+                    <path fill="#444444" d="M32 6.076c-1.177 0.522-2.443 0.875-3.771 1.034 1.355-0.813 2.396-2.099 2.887-3.632-1.269 0.752-2.674 1.299-4.169 1.593-1.198-1.276-2.904-2.073-4.792-2.073-3.626 0-6.565 2.939-6.565 6.565 0 0.515 0.058 1.016 0.17 1.496-5.456-0.274-10.294-2.888-13.532-6.86-0.565 0.97-0.889 2.097-0.889 3.301 0 2.278 1.159 4.287 2.921 5.465-1.076-0.034-2.088-0.329-2.974-0.821-0.001 0.027-0.001 0.055-0.001 0.083 0 3.181 2.263 5.834 5.266 6.437-0.551 0.15-1.131 0.23-1.73 0.23-0.423 0-0.834-0.041-1.235-0.118 0.835 2.608 3.26 4.506 6.133 4.559-2.247 1.761-5.078 2.81-8.154 2.81-0.53 0-1.052-0.031-1.566-0.092 2.905 1.863 6.356 2.95 10.064 2.95 12.076 0 18.679-10.004 18.679-18.68 0-0.285-0.006-0.568-0.019-0.849 1.283-0.926 2.396-2.082 3.276-3.398z"></path>
+                </svg>Twitter
+            </a>
+        </li>
+        <li>
+            <a href="http://www.linkedin.com/in/bradymholt">
+                <svg class="social" viewBox="0 0 35 35">
+                    <path fill="#444444" d="M12 12h5.535v2.837h0.079c0.77-1.381 2.655-2.837 5.464-2.837 5.842 0 6.922 3.637 6.922 8.367v9.633h-5.769v-8.54c0-2.037-0.042-4.657-3.001-4.657-3.005 0-3.463 2.218-3.463 4.509v8.688h-5.767v-18z"></path>
+                    <path fill="#444444" d="M2 12h6v18h-6v-18z"></path>
+                    <path fill="#444444" d="M8 7c0 1.657-1.343 3-3 3s-3-1.343-3-3c0-1.657 1.343-3 3-3s3 1.343 3 3z"></path>
+                </svg>LinkedIn
+            </a>
+        </li>
+        <li>
+            <a href="/feed/">
+                <svg class="social" viewBox="0 0 35 35">
+                    <path fill="#444444" d="M4.259 23.467c-2.35 0-4.259 1.917-4.259 4.252 0 2.349 1.909 4.244 4.259 4.244 2.358 0 4.265-1.895 4.265-4.244-0-2.336-1.907-4.252-4.265-4.252zM0.005 10.873v6.133c3.993 0 7.749 1.562 10.577 4.391 2.825 2.822 4.384 6.595 4.384 10.603h6.16c-0-11.651-9.478-21.127-21.121-21.127zM0.012 0v6.136c14.243 0 25.836 11.604 25.836 25.864h6.152c0-17.64-14.352-32-31.988-32z"></path>
+                </svg>Feed
+            </a>
+        </li>
+    </ul>
+</div>
+ <div class="post">
+    <header class="post-header">
+        <h1 class="post-title">start-stop-daemon with mono-service2</h1>
+        <p class="post-meta">Jun 30, 2011</p>
+    </header>
+    <article class="post-content">
+        <p>I wrote a .NET service (i.e. System.ServiceProcess.ServiceBase) and was running it in Arch Linux with the help of mono-service2. I wanted it to behave like another other Linux daemon with start / stop / restart ability so I could start the service at boot easily.</p>
+
+<p>Here is the bash script I finally came up with which I placed in the /etc/rc.d folder and added a DAEMON reference to in the /etc/rc.conf file. If you are using another distribution of Linux, most likely you’ll want to use the chkconfig command to register the service.</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/sh</span>
+
+<span class="nv">daemon_name</span><span class="o">=</span>MyMonoService
+
+<span class="nb">.</span> /etc/rc.conf
+<span class="nb">.</span> /etc/rc.d/functions
+
+<span class="nv">PATH</span><span class="o">=</span>/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+<span class="nv">DAEMON</span><span class="o">=</span>/usr/bin/mono/mono-service2
+<span class="nv">NAME</span><span class="o">=</span>MyMonoService
+<span class="nv">DESC</span><span class="o">=</span>MyMonoService
+
+<span class="nv">MONOSERVER</span><span class="o">=</span><span class="k">$(</span>which mono-service2<span class="k">)</span>
+<span class="nv">MONOSERVER_PID</span><span class="o">=</span><span class="k">$(</span><span class="nb">cat</span> /tmp/MyMonoService.lock<span class="k">)</span>
+
+<span class="k">case</span> <span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span> <span class="k">in
+ </span>start<span class="p">)</span>
+  stat_busy <span class="s2">"Starting MyMonoService"</span>
+  <span class="k">if</span> <span class="o">[</span> <span class="nt">-z</span> <span class="s2">"</span><span class="k">${</span><span class="nv">MONOSERVER_PID</span><span class="k">}</span><span class="s2">"</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+   <span class="k">${</span><span class="nv">MONOSERVER</span><span class="k">}</span> <span class="nt">-l</span>:/tmp/MyMonoService.lock /opt/MyMonoService/MyMonoService.exe
+   stat_done
+  <span class="k">else
+   </span><span class="nb">echo</span> <span class="s2">"MyMonoService is already running!"</span>
+   stat_fail
+  <span class="k">fi</span>
+ <span class="p">;;</span>
+ stop<span class="p">)</span>
+  stat_busy <span class="s2">"Stopping MyMonoService"</span>
+  <span class="k">if</span> <span class="o">[</span> <span class="nt">-n</span> <span class="s2">"</span><span class="k">${</span><span class="nv">MONOSERVER_PID</span><span class="k">}</span><span class="s2">"</span> <span class="o">]</span><span class="p">;</span> <span class="k">then
+   </span><span class="nb">kill</span> <span class="k">${</span><span class="nv">MONOSERVER_PID</span><span class="k">}</span>
+   <span class="nb">rm</span> /tmp/MyMonoService.lock
+   stat_done
+  <span class="k">else
+   </span><span class="nb">echo</span> <span class="s2">"MyMonoService is not running"</span>
+   stat_fail
+  <span class="k">fi</span>
+ <span class="p">;;</span>
+ restart<span class="p">)</span>
+  <span class="nv">$0</span> stop
+  <span class="nb">sleep </span>1
+  <span class="nv">$0</span> start
+  stat_done
+ <span class="p">;;</span>
+ <span class="k">*</span><span class="p">)</span>
+  <span class="nb">echo</span> <span class="s2">"usage: </span><span class="nv">$0</span><span class="s2"> {start|stop|restart}"</span>
+<span class="k">esac
+
+</span><span class="nb">exit </span>0
+</code></pre></div></div>
+
+    </article>
+    <div id="disqus_thread"></div>
+    
+    <script type="text/javascript">
+        
+        var disqus_identifier = '519 http://www.geekytidbits.com/?p=519';
+        
+        var disqus_container_id = 'disqus_thread';
+        var disqus_shortname = 'geekytidbits';
+        var disqus_url = 'https://www.geekytidbits.com/start-stop-daemon-with-mono-service2/';
+        (function () {
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the
+        <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+    </noscript>
+    
+</div>
+        </div>
+    </div>
+    <div class="wrapper">
+        <footer class="site-footer">
+    &copy; 2019 Brady Holt
+</footer>
+
+    </div>
+    <script>
+        (function(i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function() {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-19416043-2', 'auto');
+        ga('send', 'pageview');
+    </script>
+    </body>
+</html>

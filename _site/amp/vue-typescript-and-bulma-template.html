@@ -1,0 +1,94 @@
+<!doctype html>
+<html amp lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Vue.js template featuring TypeScript and Bulma</title>
+    <link rel="canonical" href="https://www.geekytidbits.com/vue-typescript-and-bulma-template/" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Poly' rel='stylesheet'>
+    <style amp-custom>
+        body { font-family: 'Poly', serif; }
+        .site-header { background-color: #237ab2; color: #e7e9ec; padding: 5px; font-weight: 100; border-bottom: 3px solid #f68905; }
+        .site-description { font-size: .5em;}        
+        .post-content { padding: 10px; }
+    </style>
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+    <script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>
+    <script async custom-element="amp-video" src="https://cdn.ampproject.org/v0/amp-video-0.1.js"></script>
+    <script async custom-element="amp-youtube" src="https://cdn.ampproject.org/v0/amp-youtube-0.1.js"></script>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+</head>
+
+<body>
+    
+    <h1 class="post-title">
+        <header class="site-header">
+    <div class="wrapper">
+        <a class="site-title" href="/">
+            <amp-img src="/media/geekytidbits.png" width="383" height="46" alt="Geeky Tidbits Logo" layout="responsive"><noscript><img src="/media/geekytidbits.png" width="383" height="46" alt="Geeky Tidbits Logo"></noscript></amp-img>
+        </a>
+        <div class="site-description">Tidbits on software development, technology, and other geeky stuff.</div>
+    </div>
+</header>
+
+    </h1>
+    <div class="post-content">
+      <span>
+          <i>May 2, 2018</i>
+      </span>
+      <p>I’ve been getting more and more into <a href="https://vuejs.org/">Vue.js</a> lately because it’s awesome and feels good.  Plus, it’s not React so using it seems counter-culture and edgy, FTW.  Also, Vue has improved <strong>TypeScript</strong> support and I’ve been checking that out.  Oh, and I keep hearing about this new CSS framework called <strong>Bulma</strong> that I want to play around with.  What is a developer to do with all these things swirling around in their head?  Build a template, of course.</p>
+
+<p>Well, I’m back to making templates again.  I don’t know why but it seems to be my thing lately.  The <a href="https://github.com/bradymholt/koa-vuejs-template">last Vue.js template I worked</a> on was full stack and included PostgreSQL, authentication, and bunch of other cool stuff.  This time, I wanted to make it simple.  Just a simple scaffold template using Vue.js that would be a nice starter for the next project I decide to tackle.</p>
+
+<p>So, <a href="https://github.com/bradymholt/vue-typescript-bulma-template">vue-typescript-bulma-template</a> is what I came up with.  I’m good at naming things, right?  If you look at the <a href="https://bradymholt.github.io/vue-typescript-bulma-template/#/">page output</a> you’d think there isn’t much to this thing:</p>
+
+<p><amp-img src="/media/vue-ts-bulma.png" alt="Template Screenshot" width="485" height="361" layout="responsive"><noscript><img src="/media/vue-ts-bulma.png" alt="Template Screenshot" width="485" height="361"></noscript></amp-img></p>
+
+<p>But actually, there is quite a lot of nice stuff built in:</p>
+
+<ul>
+  <li>TypeScript 2.8.3</li>
+  <li>
+<a href="https://github.com/vuejs/vue-class-component">vue-class-component</a> usage (class-style Vue components via ES decorators)</li>
+  <li>Bulma CSS Framework</li>
+  <li>Sass</li>
+  <li>Font Awesome 5</li>
+  <li>Webpack 4
+    <ul>
+      <li>Development server</li>
+      <li>Hot Reload support</li>
+      <li>development and production config</li>
+      <li>CDN config for Vue.js and Bulma</li>
+      <li>
+<a href="prerender-spa-plugin">Prerender SPA Plugin</a> config</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Go <a href="https://github.com/bradymholt/vue-typescript-bulma-template">check it out</a> and build something neat!</p>
+
+    </div>
+    
+    <footer class="site-footer">
+    © 2019 Brady Holt
+</footer>
+
+    <amp-analytics type="googleanalytics">
+        <script type="application/json">
+        {
+            "vars": {
+            "account": "UA-19416043-2"
+            },
+            "triggers": {
+            "trackPageview": {
+                "on": "visible",
+                "request": "pageview"
+            }
+            }
+        }
+        </script>
+    </amp-analytics>
+</body>
+
+</html>

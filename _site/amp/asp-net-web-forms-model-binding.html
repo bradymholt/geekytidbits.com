@@ -1,0 +1,114 @@
+<!doctype html>
+<html amp lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>ASP.NET Web Forms Model Binding</title>
+    <link rel="canonical" href="https://www.geekytidbits.com/asp-net-web-forms-model-binding/" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Poly' rel='stylesheet'>
+    <style amp-custom>
+        body { font-family: 'Poly', serif; }
+        .site-header { background-color: #237ab2; color: #e7e9ec; padding: 5px; font-weight: 100; border-bottom: 3px solid #f68905; }
+        .site-description { font-size: .5em;}        
+        .post-content { padding: 10px; }
+    </style>
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+    <script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>
+    <script async custom-element="amp-video" src="https://cdn.ampproject.org/v0/amp-video-0.1.js"></script>
+    <script async custom-element="amp-youtube" src="https://cdn.ampproject.org/v0/amp-youtube-0.1.js"></script>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+</head>
+
+<body>
+    
+    <h1 class="post-title">
+        <header class="site-header">
+    <div class="wrapper">
+        <a class="site-title" href="/">
+            <amp-img src="/media/geekytidbits.png" width="383" height="46" alt="Geeky Tidbits Logo" layout="responsive"><noscript><img src="/media/geekytidbits.png" width="383" height="46" alt="Geeky Tidbits Logo"></noscript></amp-img>
+        </a>
+        <div class="site-description">Tidbits on software development, technology, and other geeky stuff.</div>
+    </div>
+</header>
+
+    </h1>
+    <div class="post-content">
+      <span>
+          <i>Sep 22, 2014</i>
+      </span>
+      <p>I prefer to work with ASP.NET <strong>MVC</strong> but currently work with a hybrid code base that includes plenty of <strong>Web Forms</strong> pages laying around.  One of the nice new features ASP.NET 4.5 brought to the Web Forms world is called Model Binding.  This makes binding data to a form very clean and plays nicely with Entity Framework, Code First.  It took some reading and experimenting to get up to speed with it so I created a Gist (below) that demonstrates a simple example of using Model Binding to populate a GridView.  Note that sorting / paging are built-in automatically and I am passing a TextBox field in for filtering the results.</p>
+
+<p><em>Demo.aspx</em></p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nt">&lt;asp:TextBox</span> <span class="na">runat=</span><span class="s">"server"</span> <span class="na">ID=</span><span class="s">"txtSearch"</span><span class="nt">&gt;&lt;/asp:TextBox&gt;</span>
+ <span class="c">&lt;!-- This GridView has automatic paging/sorting built-in --&gt;</span>
+ <span class="nt">&lt;asp:GridView</span> <span class="na">runat=</span><span class="s">"server"</span> <span class="na">ID=</span><span class="s">"gvDemo"</span>
+            <span class="na">ItemType=</span><span class="s">"Person"</span> <span class="na">SelectMethod=</span><span class="s">"gvDemo_GetData"</span>
+            <span class="na">AutoGenerateColumns=</span><span class="s">"false"</span>
+            <span class="na">AllowPaging=</span><span class="s">"true"</span> <span class="na">PageSize=</span><span class="s">"25"</span>
+            <span class="na">AllowSorting=</span><span class="s">"true"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;Columns&gt;</span>
+        <span class="nt">&lt;asp:BoundField</span> <span class="na">DataField=</span><span class="s">"FirstName"</span> <span class="na">HeaderText=</span><span class="s">"First Name"</span> <span class="na">SortExpression=</span><span class="s">"FirstName"</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;asp:BoundField</span> <span class="na">DataField=</span><span class="s">"LastName"</span> <span class="na">HeaderText=</span><span class="s">"Last Name"</span> <span class="na">SortExpression=</span><span class="s">"LastName"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/Columns&gt;</span>
+<span class="nt">&lt;/asp:GridView&gt;</span>
+</code></pre></div></div>
+
+<p><em>Demo.aspx.cs</em></p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">public</span> <span class="k">partial</span> <span class="k">class</span> <span class="nc">DemoPage</span> <span class="p">:</span> <span class="n">System</span><span class="p">.</span><span class="n">Web</span><span class="p">.</span><span class="n">UI</span><span class="p">.</span><span class="n">Page</span>
+<span class="p">{</span>
+  <span class="k">public</span> <span class="n">IQueryable</span><span class="p">&lt;</span><span class="n">Person</span><span class="p">&gt;</span> <span class="nf">gvDemo_GetData</span><span class="p">([</span><span class="nf">Control</span><span class="p">(</span><span class="s">"txtSearch"</span><span class="p">)]</span> <span class="kt">string</span> <span class="n">search</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="c1">//NOTE: do not dispose (i.e. using statement) PersonContext b/c the View will enumerate the IQueryable</span>
+    <span class="kt">var</span> <span class="n">context</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">PersonContext</span><span class="p">();</span>
+    <span class="n">IQueryable</span><span class="p">&lt;</span><span class="n">Person</span><span class="p">&gt;</span> <span class="n">query</span> <span class="p">=</span> <span class="n">context</span><span class="p">.</span><span class="n">People</span><span class="p">.</span><span class="nf">OrderBy</span><span class="p">(</span><span class="n">p</span> <span class="p">=&gt;</span> <span class="n">p</span><span class="p">.</span><span class="n">LastName</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(!</span><span class="kt">string</span><span class="p">.</span><span class="nf">IsNullOrEmpty</span><span class="p">(</span><span class="n">search</span><span class="p">))</span>
+    <span class="p">{</span>
+      <span class="n">query</span> <span class="p">=</span> <span class="n">query</span><span class="p">.</span><span class="nf">Where</span><span class="p">(</span><span class="n">p</span> <span class="p">=&gt;</span> <span class="n">p</span><span class="p">.</span><span class="n">LastName</span><span class="p">.</span><span class="nf">Contains</span><span class="p">(</span><span class="n">search</span><span class="p">));</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">query</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><em>Person.cs</em></p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">Person</span> <span class="p">{</span>
+  <span class="k">public</span> <span class="kt">string</span> <span class="n">FirstName</span> <span class="p">{</span><span class="k">get</span><span class="p">;</span><span class="k">set</span><span class="p">;}</span>
+  <span class="k">public</span> <span class="kt">string</span> <span class="n">LastName</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span><span class="k">set</span><span class="p">;}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><em>PersonContext.cs</em></p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">PersonContext</span><span class="p">:</span><span class="n">DbContext</span><span class="p">{</span>
+  <span class="k">public</span> <span class="n">DbSet</span><span class="p">&lt;</span><span class="n">Person</span><span class="p">&gt;</span> <span class="n">People</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+    </div>
+    
+    <footer class="site-footer">
+    © 2019 Brady Holt
+</footer>
+
+    <amp-analytics type="googleanalytics">
+        <script type="application/json">
+        {
+            "vars": {
+            "account": "UA-19416043-2"
+            },
+            "triggers": {
+            "trackPageview": {
+                "on": "visible",
+                "request": "pageview"
+            }
+            }
+        }
+        </script>
+    </amp-analytics>
+</body>
+
+</html>

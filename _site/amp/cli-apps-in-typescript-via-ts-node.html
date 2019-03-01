@@ -1,0 +1,104 @@
+<!doctype html>
+<html amp lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>CLI apps in TypeScript via ts-node</title>
+    <link rel="canonical" href="https://www.geekytidbits.com/cli-apps-in-typescript-via-ts-node/" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Poly' rel='stylesheet'>
+    <style amp-custom>
+        body { font-family: 'Poly', serif; }
+        .site-header { background-color: #237ab2; color: #e7e9ec; padding: 5px; font-weight: 100; border-bottom: 3px solid #f68905; }
+        .site-description { font-size: .5em;}        
+        .post-content { padding: 10px; }
+    </style>
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+    <script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>
+    <script async custom-element="amp-video" src="https://cdn.ampproject.org/v0/amp-video-0.1.js"></script>
+    <script async custom-element="amp-youtube" src="https://cdn.ampproject.org/v0/amp-youtube-0.1.js"></script>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+</head>
+
+<body>
+    
+    <h1 class="post-title">
+        <header class="site-header">
+    <div class="wrapper">
+        <a class="site-title" href="/">
+            <amp-img src="/media/geekytidbits.png" width="383" height="46" alt="Geeky Tidbits Logo" layout="responsive"><noscript><img src="/media/geekytidbits.png" width="383" height="46" alt="Geeky Tidbits Logo"></noscript></amp-img>
+        </a>
+        <div class="site-description">Tidbits on software development, technology, and other geeky stuff.</div>
+    </div>
+</header>
+
+    </h1>
+    <div class="post-content">
+      <span>
+          <i>Mar 9, 2018</i>
+      </span>
+      <p>I really like the <a href="https://github.com/TypeStrong/ts-node">ts-node</a> project.  It allows you to run TypeScript in Node.js directly, without having to run the files through the TypeScript compiler (tsc), first.  It does this by registering a handler for files with the <code class="highlighter-rouge">.ts</code> or <code class="highlighter-rouge">.tsx</code> file extentions and relying upon ts-node to marshall back and forth to the TypeScript compiler, on the fly.  It also supports a TypeScript REPL which is really neat.</p>
+
+<p>I’ve mainly been using it for unit tests in Node projects (<a href="https://github.com/bradymholt/psqlformat/blob/master/package.json#L52">example</a>) to avoid having an intermediate build step.  Also, increasingly, I’ve been using it to execute TypeScript directly on some of my own server-side projects at runtime.  Again, doing this reduces a build-time step and reduces friction.</p>
+
+<p>Lately, I’ve been using Node more and more to write CLI apps and thought it would be neat if ts-node could be used for this as well.  It turns out it’s pretty easy.</p>
+
+<p>First, install ts-node:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm install ts-node
+</code></pre></div></div>
+
+<p>Then, create your TypeScript module file that will contain your CLI logic.</p>
+
+<p><strong>cli.ts</strong></p>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="kd">function</span> <span class="nx">run</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">message</span><span class="p">:</span> <span class="nx">string</span> <span class="o">=</span> <span class="s2">"Hello from TypeScript!"</span><span class="p">;</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">message</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Now, create your entry script.  This is the script you will run from your shell.</p>
+
+<p><strong>my-script</strong></p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#!/usr/bin/env node
+</span>
+<span class="nx">require</span><span class="p">(</span><span class="s1">'ts-node'</span><span class="p">).</span><span class="nx">register</span><span class="p">();</span>
+<span class="nx">require</span><span class="p">(</span><span class="s1">'./cli.ts'</span><span class="p">).</span><span class="nx">run</span><span class="p">();</span>
+</code></pre></div></div>
+
+<p>You need to make this file executable first, so run <code class="highlighter-rouge">chmod +x ./my-script</code>.</p>
+
+<p>Now, you can run <code class="highlighter-rouge">./my-script</code> from your shell:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> ./my-script
+Hello from TypeScript!
+</code></pre></div></div>
+
+<p>If you make changes to the cli.ts file, they will be picked up the next time you run my-script because the latest is running through ts-node.</p>
+
+    </div>
+    
+    <footer class="site-footer">
+    © 2019 Brady Holt
+</footer>
+
+    <amp-analytics type="googleanalytics">
+        <script type="application/json">
+        {
+            "vars": {
+            "account": "UA-19416043-2"
+            },
+            "triggers": {
+            "trackPageview": {
+                "on": "visible",
+                "request": "pageview"
+            }
+            }
+        }
+        </script>
+    </amp-analytics>
+</body>
+
+</html>

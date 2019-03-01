@@ -1,0 +1,96 @@
+<!doctype html>
+<html amp lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>WebResource.axd Throwing ArgumentOutOfRangeException</title>
+    <link rel="canonical" href="https://www.geekytidbits.com/webresource-axd-throwing-argumentoutofrangeexception/" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Poly' rel='stylesheet'>
+    <style amp-custom>
+        body { font-family: 'Poly', serif; }
+        .site-header { background-color: #237ab2; color: #e7e9ec; padding: 5px; font-weight: 100; border-bottom: 3px solid #f68905; }
+        .site-description { font-size: .5em;}        
+        .post-content { padding: 10px; }
+    </style>
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+    <script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>
+    <script async custom-element="amp-video" src="https://cdn.ampproject.org/v0/amp-video-0.1.js"></script>
+    <script async custom-element="amp-youtube" src="https://cdn.ampproject.org/v0/amp-youtube-0.1.js"></script>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+</head>
+
+<body>
+    
+    <h1 class="post-title">
+        <header class="site-header">
+    <div class="wrapper">
+        <a class="site-title" href="/">
+            <amp-img src="/media/geekytidbits.png" width="383" height="46" alt="Geeky Tidbits Logo" layout="responsive"><noscript><img src="/media/geekytidbits.png" width="383" height="46" alt="Geeky Tidbits Logo"></noscript></amp-img>
+        </a>
+        <div class="site-description">Tidbits on software development, technology, and other geeky stuff.</div>
+    </div>
+</header>
+
+    </h1>
+    <div class="post-content">
+      <span>
+          <i>Jan 4, 2011</i>
+      </span>
+      <h3 id="background">Background</h3>
+
+<p>I have an ASP.NET web application that uses <a href="http://support.microsoft.com/kb/910442" target="_blank">Web Resources</a> via the WebResource.axd handler to serve up some CSS for my site.  The reason I use this method is because I can place the CSS in a .NET assembly and reuse it across several web applications which comes in handy when several sites need the same styling.</p>
+
+<h3 id="problem">Problem</h3>
+
+<p>Everything was working fine until about a month ago.  Then, I started noticing that when I deployed my website to production the styles were all messed up.  But strangely, it would fix itself after a couple of minutes.  It worked like a charm every time locally but not in production.  Using Firebug I noticed that the calls to the WebResource.axd files were causing a 302 Redirect to GenericErrorPage.htm which obviously means something is going very wrong.  I checked the Application event log in Windows but didn’t see anything.</p>
+
+<p>After some fiddling around and pulling my hair our for a few hours, I changed the web.config so that debug=”true” and noticed some w3wp.exe errors show up in the event log.</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Process information:
+Process ID: 4932
+Process name: w3wp.exe
+Account name: NT AUTHORITY\NETWORK SERVICE
+
+Exception information:
+Exception type: ArgumentOutOfRangeException
+Exception message: Specified argument was out of the range of valid values.
+Parameter name: utcDate
+at System.Web.HttpCachePolicy.UtcSetLastModified(DateTime utcDate)
+at System.Web.Handlers.AssemblyResourceLoader.System.Web.IHttpHandler.ProcessRequest(HttpContext context)
+at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean&amp; completedSynchronously)&lt;/pre&gt;
+</code></pre></div></div>
+
+<p><em>utcDate, UtcSetLastModified –</em> <em>huh?</em></p>
+
+<h3 id="solution">Solution</h3>
+
+<p>Noticing the event log entry seemed related to dates in some way <em>(utcDate, UtcSetLastModified, etc.)</em> I took a look at the system clock on my build server (where the assemblies are built) and compared to my production machine.  Sure enough, my build server’s clock was fast by about 5 minutes.  After reading around I found that WebResource.axd uses caching and relies upon a querystring parameter (“t”) to determine if it needs to re-cache or serve from existing cache.  If the request time parameter is in the future (dictated by your assembly build time), it gets confused and throws an exception.</p>
+
+<p><strong>Bottom line:</strong> Syncing the clocks on my build server and production server fixed the issue.</p>
+
+    </div>
+    
+    <footer class="site-footer">
+    © 2019 Brady Holt
+</footer>
+
+    <amp-analytics type="googleanalytics">
+        <script type="application/json">
+        {
+            "vars": {
+            "account": "UA-19416043-2"
+            },
+            "triggers": {
+            "trackPageview": {
+                "on": "visible",
+                "request": "pageview"
+            }
+            }
+        }
+        </script>
+    </amp-analytics>
+</body>
+
+</html>

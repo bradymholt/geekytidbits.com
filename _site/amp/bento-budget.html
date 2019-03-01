@@ -1,0 +1,86 @@
+<!doctype html>
+<html amp lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Bento Budget</title>
+    <link rel="canonical" href="https://www.geekytidbits.com/bento-budget/" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Poly' rel='stylesheet'>
+    <style amp-custom>
+        body { font-family: 'Poly', serif; }
+        .site-header { background-color: #237ab2; color: #e7e9ec; padding: 5px; font-weight: 100; border-bottom: 3px solid #f68905; }
+        .site-description { font-size: .5em;}        
+        .post-content { padding: 10px; }
+    </style>
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+    <script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>
+    <script async custom-element="amp-video" src="https://cdn.ampproject.org/v0/amp-video-0.1.js"></script>
+    <script async custom-element="amp-youtube" src="https://cdn.ampproject.org/v0/amp-youtube-0.1.js"></script>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+</head>
+
+<body>
+    
+    <h1 class="post-title">
+        <header class="site-header">
+    <div class="wrapper">
+        <a class="site-title" href="/">
+            <amp-img src="/media/geekytidbits.png" width="383" height="46" alt="Geeky Tidbits Logo" layout="responsive"><noscript><img src="/media/geekytidbits.png" width="383" height="46" alt="Geeky Tidbits Logo"></noscript></amp-img>
+        </a>
+        <div class="site-description">Tidbits on software development, technology, and other geeky stuff.</div>
+    </div>
+</header>
+
+    </h1>
+    <div class="post-content">
+      <span>
+          <i>Sep 15, 2014</i>
+      </span>
+      <p>Way back in 2005 when my wife and I got married we went to pre-marital counseling and learned we had a bit of a problem in our relationship. Not surprisingly, it had to do with money. I was a so called “saver” and she was a so called “spender”.  We had different ideas about how spend money and we were counseled to start a budget. The idea of budgeting made my eyes roll, to be honest, because it seemed like such a drag. I figured we should just save as much and spend as little so we didn’t have to worry about keeping track of everything.</p>
+
+<p>We started keeping the budget with <strong>Excel</strong>.  I had a bunch of worksheets with cross references, crazy complex functions and all.  It was super cool, complex and she hated it.  It didn’t last long because it was too cumbersome and didn’t pass the <a href="http://en.wikipedia.org/wiki/Wife_acceptance_factor" target="_blank">WAF</a>.</p>
+
+<p>Then we started Using <strong>Quicken</strong>.  It was great because it integrated with our banks and make transaction entry a breeze.  With its insane amount of features it seemed that it could handle any budget scenario we threw at it.  Things went well for quite awhile but over time we started misusing it.  We wanted to start saving up for things and planning ahead rather than looking at historical reports so we created a concept call “buckets” and had a <a href="https://docs.google.com/document/d/1nJ1Bh33jDXUfl_rjs9cbHxHI7J7Or_REopwBRxa5hwM/edit?usp=sharing" target="_blank">two page documented process</a>.  It became a mess.</p>
+
+<p>We realized we were trying to do <a href="http://en.wikipedia.org/wiki/Envelope_system" target="_blank">Envelope Method of budgeting</a> so we looked for a solution that would download our transactions like Quicken but allow us to use the envelope so we found and used a web based program called <strong><a href="http://www.mvelopes.com/" target="_blank">Mvelopes</a></strong>.  It was nice.  It was real nice.  It did all we wanted it to. However, it was expensive and sluggish (Flash based).</p>
+
+<p>Being a software developer, I began to think about rolling my own solution.  I had about 3 false starts (C# WinForms, Silverlight, simple HTML app) over the course of a year and couldn’t settle on a solid direction.  However, I started getting into Rails development and learning more about Javascript frameworks like jQuery so I thought this would be a great opportunity to put these to use so I could really learn them well and make some solid traction with a budgeting app.</p>
+
+<p>Fast-forward 2 years and I had a working Rails based application and was able to migrate off of Mvelopes and begin to use it.  I called it “Bud-E” (get it?  Buddy but an E for Envelope?  Yeah, it’s lame and I ended up changing the name later.)  It was rough around the edges for sure but it worked.  It download transactions from our banks, allowed us to enter transactions, manage envelopes and transfer money between them.  Over the next year, I worked on making it better and somewhere along the way I decided I could make this thing into a commercial, subscription based application.  I saw a market opportunity and thought I might be able to make some money.  I also knew this type of app would have a bigger audience with a SAAS model rather than being an open source project.</p>
+
+<p>Fast forward another year and I finished the polishing and released my first commercial project called “Bento Budget”.  <a href="http://en.wikipedia.org/wiki/Bento" target="_blank">Bento</a> is a type of Japanese meal that is partitioned into multiple sections on a plate.  This term seemed to go along with the envelope, “bucket” idea where you have different partitions for your money.  It also helped that the bentobudget.com domain was available :).</p>
+
+<p>Under the hood, it’s a <a href="http://rubyonrails.org/" target="_blank">Rails</a> 3 app that relies heavily on <a href="http://getbootstrap.com/" target="_blank">Bootstrap</a>, <a href="http://jquery.com/" target="_blank">jQuery</a>, jQuery UI.  On the server side, I have a C# REST application, utilizing the<a href="http://nancyfx.org/" target="_blank"> Nancy framework</a> that does the financial institution integrations.  For data, I use <a href="http://www.mysql.com/" target="_blank">MySQL</a> with the InnoDB engine.  There is an iOS and Android app, both built using <a href="http://phonegap.com/" target="_blank">PhoneGap</a>.</p>
+
+<p>This project was a lot of fun and a <em>ton</em> of work.  I learned many useful things along the way.  I’ve already had a good bit of interest and usage and am excited to see what the future holds for Bento Budget. Go check it out at <a href="http://www.bentobudget.com" target="_blank">www.bentobudget.com</a>!</p>
+
+<p> </p>
+
+<p><a href="/media/bento-website.png"><amp-img src="/media/bento-website.png" alt="Bento Budget" width="720" height="390" layout="responsive"><noscript><img src="/media/bento-website.png" alt="Bento Budget" width="720" height="390"></noscript></amp-img></a></p>
+
+
+    </div>
+    
+    <footer class="site-footer">
+    © 2019 Brady Holt
+</footer>
+
+    <amp-analytics type="googleanalytics">
+        <script type="application/json">
+        {
+            "vars": {
+            "account": "UA-19416043-2"
+            },
+            "triggers": {
+            "trackPageview": {
+                "on": "visible",
+                "request": "pageview"
+            }
+            }
+        }
+        </script>
+    </amp-analytics>
+</body>
+
+</html>

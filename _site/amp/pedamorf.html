@@ -1,0 +1,96 @@
+<!doctype html>
+<html amp lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>New Project: pedamorf</title>
+    <link rel="canonical" href="https://www.geekytidbits.com/pedamorf/" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Poly' rel='stylesheet'>
+    <style amp-custom>
+        body { font-family: 'Poly', serif; }
+        .site-header { background-color: #237ab2; color: #e7e9ec; padding: 5px; font-weight: 100; border-bottom: 3px solid #f68905; }
+        .site-description { font-size: .5em;}        
+        .post-content { padding: 10px; }
+    </style>
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+    <script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>
+    <script async custom-element="amp-video" src="https://cdn.ampproject.org/v0/amp-video-0.1.js"></script>
+    <script async custom-element="amp-youtube" src="https://cdn.ampproject.org/v0/amp-youtube-0.1.js"></script>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+</head>
+
+<body>
+    
+    <h1 class="post-title">
+        <header class="site-header">
+    <div class="wrapper">
+        <a class="site-title" href="/">
+            <amp-img src="/media/geekytidbits.png" width="383" height="46" alt="Geeky Tidbits Logo" layout="responsive"><noscript><img src="/media/geekytidbits.png" width="383" height="46" alt="Geeky Tidbits Logo"></noscript></amp-img>
+        </a>
+        <div class="site-description">Tidbits on software development, technology, and other geeky stuff.</div>
+    </div>
+</header>
+
+    </h1>
+    <div class="post-content">
+      <span>
+          <i>Feb 6, 2012</i>
+      </span>
+      <p>There have been many many times when I need to convert <em>something</em> to PDF format from a back-end application.  It seems like it’s hard to find a tool to do the job the way I want it done.  I’ve resorted to third-party tools on occasion but hate overpaying for tools that bother me with their annoying licensing tricks and do more than what I need for the price I pay.  I decided I needed a server that would accept many types of sources (documents, images, Urls, etc.) and convert them to PDF without a fuss.  Fortunately there  are some great open source tools that I was able to leverage to accomplish this.  I decided assimilate these tools and write an production grade, open source PDF conversion server.</p>
+
+<h3 id="introducing-pedamorf">Introducing pedamorf</h3>
+
+<p><strong>pedamorf</strong> is a server that converts documents, images, urls, html and text to PDF. It relies heavily upon the excellent open-source projects wkhtml2pdf, Libre Office and iTextSharp. A .NET client library is provided for easy usage.</p>
+
+<h3 id="features">Features</h3>
+
+<ul>
+  <li>Converts the following sources:
+    <ul>
+      <li>documents: <strong>doc, docx, xls, xlsx, ppt, pptx, odt</strong>
+</li>
+      <li>images: <strong>png, gif, jpg/jpeg, bmp</strong>
+</li>
+      <li>
+<strong>html</strong>: Can convert any Url or Html source. For instance, you can ask pedamorf to convert a Url like http://www.github.com or pass in html text for conversion.</li>
+      <li>text: <strong>txt, rtf</strong>
+</li>
+    </ul>
+  </li>
+  <li>Can convert multiple files / urls at one time and combine them into a single PDF.</li>
+  <li>Supports various options (depending upon the source type) that enable you to specify PDF orientation, image size, custom css stylesheet (html source) and more.</li>
+  <li>Can convert files within a directory to a single PDF.</li>
+  <li>Can convert a zip file containing documents and images into a single PDF.</li>
+</ul>
+
+<h3 id="more-information-and-download">More Information and Download</h3>
+
+<p>For more information and downloads, visit the project page at: <a href="https://github.com/bradymholt/pedamorf" target="_blank">https://github.com/bradymholt/pedamorf</a></p>
+
+<p><strong> </strong></p>
+
+    </div>
+    
+    <footer class="site-footer">
+    © 2019 Brady Holt
+</footer>
+
+    <amp-analytics type="googleanalytics">
+        <script type="application/json">
+        {
+            "vars": {
+            "account": "UA-19416043-2"
+            },
+            "triggers": {
+            "trackPageview": {
+                "on": "visible",
+                "request": "pageview"
+            }
+            }
+        }
+        </script>
+    </amp-analytics>
+</body>
+
+</html>

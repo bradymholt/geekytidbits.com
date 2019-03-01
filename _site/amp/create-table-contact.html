@@ -1,0 +1,100 @@
+<!doctype html>
+<html amp lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>CREATE TABLE Contact</title>
+    <link rel="canonical" href="https://www.geekytidbits.com/create-table-contact/" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Poly' rel='stylesheet'>
+    <style amp-custom>
+        body { font-family: 'Poly', serif; }
+        .site-header { background-color: #237ab2; color: #e7e9ec; padding: 5px; font-weight: 100; border-bottom: 3px solid #f68905; }
+        .site-description { font-size: .5em;}        
+        .post-content { padding: 10px; }
+    </style>
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+    <script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>
+    <script async custom-element="amp-video" src="https://cdn.ampproject.org/v0/amp-video-0.1.js"></script>
+    <script async custom-element="amp-youtube" src="https://cdn.ampproject.org/v0/amp-youtube-0.1.js"></script>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+</head>
+
+<body>
+    
+    <h1 class="post-title">
+        <header class="site-header">
+    <div class="wrapper">
+        <a class="site-title" href="/">
+            <amp-img src="/media/geekytidbits.png" width="383" height="46" alt="Geeky Tidbits Logo" layout="responsive"><noscript><img src="/media/geekytidbits.png" width="383" height="46" alt="Geeky Tidbits Logo"></noscript></amp-img>
+        </a>
+        <div class="site-description">Tidbits on software development, technology, and other geeky stuff.</div>
+    </div>
+</header>
+
+    </h1>
+    <div class="post-content">
+      <span>
+          <i>May 5, 2011</i>
+      </span>
+      <p>From time to time I need to create a table to hold contact information. It seems like almost every (ok maybe not <em>every</em>) database has a table that contains information about contacts and/or users.  In an effort to reduce the time it takes write the DDL for this common table, here’s a simple CREATE statement (SQL Server syntax) to do the work.  Modify and execute to your heart’s content.</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">dbo</span><span class="p">.</span><span class="n">Contact</span> <span class="p">(</span>
+  <span class="n">Contact_ID</span> <span class="n">int</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">IDENTITY</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+  <span class="n">First_Name</span> <span class="n">varchar</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+  <span class="n">Middle_Name</span> <span class="n">varchar</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="k">NULL</span><span class="p">,</span>
+  <span class="n">Last_Name</span> <span class="n">varchar</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+  <span class="n">Name_Prefix</span> <span class="n">varchar</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span> <span class="k">NULL</span><span class="p">,</span>
+  <span class="n">Name_Suffix</span> <span class="n">varchar</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">NULL</span><span class="p">,</span>
+  <span class="n">Address_1</span> <span class="n">varchar</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="k">NULL</span><span class="p">,</span>
+  <span class="n">Address_2</span> <span class="n">varchar</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="k">NULL</span><span class="p">,</span>
+  <span class="n">City</span> <span class="n">varchar</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="k">NULL</span><span class="p">,</span>
+  <span class="k">State</span> <span class="n">varchar</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="k">NULL</span><span class="p">,</span>
+  <span class="n">ZIP_Code</span> <span class="n">varchar</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">NULL</span><span class="p">,</span>
+  <span class="n">Phone_Number</span> <span class="n">varchar</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span> <span class="k">NULL</span><span class="p">,</span>
+  <span class="n">Fax_Number</span> <span class="n">varchar</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span> <span class="k">NULL</span><span class="p">,</span>
+  <span class="n">Email_Address</span> <span class="n">varchar</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="k">NULL</span><span class="p">,</span>
+  <span class="n">Social_Security_Number</span> <span class="n">varchar</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span> <span class="k">NULL</span><span class="p">,</span>
+  <span class="n">Date_Of_Birth</span> <span class="n">date</span> <span class="k">NULL</span><span class="p">,</span>
+  <span class="n">User_Name</span> <span class="n">varchar</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span> <span class="k">NULL</span><span class="p">,</span>
+  <span class="n">User_Password_Hash</span> <span class="n">varchar</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="k">NULL</span><span class="p">,</span>
+  <span class="n">User_Password_Salt</span> <span class="n">varchar</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">NULL</span><span class="p">,</span>
+  <span class="n">Created_Date</span> <span class="n">datetime</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+  <span class="n">Modified_Date</span> <span class="n">datetime</span> <span class="k">NOT</span> <span class="k">NULL</span>
+<span class="p">)</span>
+<span class="k">GO</span>
+<span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">dbo</span><span class="p">.</span><span class="n">Contact</span> <span class="k">ADD</span> <span class="k">CONSTRAINT</span>
+  <span class="n">PK_Contact</span> <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="n">CLUSTERED</span>  <span class="p">(</span><span class="n">Contact_ID</span><span class="p">)</span>
+<span class="k">GO</span>
+<span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">dbo</span><span class="p">.</span><span class="n">Contact</span> <span class="k">ADD</span> <span class="k">CONSTRAINT</span>
+  <span class="n">DF_Contact_Created_Date</span> <span class="k">DEFAULT</span> <span class="n">GETUTCDATE</span><span class="p">()</span> <span class="k">FOR</span> <span class="n">Created_Date</span>
+<span class="k">GO</span>
+<span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">dbo</span><span class="p">.</span><span class="n">Contact</span> <span class="k">ADD</span> <span class="k">CONSTRAINT</span>
+  <span class="n">DF_Contact_Modified_Date</span> <span class="k">DEFAULT</span> <span class="n">GETUTCDATE</span><span class="p">()</span> <span class="k">FOR</span> <span class="n">Modified_Date</span>
+<span class="k">GO</span>
+</code></pre></div></div>
+
+    </div>
+    
+    <footer class="site-footer">
+    © 2019 Brady Holt
+</footer>
+
+    <amp-analytics type="googleanalytics">
+        <script type="application/json">
+        {
+            "vars": {
+            "account": "UA-19416043-2"
+            },
+            "triggers": {
+            "trackPageview": {
+                "on": "visible",
+                "request": "pageview"
+            }
+            }
+        }
+        </script>
+    </amp-analytics>
+</body>
+
+</html>

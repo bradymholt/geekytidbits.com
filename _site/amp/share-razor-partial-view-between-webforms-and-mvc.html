@@ -1,0 +1,140 @@
+<!doctype html>
+<html amp lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Share Razor Partial View between WebForms and MVC</title>
+    <link rel="canonical" href="https://www.geekytidbits.com/share-razor-partial-view-between-webforms-and-mvc/" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Poly' rel='stylesheet'>
+    <style amp-custom>
+        body { font-family: 'Poly', serif; }
+        .site-header { background-color: #237ab2; color: #e7e9ec; padding: 5px; font-weight: 100; border-bottom: 3px solid #f68905; }
+        .site-description { font-size: .5em;}        
+        .post-content { padding: 10px; }
+    </style>
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+    <script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>
+    <script async custom-element="amp-video" src="https://cdn.ampproject.org/v0/amp-video-0.1.js"></script>
+    <script async custom-element="amp-youtube" src="https://cdn.ampproject.org/v0/amp-youtube-0.1.js"></script>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+</head>
+
+<body>
+    
+    <h1 class="post-title">
+        <header class="site-header">
+    <div class="wrapper">
+        <a class="site-title" href="/">
+            <amp-img src="/media/geekytidbits.png" width="383" height="46" alt="Geeky Tidbits Logo" layout="responsive"><noscript><img src="/media/geekytidbits.png" width="383" height="46" alt="Geeky Tidbits Logo"></noscript></amp-img>
+        </a>
+        <div class="site-description">Tidbits on software development, technology, and other geeky stuff.</div>
+    </div>
+</header>
+
+    </h1>
+    <div class="post-content">
+      <span>
+          <i>Mar 13, 2015</i>
+      </span>
+      <p>ASP.NET MVC is a breath of fresh air for anyone with a background in ASP.NET WebForms. It’s cleaner, supports the Razor view engine, is much(!) easier to test, doesn’t have the nasty viewstate baggage and generally just feels better. It’s pretty great that you can use it in older webapps as well by <a href="http://www.codebureau.com/asp-net/integrating-asp-net-mvc-into-an-existing-asp-net-webforms-application/">Integrating ASP.NET MVC into an existing ASP.NET Webforms application</a>. That’s pretty cool but when you do this, you’ll inevitably have view content that you need to share between WebForms and MVC pages. A perfect example of this is a navigation bar or page footer in MasterPages / MVC Layouts. It’s tempting to assume these two ASP.NET paradigms don’t play together and to just have a Razor version and a separate WebForms (ASPX) version that are synced up manually.</p>
+
+<p>However, they <em>can</em> play together and you can share view content between them if you use a Razor partial view and some bridge code to shim out a wrapper around the WebForms/ASPX HttpContext. The technique was posted on Stack Overflow <a href="http://stackoverflow.com/questions/702746/how-to-include-a-partial-view-inside-a-webform/1074061#1074061">here</a> and I have been using it successfully in some projects. I consider it a pretty big deal that you can do this as it makes migrating to ASP.NET MVC much more feasible in a legacy web application. I’ve gisted an example to show how’s it’s done:</p>
+
+<p><em>00_Partial.cshtml</em></p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">@model</span> <span class="n">PartialViewModel</span>
+<span class="p">&lt;</span><span class="n">h1</span><span class="p">&gt;</span><span class="n">Hello</span> <span class="n">World</span><span class="p">&lt;/</span><span class="n">h1</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="n">p</span><span class="p">&gt;</span>
+    <span class="n">I</span> <span class="n">was</span> <span class="n">rendered</span> <span class="k">from</span> <span class="n">a</span> <span class="p">&lt;</span><span class="n">strong</span><span class="p">&gt;</span><span class="n">@Model</span><span class="p">.</span><span class="n">Source</span><span class="p">&lt;/</span><span class="n">strong</span><span class="p">&gt;!</span>
+<span class="p">&lt;/</span><span class="n">p</span><span class="p">&gt;</span>
+</code></pre></div></div>
+
+<p><em>01_RazorPartialBridge.cs</em></p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Linq</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Text</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Web</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Web.Mvc</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Web.Routing</span><span class="p">;</span>
+
+<span class="c1">//Reference: http://stackoverflow.com/a/1074061/626911</span>
+<span class="k">public</span> <span class="k">class</span> <span class="nc">RazorPartialBridge</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">WebFormShimController</span> <span class="p">:</span> <span class="n">Controller</span> <span class="p">{</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">RenderPartial</span><span class="p">(</span><span class="kt">string</span> <span class="n">partialName</span><span class="p">,</span> <span class="kt">object</span> <span class="n">model</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">//get a wrapper for the legacy WebForm context</span>
+        <span class="kt">var</span> <span class="n">httpCtx</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">HttpContextWrapper</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="n">Web</span><span class="p">.</span><span class="n">HttpContext</span><span class="p">.</span><span class="n">Current</span><span class="p">);</span>
+
+        <span class="c1">//create a mock route that points to the empty controller</span>
+        <span class="kt">var</span> <span class="n">rt</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RouteData</span><span class="p">();</span>
+        <span class="n">rt</span><span class="p">.</span><span class="n">Values</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="s">"controller"</span><span class="p">,</span> <span class="s">"WebFormShimController"</span><span class="p">);</span>
+
+        <span class="c1">//create a controller context for the route and http context</span>
+        <span class="kt">var</span> <span class="n">ctx</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">ControllerContext</span><span class="p">(</span>
+            <span class="k">new</span> <span class="nf">RequestContext</span><span class="p">(</span><span class="n">httpCtx</span><span class="p">,</span> <span class="n">rt</span><span class="p">),</span> <span class="k">new</span> <span class="nf">WebFormShimController</span><span class="p">());</span>
+
+        <span class="c1">//find the partial view using the viewengine</span>
+        <span class="kt">var</span> <span class="n">view</span> <span class="p">=</span> <span class="n">ViewEngines</span><span class="p">.</span><span class="n">Engines</span><span class="p">.</span><span class="nf">FindPartialView</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">partialName</span><span class="p">).</span><span class="n">View</span><span class="p">;</span>
+
+        <span class="c1">//create a view context and assign the model</span>
+        <span class="kt">var</span> <span class="n">vctx</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">ViewContext</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">view</span><span class="p">,</span>
+            <span class="k">new</span> <span class="n">ViewDataDictionary</span> <span class="p">{</span> <span class="n">Model</span> <span class="p">=</span> <span class="n">model</span> <span class="p">},</span>
+            <span class="k">new</span> <span class="nf">TempDataDictionary</span><span class="p">(),</span> <span class="n">httpCtx</span><span class="p">.</span><span class="n">Response</span><span class="p">.</span><span class="n">Output</span><span class="p">);</span>
+
+        <span class="c1">//render the partial view</span>
+        <span class="n">view</span><span class="p">.</span><span class="nf">Render</span><span class="p">(</span><span class="n">vctx</span><span class="p">,</span> <span class="n">System</span><span class="p">.</span><span class="n">Web</span><span class="p">.</span><span class="n">HttpContext</span><span class="p">.</span><span class="n">Current</span><span class="p">.</span><span class="n">Response</span><span class="p">.</span><span class="n">Output</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><em>02_Demo.aspx</em></p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">&lt;%</span><span class="err">@</span> <span class="n">Page</span> <span class="n">Title</span><span class="p">=</span><span class="s">"Demo"</span> <span class="n">Language</span><span class="p">=</span><span class="s">"C#"</span>
+    <span class="n">AutoEventWireup</span><span class="p">=</span><span class="s">"true"</span> <span class="n">Inherits</span><span class="p">=</span><span class="s">"Demo"</span> <span class="n">Codebehind</span><span class="p">=</span><span class="s">"Demo.aspx.cs"</span> <span class="p">%&gt;</span>
+<span class="p">&lt;</span><span class="n">html</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="n">head</span><span class="p">&gt;&lt;/</span><span class="n">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="n">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;%</span> <span class="n">RazorPartialBridge</span><span class="p">.</span><span class="nf">RenderPartial</span><span class="p">(</span><span class="s">"_Partial"</span><span class="p">,</span> <span class="k">new</span> <span class="nf">PartialViewModel</span><span class="p">()</span> <span class="p">{</span> <span class="n">Source</span> <span class="p">=</span> <span class="s">"ASPX Page"</span> <span class="p">})</span> <span class="p">%&gt;</span>
+<span class="p">&lt;/</span><span class="n">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="n">html</span><span class="p">&gt;</span>
+</code></pre></div></div>
+
+<p><em>03_Demo.cshtml</em></p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">&lt;</span><span class="n">html</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="n">head</span><span class="p">&gt;&lt;/</span><span class="n">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="n">body</span><span class="p">&gt;</span>
+     <span class="err">@</span><span class="p">{</span> <span class="n">Html</span><span class="p">.</span><span class="nf">RenderPartial</span><span class="p">(</span><span class="s">"_Partial"</span><span class="p">,</span> <span class="k">new</span> <span class="nf">PartialViewModel</span><span class="p">()</span> <span class="p">{</span> <span class="n">Source</span> <span class="p">=</span> <span class="s">"Razor View"</span> <span class="p">});</span> <span class="p">}</span>
+<span class="p">&lt;/</span><span class="n">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="n">html</span><span class="p">&gt;</span>
+</code></pre></div></div>
+
+
+    </div>
+    
+    <footer class="site-footer">
+    © 2019 Brady Holt
+</footer>
+
+    <amp-analytics type="googleanalytics">
+        <script type="application/json">
+        {
+            "vars": {
+            "account": "UA-19416043-2"
+            },
+            "triggers": {
+            "trackPageview": {
+                "on": "visible",
+                "request": "pageview"
+            }
+            }
+        }
+        </script>
+    </amp-analytics>
+</body>
+
+</html>

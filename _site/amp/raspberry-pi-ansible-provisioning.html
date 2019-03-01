@@ -1,0 +1,94 @@
+<!doctype html>
+<html amp lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Ansible Provisioning for my Raspberry Pi</title>
+    <link rel="canonical" href="https://www.geekytidbits.com/raspberry-pi-ansible-provisioning/" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Poly' rel='stylesheet'>
+    <style amp-custom>
+        body { font-family: 'Poly', serif; }
+        .site-header { background-color: #237ab2; color: #e7e9ec; padding: 5px; font-weight: 100; border-bottom: 3px solid #f68905; }
+        .site-description { font-size: .5em;}        
+        .post-content { padding: 10px; }
+    </style>
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+    <script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>
+    <script async custom-element="amp-video" src="https://cdn.ampproject.org/v0/amp-video-0.1.js"></script>
+    <script async custom-element="amp-youtube" src="https://cdn.ampproject.org/v0/amp-youtube-0.1.js"></script>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+</head>
+
+<body>
+    
+    <h1 class="post-title">
+        <header class="site-header">
+    <div class="wrapper">
+        <a class="site-title" href="/">
+            <amp-img src="/media/geekytidbits.png" width="383" height="46" alt="Geeky Tidbits Logo" layout="responsive"><noscript><img src="/media/geekytidbits.png" width="383" height="46" alt="Geeky Tidbits Logo"></noscript></amp-img>
+        </a>
+        <div class="site-description">Tidbits on software development, technology, and other geeky stuff.</div>
+    </div>
+</header>
+
+    </h1>
+    <div class="post-content">
+      <span>
+          <i>Nov 25, 2016</i>
+      </span>
+      <p>A few years back, I bought a <a href="/my-pogoplug-geek-toy/">Pogoplug</a> and got <a href="https://archlinuxarm.org/">Arch Linux ARM</a> running on it.  It was a lot of fun to work on and I eventually got it configured as a Samba file server, DLNA media server, and running my <a href="/vistaicm-server">vistaicm-server</a> project to control my Honeywell Alarm System.  It was suprisingly stable and I learned to love Arch Linux while fiddling with it.</p>
+
+<p>Last week, it finally hard crashed.  It simply will not turn on anymore and I suspect it has something to do with the power supply on it.  Rather than trying to get it working again, I decided to just replace it with one of the Raspberry Pi devices I had laying around.  After all, I’ve been looking for a good use for one of them.  Also, getting Arch Linux ARM actually running on the Pogoplug was a bit of a chore and hard to diagnose when there was a low level boot issue because there is no display adapter.  On the other hand, getting Arch running on the Pi and hooking it up to a display via its HDMI port when needing to diagnose a boot problem is trival.</p>
+
+<p>When I initially setup the the Pogo, I did it manually and over time.  You know, I would decide one day, “Hey, I want to setup minidlna on it so I can stream my movies to my TV”.  So, I would setup and configure minidlna.  Then, later, I would decide to install transmission as a BitTorrent client and would do the necessary config at that time.  This made for a lot of manual provisioning logic that was not backed up and hard to remember.  There were a few times over the last few years that I completely rebuilt it from scratch, for various, reasons, and it took quite awhile to get it back to its previous state.  I would have to find backups of config files (if I was lucky), remember what I had installed, and fiddle with it to get it just so.</p>
+
+<p>This time, however, I was going to use <a href="https://www.ansible.com/">Ansible</a> to automate the provisioning!  I’ve been using Ansible more and more and find it suitable for project large <em>and</em> small.  It’s really nice to have the entire provisioning process scripted and in source control knowing that if the Pi crashed or I needed to rebuild it for any reason, I could be back up and running in a matter of minutes.</p>
+
+<p>The end result is located in this GitHub repository: <a href="https://github.com/bradymholt/tiger-provisioning">https://github.com/bradymholt/tiger-provisioning</a>.</p>
+
+<p>Currently, the provisioning script does the following:</p>
+
+<ul>
+  <li>Removes the default <code class="highlighter-rouge">alarm</code> user</li>
+  <li>Creates a user account with authorized_keys configured to allow key auth for SSH</li>
+  <li>Sets timezone to America/Chicago</li>
+  <li>Installs Node.js, samba, minidlna, and <a href="https://www.insynchq.com/">insync</a>
+</li>
+  <li>Installs some user utilties such as vim, htop, and unzip</li>
+  <li>Installs and configures <a href="https://github.com/bradymholt/vistaicm-server">vistaicm-server</a> so I can control my alarm system</li>
+  <li>Configures external USB thumb-drive as destination for Google Drive sync via insync</li>
+  <li>Configures samba to allow anonymous share access to media folder</li>
+  <li>Configures minidlna to serve videos from the media folder</li>
+</ul>
+
+<p>Thanks to <code class="highlighter-rouge">ansible-vault</code>, all my provisioning <em>secrets</em> (you know, credentials, keys, and such) are <a href="https://github.com/bradymholt/tiger-provisioning/blob/master/secrets.yml">stored in an encrpyted file</a> so that I don’t have to keep them in a separate location, and remember where they are.  To rebuild this server, I just need to clone the repo, provide the vault password and run the Ansible playbook and I’m good to go.</p>
+
+<p>Here is what my Raspberry Pi looks like, sitting on a shelf in my closet, drawing only about 1W of power.</p>
+
+<p><amp-img src="/media/raspberry-pi-goblin.png" alt="Raspberry Pi" width="659" height="611" layout="responsive"><noscript><img src="/media/raspberry-pi-goblin.png" alt="Raspberry Pi" width="659" height="611"></noscript></amp-img></p>
+
+    </div>
+    
+    <footer class="site-footer">
+    © 2019 Brady Holt
+</footer>
+
+    <amp-analytics type="googleanalytics">
+        <script type="application/json">
+        {
+            "vars": {
+            "account": "UA-19416043-2"
+            },
+            "triggers": {
+            "trackPageview": {
+                "on": "visible",
+                "request": "pageview"
+            }
+            }
+        }
+        </script>
+    </amp-analytics>
+</body>
+
+</html>

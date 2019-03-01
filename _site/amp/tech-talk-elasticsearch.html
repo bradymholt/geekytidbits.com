@@ -1,0 +1,74 @@
+<!doctype html>
+<html amp lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Tech Talk: Elasticsearch</title>
+    <link rel="canonical" href="https://www.geekytidbits.com/tech-talk-elasticsearch/" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Poly' rel='stylesheet'>
+    <style amp-custom>
+        body { font-family: 'Poly', serif; }
+        .site-header { background-color: #237ab2; color: #e7e9ec; padding: 5px; font-weight: 100; border-bottom: 3px solid #f68905; }
+        .site-description { font-size: .5em;}        
+        .post-content { padding: 10px; }
+    </style>
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+    <script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>
+    <script async custom-element="amp-video" src="https://cdn.ampproject.org/v0/amp-video-0.1.js"></script>
+    <script async custom-element="amp-youtube" src="https://cdn.ampproject.org/v0/amp-youtube-0.1.js"></script>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+</head>
+
+<body>
+    
+    <h1 class="post-title">
+        <header class="site-header">
+    <div class="wrapper">
+        <a class="site-title" href="/">
+            <amp-img src="/media/geekytidbits.png" width="383" height="46" alt="Geeky Tidbits Logo" layout="responsive"><noscript><img src="/media/geekytidbits.png" width="383" height="46" alt="Geeky Tidbits Logo"></noscript></amp-img>
+        </a>
+        <div class="site-description">Tidbits on software development, technology, and other geeky stuff.</div>
+    </div>
+</header>
+
+    </h1>
+    <div class="post-content">
+      <span>
+          <i>Feb 12, 2015</i>
+      </span>
+      <p>At work, we do tech-talks every few weeks and this week I was asked to do a tech-talk on Elasticsearch.  I have been learning and using Elasticsearch to implement a 60 million document search solution over the last few months.  It has worked really well and has been a joy to use.  It’s been fun to work in a different domain for awhile and get a handle on the world of search.</p>
+
+<p>Elasticsearch is an impressive search server packed full of features.  I initially evaluated a few of the search solutions out there, most notably Apache Solr, and decided upon Elasticsearch because of its ease of use and rock solid distributed architecture.  I love the REST JSON API, schema-less indexing and full document source retrieval ability.</p>
+
+<p>As I’ve implemented Elasticsearch to support a new feature we are rolling out, I’ve already thought about other areas of our application that could take advantage of a search index; to take load off of our RDBMS and provide a performance boost to our stack.  Also, I see Elasticsearch as a fantastic way to handle Business Intelligence and Big Data concerns with tools like <a href="http://www.elasticsearch.org/overview/kibana/">Kibana</a> sitting on top of it.</p>
+
+<p>Here is my slide deck from the tech-talk this week:</p>
+
+<amp-iframe src="https://docs.google.com/presentation/d/1X4B7jMmoGTdHjhNfA_g3Ib5qHE37W1xra8uME39YSxk/embed?start=false&amp;loop=false&amp;delayms=3000" width="750" height="450" layout="responsive" sandbox="allow-scripts"><div placeholder="placeholder">Loading...</div></amp-iframe>
+
+
+    </div>
+    
+    <footer class="site-footer">
+    © 2019 Brady Holt
+</footer>
+
+    <amp-analytics type="googleanalytics">
+        <script type="application/json">
+        {
+            "vars": {
+            "account": "UA-19416043-2"
+            },
+            "triggers": {
+            "trackPageview": {
+                "on": "visible",
+                "request": "pageview"
+            }
+            }
+        }
+        </script>
+    </amp-analytics>
+</body>
+
+</html>

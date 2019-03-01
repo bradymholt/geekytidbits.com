@@ -1,0 +1,158 @@
+<!doctype html>
+<html amp lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>NuGet Downloads Badges</title>
+    <link rel="canonical" href="https://www.geekytidbits.com/nuget-downloads-badges/" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Poly' rel='stylesheet'>
+    <style amp-custom>
+        body { font-family: 'Poly', serif; }
+        .site-header { background-color: #237ab2; color: #e7e9ec; padding: 5px; font-weight: 100; border-bottom: 3px solid #f68905; }
+        .site-description { font-size: .5em;}        
+        .post-content { padding: 10px; }
+    </style>
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+    <script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>
+    <script async custom-element="amp-video" src="https://cdn.ampproject.org/v0/amp-video-0.1.js"></script>
+    <script async custom-element="amp-youtube" src="https://cdn.ampproject.org/v0/amp-youtube-0.1.js"></script>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+</head>
+
+<body>
+    
+    <h1 class="post-title">
+        <header class="site-header">
+    <div class="wrapper">
+        <a class="site-title" href="/">
+            <amp-img src="/media/geekytidbits.png" width="383" height="46" alt="Geeky Tidbits Logo" layout="responsive"><noscript><img src="/media/geekytidbits.png" width="383" height="46" alt="Geeky Tidbits Logo"></noscript></amp-img>
+        </a>
+        <div class="site-description">Tidbits on software development, technology, and other geeky stuff.</div>
+    </div>
+</header>
+
+    </h1>
+    <div class="post-content">
+      <span>
+          <i>Aug 2, 2015</i>
+      </span>
+      <p><amp-img src="/media/nuget-downloads-badge.png" alt="NuGet Downloads Badge" class="pull-left" width="203" height="38" layout="responsive"><noscript><img src="/media/nuget-downloads-badge.png" alt="NuGet Downloads Badge" class="pull-left" width="203" height="38"></noscript></amp-img>
+I’ve been giving a little love to my OSS project <a href="http://cronexpressiondescriptor.azurewebsites.net/">Cron Expression Descriptor</a> lately by making some updates, pushing a new release and rolling out a newly designed <a href="http://cronexpressiondescriptor.azurewebsites.net">demo site</a>.</p>
+
+<p><amp-img src="/media/cron-expression.png" alt="Cron Expression" class="pull-right" width="290" height="36" layout="responsive"><noscript><img src="/media/cron-expression.png" alt="Cron Expression" class="pull-right" width="290" height="36"></noscript></amp-img>
+Cron Expression Descriptor is a .NET library that converts cron expressions into human readable strings. It started as a solution to a problem I was facing trying to display cron expressions on a UI to users that most definitely did not and did not want to understand how to interpret them.</p>
+
+<p>I was pleasantly surprised to see it take off and be adopted by the community. It has almost reached 17,000 downloads and has been translated into 11 languages with the help of GitHub Pull Requests submitted by the community. It’s been fun to work on this project and I am proud of it.</p>
+
+<p>Wanting to add a download count badge to the GitHub page, I decided to write a simple ASP.NET IHttpHandler to hit the <a href="https://www.nuget.org/">NuGet Package feed</a>, grab the downloads count and then request an SVG badge from <a href="http://shields.io/">Shields</a>. I initially tried hitting the NuGet package feed via a XMLHttpRequest request in the browser but the NuGet Package feed is not <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS">CORS</a> friendly so I had to resort to doing it on a server as a pass-through.</p>
+
+<p>Here is the IHttpHandler I ended up with to generate the NuGet Downloads Count badge:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Net</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Web</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">NuGetDownloadsBadge</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">BadgeImageHandler</span> <span class="p">:</span> <span class="n">IHttpHandler</span>
+    <span class="p">{</span>
+        <span class="k">private</span> <span class="k">const</span> <span class="kt">string</span> <span class="n">CACHE_KEY_PREFIX</span> <span class="p">=</span> <span class="s">"downloadsCount-"</span><span class="p">;</span>
+        <span class="k">private</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">CACHE_DURATION_MINUTES</span> <span class="p">=</span> <span class="m">5</span><span class="p">;</span>
+        <span class="k">private</span> <span class="k">const</span> <span class="kt">string</span> <span class="n">NUGET_FEED_URL_FORMAT</span> <span class="p">=</span> <span class="s">"https://www.nuget.org/api/v2/Packages()?$orderby=LastUpdated%20desc&amp;$filter=Id%20eq%20%27{0}%27&amp;$top=1&amp;$select=DownloadCount"</span><span class="p">;</span>
+        <span class="k">private</span> <span class="k">const</span> <span class="kt">string</span> <span class="n">SHIELDS_BADGE_URL_FORMAT</span> <span class="p">=</span> <span class="s">"http://img.shields.io/badge/nuget-{0}%20downloads-{1}.svg"</span><span class="p">;</span>
+        <span class="k">private</span> <span class="k">const</span> <span class="kt">string</span> <span class="n">BADGE_DEFAULT_COLOR</span> <span class="p">=</span> <span class="s">"blue"</span><span class="p">;</span>
+
+        <span class="k">public</span> <span class="k">void</span> <span class="nf">ProcessRequest</span><span class="p">(</span><span class="n">HttpContext</span> <span class="n">context</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="c1">// Grab query parameters and set set defaults</span>
+            <span class="kt">string</span> <span class="n">id</span> <span class="p">=</span> <span class="n">context</span><span class="p">.</span><span class="n">Request</span><span class="p">.</span><span class="n">QueryString</span><span class="p">[</span><span class="s">"id"</span><span class="p">];</span>
+            <span class="kt">string</span> <span class="n">color</span> <span class="p">=</span> <span class="n">BADGE_DEFAULT_COLOR</span><span class="p">;</span>
+            <span class="k">if</span> <span class="p">(!</span><span class="kt">string</span><span class="p">.</span><span class="nf">IsNullOrEmpty</span><span class="p">(</span><span class="n">context</span><span class="p">.</span><span class="n">Request</span><span class="p">.</span><span class="n">QueryString</span><span class="p">[</span><span class="s">"color"</span><span class="p">])){</span>
+                <span class="n">color</span> <span class="p">=</span> <span class="n">context</span><span class="p">.</span><span class="n">Request</span><span class="p">.</span><span class="n">QueryString</span><span class="p">[</span><span class="s">"color"</span><span class="p">];</span>
+            <span class="p">}</span>
+
+            <span class="c1">// Check to see if the download counts is already cached</span>
+            <span class="kt">int</span> <span class="n">count</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+            <span class="kt">object</span> <span class="n">cachedCount</span> <span class="p">=</span> <span class="n">context</span><span class="p">.</span><span class="n">Cache</span><span class="p">[</span><span class="n">CACHE_KEY_PREFIX</span> <span class="p">+</span> <span class="n">id</span><span class="p">];</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">cachedCount</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="c1">//We have a cached count so use it</span>
+                <span class="n">count</span> <span class="p">=</span> <span class="n">Convert</span><span class="p">.</span><span class="nf">ToInt32</span><span class="p">(</span><span class="n">cachedCount</span><span class="p">);</span>
+            <span class="p">}</span>
+            <span class="k">else</span>
+            <span class="p">{</span>
+                <span class="c1">//We need the downloads count; go get it from NuGet.</span>
+                <span class="n">WebClient</span> <span class="n">nugetClient</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">WebClient</span><span class="p">();</span>
+                <span class="n">nugetClient</span><span class="p">.</span><span class="n">Headers</span><span class="p">[</span><span class="n">HttpRequestHeader</span><span class="p">.</span><span class="n">Accept</span><span class="p">]</span> <span class="p">=</span> <span class="s">"application/atom+json,application/json"</span><span class="p">;</span>
+                <span class="kt">string</span> <span class="n">requestUrl</span> <span class="p">=</span> <span class="kt">string</span><span class="p">.</span><span class="nf">Format</span><span class="p">(</span><span class="n">NUGET_FEED_URL_FORMAT</span><span class="p">,</span> <span class="n">id</span><span class="p">);</span>
+
+                <span class="kt">string</span> <span class="n">oDataResponseRaw</span> <span class="p">=</span> <span class="n">nugetClient</span><span class="p">.</span><span class="nf">DownloadString</span><span class="p">(</span><span class="n">requestUrl</span><span class="p">);</span>
+                <span class="kt">dynamic</span> <span class="n">oDataResponseParsed</span> <span class="p">=</span> <span class="n">Newtonsoft</span><span class="p">.</span><span class="n">Json</span><span class="p">.</span><span class="n">JsonConvert</span><span class="p">.</span><span class="nf">DeserializeObject</span><span class="p">(</span><span class="n">oDataResponseRaw</span><span class="p">);</span>
+                <span class="n">count</span> <span class="p">=</span> <span class="n">oDataResponseParsed</span><span class="p">.</span><span class="n">d</span><span class="p">[</span><span class="m">0</span><span class="p">].</span><span class="n">DownloadCount</span><span class="p">;</span>
+
+                <span class="n">context</span><span class="p">.</span><span class="n">Cache</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="n">CACHE_KEY_PREFIX</span> <span class="p">+</span> <span class="n">id</span><span class="p">,</span> <span class="n">count</span><span class="p">,</span>
+                    <span class="k">null</span><span class="p">,</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span><span class="p">.</span><span class="nf">AddMinutes</span><span class="p">(</span><span class="n">CACHE_DURATION_MINUTES</span><span class="p">),</span>
+                    <span class="n">System</span><span class="p">.</span><span class="n">Web</span><span class="p">.</span><span class="n">Caching</span><span class="p">.</span><span class="n">Cache</span><span class="p">.</span><span class="n">NoSlidingExpiration</span><span class="p">,</span>
+                    <span class="n">System</span><span class="p">.</span><span class="n">Web</span><span class="p">.</span><span class="n">Caching</span><span class="p">.</span><span class="n">CacheItemPriority</span><span class="p">.</span><span class="n">Normal</span><span class="p">,</span>
+                    <span class="k">null</span><span class="p">);</span>
+            <span class="p">}</span>
+
+            <span class="c1">//Go grab badge image from Shields</span>
+            <span class="kt">string</span> <span class="n">badgeImageUrl</span> <span class="p">=</span> <span class="kt">string</span><span class="p">.</span><span class="nf">Format</span><span class="p">(</span><span class="n">SHIELDS_BADGE_URL_FORMAT</span><span class="p">,</span> <span class="n">count</span><span class="p">.</span><span class="nf">ToString</span><span class="p">(</span><span class="s">"N0"</span><span class="p">),</span> <span class="n">color</span><span class="p">);</span>
+            <span class="n">WebClient</span> <span class="n">shieldsClient</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">WebClient</span><span class="p">();</span>
+
+            <span class="kt">byte</span><span class="p">[]</span> <span class="n">image</span> <span class="p">=</span> <span class="n">shieldsClient</span><span class="p">.</span><span class="nf">DownloadData</span><span class="p">(</span><span class="n">badgeImageUrl</span><span class="p">);</span>
+
+            <span class="c1">// Respond with our shiny shield badge SVG image</span>
+            <span class="n">context</span><span class="p">.</span><span class="n">Response</span><span class="p">.</span><span class="n">ContentType</span> <span class="p">=</span> <span class="s">"image/svg+xml"</span><span class="p">;</span>
+            <span class="n">context</span><span class="p">.</span><span class="n">Response</span><span class="p">.</span><span class="nf">AppendHeader</span><span class="p">(</span><span class="s">"Content-Length"</span><span class="p">,</span> <span class="n">image</span><span class="p">.</span><span class="n">Length</span><span class="p">.</span><span class="nf">ToString</span><span class="p">());</span>
+            <span class="n">context</span><span class="p">.</span><span class="n">Response</span><span class="p">.</span><span class="nf">AppendHeader</span><span class="p">(</span><span class="s">"Access-Control-Allow-Origin"</span><span class="p">,</span> <span class="s">"*"</span><span class="p">);</span>
+            <span class="n">context</span><span class="p">.</span><span class="n">Response</span><span class="p">.</span><span class="nf">BinaryWrite</span><span class="p">(</span><span class="n">image</span><span class="p">);</span>
+            <span class="n">context</span><span class="p">.</span><span class="n">Response</span><span class="p">.</span><span class="nf">End</span><span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="kt">bool</span> <span class="n">IsReusable</span>
+        <span class="p">{</span>
+            <span class="k">get</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>It takes an ID query parameter as the NuGet package name and response with an SVG image badge. Easy enough.</p>
+
+<strike>Funny thing, after I went through the <strike>trouble</strike> fun of doing this, I realized the Shields already does this if you use the URL format: https://img.shields.io/nuget/dt/PACKAGE_ID.svg. So, for Cron Expression Descriptor it is [https://img.shields.io/nuget/dt/CronExpressionDescriptor.svg](https://img.shields.io/nuget/dt/CronExpressionDescriptor.svg) which results in this badge: [no longer works]. It was interesting looking at their [JavaScript approach](https://github.com/badges/shields/blob/dafb6ec286926e4aff8c90f1da8b24e7f9410f18/server.js#L2880) and comparing it to my own approach.</strike>
+
+<p><strong>Update</strong>: After building the module above, I learned Shields.io already had a NuGet downloads badge but it has since stopped working. The good folks at <a href="https://buildstats.info/">BuildStats.info</a> have one that works great so I am using those now. For example:
+<amp-img src="https://buildstats.info/nuget/CronExpressionDescriptor" alt="NuGet Downloads Badge" width="177" height="20" layout="responsive"><noscript><img src="https://buildstats.info/nuget/CronExpressionDescriptor" alt="NuGet Downloads Badge" width="177" height="20"></noscript></amp-img></p>
+
+<p>Oh well, I reinvented the wheel but it was fun and a learned a few things along the way!</p>
+
+    </div>
+    
+    <footer class="site-footer">
+    © 2019 Brady Holt
+</footer>
+
+    <amp-analytics type="googleanalytics">
+        <script type="application/json">
+        {
+            "vars": {
+            "account": "UA-19416043-2"
+            },
+            "triggers": {
+            "trackPageview": {
+                "on": "visible",
+                "request": "pageview"
+            }
+            }
+        }
+        </script>
+    </amp-analytics>
+</body>
+
+</html>

@@ -1,0 +1,251 @@
+<!doctype html>
+<html amp lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Painless HTML5 Video in WordPress</title>
+    <link rel="canonical" href="https://www.geekytidbits.com/painless-html5-video-in-wordpress/" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Poly' rel='stylesheet'>
+    <style amp-custom>
+        body { font-family: 'Poly', serif; }
+        .site-header { background-color: #237ab2; color: #e7e9ec; padding: 5px; font-weight: 100; border-bottom: 3px solid #f68905; }
+        .site-description { font-size: .5em;}        
+        .post-content { padding: 10px; }
+    </style>
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+    <script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>
+    <script async custom-element="amp-video" src="https://cdn.ampproject.org/v0/amp-video-0.1.js"></script>
+    <script async custom-element="amp-youtube" src="https://cdn.ampproject.org/v0/amp-youtube-0.1.js"></script>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+</head>
+
+<body>
+    
+    <h1 class="post-title">
+        <header class="site-header">
+    <div class="wrapper">
+        <a class="site-title" href="/">
+            <amp-img src="/media/geekytidbits.png" width="383" height="46" alt="Geeky Tidbits Logo" layout="responsive"><noscript><img src="/media/geekytidbits.png" width="383" height="46" alt="Geeky Tidbits Logo"></noscript></amp-img>
+        </a>
+        <div class="site-description">Tidbits on software development, technology, and other geeky stuff.</div>
+    </div>
+</header>
+
+    </h1>
+    <div class="post-content">
+      <span>
+          <i>Jun 13, 2011</i>
+      </span>
+      <p><em>Preface: this post contains a specific implementation to a common problem.  Although my solution below involves iPhone videos and integration with a WordPress blog, the information can be used to build a solution to suit your own needs.</em></p>
+
+<h3 id="in-short">In Short</h3>
+
+<p>In this post, I explain how to setup and configure a combination of software and tools on a Linux server running a WordPress blog that enables <strong>painless</strong> uploading and sharing of videos hosted directly from your own server, rather than a third party service like YouTube.  Once everything is setup, adding a video to a blog post is as easy as uploading it through WordPress and using a shortcode such as [video src=”/media/myvideo”] to stream your video using HTM5 and Flash as a fallback option.  The initial setup for this solution is a bit of work but the payoff is huge!</p>
+
+<p>Watch the video below to see a demo of just how painless it is!</p>
+
+<amp-video width="780" height="380" autoplay="" poster="/media/painless_poster.png" layout="responsive">
+  <source src="/media/painless_html5_video.m4v" type="video/mp4"></source>
+  Sorry, your browser doesn't support embedded videos,
+  but don't worry, you can <a href="/media/painless_html5_video.m4v">download it</a>
+  and watch it with your favorite video player!
+<div placeholder="placeholder">Loading...</div></amp-video>
+
+<h3 id="assumptions">Assumptions</h3>
+
+<p>You need a Linux web server with administrative privileges and a WordPress (self-hosted) blog software installation to complete the steps below.  <em>If you don’t use Linux or WordPress see the preface at the top of this post.</em></p>
+
+<h3 id="background">Background</h3>
+
+<p>My wife and I recently had our first child. With that comes the insatiable desire to share video after video of our adorable little daughter!</p>
+
+<p>The way I’ve usually shared videos on the web has been to upload them to <a href="http://www.YouTube.com" target="_blank">YouTube</a> or <a href="http://www.vimeo.com" target="_blank">Vimeo</a> and embed them on my own site. As the quantity and frequency of my video posting was about to skyrocket I stepped back and thought, “Why do I have to post my videos on a 3rd party site just to share it on the web”?  It just seems like in principle I shouldn’t have to.  Also,  it can be kind of tedious to login to another site, upload a video, wait for conversion, get the embed code, etc.  Yes, I could use a Flash player and host on my own but Flash doesn’t work everywhere (i.e. iPhone / iPad) and there are other heavy issues to deal with such as video format (container / codec), bitrate, etc.  HTML5 video seems like a good option but because of the ongoing <a href="http://arstechnica.com/open-source/news/2009/07/decoding-the-html-5-video-codec-debate.ars" target="_blank">codec debate</a> you still have to do some painful work to get your video in the right formats to support all the major browsers and also allow for a fallback option when HTML5 video isn’t available (I’m glaring at you, Internet Explorer 7 &amp; 8).</p>
+
+<p><strong>Let’s be honest</strong>.  Working with video on the web isn’t exactly easy.</p>
+
+<h3 id="wish-list">Wish List</h3>
+
+<p>I wanted the following:</p>
+
+<ul>
+  <li>Support videos taken from my <strong>iPhone</strong>, which are MOV / QuickTime format.</li>
+  <li>Integration with <a href="http://wordpress.org/" target="_blank">WordPress</a> blogging software (self-hosted version).</li>
+  <li>Host and serve the videos from my <strong>own server</strong> without delegating to a 3rd party service like YouTube or Vimeo.</li>
+  <li>Support playback on most all browsers / platforms, including <strong>platforms without Flash support</strong>.</li>
+  <li>Take advantage of <strong>HTML5</strong> video.  It’s the future of the web so now is a good time to learn it and use it.</li>
+  <li>Be able to <strong>quickly</strong> and <strong>easily</strong> upload and share videos.  I didn’t want to have to run a video conversion program and convert to 4 different formats and write a ton of HTML markup just to share.  If it isn’t easy, I probably won’t use it long-term.</li>
+</ul>
+
+<h3 id="solution">Solution</h3>
+
+<h4 id="high-level-approach">High-level approach</h4>
+
+<p>I have a file watching service running on my Linux web server.  When it detects a new file in a specified directory it runs a script.  This script checks for a video file type and if found, converts it to other HTML5 compatible formats using some command line video conversion utilities.  Then, I have a WordPress plugin installed that dynamically checks the filesystem for available video formats and generates HTML5 markup with Flash fallback accordingly.</p>
+
+<h4 id="setup-steps">Setup Steps</h4>
+
+<ol>
+  <li>
+    <p>Install the following on your Linux box:</p>
+
+    <p><strong><a href="http://inotify.aiken.cz/?section=incron&amp;page=about&amp;lang=en" target="_blank">incron</a></strong>- This is a daemon that is similar to cron except it is triggered by filesystem events rather than time intervals.
+<strong><a href="http://www.ffmpeg.org/" target="_blank">ffmpeg</a></strong>-_The_ swiss-army knife for audio / video conversion.  This is one powerful program!  Note: you will likely need to compile ffmpeg yourself because most package repositories (i.e. yum install ffmpeg) contain a version of ffmpeg not compiled with options you will need.  I used the <a href="http://ubuntuforums.org/showthread.php?t=786095" target="_blank">HOWTO: Install and use the latest FFmpeg and x264</a> guide to install with the following ffmpeg configure / make statements: &lt;pre class="brush: text;"&gt;./configure –enable-gpl –enable-version3 –enable-nonfree –enable-postproc –enable-libfaac –enable-libmp3lame –enable-libtheora –enable-libvorbis –enable-libx264 –enable-libxvid –enable-libvpx –enable-pthreads; make; make install&lt;/pre&gt;</p>
+
+    <p><strong>qt-faststart</strong>- This is a tool that reorders MP4 meta-data for better web streaming.  qt-faststart is included as part of the ffmpeg source but you need to build it separately.  The ffmpeg HOWTO guide above includes instructions on building and installing qt-faststart so be sure to follow those.
+<strong><a href="http://v2v.cc/~j/ffmpeg2theora/" target="_blank">ffmpeg2theora</a></strong>- A simple converter to create Ogg Theora files.</p>
+
+    <ul>
+      <li>
+<a href="http://matroska.org/downloads/mkclean.html" target="_blank"><strong>mkclean</strong></a> – A command line tool to clean and optimize WebM video files for better web streaming.</li>
+    </ul>
+  </li>
+  <li>Install and activate the <a href="http://wordpress.org/extend/plugins/degradable-html5-audio-and-video/" target="_blank">Degradable HTML5 audio and video</a> WordPress plugin.  This plugin is responsible for generating the HTML markup for us.
+    <ol>
+      <li>Login to your WordPress admin console and click “Add New” under the Plugins area.</li>
+      <li>Search for “Degradable HTML5 audio and video” and click to Install and then Activate when prompted.</li>
+    </ol>
+  </li>
+  <li>
+    <p>Create a bash script to handle the video conversions:</p>
+
+    <ul>
+      <li>Run <strong>nano /usr/local/bin/convert_video_html5</strong> from your Linux shell to create the bash script.</li>
+      <li>Add the following contents to the script:</li>
+    </ul>
+  </li>
+</ol>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
+<span class="nv">ORIG_FILENAME</span><span class="o">=</span><span class="k">${</span><span class="nv">1</span><span class="p">##*/</span><span class="k">}</span>
+<span class="nv">ORIG_EXTENSION</span><span class="o">=</span><span class="k">${</span><span class="nv">ORIG_FILENAME</span><span class="p">##*.</span><span class="k">}</span>
+<span class="nv">ORIG_EXTENSION</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="nv">$ORIG_EXTENSION</span> | <span class="nb">tr</span> <span class="s2">"[:upper:]"</span> <span class="s2">"[:lower:]"</span><span class="k">)</span>
+<span class="nv">ORIG_BASE</span><span class="o">=</span><span class="k">${</span><span class="nv">1</span><span class="p">%</span><span class="nv">$ORIG_EXTENSION</span><span class="k">}</span>
+<span class="nv">JPG_FILENAME</span><span class="o">=</span><span class="s2">""</span>
+<span class="nv">MP4_FILENAME</span><span class="o">=</span><span class="s2">""</span>
+<span class="nv">MP4_FFMPEG_CONVERT_OPTIONS</span><span class="o">=</span><span class="s2">" -y -f mp4 -acodec libfaac -vcodec libx264 -b 700k -vf scale=480:-1"</span>
+<span class="nv">OGV_FILENAME</span><span class="o">=</span><span class="s2">""</span>
+<span class="nv">WEBM_FILENAME</span><span class="o">=</span><span class="s2">""</span>
+<span class="nv">WEBM_FFMPEG_CONVERT_OPTIONS</span><span class="o">=</span><span class="s2">" -y -f webm -b 700k"</span>
+<span class="nv">TEMP_FILE_SUFFIX</span><span class="o">=</span><span class="s2">"_tmp"</span>
+<span class="nv">PROCESS_PRIORITY</span><span class="o">=</span><span class="s2">"15"</span>
+
+<span class="k">if</span> <span class="o">[</span> <span class="s2">"</span><span class="nv">$ORIG_EXTENSION</span><span class="s2">"</span> <span class="o">==</span> <span class="s2">"mov"</span> <span class="nt">-o</span> <span class="s2">"</span><span class="nv">$ORIG_EXTENSION</span><span class="s2">"</span> <span class="o">==</span> <span class="s2">"mp4"</span> <span class="nt">-o</span> <span class="s2">"</span><span class="nv">$ORIG_EXTENSION</span><span class="s2">"</span> <span class="o">==</span> <span class="s2">"avi"</span> <span class="o">]</span><span class="p">;</span> <span class="k">then
+</span><span class="nv">JPG_FILENAME</span><span class="o">=</span><span class="nv">$ORIG_BASE</span><span class="s2">"jpg"</span>
+<span class="nv">MP4_FILENAME</span><span class="o">=</span><span class="nv">$ORIG_BASE</span><span class="s2">"m4v"</span>
+<span class="nv">OGV_FILENAME</span><span class="o">=</span><span class="nv">$ORIG_BASE</span><span class="s2">"ogv"</span>
+<span class="nv">WEBM_FILENAME</span><span class="o">=</span><span class="nv">$ORIG_BASE</span><span class="s2">"webm"</span>
+
+<span class="c">#pause to wait for file to finish writing</span>
+<span class="nb">sleep </span>3
+
+<span class="c">#generate poster thumbnnail</span>
+<span class="nb">nice</span> <span class="nt">-n</span> <span class="s2">"</span><span class="nv">$PROCESS_PRIORITY</span><span class="s2">"</span> /usr/local/bin/ffmpeg <span class="nt">-y</span> <span class="nt">-i</span> <span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span> <span class="nt">-f</span> image2 <span class="nt">-an</span> <span class="nt">-ss</span> 00:00:04 <span class="nt">-vframes</span> 1 <span class="s2">"</span><span class="nv">$JPG_FILENAME</span><span class="s2">"</span>
+
+<span class="k">if</span> <span class="o">[</span> <span class="nv">$ORIG_EXTENSION</span> <span class="o">==</span> <span class="s1">'mp4'</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+  <span class="c">#no conversion needed for m4v format, just copy it</span>
+  <span class="nb">cp</span> <span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span> <span class="s2">"</span><span class="nv">$MP4_FILENAME$TEMP_FILE_SUFFIX</span><span class="s2">"</span>
+<span class="k">elif</span> <span class="o">[</span> <span class="nv">$ORIG_EXTENSION</span> <span class="o">==</span> <span class="s1">'mov'</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+  <span class="c">#simple container conversion needed, copy video / audio content without re-encoding</span>
+  <span class="nb">nice</span> <span class="nt">-n</span> <span class="s2">"</span><span class="nv">$PROCESS_PRIORITY</span><span class="s2">"</span> /usr/local/bin/ffmpeg <span class="nt">-y</span> <span class="nt">-i</span> <span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span> <span class="nt">-f</span> mp4 <span class="nt">-acodec</span> copy <span class="nt">-vcodec</span> copy <span class="s2">"</span><span class="nv">$MP4_FILENAME$TEMP_FILE_SUFFIX</span><span class="s2">"</span>
+<span class="k">else</span>
+  <span class="c">#re-encoding is needed</span>
+  <span class="nb">nice</span> <span class="nt">-n</span> <span class="s2">"</span><span class="nv">$PROCESS_PRIORITY</span><span class="s2">"</span> /usr/local/bin/ffmpeg <span class="nt">-i</span> <span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span> <span class="k">${</span><span class="nv">MP4_FFMPEG_CONVERT_OPTIONS</span><span class="k">}</span> <span class="s2">"</span><span class="nv">$MP4_FILENAME$TEMP_FILE_SUFFIX</span><span class="s2">"</span>
+<span class="k">fi</span>
+
+<span class="c">#move mp4 metadata to front of file for streaming</span>
+<span class="nb">nice</span> <span class="nt">-n</span> <span class="s2">"</span><span class="nv">$PROCESS_PRIORITY</span><span class="s2">"</span> /usr/local/bin/qt-faststart <span class="s2">"</span><span class="nv">$MP4_FILENAME$TEMP_FILE_SUFFIX</span><span class="s2">"</span> <span class="s2">"</span><span class="nv">$MP4_FILENAME</span><span class="s2">"</span>
+<span class="nb">rm</span> <span class="s2">"</span><span class="nv">$MP4_FILENAME$TEMP_FILE_SUFFIX</span><span class="s2">"</span>
+
+<span class="c">#generate Ogg Theora format</span>
+<span class="nb">nice</span> <span class="nt">-n</span> <span class="s2">"</span><span class="nv">$PROCESS_PRIORITY</span><span class="s2">"</span> /usr/local/bin/ffmpeg2theora <span class="s2">"</span><span class="nv">$MP4_FILENAME</span><span class="s2">"</span> <span class="nt">-o</span> <span class="s2">"</span><span class="nv">$OGV_FILENAME$TEMP_FILE_SUFFIX</span><span class="s2">"</span>
+<span class="nb">mv</span> <span class="s2">"</span><span class="nv">$OGV_FILENAME$TEMP_FILE_SUFFIX</span><span class="s2">"</span> <span class="s2">"</span><span class="nv">$OGV_FILENAME</span><span class="s2">"</span>
+
+<span class="c">#generate WEBM format</span>
+<span class="nb">nice</span> <span class="nt">-n</span> <span class="s2">"</span><span class="nv">$PROCESS_PRIORITY</span><span class="s2">"</span> /usr/local/bin/ffmpeg <span class="nt">-i</span> <span class="s2">"</span><span class="nv">$MP4_FILENAME</span><span class="s2">"</span> <span class="k">${</span><span class="nv">WEBM_FFMPEG_CONVERT_OPTIONS</span><span class="k">}</span> <span class="s2">"</span><span class="nv">$WEBM_FILENAME$TEMP_FILE_SUFFIX</span><span class="s2">"</span>
+<span class="nb">nice</span> <span class="nt">-n</span> <span class="s2">"</span><span class="nv">$PROCESS_PRIORITY</span><span class="s2">"</span> /usr/local/bin/mkclean <span class="nt">--optimize</span> <span class="nt">--remux</span> <span class="s2">"</span><span class="nv">$WEBM_FILENAME$TEMP_FILE_SUFFIX</span><span class="s2">"</span> <span class="s2">"</span><span class="nv">$WEBM_FILENAME</span><span class="s2">"</span>
+<span class="nb">rm</span> <span class="s2">"</span><span class="nv">$WEBM_FILENAME$TEMP_FILE_SUFFIX</span><span class="s2">"</span>
+<span class="k">fi</span>
+</code></pre></div></div>
+
+<ul>
+  <li>Run <strong>chmod+x /usr/local/bin/convert_video_html5</strong>
+</li>
+</ul>
+
+<ol>
+  <li>Setup <strong>incron</strong>. 1. Start incron by running <strong>service incrond start</strong>.  This command may vary depending on the Linux distribution you are using. 2. Edit the incron action table table by runing <strong>incrontab -e</strong>and adding the following line (entry) to the table:</li>
+</ol>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/var/www/html/wordpress/wp-content/uploads IN_CLOSE_WRITE,IN_MOVED_TO,IN_NO_LOOP /usr/local/bin/convert_video_html5 $@/$#
+</code></pre></div></div>
+
+<p>You should change <em>/var/www/html/wordpress/wp-content/uploads</em> above to be the wp-content/uploads folder location of your own WordPress installation.&lt;/li&gt;</p>
+
+<ul>
+  <li>
+    <p>The action entry above tells incron to execute /usr/local/bin/convert_video_html5 when a file is either written to (IN_CLOSE_WRITE) or moved (IN_MOVED_TO) into the /var/www/html/wordpress/wp-content/uploads folder.  $@/$# tells incron to pass in the full path of the created/moved file to our conversion script.&lt;/ol&gt; &lt;/li&gt;</p>
+  </li>
+  <li>
+    <p>Configure <strong>web server</strong></p>
+
+    <ol>
+      <li>Locate your web server config file.  I use Apache and the location of the file is /etc/httpd/conf/httpd.conf</li>
+      <li>Add mime-type definitions for (at least) the following extensions: .ogv, .m4v, .mp4, .webm</li>
+      <li>My Apache config has the following:
+        <div class="language-text highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>AddType video/ogg .ogv .ogg
+AddType video/mp4.mp4 .m4v
+AddType video/webm .webm
+</code></pre></div>        </div>
+      </li>
+    </ol>
+  </li>
+</ul>
+
+<h4 id="usage">Usage</h4>
+
+<p>Now, with everything setup it is easy to upload a video and embed it in a WordPress blog post.  All I need to do is use the [video] shortcode with the following syntax.  Assuming I uploaded a video name myvideo.mov, you would use:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[video src="/media/myvideo"]
+</code></pre></div></div>
+
+<p>Notice the omission of the mov file extension above.  This is because the WordPress plugin we installed (“Degradable HTML5 audio and video”)  auto detect the videos present of the file system and generates the markup accordingly.  Our bash script (convert_video_html5) does all the video conversion behind the scenes and drops newly converted files in the same directory and the WordPress plugin finds them to use them.  If some of the conversions are still in process, the plugin will only use those currently available.</p>
+
+<h3 id="conclusion">Conclusion</h3>
+
+<p>Phew.  That was a lot of work right?  But the payoff is huge!  It took quite a bit of time (and frustration) to come up with this solution but I am extremely happy with the outcome.  Now, I can take a quick video, upload it to WordPress and have it streaming HTML5 video cross platform/browser (with Flash fallback support) within seconds. <strong><em>Painless</em></strong>.</p>
+
+<h3 id="enhancement">Enhancement</h3>
+
+<p>This is my laundry list of things to work on in the future to make this solution even better:</p>
+
+<ul>
+  <li>Support more than just iPhone (MOV/QuickTime) and AVI video file formats.  This shouldn’t be hard since ffmpeg can work with tons of codecs and container formats.  A tweak to the convert_video_html5 script should enable this.</li>
+  <li>Possibly add a trigger to the wp_posts WordPress MySql table so that default file upload syntax will automatically be changed to the shortcode syntax.  When you upload a video in WordPress, it adds an anchor link pointing to the new file (i.e. &lt;a href=”/wp-content/uploads/video.mov”&gt;Your Video&lt;/a&gt;).  With a trigger I would not have to modify this markup to the [video src…] format and it would truly be a “hands-off” approach.  I generally despise database triggers (except for audit purposes) and this seems very hackish to me so I doubt I will ever do this but it is at least a thought.  Perhaps there is a more elegant way to accomplish this.</li>
+</ul>
+
+    </div>
+    
+    <footer class="site-footer">
+    © 2019 Brady Holt
+</footer>
+
+    <amp-analytics type="googleanalytics">
+        <script type="application/json">
+        {
+            "vars": {
+            "account": "UA-19416043-2"
+            },
+            "triggers": {
+            "trackPageview": {
+                "on": "visible",
+                "request": "pageview"
+            }
+            }
+        }
+        </script>
+    </amp-analytics>
+</body>
+
+</html>

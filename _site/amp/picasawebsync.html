@@ -1,0 +1,94 @@
+<!doctype html>
+<html amp lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>PicasaWebSync</title>
+    <link rel="canonical" href="https://www.geekytidbits.com/picasawebsync-project/" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Poly' rel='stylesheet'>
+    <style amp-custom>
+        body { font-family: 'Poly', serif; }
+        .site-header { background-color: #237ab2; color: #e7e9ec; padding: 5px; font-weight: 100; border-bottom: 3px solid #f68905; }
+        .site-description { font-size: .5em;}        
+        .post-content { padding: 10px; }
+    </style>
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+    <script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>
+    <script async custom-element="amp-video" src="https://cdn.ampproject.org/v0/amp-video-0.1.js"></script>
+    <script async custom-element="amp-youtube" src="https://cdn.ampproject.org/v0/amp-youtube-0.1.js"></script>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+</head>
+
+<body>
+    
+    <h1 class="post-title">
+        <header class="site-header">
+    <div class="wrapper">
+        <a class="site-title" href="/">
+            <amp-img src="/media/geekytidbits.png" width="383" height="46" alt="Geeky Tidbits Logo" layout="responsive"><noscript><img src="/media/geekytidbits.png" width="383" height="46" alt="Geeky Tidbits Logo"></noscript></amp-img>
+        </a>
+        <div class="site-description">Tidbits on software development, technology, and other geeky stuff.</div>
+    </div>
+</header>
+
+    </h1>
+    <div class="post-content">
+      <span>
+          <i>Apr 22, 2011</i>
+      </span>
+      <p>I have my personal photos and videos on a shared network drive. I’ve been wanting a way to easily access these from the internet so that I can pull them up on my iPhone and link to them from my personal website. I finally decided upon uploading them to Picasa Web Albums since the Google Data API allows for easy interaction with Picasa and there are many apps and plugins that work with Picasa. Having everything in Picasa allows me to use an iPhone app (I use <a href="http://itunes.apple.com/us/app/web-albums-a-picasa-photo/id344997890?mt=8" target="_blank">Web Albums</a>)  to view on my phone and a WordPress plugin to display on my website.</p>
+
+<p>I know the Picasa desktop application has the ability to upload and sync your files to online Web Albums but you have to initiate this manually. I wanted an automated solution. Also, I wanted a solution I could run on my “always on” server so it could be scheduled and unattended.</p>
+
+<p>To get them into Picasa, I wrote a C# .NET command-line utility called PicasaWebSync which does all the heavy lifting. I have this running on a nightly basis to keep everything updated. I am making PicasaWebSync available (including the source) here in case anyone else would like to use it.</p>
+
+<h3 id="introducing-picasawebsync">Introducing PicasaWebSync</h3>
+
+<p><strong>PicasaWebSync</strong> is a command-line tool to synchronize local photos and videos to online Picasa Web Albums. It is flexible with a configuration file / run-time options and optionally <strong>resizes</strong> photos before uploading them.</p>
+
+<h3 id="features"><strong>Features</strong></h3>
+
+<ul>
+  <li>Resizes photos before uploading.</li>
+  <li>Resizes videos before uploading (requires external tool like ffmpeg).</li>
+  <li>Allows folders to be excluded by name or hint file included in folder.</li>
+  <li>Allows album access (i.e. Public / Private) to be set by hint files in source folders.</li>
+  <li>Allows excluding files over a specified size.</li>
+  <li>Removes photos/videos/albums from Picasa Web Albums that have been removed locally (can prevent this with -addOnly command line option)</li>
+  <li>Updates files on Picasa which have been updated locally since the last time they were uploaded.</li>
+  <li>Supports these file types: jpg, jpeg, gif, tiff, tif, png, bmp, avi, wmv, mpg, asf, mov, mp4</li>
+</ul>
+
+<h3 id="more-information">More Information</h3>
+
+<p>For more information on this project and download instructions, visit the project page at: <a href="http://bradyholt.github.io/picasawebsync/" target="_blank">http://bradyholt.github.io/picasawebsync/</a></p>
+
+<p> </p>
+
+<p> </p>
+
+    </div>
+    
+    <footer class="site-footer">
+    © 2019 Brady Holt
+</footer>
+
+    <amp-analytics type="googleanalytics">
+        <script type="application/json">
+        {
+            "vars": {
+            "account": "UA-19416043-2"
+            },
+            "triggers": {
+            "trackPageview": {
+                "on": "visible",
+                "request": "pageview"
+            }
+            }
+        }
+        </script>
+    </amp-analytics>
+</body>
+
+</html>

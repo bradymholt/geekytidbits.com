@@ -1,0 +1,75 @@
+<!doctype html>
+<html amp lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>vistaicm-server</title>
+    <link rel="canonical" href="https://www.geekytidbits.com/vistaicm-server/" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Poly' rel='stylesheet'>
+    <style amp-custom>
+        body { font-family: 'Poly', serif; }
+        .site-header { background-color: #237ab2; color: #e7e9ec; padding: 5px; font-weight: 100; border-bottom: 3px solid #f68905; }
+        .site-description { font-size: .5em;}        
+        .post-content { padding: 10px; }
+    </style>
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+    <script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>
+    <script async custom-element="amp-video" src="https://cdn.ampproject.org/v0/amp-video-0.1.js"></script>
+    <script async custom-element="amp-youtube" src="https://cdn.ampproject.org/v0/amp-youtube-0.1.js"></script>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+</head>
+
+<body>
+    
+    <h1 class="post-title">
+        <header class="site-header">
+    <div class="wrapper">
+        <a class="site-title" href="/">
+            <amp-img src="/media/geekytidbits.png" width="383" height="46" alt="Geeky Tidbits Logo" layout="responsive"><noscript><img src="/media/geekytidbits.png" width="383" height="46" alt="Geeky Tidbits Logo"></noscript></amp-img>
+        </a>
+        <div class="site-description">Tidbits on software development, technology, and other geeky stuff.</div>
+    </div>
+</header>
+
+    </h1>
+    <div class="post-content">
+      <span>
+          <i>Aug 18, 2013</i>
+      </span>
+      <p>Awhile back, I blogged about <a href="/iphone-control-house-alarm-and-garage-doors/" target="_blank">iPhone Control of House Alarm and Garage Doors</a>, which was a combination of hardware and software that allowed me to control my home alarm system, including doing cool things like opening and closing my garage doors.</p>
+
+<p>It’s been over 2 years since that post and in the meantime, I have completely rewritten the application that interfaces with the VISTA-ICM so that it is much simpler, provides more flexibility and is a more packaged solution so that others can easily use it themselves.  It was my first <a href="http://nodejs.org/" target="_blank">Node.js</a> application and was a lot of fun to write.</p>
+
+<h2 id="introducing-vistaicm-server">Introducing vistaicm-server</h2>
+
+<p><a href="/media/screenshot.png"><amp-img class="size-full wp-image-1765 alignleft" style="margin:15px;" alt="screenshot" src="/media/screenshot.png" width="240" height="262" layout="responsive"><noscript><img class="size-full wp-image-1765 alignleft" style="margin:15px;" alt="screenshot" src="/media/screenshot.png" width="240" height="262"></noscript></amp-img></a>
+<strong>vistaicm-server</strong> is a server app that works with the <a href="http://controlworks.com/modules/Product.aspx?pid=80">VISTA-ICM</a> module to control VISTA (10/15/20/21/50/128/250) alarm panels. It provides a <strong>clean web interface</strong> and <strong>event handling</strong> through a hook architecture.</p>
+
+<p><strong>To learn more and download, visit the <a href="https://github.com/bradymholt/vistaicm-server" target="_blank">project page on GitHub</a>. </strong></p>
+
+
+    </div>
+    
+    <footer class="site-footer">
+    © 2019 Brady Holt
+</footer>
+
+    <amp-analytics type="googleanalytics">
+        <script type="application/json">
+        {
+            "vars": {
+            "account": "UA-19416043-2"
+            },
+            "triggers": {
+            "trackPageview": {
+                "on": "visible",
+                "request": "pageview"
+            }
+            }
+        }
+        </script>
+    </amp-analytics>
+</body>
+
+</html>

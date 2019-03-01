@@ -1,0 +1,93 @@
+<!doctype html>
+<html amp lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Text to Speech through Airtunes</title>
+    <link rel="canonical" href="https://www.geekytidbits.com/text-to-speech-through-airtunes/" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Poly' rel='stylesheet'>
+    <style amp-custom>
+        body { font-family: 'Poly', serif; }
+        .site-header { background-color: #237ab2; color: #e7e9ec; padding: 5px; font-weight: 100; border-bottom: 3px solid #f68905; }
+        .site-description { font-size: .5em;}        
+        .post-content { padding: 10px; }
+    </style>
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+    <script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>
+    <script async custom-element="amp-video" src="https://cdn.ampproject.org/v0/amp-video-0.1.js"></script>
+    <script async custom-element="amp-youtube" src="https://cdn.ampproject.org/v0/amp-youtube-0.1.js"></script>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+</head>
+
+<body>
+    
+    <h1 class="post-title">
+        <header class="site-header">
+    <div class="wrapper">
+        <a class="site-title" href="/">
+            <amp-img src="/media/geekytidbits.png" width="383" height="46" alt="Geeky Tidbits Logo" layout="responsive"><noscript><img src="/media/geekytidbits.png" width="383" height="46" alt="Geeky Tidbits Logo"></noscript></amp-img>
+        </a>
+        <div class="site-description">Tidbits on software development, technology, and other geeky stuff.</div>
+    </div>
+</header>
+
+    </h1>
+    <div class="post-content">
+      <span>
+          <i>May 15, 2011</i>
+      </span>
+      <p>A few months back, I setup a small Linux server (<a href="http://www.pogoplug.com/" target="_blank">PogoPlug</a> pink version running <a href="http://plugapps.com/" target="_blank">PlugApps Linux</a>) which has been up and running in my front closet. The thing is silent and uses only 4 watts of power. It’s one of my favorite toys. I plan on writing a post later with details on this bad boy, but for now I mention this as background for this post.</p>
+
+<p>I’ve recently wanted to figure out a way to get this server to send sound to my <a href="http://www.apple.com/airportexpress/" target="_blank">Airport Express</a> (one of Apple’s better products I must say) so I could effectively setup an “alarm clock” that would play music from my music library. You know, a cron job every morning at 6AM that blares my favorite music at me so I will get out of bed.</p>
+
+<p>It took me awhile to find it but I finally came across <a href="http://nanocr.eu/software/justeport/" target="_blank">JustePort</a> which is a .NET app that streams music to an Airport Express. The author, Jon Lech Johansen, did a great job with this and kindly provides the C# source code which is very interesting to go through. Using <a href="http://www.mono-project.com/Main_Page" target="_blank">Mono</a>, I can easily use this .NET app from within a Linux environment.</p>
+
+<p>Anyway, setting up a cron job to call JustePort and pass in some music files was pretty easy to get up and running. In fact, it works great. But I wanted to take it one step further. I wanted my Linux server to be able to “speak” to me through the Airport Express. This enables some interesting scenarios. I could get it to say “Wake up sleepy head!”… followed by some music. Or, it could poll my email account and say “You’ve got mail”. Or, I could setup recurring reminders so that once a month it says “Change the water filter!” from the speakers setup in my living room. <strong><em>Necessary? Not really. Geeky Cool? Absolutely.</em></strong></p>
+
+<p>I finally settled on using <a href="http://techcrunch.com/2009/12/14/the-unofficial-google-text-to-speech-api/">The Unofficial Google Text-To-Speech API</a>, which responds with mp3 speech given some text, to generate the audio. I looked at using espeak or festival but the natural voice quality of the Google service is much better. Once I figured out how to use <a href="http://www.gnu.org/software/wget/" target="_blank">wget </a>to download a mp3 of some text, I needed to pad it with some silence on the end because I found that if the audio was less than 8 seconds (or so), JustePort (or the Airtunes) wouldn’t play it. In addition to padding, I found that I needed to change the sample rate because when I played it, it sounded like chipmunks who inhaled a couple of helium balloons. The awesome <a href="http://sox.sourceforge.net/" target="_blank">sox</a> utility came to the rescue to perform the padding and sample rate conversion.</p>
+
+<p><strong>With the help of Google Translate, wget, sox, Mono and JustePort I can send dynamic text speech to my Airtunes device and effectively enable my server talk to me.</strong></p>
+
+<p>Here’s the single command (heavy piping!) to say “Hello World” through the speakers connected to my Airtunes device.</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget <span class="nt">-O-</span> <span class="nt">--user-agent</span><span class="o">=</span><span class="s2">"Mozilla/4.0"</span>
+  http://translate.google.com/translate_tts?q<span class="o">=</span>Hello+World | sox
+  <span class="nt">-t</span> mp3 - <span class="nt">-t</span> raw <span class="nt">-r</span> 87k - pad 0 4 | mono /opt/JustePort/JustePort.exe
+  - 192.168.1.14 <span class="nt">-15</span>
+</code></pre></div></div>
+
+<p>A few notes:</p>
+
+<ul>
+  <li>I had to explicitly set the user agent with wget because otherwise translate.google.com would return **403 Forbidden **with wget’s default user agent.</li>
+  <li>The 87k sample rate conversion was necessary to get the mp3 from Google to play with an acceptable pitch. I came to this number through trial and error. I’m no audio expert so there might be a better way to handle this that I am not aware of.</li>
+  <li>192.168.1.14 is the IP address of the Airport Express on my local LAN.</li>
+  <li>Getting this to work in Windows is completely feasible as there are Windows versions of wget, sox, and JustePort will run easily with the .NET framework installed in Windows.</li>
+</ul>
+
+
+    </div>
+    
+    <footer class="site-footer">
+    © 2019 Brady Holt
+</footer>
+
+    <amp-analytics type="googleanalytics">
+        <script type="application/json">
+        {
+            "vars": {
+            "account": "UA-19416043-2"
+            },
+            "triggers": {
+            "trackPageview": {
+                "on": "visible",
+                "request": "pageview"
+            }
+            }
+        }
+        </script>
+    </amp-analytics>
+</body>
+
+</html>

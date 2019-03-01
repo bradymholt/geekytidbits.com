@@ -1,0 +1,113 @@
+<!doctype html>
+<html amp lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Posting To Facebook with Rails</title>
+    <link rel="canonical" href="https://www.geekytidbits.com/facebook-posts-from-rails/" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Poly' rel='stylesheet'>
+    <style amp-custom>
+        body { font-family: 'Poly', serif; }
+        .site-header { background-color: #237ab2; color: #e7e9ec; padding: 5px; font-weight: 100; border-bottom: 3px solid #f68905; }
+        .site-description { font-size: .5em;}        
+        .post-content { padding: 10px; }
+    </style>
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+    <script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>
+    <script async custom-element="amp-video" src="https://cdn.ampproject.org/v0/amp-video-0.1.js"></script>
+    <script async custom-element="amp-youtube" src="https://cdn.ampproject.org/v0/amp-youtube-0.1.js"></script>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+</head>
+
+<body>
+    
+    <h1 class="post-title">
+        <header class="site-header">
+    <div class="wrapper">
+        <a class="site-title" href="/">
+            <amp-img src="/media/geekytidbits.png" width="383" height="46" alt="Geeky Tidbits Logo" layout="responsive"><noscript><img src="/media/geekytidbits.png" width="383" height="46" alt="Geeky Tidbits Logo"></noscript></amp-img>
+        </a>
+        <div class="site-description">Tidbits on software development, technology, and other geeky stuff.</div>
+    </div>
+</header>
+
+    </h1>
+    <div class="post-content">
+      <span>
+          <i>Oct 12, 2015</i>
+      </span>
+      <p>Awhile back I developed a Rails app I call “veritas” (<a href="https://github.com/bradymholt/veritas">GitHub</a>) that is intended to help organize community around a group of people. It was primarily developed for the class my wife and I attend at our church. It allows us to keep a contact list of members with photos, a calendar of events, signups management (class breakfast, baby meals, etc.), sending of SMS messages, and manages the publishing of our class podcast. I know, there are bazillion sites out there that can do these things but it was fun to build and I was able to customize it just how I wanted it. One of the features I added was the ability to post a message to our class Facebook group page when a new podcast is posted or there is a new signup available. You know, it posts a message to Facebook that says something like, “A new signup is available to brings meals to the Smith’s because they just had a baby! Click here to signup [link]”.</p>
+
+<p>To do this, I utilized the well written gem <a href="https://github.com/arsduo/koala">koala</a> to interface with Facebook’s Graph API. I have an aptly named module called <a href="https://github.com/bradymholt/veritas/blob/bcd394ceaf8546f769e58975ccd7a9e1a20a6327/lib/facebook_group_poster.rb">FacebookGroupPoster</a> that encapsulates the usage of koala so I have a clean interface to call from my app. In a simplified form, posting a message to our Facebook group when a new podcast is published looks like this:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">podcast_date</span> <span class="o">=</span> <span class="n">podcast</span><span class="p">.</span><span class="nf">date</span><span class="p">.</span><span class="nf">strftime</span><span class="p">(</span><span class="s1">'%m/%d'</span><span class="p">)</span>
+<span class="n">graph</span> <span class="o">=</span> <span class="no">Koala</span><span class="o">::</span><span class="no">Facebook</span><span class="o">::</span><span class="no">API</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">settings</span><span class="p">.</span><span class="nf">facebook_access_token</span><span class="p">)</span>
+<span class="n">graph</span><span class="p">.</span><span class="nf">put_object</span><span class="p">(</span><span class="n">settings</span><span class="p">.</span><span class="nf">facebook_group_id</span><span class="p">,</span> <span class="s2">"feed"</span><span class="p">,</span> <span class="p">{</span>
+    <span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s2">"</span><span class="si">#{</span><span class="n">podcast</span><span class="p">.</span><span class="nf">title</span><span class="si">}</span><span class="s2"> - </span><span class="si">#{</span><span class="n">podcast</span><span class="p">.</span><span class="nf">speaker</span><span class="si">}</span><span class="s2">, </span><span class="si">#{</span><span class="n">podcast_date</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span>
+    <span class="ss">:link</span> <span class="o">=&gt;</span> <span class="n">podcast</span><span class="p">.</span><span class="nf">audio_url</span><span class="p">,</span>
+    <span class="ss">:message</span> <span class="o">=&gt;</span> <span class="s2">"New Podcast for </span><span class="si">#{</span><span class="n">podcast_date</span><span class="si">}</span><span class="s2"> is Available!"</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<p>That’s pretty simple. However, there are two things that are a little tricky. Notice that you need both the <em>Group ID</em> (<code class="highlighter-rouge">settings.facebook_group_id</code> in example) and an <em>Access Token</em> (<code class="highlighter-rouge">settings.facebook_access_token</code> in example) to successfully post something.</p>
+
+<h2 id="group-id">Group ID</h2>
+
+<p>I’m sure there is a fancy way to get through the Facebook Graph API but what I did was just go to our group page, and then click “Manage Group” (You have to be a group admin). When you do this, the Group ID is exposed in the URL of the page. Easy cheesy.</p>
+
+<p><amp-img src="/media/fb_manage_group.png" alt="Group ID" width="572" height="215" layout="responsive"><noscript><img src="/media/fb_manage_group.png" alt="Group ID" width="572" height="215"></noscript></amp-img>
+<amp-img src="/media/fb_group_id_url.png" alt="Group ID" width="822" height="47" layout="responsive"><noscript><img src="/media/fb_group_id_url.png" alt="Group ID" width="822" height="47"></noscript></amp-img></p>
+
+<h2 id="access-token">Access Token</h2>
+
+<p>The Graph API utilizes OAuth for authentication so to be properly authenticated you must obtain an access token. This token gives an app <em>revokable</em> and <em>limited</em> permissions to do something on Facebook without requiring a user to provide their username/password credentials to a third party. From a Facebook user’s perspective, this is a great thing as it is much more secure. From a development perspective however, it’s quite a pain to get it all setup. When I used the <a href="/google-calendar-api-from-ruby/">Google Calendar API with OAuth</a> awhile back, I experienced the pain first hand. Although that post might appear to make it seem like it was trivial to interact with Google Calendar API, it was not. Things seem easy in hindsight don’t they?</p>
+
+<p>Fortunately I found a series of steps that making obtaining an Access Code fairly straightforward. <strong>The following method of obtaining an access token for posting to Facebook will only work for posting from your own Facebook account.</strong> If you need to post of behalf of other people or you want the posts to come from an “app” directly, you’ll have to do some more work (app approval, setting up webpage request handler, etc.) which I don’t cover here.</p>
+
+<p>Anyway, this is what you need to do:</p>
+
+<ol>
+  <li>Go to the Facebook Developers page - <a href="https://developers.facebook.com">https://developers.facebook.com</a>
+</li>
+  <li>Create a new application; when it asks for the type, specify “Website”.</li>
+  <li>Skip all the other non-required settings it prompts you for</li>
+  <li>Go to the Graph API Explorer - <a href="https://developers.facebook.com/tools/explorer/">https://developers.facebook.com/tools/explorer/</a>
+</li>
+  <li>Select your new application on the top right</li>
+  <li>Click “Get Token” &gt; “Get “Access Token” <amp-img src="/media/fb_graph_explorer.png" alt="Graph API Explorer" width="1367" height="309" layout="responsive"><noscript><img src="/media/fb_graph_explorer.png" alt="Graph API Explorer" width="1367" height="309"></noscript></amp-img>
+</li>
+  <li>When asked which permissions you will need, select <code class="highlighter-rouge">user_posts</code> and <code class="highlighter-rouge">publish_actions</code> (at the very least).</li>
+  <li>Continue through the prompts; you will be asked to grant your new application some permissions on your own personal Facebook account.
+<amp-img src="/media/fb_grant_access.png" alt="Grant Access" width="600" height="467" layout="responsive"><noscript><img src="/media/fb_grant_access.png" alt="Grant Access" width="600" height="467"></noscript></amp-img>
+</li>
+  <li>Grant the requested permissions and you will be taken back to the Graph API Explorer and a new <em>Access Token</em> will be filled in at the top. This is a “Short-Live” access token that will expire soon.
+<amp-img src="/media/fb_access_key.png" alt="Grant Access" width="717" height="176" layout="responsive"><noscript><img src="/media/fb_access_key.png" alt="Grant Access" width="717" height="176"></noscript></amp-img>
+</li>
+  <li>Navigate to: https://graph.facebook.com/oauth/access_token?client_id=[APP_ID]&amp;client_secret=[APP_SECRET]&amp;grant_type=fb_exchange_token&amp;fb_exchange_token=[SHORT_LIVE_ACCESS_TOKEN] and in the body of the response you will find a new “Long-Live” access token. This is the access token you need to pass to koala to start posting!</li>
+</ol>
+
+    </div>
+    
+    <footer class="site-footer">
+    © 2019 Brady Holt
+</footer>
+
+    <amp-analytics type="googleanalytics">
+        <script type="application/json">
+        {
+            "vars": {
+            "account": "UA-19416043-2"
+            },
+            "triggers": {
+            "trackPageview": {
+                "on": "visible",
+                "request": "pageview"
+            }
+            }
+        }
+        </script>
+    </amp-analytics>
+</body>
+
+</html>

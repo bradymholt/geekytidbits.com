@@ -1,0 +1,165 @@
+<!doctype html>
+<html amp lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Cron Expression Descriptor</title>
+    <link rel="canonical" href="https://www.geekytidbits.com/cron-expression-descriptor-project/" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Poly' rel='stylesheet'>
+    <style amp-custom>
+        body { font-family: 'Poly', serif; }
+        .site-header { background-color: #237ab2; color: #e7e9ec; padding: 5px; font-weight: 100; border-bottom: 3px solid #f68905; }
+        .site-description { font-size: .5em;}        
+        .post-content { padding: 10px; }
+    </style>
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+    <script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>
+    <script async custom-element="amp-video" src="https://cdn.ampproject.org/v0/amp-video-0.1.js"></script>
+    <script async custom-element="amp-youtube" src="https://cdn.ampproject.org/v0/amp-youtube-0.1.js"></script>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+</head>
+
+<body>
+    
+    <h1 class="post-title">
+        <header class="site-header">
+    <div class="wrapper">
+        <a class="site-title" href="/">
+            <amp-img src="/media/geekytidbits.png" width="383" height="46" alt="Geeky Tidbits Logo" layout="responsive"><noscript><img src="/media/geekytidbits.png" width="383" height="46" alt="Geeky Tidbits Logo"></noscript></amp-img>
+        </a>
+        <div class="site-description">Tidbits on software development, technology, and other geeky stuff.</div>
+    </div>
+</header>
+
+    </h1>
+    <div class="post-content">
+      <span>
+          <i>Feb 21, 2012</i>
+      </span>
+      <h2 id="background">Background</h2>
+
+<p>I am implementing a system similar to SQL Agent Jobs and Windows Scheduled Tasks where I need to run some type of job on a recurring basis. I needed to store the recurring schedule (every 5 minutes, once a month, every 3 hours, etc.) in my database so my system knows when to fire the jobs.  At first I didn’t think this would be that big of a challenge to model but the deeper I got into the problem I realized it was a bit hairy. Think about it. How many fields do you need to store this info and how do you account for schedules such as “every 3 hours, Monday through Friday between 8AM-5PM”? Bit field for each day of the week, start/end time fields with another field that signifies a recurrence interval? It gets messy fast when you dig into it.</p>
+
+<p>Fortunately, since I am familiar with Linux I have utilized <a href="http://en.wikipedia.org/wiki/Cron" target="_blank">cron</a> on many occasions and know that a <a href="http://en.wikipedia.org/wiki/Cron#CRON_expression" target="_blank">cron expression</a> is a simple representation of a (potentially) complex recurring schedule.  I decided to simply store a cron schedule in 1 (only one!) database varchar field and leverage the excellent <a href="http://code.google.com/p/ncrontab/" target="_blank">ncrontab</a> (a cron parsing library for .NET) to read and work with it.</p>
+
+<p>This left me with one residual challenge.  I needed to display the cron schedule in an interface for end users that will most likely not understand how to, nor should be expected to, interpret a cron schedule.  Looking around for a .NET friendly library that could convert a cron schedule like “15 11 * * 1-5″ into something like “At 11:15 AM, Monday-Friday”, I effectively found nothing.</p>
+
+<p>So, I wrote my own.  Why not?  It turned out to be a fun programming challenge, actually, because it is quite challenging.</p>
+
+<h2 id="introducing-cron-expression-descriptor">Introducing Cron Expression Descriptor</h2>
+
+<p>Cron Expression Descriptor is an open source C# library that converts cron expressions into human readable string.</p>
+
+<h3 id="examples">Examples</h3>
+
+<table>
+  <tr>
+    <th>
+      expression
+    </th>
+
+    <th>
+      Output
+    </th>
+  </tr>
+
+  <tr>
+    <td>
+      * * * * *
+    </td>
+
+    <td>
+      Every minute, daily
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      */5 * * * *
+    </td>
+
+    <td>
+      Every 5 minutes, daily
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      */5 15 * * MON-FRI
+    </td>
+
+    <td>
+      Every 5 minutes, at 03:00 PM, Monday-Friday
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      * * * 3 *
+    </td>
+
+    <td>
+      Every minute, daily, only in March
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      30 6,14,16 * * *
+    </td>
+
+    <td>
+      At 06:30 AM, 02:30 PM, and 04:30 PM, daily
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      23 12 * * SUN
+    </td>
+
+    <td>
+      At 12:23 PM, only on Sundays
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      0-10 11 * * *
+    </td>
+
+    <td>
+      Every minute between 11:00 AM and 11:10 AM, daily
+    </td>
+  </tr>
+</table>
+
+<h2 id="more-info--download">More Info / Download</h2>
+
+<p>To learn more about this project and to get information on downloading, visit the project page at <a href="http://cronexpressiondescriptor.azurewebsites.net/" target="_blank">http://cronexpressiondescriptor.azurewebsites.net/</a></p>
+
+    </div>
+    
+    <footer class="site-footer">
+    © 2019 Brady Holt
+</footer>
+
+    <amp-analytics type="googleanalytics">
+        <script type="application/json">
+        {
+            "vars": {
+            "account": "UA-19416043-2"
+            },
+            "triggers": {
+            "trackPageview": {
+                "on": "visible",
+                "request": "pageview"
+            }
+            }
+        }
+        </script>
+    </amp-analytics>
+</body>
+
+</html>

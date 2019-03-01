@@ -1,0 +1,113 @@
+<!doctype html>
+<html amp lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>SQL Server Migrations Done Right</title>
+    <link rel="canonical" href="https://www.geekytidbits.com/sql-server-migrations-done-right/" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Poly' rel='stylesheet'>
+    <style amp-custom>
+        body { font-family: 'Poly', serif; }
+        .site-header { background-color: #237ab2; color: #e7e9ec; padding: 5px; font-weight: 100; border-bottom: 3px solid #f68905; }
+        .site-description { font-size: .5em;}        
+        .post-content { padding: 10px; }
+    </style>
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+    <script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>
+    <script async custom-element="amp-video" src="https://cdn.ampproject.org/v0/amp-video-0.1.js"></script>
+    <script async custom-element="amp-youtube" src="https://cdn.ampproject.org/v0/amp-youtube-0.1.js"></script>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+</head>
+
+<body>
+    
+    <h1 class="post-title">
+        <header class="site-header">
+    <div class="wrapper">
+        <a class="site-title" href="/">
+            <amp-img src="/media/geekytidbits.png" width="383" height="46" alt="Geeky Tidbits Logo" layout="responsive"><noscript><img src="/media/geekytidbits.png" width="383" height="46" alt="Geeky Tidbits Logo"></noscript></amp-img>
+        </a>
+        <div class="site-description">Tidbits on software development, technology, and other geeky stuff.</div>
+    </div>
+</header>
+
+    </h1>
+    <div class="post-content">
+      <span>
+          <i>Mar 13, 2015</i>
+      </span>
+      <p>When working in the .NET / SQL Server world, I’ve always been envious of <a href="http://guides.rubyonrails.org/active_record_migrations.html">Rails Active Record Migrations</a>.  It seems there is no great way to handle migrations with SQL Server.  Sure, there are some tools out there but it seems all of them leave something to be desired.  Specifically:</p>
+
+<ul>
+  <li>
+<a href="http://www.codeproject.com/Articles/825831/SQL-Server-Database-Development-in-Visual-Studio">SQL Server Database Projects</a> in Visual Studio is a full featured database solution but unfortunately takes a <a href="http://paulstovell.com/blog/database-deployment">“State” approach</a> to keeping databases up to date.  For one-off sync scenarios it is a perfect solution but for incremental database changes it is less than ideal.  In my opinion (and in my experience) this is a problematic approach because many changes to databases are <em>transitional </em>rather than <em>stateful</em> in nature.</li>
+  <li>
+<a href="https://msdn.microsoft.com/en-us/data/jj591621.aspx">Entity Framework Code First Migrations</a> is fairly solid migration framework but unfortunately only works for objects that have an Entity Framework DbContext defined for.  If you are working with an existing, large database where EF is not used throughout, you are out of luck.  Also, it does not work with Stored Procedures.</li>
+  <li>
+<a href="https://github.com/chucknorris/roundhouse">RoundhousE</a> is another full featured solution that is well thought out but I find it a bit cumbersome to work with and think it is overly complex in nature.  It lacks Package Manager Console scripts and is a little tricky to integrate into a deployment process.</li>
+</ul>
+
+<p><strong>Then I came across <a href="http://dbup.github.io/">DbUp</a>.</strong>  DbUp is great because it’s simple, uses the <em>transitional</em> approach and is easy to integrate into a deployment tool like <a href="https://octopusdeploy.com/">Octopus Deploy</a>.  What it lacks in features it more than makes up for in doing 95% of the things I care about well.  However, there were a couple of things it lacked which I thought could really make it perfect: (1) Package Manager Console scripts and (2) Object Scripting.</p>
+
+<h2 id="package-manager-console-scripts">Package Manager Console scripts</h2>
+
+<p>I thought if there were a couple of simple Package Manager Console scripts, (1) one to create a new timestamped migration script, mark it as an Embedded Resource, and add it to the project and (2) a script to run the DbUp console application and migrate the database, the DbUp process would be much more streamlined.</p>
+
+<h2 id="object-scripting">Object Scripting</h2>
+
+<p>When I presented DbUp to my team at work and pitched it as a viable option for our database migrations, the biggest piece of feedback I got was the need to have object definitions scripted at the time the migrations run.  With Active Record Migrations in Rails, when you run <em>db:migrate</em>, after the migrations are applied, <em>db:schema:dump </em>is automatically called which updates your *<code class="highlighter-rouge">db/schema.rb</code> * file.  This file has the object definitions for your database.  As you run migrations, your schema.rb file gets updated which enables versioning of your schema, clear diffs for pull request reviews and a collection of baseline scripts to build a new database from scratch.  I realized if DbUp could support scripting of changes objects alongside running migrations, it would really be a great solution.</p>
+
+<h2 id="dbup-sqlserver-scripting">dbup-sqlserver-scripting</h2>
+
+<p>So, I wrote some Powershell scripts and leveraged SQL Server SMO to script out object definitions when DbUp migrations are run.  I cleaned it up and packaged it as a NuGet package for others to use.  I have been using this solution for a few months and have to say it is really ideal.  The workflow is:</p>
+
+<ol>
+  <li>Run <strong>New-Migration</strong> from the Package Manager Console.  A new .sql script is added to your DbUp project in the \Migrations folder.</li>
+  <li>Edit the new migration script and write the SQL to migrate your database.</li>
+  <li>Run <strong>Start-Migrations</strong> from the Package Manager Console.  The output will show that your new migration(s) has been run.  Also, you will notice that any object(s) in your migration script(s) that were changed are also scripted and saved to the \Definitions folder at the root of your project.</li>
+</ol>
+
+<p>That’s it!  With the above 3 steps you were able to migrate a database and update a local definition representing your database object state.  This is very similar (if not exactly the same) as Active Record Migrations.  When it comes time to run migrations on another environment, you only need to run the DbUp console application, just as the DbUp documentation describes; it’s just a console application after all.</p>
+
+<h2 id="demo">Demo</h2>
+
+<p>This demo video shows just how easy it is:</p>
+
+<p><a href="https://www.youtube.com/watch?v=2uMsVl_Zk6Y" target="_blank"><amp-img class="alignnone wp-image-2190 size-full" src="/media/demo-thumbnail-1.png" alt="dbup-sqlserver-scripting Demo" width="575" height="338" layout="responsive"><noscript><img class="alignnone wp-image-2190 size-full" src="/media/demo-thumbnail-1.png" alt="dbup-sqlserver-scripting Demo" width="575" height="338"></noscript></amp-img></a></p>
+
+<p> </p>
+
+<h2 id="more-information">More Information</h2>
+
+<p>The NuGet package is located here: <a href="https://www.nuget.org/packages/dbup-sqlserver-scripting/">https://www.nuget.org/packages/dbup-sqlserver-scripting/</a> and can be installed by running <strong>Install-Package dbup-sqlserver-scripting</strong>.</p>
+
+<p>The GitHub repo is located here: <a href="https://github.com/bradymholt/dbup-sqlserver-scripting">https://github.com/bradymholt/dbup-sqlserver-scripting</a><strong> </strong>and contains more details setup and usage information.</p>
+
+<p> </p>
+
+
+    </div>
+    
+    <footer class="site-footer">
+    © 2019 Brady Holt
+</footer>
+
+    <amp-analytics type="googleanalytics">
+        <script type="application/json">
+        {
+            "vars": {
+            "account": "UA-19416043-2"
+            },
+            "triggers": {
+            "trackPageview": {
+                "on": "visible",
+                "request": "pageview"
+            }
+            }
+        }
+        </script>
+    </amp-analytics>
+</body>
+
+</html>
