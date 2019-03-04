@@ -5,7 +5,7 @@ permalink: /my-windows-95-story/
 ---
 I was cleaning out one of my drawers today and came across this old gem.
 
-![Windows 95 CD-ROM](/media/windows-95.jpg =609x530)
+![Windows 95 CD-ROM](/media/windows-95.jpg){:height="609px" width="530px"}
 
 The day was Thursday, August 24, 1995.  I had been anticipating this day for months.  Microsoft brochures, geek buzz in AOL chatrooms, and chatter with my friends made me unable to wait to get my hands on a copy of Windows 95.
 
