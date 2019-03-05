@@ -10,7 +10,7 @@ permalink: /asp-dotnet-core-react-template/
 
 A few weeks ago, I really wanted to build something new.  As I tweeted, I really wanted to build something as an excuse to play with some new tools.  There are so many languages, frameworks, tools out there today for building software!
 
-![Twitter Post](/media/dotnet-core-react-twitter.png)
+![Twitter Post](/media/dotnet-core-react-twitter.png){:height="210px" width="508px"}
 
 On the one hand, it is a bit overwhelming to keep track of all of this stuff and attempt to stay aware of it all.  On the other hand, it's tons of fun to play with different things.
 
