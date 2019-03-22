@@ -4,6 +4,8 @@ title: "Debugging TypeScript in VSCode"
 permalink: /debugging-typescript-in-vscode/
 ---
 
+![VSCode, ts-node, debugging](/media/vscode-ts-node-debugging.png)
+
 I am a big fan of using [ts-node](https://github.com/TypeStrong/ts-node) for working with TypeScript from within Node.js.  During development I fire up my app with `ts-node src/index.ts` rather doing an intermediate `tsc` build step and then pointing Node at the .js output.  Sure, ts-node is still calling TypeScript under the hood but it makes the whole process smooth.
 
 I also like using the [VSCode](https://code.visualstudio.com/) debugger for debugging my TypeScript.  With the help of `ts-node` this is is also a smooth process.  Here's how you do it.
