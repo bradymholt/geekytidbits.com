@@ -27,7 +27,7 @@ So, it was obvious I liked computers. And it was more than obvious that I liked 
 
 ### Fast Forward
 
-Fifteen years later, here I am. After graduating from UT, I entered the professional world as a developer and have had a variety of roles and responsibilities. I&#8217;ve had the opportunity to work in quite a few industries and see some pretty fascinating technology. Through and through, I&#8217;ve never lost my <a href="/why-i-love-programming/" target="_blank">love of programming</a>.
+Fifteen years later, here I am. After graduating from UT, I entered the professional world as a developer and have had a variety of roles and responsibilities. I&#8217;ve had the opportunity to work in quite a few industries and see some pretty fascinating technology. Through and through, I've never lost my [love of programming](/why-i-love-programming).
 
 So there you have it. That&#8217;s **How I Got Geeky**.
 
