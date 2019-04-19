@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/bradymholt/geekytidbits.com#readme",
   "dependencies": {
-    "@bradymholt/amplog": "^0.2.0",
+    "@bradymholt/amplog": "^0.3.0",
     "typescript": "^3.4.4"
   }
 }
