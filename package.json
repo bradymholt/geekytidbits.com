@@ -4,7 +4,7 @@
   "description": "[![Netlify Status](https://api.netlify.com/api/v1/badges/81c6e367-d012-4a9d-a6bc-7b4b165c7f74/deploy-status)](https://app.netlify.com/sites/frosty-benz-141b70/deploys)",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "npx @bradymholt/amplog"
   },
   "repository": {
     "type": "git",
