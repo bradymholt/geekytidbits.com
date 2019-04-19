@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+{{> head }}
+
+<body>
+  {{> header }}
+  <div class="page-content">
+    <div class="wrapper">
+      {{> sidebar }}
+      <div class="post">
+        <header class="post-header">
+          <h1 class="post-title">
+            {{ title }}
+          </h1>
+          {{#if date }}
+          <time class="post-meta" datetime="{{ date }}">{{ dateFormat this.date "mmmm d, yyyy" }}</time>
+          {{/if}}
+        </header>
+        <article class="post-content">
+          {{{ content }}}
+        </article>
+      </div>
+    </div>
+  </div>
+  <div class="wrapper">
+    {{> footer }}
+  </div>
+  {{> google_analytics }}
+</body>
+
+</html>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>{{ site_name }}</title>
+    <description>{{ site_description }}</description>
+    <link>{{ site_url }}</link>
+    <atom:link href="{{ site_url }}/{{ rss_path }}" rel="self" type="application/rss+xml" />
+    <lastBuildDate>{{ dateFormat "now" "ddd, dd mmm yyyy HH:MM:ss Z" }}</lastBuildDate>
+    {{#each (limit (filter pages "type" "post") 10) }}
+    <item>
+      <title>{{ title }}</title>
+      <description>
+        <![CDATA[{{{ excerpt }}} <p><a href="{{ site_url }}/{{ this.path }}">Read more at {{ site_name }}.</a></p>]]>
+      </description>
+      <pubDate>{{ dateFormat this.date "ddd, dd mmm yyyy HH:MM:ss +0000" }}</pubDate>
+      <link>{{ site_url }}/{{ this.path }}</link>
+      <guid isPermaLink="true">{{ site_url }}/{{ this.path }}</guid>
+    </item>
+    {{/each}}
+  </channel>
+</rss>
