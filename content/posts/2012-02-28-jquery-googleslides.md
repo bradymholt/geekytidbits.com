@@ -19,7 +19,7 @@ Anyway, since I have all my albums uploaded and synced automatically I wanted a 
 Go to the project page for more info: <a href="http://bradyholt.github.com/jquery-googleslides" target="_blank">http://bradyholt.github.com/jquery-googleslides</a>.
 
 
-<link href="/lib/googleslides/jquery.googleslides.css" rel="stylesheet" type="text/css" />
+<link href="/lib/googleslides/jquery.googleslides.css" rel="stylesheet" />
 <style>
     .google-slides img { margin: 0px;}
 </style>
