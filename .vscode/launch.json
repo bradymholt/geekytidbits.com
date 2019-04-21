@@ -7,10 +7,11 @@
       "request": "launch",
       "cwd": "${workspaceFolder}",
       "env": {
-        "TS_NODE_PROJECT": "/usr/local/lib/node_modules/amplog/tsconfig.json"
+        "TS_NODE_PROJECT": "/Users/bholt/dev/amplog/tsconfig.json"
       },
-      "runtimeArgs": ["--nolazy", "-r", "/usr/local/lib/node_modules/amplog/node_modules/ts-node/register"],
-      "args": ["/usr/local/lib/node_modules/amplog/bin/start.js"]
+      "runtimeArgs": ["--nolazy", "-r", "/Users/bholt/dev/amplog/node_modules/ts-node/register"],
+      "args": ["/Users/bholt/dev/amplog/bin/start.js"],
+      "protocol": "inspector"
     }    
   ]
 }
