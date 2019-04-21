@@ -34,4 +34,4 @@ I got <a href="http://archlinuxarm.org/" target="_blank">Arch Linux ARM</a> runn
 
  [1]: /media/pogoplug.jpg
  [2]: /transparent-content-filtering-proxy/
- [3]: http://bradyholt.github.io/picasawebsync/
+ [3]: http://bradymholt.github.io/picasawebsync/
