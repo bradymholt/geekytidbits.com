@@ -16,7 +16,7 @@ Anyway, since I have all my albums uploaded and synced automatically I wanted a 
 <div class="google-slides no-margin" style="width:400px;" data-userid="115528839112598673902" data-albumid="5710317752556741025" data-imgmax="400"></div>
 
 ### More Info
-Go to the project page for more info: <a href="http://bradyholt.github.com/jquery-googleslides" target="_blank">http://bradyholt.github.com/jquery-googleslides</a>.
+Go to the project page for more info: <a href="http://bradymholt.github.com/jquery-googleslides" target="_blank">http://bradymholt.github.com/jquery-googleslides</a>.
 
 
 <link href="/lib/googleslides/jquery.googleslides.css" rel="stylesheet" />

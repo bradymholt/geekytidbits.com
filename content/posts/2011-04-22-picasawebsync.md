@@ -28,7 +28,7 @@ To get them into Picasa, I wrote a C# .NET command-line utility called PicasaWeb
 
 ### More Information
 
-For more information on this project and download instructions, visit the project page at: <a href="http://bradyholt.github.io/picasawebsync/" target="_blank">http://bradyholt.github.io/picasawebsync/</a>
+For more information on this project and download instructions, visit the project page at: <a href="http://bradymholt.github.io/picasawebsync/" target="_blank">http://bradymholt.github.io/picasawebsync/</a>
 
 &nbsp;
 
