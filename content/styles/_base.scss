@@ -145,10 +145,8 @@ blockquote {
   }
 }
 
-pre {
+pre[class*="language-"] {
   font-size: 0.9em;
-  padding: 8px 12px;
-  overflow-x: scroll;
 }
 
 code {
