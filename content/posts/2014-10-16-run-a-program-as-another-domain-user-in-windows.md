@@ -10,5 +10,5 @@ This is a short post, and mainly for my own reference in the future.  I run a M
 
 ```powershell
 C:\Windows\System32\runas.exe /netonly
-  /user:MYDOMAIN\username &#8220;C:\Program Files (x86)\yada\yada.exe&#8221;
+  /user:MYDOMAIN\username "C:\Program Files (x86)\yada\yada.exe"
 ```
