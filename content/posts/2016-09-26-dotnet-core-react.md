@@ -3,6 +3,7 @@ title: ASP.NET Core / React SPA Template
 author: Brady
 layout: post
 permalink: /asp-dotnet-core-react-template/
+dsq_thread_id: /dotnet-core-react
 ---
 
 **Update** - I have updated this template and [wrote about it here](/asp-dotnet-core-react-template-update/).

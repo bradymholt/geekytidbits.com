@@ -3,6 +3,7 @@ title: Houston Tech Fest / Alexa Skill Presentation
 author: Brady
 layout: post
 permalink: /houston-tech-fest-2017-presentation/
+dsq_thread_id: /houston-tech-fest
 ---
 
 
