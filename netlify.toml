@@ -1,0 +1,3 @@
+[build]
+  command = "npx xertz"
+  publish = "dist"
