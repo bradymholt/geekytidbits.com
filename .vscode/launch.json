@@ -1,0 +1,17 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "build",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "env": {
+        "TS_NODE_PROJECT": "/Users/bholt/dev/xertz/tsconfig.json"
+      },
+      "runtimeArgs": ["--nolazy", "-r", "/Users/bholt/dev/xertz/node_modules/ts-node/register"],
+      "args": ["/Users/bholt/dev/xertz/bin/start.js"],
+      "protocol": "inspector"
+    }    
+  ]
+}

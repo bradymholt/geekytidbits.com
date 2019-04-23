@@ -1,13 +1,14 @@
-# Site settings
-title: Geeky Tidbits
-email: brady.holt@gmail.com
-description: Tidbits on software development, technology, and other geeky stuff.
-baseurl: "" # the subpath of your site, e.g. /blog/
-url: "https://www.geekytidbits.com" # the base hostname & protocol for your site
-sass:
-  style: compressed
-include:
-  - _redirects
-exclude: 
-  - ops
-ampdir: amp/
+---
+site_name: Geeky Tidbits
+site_description: Tidbits on software development, technology, and other geeky stuff.
+site_url: https://www.geekytidbits.com
+google_analytics_id: UA-19416043-2
+rss_path: rss.xml
+sitemap_path: sitemap.xml
+redirects:
+  /2018/01/21/10-reasons-to-blog.html: /ten-reasons-to-blog/
+  /cron-expression-descriptor/: /cron-expression-descriptor-project/
+  /jquery-googleslides/: /jquery-googleslides-project/
+  /picasawebsync/: /picasawebsync-project/
+  /2018/01/19/til-post-to-slack-from-jenkins.html: /til-post-to-slack-from-jenkins/
+  /2018/02/01/til-psql-with-vscode.html: /til:-psql-with-vscode/

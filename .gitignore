@@ -1,6 +1,2 @@
-.DS_Store
-_site/*
-!_site/_redirects
-.sass-cache
-bin/
-opts/*.retry
+dist/
+node_modules/
