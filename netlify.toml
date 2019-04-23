@@ -6,7 +6,6 @@
   from = "http://frosty-benz-141b70.netlify.com/*"
   to = "https://www.geekytidbits.com/:splat"  
   force = true
-
 [[redirects]]
   from = "https://frosty-benz-141b70.netlify.com/*"
   to = "https://www.geekytidbits.com/:splat"  
@@ -14,4 +13,7 @@
 
 [[redirects]]
   from = "/feed"
+  to = "/rss.xml"
+[[redirects]]
+  from = "/feed/index.xml"
   to = "/rss.xml"
