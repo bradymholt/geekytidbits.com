@@ -4,12 +4,14 @@
 
 [[redirects]]
   from = "http://frosty-benz-141b70.netlify.com/*"
-  to = "https://www.geekytidbits.com/:splat"
-  status = 301
+  to = "https://www.geekytidbits.com/:splat"  
   force = true
 
 [[redirects]]
   from = "https://frosty-benz-141b70.netlify.com/*"
-  to = "https://www.geekytidbits.com/:splat"
-  status = 301
+  to = "https://www.geekytidbits.com/:splat"  
   force = true
+
+[[redirects]]
+  from = "/feed"
+  to = "/rss.xml"
