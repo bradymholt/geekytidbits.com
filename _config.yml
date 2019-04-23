@@ -12,3 +12,4 @@ redirects:
   /picasawebsync/: /picasawebsync-project/
   /2018/01/19/til-post-to-slack-from-jenkins.html: /til-post-to-slack-from-jenkins/
   /2018/02/01/til-psql-with-vscode.html: /til:-psql-with-vscode/
+  /feed/index.xml: /rss.xml
