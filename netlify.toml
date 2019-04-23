@@ -21,3 +21,4 @@
 [[redirects]]
   from = "/amp/*"
   to = "https://www.geekytidbits.com/:splat/amp.html"
+  force = true
