@@ -12,7 +12,7 @@
     {
       "label": "build - dev",
       "type": "shell",
-      "command": "/Users/bholt/dev/xertz/bin/start-ts.js",
+      "command": "npx ts-node --project /Users/bholt/dev/xertz/tsconfig.json --files /Users/bholt/dev/xertz/bin/start.ts",
       "problemMatcher": []
     }
   ]
