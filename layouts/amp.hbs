@@ -1,28 +1,40 @@
 <!doctype html>
 <html amp lang="en">
+
 <head>
     <meta charset="utf-8">
     <title>{{ title }}</title>
     <link rel="canonical" href="{{ site_url }}/{{ path }}" />
-    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">    
-    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Serif" rel="stylesheet"/>
-    <style>{{{ styles.default.content }}}</style>    
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Serif" rel="stylesheet" />
+    <style>{{{ styles.default.content }}}</style>
     <script async src="https://cdn.ampproject.org/v0.js"></script>
     <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
 </head>
 
 <body>
     {{> header }}
-    <h1 class="post-title">
-        {{ title }}
-    </h1>
-    <div class="post-content">
-      <span>
-          <i>{{ date }}</i>
-      </span>
-      {{{ content }}}
+    <div class="page-content">
+        <div class="wrapper">
+            {{> sidebar }}
+            <div class="post">
+                <header class="post-header">
+                    <h1 class="post-title">
+                        {{ title }}
+                    </h1>
+                    {{#if date }}
+                    <time class="post-meta" datetime="{{ date }}">{{ dateFormat this.date "mmmm d, yyyy" }}</time>
+                    {{/if}}
+                </header>
+                <article class="post-content">
+                    {{{ content }}}
+                </article>
+            </div>
+        </div>
     </div>
-    {{> footer }}
+    <div class="wrapper">
+        {{> footer }}
+    </div>
     <amp-analytics type="googleanalytics">
         <script type="application/json">
         { "vars": {
