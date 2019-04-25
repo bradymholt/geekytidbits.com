@@ -1,7 +1,6 @@
 ---
 title: Alexa Skill Presentation
 author: Brady
-layout: post
 permalink: /alexa-skill-presentation/
 ---
 

@@ -1,7 +1,6 @@
 ---
 title: Run a program as another domain user in Windows
 author: Brady
-layout: post
 permalink: /run-a-program-as-another-domain-user-in-windows/
 dsq_thread_id: 2033 http://www.geekytidbits.com/?p=2033
 ---

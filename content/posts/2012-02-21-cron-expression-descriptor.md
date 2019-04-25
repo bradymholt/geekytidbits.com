@@ -1,7 +1,6 @@
 ---
 title: Cron Expression Descriptor
 author: Brady
-layout: post
 permalink: /cron-expression-descriptor-project/
 dsq_thread_id: 910 http://www.geekytidbits.com/?p=910
 ---

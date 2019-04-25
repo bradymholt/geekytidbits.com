@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "SELECT DISTINCT ON in PostgreSQL"
 permalink: /postgres-distinct-on/
 ---

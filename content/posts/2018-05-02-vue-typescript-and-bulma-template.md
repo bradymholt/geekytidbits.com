@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Vue.js template featuring TypeScript and Bulma"
 permalink: /vue-typescript-and-bulma-template/
 ---

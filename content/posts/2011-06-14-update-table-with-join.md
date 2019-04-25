@@ -1,7 +1,6 @@
 ---
 title: UPDATE table with JOIN
 author: Brady
-layout: post
 permalink: /update-table-with-join/
 dsq_thread_id: 489 http://www.geekytidbits.com/?p=489
 ---

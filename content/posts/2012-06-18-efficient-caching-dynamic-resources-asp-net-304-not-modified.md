@@ -1,7 +1,6 @@
 ---
 title: Efficient Client-side Caching of Dynamic Resource Handlers in ASP.NET
 author: Brady
-layout: post
 permalink: /efficient-caching-dynamic-resources-asp-net-304-not-modified/
 dsq_thread_id: 1122 http://www.geekytidbits.com/?p=1122
 ---

@@ -1,7 +1,6 @@
 ---
 title: start-stop-daemon with mono-service2
 author: Brady
-layout: post
 permalink: /start-stop-daemon-with-mono-service2/
 dsq_thread_id: 519 http://www.geekytidbits.com/?p=519
 ---

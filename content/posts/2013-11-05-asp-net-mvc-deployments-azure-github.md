@@ -1,7 +1,6 @@
 ---
 title: ASP.NET MVC Deployments to Azure via GitHub
 author: Brady
-layout: post
 permalink: /asp-net-mvc-deployments-azure-github/
 dsq_thread_id: 1870 http://www.geekytidbits.com/?p=1870
 ---

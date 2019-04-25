@@ -1,7 +1,6 @@
 ---
 title: Testing class-style Vue.js components with Mocha and TypeScript
 author: Brady
-layout: post
 permalink: /test-vuejs-with-mocha-typescript/
 ---
 

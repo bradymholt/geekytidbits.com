@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "TIL: Post to Slack from Jenkins with curl"
 permalink: /til-post-to-slack-from-jenkins/
 ---

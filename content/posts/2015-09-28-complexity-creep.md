@@ -1,7 +1,6 @@
 ---
 title: Complexity Creep
 author: Brady
-layout: post
 permalink: /complexity-creep/
 ---
 

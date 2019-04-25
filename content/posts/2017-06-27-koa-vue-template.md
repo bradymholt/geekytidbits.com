@@ -1,7 +1,6 @@
 ---
 title: Koa / Vue.js SPA Template
 author: Brady
-layout: post
 permalink: /koa-vue-template/
 ---
 

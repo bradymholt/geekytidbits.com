@@ -1,7 +1,6 @@
 ---
 title: Redirecting Old Pages with IIS 7 and the URL Rewrite Module
 author: Brady
-layout: post
 permalink: /redirect-iis-7-url-rewrite-module/
 dsq_thread_id: 991 http://www.geekytidbits.com/?p=991
 ---

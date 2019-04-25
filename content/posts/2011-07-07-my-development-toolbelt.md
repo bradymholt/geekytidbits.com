@@ -1,7 +1,6 @@
 ---
 title: My Development Toolbelt
 author: Brady
-layout: post
 permalink: /my-development-toolbelt/
 dsq_thread_id: 527 http://www.geekytidbits.com/?p=527
 ---

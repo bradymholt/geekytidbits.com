@@ -1,7 +1,6 @@
 ---
 title: Porting Cron Expression Descriptor to .NET Core
 author: Brady
-layout: post
 permalink: /porting-cron-expression-descriptor-dot-net-core/
 ---
 

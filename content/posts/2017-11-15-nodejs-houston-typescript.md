@@ -1,7 +1,6 @@
 ---
 title: A Fresh Look at TypeScript / Lighting Talk
 author: Brady
-layout: post
 permalink: /nodejs-houston-typescript/
 ---
 

@@ -1,7 +1,6 @@
 ---
 title: Complex Types in Entity Framework (Code First)
 author: Brady
-layout: post
 permalink: /complex-types-entity-framework/
 dsq_thread_id: 1951 http://www.geekytidbits.com/?p=1951
 ---

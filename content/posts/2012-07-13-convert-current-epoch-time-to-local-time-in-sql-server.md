@@ -1,7 +1,6 @@
 ---
 title: Convert current Epoch time to Local time in SQL Server
 author: Brady
-layout: post
 permalink: /convert-current-epoch-time-to-local-time-in-sql-server/
 dsq_thread_id: 1187 http://www.geekytidbits.com/?p=1187
 ---

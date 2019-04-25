@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "A Fresh Look at TypeScript"
 permalink: /a-fresh-look-at-typescript/
 ---

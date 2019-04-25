@@ -1,7 +1,6 @@
 ---
 title: 'Quick Setup Guide: Amazon EC2 LAMP server running Fedora 15'
 author: Brady
-layout: post
 permalink: /ec2-fedora-lamp/
 dsq_thread_id: 815 http://www.geekytidbits.com/?p=815
 ---

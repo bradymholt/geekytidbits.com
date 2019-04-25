@@ -1,7 +1,6 @@
 ---
 title: Moving my Rails app to DigitalOcean with Ansible
 author: Brady
-layout: post
 permalink: /rails-digitalocean-ansible/
 dsq_thread_id: 2232 http://www.geekytidbits.com/?p=2232
 ---

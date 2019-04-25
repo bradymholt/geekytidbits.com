@@ -1,7 +1,6 @@
 ---
 title: My Free iPhone Setup with FreedomPop
 author: Brady
-layout: post
 permalink: /my-free-iphone-setup-2-0/
 dsq_thread_id: 1282 http://www.geekytidbits.com/?p=1282
 ---

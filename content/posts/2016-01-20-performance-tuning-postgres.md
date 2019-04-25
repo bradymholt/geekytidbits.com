@@ -1,7 +1,6 @@
 ---
 title: Performance Tuning Queries in PostgreSQL
 author: Brady
-layout: post
 permalink: /performance-tuning-postgres/
 ---
 

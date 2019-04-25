@@ -1,7 +1,6 @@
 ---
 title: My RSS Reading List
 author: Brady
-layout: post
 permalink: /rss-reading-list/
 dsq_thread_id: 715 http://www.geekytidbits.com/?p=715
 ---

@@ -1,7 +1,6 @@
 ---
 title: Making the Switch from iOS to Andriod
 author: Brady
-layout: post
 permalink: /making-the-switch-from-ios-to-andriod/
 dsq_thread_id: 1366 http://www.geekytidbits.com/?p=1366
 ---

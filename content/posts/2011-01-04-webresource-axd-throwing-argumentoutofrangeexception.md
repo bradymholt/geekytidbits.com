@@ -1,7 +1,6 @@
 ---
 title: WebResource.axd Throwing ArgumentOutOfRangeException
 author: Brady
-layout: post
 permalink: /webresource-axd-throwing-argumentoutofrangeexception/
 dsq_thread_id: 144 http://www.geekytidbits.com/?p=144
 ---

@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Making an app with my daughter"
 permalink: /making-an-app-with-my-daughter/
 ---

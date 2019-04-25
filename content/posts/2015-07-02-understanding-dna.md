@@ -1,7 +1,6 @@
 ---
 title: Understanding DNA
 author: Brady
-layout: post
 permalink: /understanding-dna/
 ---
 

@@ -1,7 +1,6 @@
 ---
 title: Running Heroku CLI from Heroku Scheduler
 author: Brady
-layout: post
 permalink: /heroku-scheduler-cli/
 ---
 

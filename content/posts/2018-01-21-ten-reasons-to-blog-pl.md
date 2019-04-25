@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "10 Reasons to Blog"
 permalink: /ten-reasons-to-blog/
 ---

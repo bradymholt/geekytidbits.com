@@ -1,7 +1,6 @@
 ---
 title: Migrating to Amazon EC2 (Web Services)
 author: Brady
-layout: post
 permalink: /migrating-to-amazon-ec2-web-services/
 dsq_thread_id: 191 http://www.geekytidbits.com/?p=191
 ---

@@ -1,7 +1,6 @@
 ---
 title: My Free HDTV with DVR Setup
 author: Brady
-layout: post
 permalink: /free-hdtv-with-dvr/
 dsq_thread_id: 1217 http://www.geekytidbits.com/?p=1217
 ---

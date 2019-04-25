@@ -1,7 +1,6 @@
 ---
 title: Simple Deploy Script for Rails
 author: Brady
-layout: post
 permalink: /simple-deploy-script-rail/
 dsq_thread_id: 1381 http://www.geekytidbits.com/?p=1381
 ---

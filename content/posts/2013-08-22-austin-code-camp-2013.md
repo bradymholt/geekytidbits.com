@@ -1,7 +1,6 @@
 ---
 title: Austin Code Camp 2013
 author: Brady
-layout: post
 permalink: /austin-code-camp-2013/
 dsq_thread_id: 1800 http://www.geekytidbits.com/?p=1800
 ---

@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "My Windows 95 Story"
 permalink: /my-windows-95-story/
 ---

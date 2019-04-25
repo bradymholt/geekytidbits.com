@@ -1,7 +1,6 @@
 ---
 title: 'Tech Talk: Entity Framework'
 author: Brady
-layout: post
 permalink: /entity-framework-tech-talk/
 dsq_thread_id: 1941 http://www.geekytidbits.com/?p=1941
 ---

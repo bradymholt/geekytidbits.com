@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Things I have learned working remotely for 3 years"
 permalink: /things-i-have-learned-working-remotely-for-3-years/
 ---

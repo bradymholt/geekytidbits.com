@@ -1,7 +1,6 @@
 ---
 title: I Hate Triggers
 author: Brady
-layout: post
 permalink: /i-hate-triggers/
 dsq_thread_id: 564 http://www.geekytidbits.com/?p=564
 ---

@@ -1,7 +1,6 @@
 ---
 title: Unattended Audio Recordings with a Raspberry Pi
 author: Brady
-layout: post
 permalink: /raspberry-pi-unattended-audio-recordings/
 dsq_thread_id: 1314 http://www.geekytidbits.com/?p=1314
 ---

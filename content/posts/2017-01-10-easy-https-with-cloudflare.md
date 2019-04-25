@@ -1,7 +1,6 @@
 ---
 title: Easy HTTPS with Cloudflare
 author: Brady
-layout: post
 permalink: /easy-https-with-cloudflare/
 ---
 

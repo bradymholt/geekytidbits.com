@@ -1,7 +1,6 @@
 ---
 title: My Phone Setup with Project Fi
 author: Brady
-layout: post
 permalink: /project-fi/
 ---
 

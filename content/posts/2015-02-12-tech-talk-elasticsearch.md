@@ -1,7 +1,6 @@
 ---
 title: 'Tech Talk: Elasticsearch'
 author: Brady
-layout: post
 permalink: /tech-talk-elasticsearch/
 dsq_thread_id: 2075 http://www.geekytidbits.com/?p=2075
 ---

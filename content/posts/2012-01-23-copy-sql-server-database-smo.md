@@ -1,7 +1,6 @@
 ---
 title: Copy SQL Server Database with SQL Server Management Objects (SMO)
 author: Brady
-layout: post
 permalink: /copy-sql-server-database-smo/
 dsq_thread_id: 837 http://www.geekytidbits.com/?p=837
 ---

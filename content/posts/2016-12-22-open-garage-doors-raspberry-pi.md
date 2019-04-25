@@ -1,7 +1,6 @@
 ---
 title: Opening Garage Doors with a Raspberry Pi
 author: Brady
-layout: post
 permalink: /open-garage-doors-raspberry-pi/
 ---
 

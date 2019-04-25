@@ -1,7 +1,6 @@
 ---
 title: Foot Pedal Facet
 author: Brady
-layout: post
 permalink: /foot-pedal-facet/
 dsq_thread_id: 1773 http://www.geekytidbits.com/?p=1773
 ---

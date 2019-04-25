@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "CLI apps in TypeScript via ts-node"
 permalink: /cli-apps-in-typescript-via-ts-node/
 ---

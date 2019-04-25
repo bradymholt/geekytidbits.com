@@ -1,7 +1,6 @@
 ---
 title: How I Got Geeky (Part 3)
 author: Brady
-layout: post
 permalink: /how-i-got-geeky-part-3/
 dsq_thread_id: 335 http://www.geekytidbits.com/?p=335
 ---

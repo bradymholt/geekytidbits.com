@@ -1,7 +1,6 @@
 ---
 title: Text to Speech through Airtunes
 author: Brady
-layout: post
 permalink: /text-to-speech-through-airtunes/
 dsq_thread_id: 304 http://www.geekytidbits.com/?p=304
 ---

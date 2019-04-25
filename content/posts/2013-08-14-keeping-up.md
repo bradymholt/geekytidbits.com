@@ -1,7 +1,6 @@
 ---
 title: Keeping Up
 author: Brady
-layout: post
 permalink: /keeping-up/
 dsq_thread_id: 1733 http://www.geekytidbits.com/?p=1733
 ---

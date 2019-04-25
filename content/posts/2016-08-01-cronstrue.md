@@ -1,7 +1,6 @@
 ---
 title: cRonstrue
 author: Brady
-layout: post
 permalink: /cRonstrue/
 ---
 

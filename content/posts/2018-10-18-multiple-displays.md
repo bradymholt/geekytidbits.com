@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "My External Display Setup"
 permalink: /multiple-displays/
 ---

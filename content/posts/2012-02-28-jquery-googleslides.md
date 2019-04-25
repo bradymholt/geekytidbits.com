@@ -1,7 +1,6 @@
 ---
 title: jQuery googleslides
 author: Brady
-layout: post
 permalink: /jquery-googleslides-project/
 dsq_thread_id: 934 http://www.geekytidbits.com/?p=934
 ---

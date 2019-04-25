@@ -1,7 +1,6 @@
 ---
 title: CREATE TABLE Contact
 author: Brady
-layout: post
 permalink: /create-table-contact/
 dsq_thread_id: 234 http://www.geekytidbits.com/?p=234
 ---

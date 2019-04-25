@@ -1,7 +1,6 @@
 ---
 title: Web Deploy (MS Deploy) from TeamCity
 author: Brady
-layout: post
 permalink: /web-deploy-ms-deploy-from-teamcity/
 dsq_thread_id: 656 http://www.geekytidbits.com/?p=656
 ---

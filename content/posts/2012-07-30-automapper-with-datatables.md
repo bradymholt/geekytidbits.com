@@ -1,7 +1,6 @@
 ---
 title: AutoMapper With DataTables
 author: Brady
-layout: post
 permalink: /automapper-with-datatables/
 dsq_thread_id: 1199 http://www.geekytidbits.com/?p=1199
 ---

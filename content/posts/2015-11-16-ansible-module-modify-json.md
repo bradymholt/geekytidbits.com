@@ -1,7 +1,6 @@
 ---
 title: Ansible Module for Modifying JSON
 author: Brady
-layout: post
 permalink: /ansible-module-modify-json/
 ---
 

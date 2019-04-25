@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "TIL: psql with VS Code"
 permalink: /til:-psql-with-vscode/
 ---

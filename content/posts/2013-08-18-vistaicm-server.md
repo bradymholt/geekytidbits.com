@@ -1,7 +1,6 @@
 ---
 title: vistaicm-server
 author: Brady
-layout: post
 permalink: /vistaicm-server/
 dsq_thread_id: 1764 http://www.geekytidbits.com/?p=1764
 ---

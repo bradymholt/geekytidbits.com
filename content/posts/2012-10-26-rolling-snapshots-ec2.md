@@ -1,7 +1,6 @@
 ---
 title: Rolling snapshots for EC2
 author: Brady
-layout: post
 permalink: /rolling-snapshots-ec2/
 dsq_thread_id: 1240 http://www.geekytidbits.com/?p=1240
 ---

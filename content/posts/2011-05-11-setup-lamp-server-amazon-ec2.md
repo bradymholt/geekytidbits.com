@@ -1,7 +1,6 @@
 ---
 title: How to Setup a LAMP Server on Amazon EC2
 author: Brady
-layout: post
 permalink: /setup-lamp-server-amazon-ec2/
 dsq_thread_id: 250 http://www.geekytidbits.com/?p=250
 ---

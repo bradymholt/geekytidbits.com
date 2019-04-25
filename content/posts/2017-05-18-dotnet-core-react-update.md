@@ -1,7 +1,6 @@
 ---
 title: Updates to my ASP.NET Core / React SPA Template
 author: Brady
-layout: post
 permalink: /asp-dotnet-core-react-template-update/
 dsq_thread_id: /dotnet-core-react-update
 ---

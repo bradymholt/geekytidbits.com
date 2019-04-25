@@ -1,7 +1,6 @@
 ---
 title: NuGet Releases with Rake
 author: Brady
-layout: post
 permalink: /nuget-releases-with-rake/
 dsq_thread_id: 1814 http://www.geekytidbits.com/?p=1814
 ---

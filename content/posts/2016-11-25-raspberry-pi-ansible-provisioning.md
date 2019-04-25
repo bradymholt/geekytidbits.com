@@ -1,7 +1,6 @@
 ---
 title: Ansible Provisioning for my Raspberry Pi
 author: Brady
-layout: post
 permalink: /raspberry-pi-ansible-provisioning/
 ---
 

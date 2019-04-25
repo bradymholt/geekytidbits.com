@@ -1,7 +1,6 @@
 ---
 title: Converting WAV to MP3 for a Podcast
 author: Brady
-layout: post
 permalink: /wav-to-mp3-lame-podcast/
 ---
 

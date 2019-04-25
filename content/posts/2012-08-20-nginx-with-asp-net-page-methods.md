@@ -1,7 +1,6 @@
 ---
 title: Nginx with ASP.NET Page Methods
 author: Brady
-layout: post
 permalink: /nginx-with-asp-net-page-methods/
 dsq_thread_id: 1203 http://www.geekytidbits.com/?p=1203
 ---

@@ -1,7 +1,6 @@
 ---
 title: How To Setup A Transparent Content Filtering Proxy
 author: Brady
-layout: post
 permalink: /transparent-content-filtering-proxy/
 dsq_thread_id: 579 http://www.geekytidbits.com/?p=579
 ---

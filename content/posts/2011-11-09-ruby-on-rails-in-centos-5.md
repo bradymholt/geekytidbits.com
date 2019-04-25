@@ -1,7 +1,6 @@
 ---
 title: Ruby on Rails in CentOS 5
 author: Brady
-layout: post
 permalink: /ruby-on-rails-in-centos-5/
 dsq_thread_id: 795 http://www.geekytidbits.com/?p=795
 ---

@@ -1,7 +1,6 @@
 ---
 title: 'Presentation: Using Technology Effectively in a Bible Study'
 author: Brady
-layout: post
 permalink: /using-technology-effectively-in-a-bible-study/
 dsq_thread_id: 2057 http://www.geekytidbits.com/?p=2057
 ---

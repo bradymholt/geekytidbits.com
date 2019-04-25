@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Bank Alerts to YNAB"
 permalink: /bank-alerts-to-ynab/
 ---

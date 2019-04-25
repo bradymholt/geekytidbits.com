@@ -1,7 +1,6 @@
 ---
 title: Share Razor Partial View between WebForms and MVC
 author: Brady
-layout: post
 permalink: /share-razor-partial-view-between-webforms-and-mvc/
 dsq_thread_id: 2154 http://www.geekytidbits.com/?p=2154
 ---

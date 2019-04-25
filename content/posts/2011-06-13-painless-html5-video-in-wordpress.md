@@ -1,7 +1,6 @@
 ---
 title: Painless HTML5 Video in WordPress
 author: Brady
-layout: post
 permalink: /painless-html5-video-in-wordpress/
 dsq_thread_id: 368 http://www.geekytidbits.com/?p=368
 ---

@@ -1,7 +1,6 @@
 ---
 title: Google Calendar API from Ruby
 author: Brady
-layout: post
 permalink: /google-calendar-api-from-ruby/
 dsq_thread_id: 2170 http://www.geekytidbits.com/?p=2170
 ---

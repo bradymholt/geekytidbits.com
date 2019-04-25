@@ -1,7 +1,6 @@
 ---
 title: Development Tools I Use in 2016
 author: Brady
-layout: post
 permalink: /development-tools-i-use/
 ---
 

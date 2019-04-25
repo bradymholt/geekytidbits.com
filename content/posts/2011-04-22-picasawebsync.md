@@ -1,7 +1,6 @@
 ---
 title: PicasaWebSync
 author: Brady
-layout: post
 permalink: /picasawebsync-project/
 dsq_thread_id: 215 http://www.geekytidbits.com/?p=215
 ---

@@ -1,7 +1,6 @@
 ---
 title: Conditional Serialization with Json.NET
 author: Brady
-layout: post
 permalink: /conditional-serialization-with-json-net/
 dsq_thread_id: 2041 http://www.geekytidbits.com/?p=2041
 ---

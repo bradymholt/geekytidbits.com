@@ -1,7 +1,6 @@
 ---
 title: Keeping Multiple iTunes Libraries in Sync
 author: Brady
-layout: post
 permalink: /keeping-multiple-itunes-libraries-in-sync/
 dsq_thread_id: 38 http://www.geekytidbits.com/?p=38
 ---

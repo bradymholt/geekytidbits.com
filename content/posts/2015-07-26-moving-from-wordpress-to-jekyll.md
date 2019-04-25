@@ -1,7 +1,6 @@
 ---
 title: Moving my Blog from WordPress to Jekyll
 author: Brady
-layout: post
 permalink: /moving-from-wordpress-to-jekyll/
 ---
 ![Jekyll](/media/jekyll-logo.png#pull-right)

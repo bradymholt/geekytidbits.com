@@ -6,7 +6,7 @@
   {{else}}
   <title>{{ site_name }}</title>   
   {{/if}}
-  <meta name="description" content="{{ iif excerpt excerpt site_description }}" />
+  <meta name="description" content="{{ iif excerpt site_description }}" />
   <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Serif" rel="stylesheet" type="text/css"/>
   <style>{{{ styles.default.content }}}</style>
   <link rel="preload" as="style" onload="this.rel='stylesheet'" href="/styles/prism.css" />

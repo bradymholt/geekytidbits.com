@@ -1,7 +1,6 @@
 ---
 title: Automatic TV Show Downloads
 author: Brady
-layout: post
 permalink: /automatic-tv-show-downloads/
 dsq_thread_id: 341 http://www.geekytidbits.com/?p=341
 ---

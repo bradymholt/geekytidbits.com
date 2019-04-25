@@ -1,7 +1,6 @@
 ---
 title: Bento Budget
 author: Brady
-layout: post
 permalink: /bento-budget/
 dsq_thread_id: 2008 http://www.geekytidbits.com/?p=2008
 ---

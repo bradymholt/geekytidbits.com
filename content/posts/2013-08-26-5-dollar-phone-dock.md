@@ -1,7 +1,6 @@
 ---
 title: The $5 Phone Dock with Universal Compatibility
 author: Brady
-layout: post
 permalink: /5-dollar-phone-dock/
 dsq_thread_id: 1778 http://www.geekytidbits.com/?p=1778
 ---

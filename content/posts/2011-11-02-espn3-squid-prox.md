@@ -1,7 +1,6 @@
 ---
 title: ESPN3 (WatchESPN) with Squid Proxy
 author: Brady
-layout: post
 permalink: /espn3-squid-prox/
 dsq_thread_id: 790 http://www.geekytidbits.com/?p=790
 ---

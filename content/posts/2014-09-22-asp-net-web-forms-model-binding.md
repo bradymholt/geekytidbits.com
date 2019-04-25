@@ -1,7 +1,6 @@
 ---
 title: ASP.NET Web Forms Model Binding
 author: Brady
-layout: post
 permalink: /asp-net-web-forms-model-binding/
 dsq_thread_id: 2023 http://www.geekytidbits.com/?p=2023
 ---

@@ -1,7 +1,6 @@
 ---
 title: Desktop Wallpaper Slideshow
 author: Brady
-layout: post
 permalink: /desktop-wallpaper-slideshow/
 ---
 

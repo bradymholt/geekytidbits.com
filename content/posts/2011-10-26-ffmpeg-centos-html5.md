@@ -1,7 +1,6 @@
 ---
 title: Compiled ffmpeg ready for HTML5 (CentOS 5)
 author: Brady
-layout: post
 permalink: /ffmpeg-centos-html5/
 dsq_thread_id: 773 http://www.geekytidbits.com/?p=773
 ---

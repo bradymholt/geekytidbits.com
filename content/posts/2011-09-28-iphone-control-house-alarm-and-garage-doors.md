@@ -1,7 +1,6 @@
 ---
 title: iPhone Control of House Alarm and Garage Doors
 author: Brady
-layout: post
 permalink: /iphone-control-house-alarm-and-garage-doors/
 dsq_thread_id: 339 http://www.geekytidbits.com/?p=339
 ---

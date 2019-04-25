@@ -1,7 +1,6 @@
 ---
 title: My PogoPlug Geek Toy
 author: Brady
-layout: post
 permalink: /my-pogoplug-geek-toy/
 dsq_thread_id: 337 http://www.geekytidbits.com/?p=337
 ---

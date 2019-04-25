@@ -1,7 +1,6 @@
 ---
 title: An Inside Look at Working for YNAB
 author: Brady
-layout: post
 permalink: /inside-look-working-at-YNAB/
 ---
 I started at [You Need a Budget](http://www.youneedabudget.com/) (YNAB) about [a year ago](http://www.geekytidbits.com/joining-you-need-a-budget/) as a software developer.  I was super excited about joining the YNAB team, had a bunch of enthusiasm built up and and was very curious to see what things looked like on the inside.  Why?  Well, because from the outside, things looked _really_ good.  From a company, business, financial, product, job, culture, reputation, etc. etc. perspective, YNAB looked kind of amazing.  The [jobs page](http://www.youneedabudget.com/jobs) will give you an idea of what I'm talking about.

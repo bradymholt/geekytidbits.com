@@ -1,7 +1,6 @@
 ---
 title: SQL Server Migrations Done Right
 author: Brady
-layout: post
 permalink: /sql-server-migrations-done-right/
 dsq_thread_id: 2186 http://www.geekytidbits.com/?p=2186
 ---

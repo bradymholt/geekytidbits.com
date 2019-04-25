@@ -1,7 +1,6 @@
 ---
 title: GitHub Universe 2017
 author: Brady
-layout: post
 permalink: /github-universe/
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: Projects
+layout: post
 ---
 In my spare time I like to work on open source software projects.  Not only do I find it fun and a great way to keep learning new things, I have benefited greatly from other OSS projects and am glad to give back a little.  Here are some projects I own and maintain.
 

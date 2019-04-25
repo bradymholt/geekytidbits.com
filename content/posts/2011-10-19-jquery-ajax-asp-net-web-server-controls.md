@@ -1,7 +1,6 @@
 ---
 title: jQuery, Ajax and ASP.NET Web Server Controls
 author: Brady
-layout: post
 permalink: /jquery-ajax-asp-net-web-server-controls/
 dsq_thread_id: 744 http://www.geekytidbits.com/?p=744
 ---

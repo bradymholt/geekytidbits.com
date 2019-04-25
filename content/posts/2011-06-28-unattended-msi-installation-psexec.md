@@ -1,7 +1,6 @@
 ---
 title: Remote Unattended MSI Installation with PsExec
 author: Brady
-layout: post
 permalink: /unattended-msi-installation-psexec/
 dsq_thread_id: 503 http://www.geekytidbits.com/?p=503
 ---

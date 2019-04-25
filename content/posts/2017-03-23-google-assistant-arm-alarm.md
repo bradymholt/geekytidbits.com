@@ -1,7 +1,6 @@
 ---
 title: Using Google Assistant to Arm my House Alarm
 author: Brady
-layout: post
 permalink: /google-assistant-arm-alarm/
 ---
 

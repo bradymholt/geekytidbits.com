@@ -1,7 +1,6 @@
 ---
 title: Mount SD card in VirtualBox from Mac OS X Host
 author: Brady
-layout: post
 permalink: /mount-sd-card-virtualbox-from-mac-osx/
 dsq_thread_id: 1965 http://www.geekytidbits.com/?p=1965
 ---

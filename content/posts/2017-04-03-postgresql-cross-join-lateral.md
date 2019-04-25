@@ -1,7 +1,6 @@
 ---
 title: The LATERAL join
 author: Brady
-layout: post
 permalink: /lateral-join/
 dsq_thread_id: /postgresql-cross-join-lateral
 ---

@@ -1,7 +1,6 @@
 ---
 title: NuGet Downloads Badges
 author: Brady
-layout: post
 permalink: /nuget-downloads-badges/
 ---
 

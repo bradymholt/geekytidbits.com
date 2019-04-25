@@ -1,7 +1,6 @@
 ---
 title: Posting To Facebook with Rails
 author: Brady
-layout: post
 permalink: /facebook-posts-from-rails/
 ---
 

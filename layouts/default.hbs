@@ -2,12 +2,12 @@
 <html lang="en">
 {{> head }}
 
-<body>
+<body class="{{ body_class }}">
   {{> header }}
   <div class="page-content">
     <div class="wrapper">
       {{> sidebar }}
-      {{> @partial-block }}
+      {{{ content }}}
     </div>
   </div>
   <div class="wrapper">

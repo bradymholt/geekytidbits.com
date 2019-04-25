@@ -1,7 +1,6 @@
 ---
 title: Joining YNAB
 author: Brady
-layout: post
 permalink: /joining-you-need-a-budget/
 ---
 ![YNAB](/media/YNAB_logo-300x181.png#pull-left)

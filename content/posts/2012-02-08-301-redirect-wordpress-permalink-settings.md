@@ -1,7 +1,6 @@
 ---
 title: 301 Redirect When Changing WordPress Permalink Settings
 author: Brady
-layout: post
 permalink: /301-redirect-wordpress-permalink-settings/
 dsq_thread_id: 898 http://www.geekytidbits.com/?p=898
 ---

@@ -1,7 +1,6 @@
 ---
 title: Generating Date Ranges in SQLite
 author: Brady
-layout: post
 permalink: /generate-date-range-sqlite/
 ---
 

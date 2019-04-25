@@ -1,7 +1,6 @@
 ---
 title: Surveillance Camera
 author: Brady
-layout: post
 permalink: /surveillance-camera/
 dsq_thread_id: 1013 http://www.geekytidbits.com/?p=1013
 ---

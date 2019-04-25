@@ -1,7 +1,6 @@
 ---
 title: My Free iPhone Setup
 author: Brady
-layout: post
 permalink: /free-iphone-setup/
 dsq_thread_id: 1070 http://www.geekytidbits.com/?p=1070
 ---

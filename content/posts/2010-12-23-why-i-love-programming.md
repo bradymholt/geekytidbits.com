@@ -1,7 +1,6 @@
 ---
 title: Why I Love Programming
 author: Brady
-layout: post
 permalink: /why-i-love-programming/
 dsq_thread_id: 8 http://www.geekytidbits.com/?p=8
 ---

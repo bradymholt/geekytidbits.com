@@ -1,7 +1,6 @@
 ---
 title: 'One-way Hashing in C#'
 author: Brady
-layout: post
 permalink: /one-way-hashing/
 dsq_thread_id: 90 http://www.geekytidbits.com/?p=90
 ---

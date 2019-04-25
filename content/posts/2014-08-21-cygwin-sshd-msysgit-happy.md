@@ -1,7 +1,6 @@
 ---
 title: cygwin+sshd+msysGit=happy
 author: Brady
-layout: post
 permalink: /cygwin-sshd-msysgit-happy/
 dsq_thread_id: 1979 http://www.geekytidbits.com/?p=1979
 ---
