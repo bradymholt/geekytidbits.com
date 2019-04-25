@@ -58,26 +58,7 @@
     margin-left: -30px;
   }
 }
-.post-content {
-  h2 {
-    font-size: 32px;
-    @include media-query($on-small-width-device) {
-      font-size: 28px;
-    }
-  }
-  h3 {
-    font-size: 26px;
-    @include media-query($on-small-width-device) {
-      font-size: 22px;
-    }
-  }
-  h4 {
-    font-size: 20px;
-    @include media-query($on-small-width-device) {
-      font-size: 18px;
-    }
-  }
-}
+
 .post-list {
   margin-left: 0;
   list-style: none;
@@ -97,7 +78,7 @@
  * Sidebar
  */
 .sidebar {
-  font-size: 16px;
+  font-size: 0.8em;
   position: absolute;
   left: -$sidebar-width;
   width: $sidebar-width;
@@ -129,6 +110,7 @@
   h3 {
     margin-bottom: 0;
     font-weight: 600;
+    padding: 5px 0;
   }
   h4 {
     font-style: italic;

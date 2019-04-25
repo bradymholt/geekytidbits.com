@@ -87,15 +87,13 @@ h5,
 h6 {
   font-family: $heading-font-family;
   font-weight: 400;
+  padding: 15px 0;
 }
 
 h1 {
   font-family: $heading-font-family;
-  font-weight: 500;
-  padding-top: 35px;
-  // @include media-query($on-small-width-device) {
-  //   font-size: 36px;
-  // }
+  font-weight: 600;
+  padding: 15px 0;
 }
 
 @for $i from 1 through 6 {
