@@ -19,29 +19,6 @@
         <article class="post-content">
           {{{ content }}}
         </article>
-        {{#if comments }}
-        <div id="disqus_thread"></div>    
-        <script type="text/javascript">
-          {{#if dsq_thread_id}}
-          var disqus_identifier = '{{dsq_thread_id}}';
-          {{else}}
-          var disqus_identifier = '/{{path}}'.replace(/\/$/,'');
-          {{/if}}
-          var disqus_container_id = 'disqus_thread';
-          var disqus_shortname = 'geekytidbits';
-          var disqus_url = '{{site_url}}/{{path}}';
-          (function () {
-            var dsq = document.createElement('script');
-            dsq.type = 'text/javascript';
-            dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-          })();
-        </script>
-        <noscript>Please enable JavaScript to view the
-          <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
-        </noscript>
-        {{/if}}
       </div>
     </div>
   </div>
