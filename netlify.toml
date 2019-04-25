@@ -1,14 +1,14 @@
 [build]
   command = "npx xertz"
-  publish = "dist"
+  publish = "_dist"
 
 [[redirects]]
   from = "http://frosty-benz-141b70.netlify.com/*"
-  to = "https://www.geekytidbits.com/:splat"  
+  to = "https://www.geekytidbits.com/:splat"
   force = true
 [[redirects]]
   from = "https://frosty-benz-141b70.netlify.com/*"
-  to = "https://www.geekytidbits.com/:splat"  
+  to = "https://www.geekytidbits.com/:splat"
   force = true
 
 [[redirects]]
