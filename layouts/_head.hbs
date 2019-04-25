@@ -4,15 +4,13 @@
   {{#if title }}
   <title>{{ title }} | {{ site_name }}</title>
   {{else}}
-  <title>{{ site_name }}</title>   
+  <title>{{ site_name }}</title>
   {{/if}}
   <meta name="description" content="{{ iif excerpt site_description }}" />
-  <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Serif" rel="stylesheet" type="text/css"/>
-  <style>{{{ styles.default.content }}}</style>
-  <link rel="preload" as="style" onload="this.rel='stylesheet'" href="/styles/prism.css" />
+  <style>{{{ styles.default.content }}} {{{ styles.prism.content }}}</style>
   <link rel="canonical" href="{{ site_url }}/{{ path }}">
   <link rel="sitemap" type="application/xml" title="Sitemap" href="{{ site_url }}/{{ sitemap_path }}" />
-  <link rel="alternate" type="application/rss+xml" title="{{ site_name }}" href="{{ site_url }}/{{ rss_path }}" />  
+  <link rel="alternate" type="application/rss+xml" title="{{ site_name }}" href="{{ site_url }}/{{ rss_path }}" />
   {{#if path_amp }}
   <link rel="amphtml" href="{{ site_url }}/{{ path_amp }}">
   {{/if}}

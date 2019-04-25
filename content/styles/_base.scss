@@ -101,16 +101,22 @@ h3,
 h4,
 h5,
 h6 {
-  font-weight: 300;
+  font-family: $heading-font-family;
+  font-weight: 400;
 }
 
 h1 {
-  font-weight: 600;
-  font-size: 42px;
-  line-height: 1;
+  font-family: $heading-font-family;
+  font-weight: 500;
   padding-top: 35px;
-  @include media-query($on-small-width-device) {
-    font-size: 36px;
+  // @include media-query($on-small-width-device) {
+  //   font-size: 36px;
+  // }
+}
+
+@for $i from 1 through 6 {
+  h#{$i} {
+    font-size: $base-font-size + $heading-scale * (6 - $i);
   }
 }
 
@@ -136,7 +142,7 @@ a {
 blockquote {
   color: $grey-color;
   padding-left: $spacing-unit / 2;
-  font-size: 18px;
+  font-size: 0.8em;
   letter-spacing: -1px;
   font-style: italic;
 

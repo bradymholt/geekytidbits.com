@@ -1,9 +1,11 @@
 @charset "utf-8";
 
 // Our variables
-$base-font-family: 'IBM Plex Serif', serif;
-$base-font-size: 1.2em;
-$small-font-size: 1em;
+$base-font-family: Palatino, 'Palatino Linotype', 'Palatino LT STD', 'Book Antiqua', Georgia, serif;
+$heading-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+$base-font-size: 21px;
+$heading-scale: 2;
+$small-font-size: 0.9em;
 $base-line-height: 1.5;
 $spacing-unit: 30px;
 $text-color: #444;
