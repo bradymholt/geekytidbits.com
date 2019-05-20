@@ -10,9 +10,15 @@
       "problemMatcher": []
     },
     {
-      "label": "build - dev",
+      "label": "build - dev (src)",
       "type": "shell",
       "command": "npx ts-node --project /Users/bholt/dev/xertz/tsconfig.json --files /Users/bholt/dev/xertz/bin/start.ts",
+      "problemMatcher": []
+    },
+    {
+      "label": "build - dev (dist)",
+      "type": "shell",
+      "command": "/Users/bholt/dev/xertz/bin/start.js",
       "problemMatcher": []
     }
   ]

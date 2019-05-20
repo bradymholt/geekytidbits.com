@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 {{> head }}
+
 <body class="{{ body_class }}">
-  {{> header }}
-  <div class="page-content">
-    <div class="wrapper">
-      {{> sidebar }}
+  <div class="container2">
+    {{> header }}
+    {{> sidebar }}
+    <article>
       {{{ content }}}
-    </div>
-  </div>
-  <div class="wrapper">
+    </article>
     {{> footer }}
   </div>
   {{> google_analytics }}
 </body>
+
 </html>

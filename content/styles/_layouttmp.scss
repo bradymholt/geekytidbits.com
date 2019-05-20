@@ -1,0 +1,30 @@
+.container2 {
+  display: grid;
+  grid-template-areas:
+    ".       header  ."
+    "sidebar content ."
+    "sidebar footer  .";
+  grid-template-columns: 200px 800px auto;
+  grid-template-rows: 200px 1fr auto;
+  background-color: blue;
+}
+
+header {
+  grid-area: header;
+}
+
+aside {
+  grid-area: sidebar;
+  justify-content: right;
+  background-color: gray;
+}
+
+article {
+  grid-area: content;
+  background-color: white
+}
+
+footer {
+  grid-area: footer;
+  background-color: gray;
+}

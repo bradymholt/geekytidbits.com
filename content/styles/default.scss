@@ -1,49 +1,34 @@
 @charset "utf-8";
 
-// Our variables
-$base-font-family: Palatino, 'Palatino Linotype', 'Palatino LT STD', 'Book Antiqua', Georgia, serif;
-$heading-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-$base-font-size: 21px;
-$heading-scale: 2;
-$small-font-size: 0.9em;
-$base-line-height: 1.5;
-$spacing-unit: 30px;
-$text-color: #444;
-$grey-color: #828282;
-$background-color: #f7f7f7;
-$content-background-color: #ffffff;
-$sidebar-width: 180px;
+// // Main variables
+// $base-font-family: Palatino, 'Palatino Linotype', 'Palatino LT STD', 'Book Antiqua', Georgia, serif;
+// $heading-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+// $base-font-size: 21px;
+// $heading-scale: 2;
+// $small-font-size: 0.9em;
+// $base-line-height: 1.5;
+// $spacing-unit: 30px;
+// $text-color: #444;
+// $grey-color: #828282;
+// $background-color: #f7f7f7;
+// $content-background-color: #ffffff;
+// $sidebar-width: 180px;
 
-// Header colors variables
-$brand-color: #237ab2;
-$link-color: #126ca6;
-$brand-outline-color: #f68905;
+// // Header colors variables
+// $brand-color: #237ab2;
+// $link-color: #126ca6;
+// $brand-outline-color: #f68905;
 
-// Width of the content area
-$content-width: 800px;
-$on-medium-width-device: $content-width + $sidebar-width + ($spacing-unit * 3);
-$on-small-width-device: 600px;
+// // Width of the content area
+// $content-width: 800px;
+// $on-medium-width-device: $content-width + $sidebar-width + ($spacing-unit * 3);
+// $on-small-width-device: 600px;
 
-// Using media queries with like this:
-// @include media-query($on-palm) {
-//     .wrapper {
-//         padding-right: $spacing-unit / 2;
-//         padding-left: $spacing-unit / 2;
-//     }
-// }
-@mixin media-query($device) {
-  @media screen and (max-width: $device) {
-    @content;
-  }
+svg.social {
+  width: 25px;
+  height: 25px;
+  margin: 5px;
+  vertical-align: middle;
 }
 
-@mixin media-query-retina {
-  @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
-    only screen and (-moz-min-device-pixel-ratio: 1.5),
-    only screen and (-o-min-device-pixel-ratio: 3/2),
-    only screen and (min-device-pixel-ratio: 1.5) {
-    @content;
-  }
-}
-
-@import "base", "layout", "elements";
+@import "milligram", "layouttmp";// "mixins", "base", "layout", "elements";
