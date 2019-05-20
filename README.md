@@ -14,7 +14,7 @@ Code formatting is handled by [Prism.js](https://prismjs.com/#supported-language
 
 ## Building
 
-Running `npx xertz serve` will build the site and run a local web server listening at http://localhost:8080, pointing to the `_dist/` folder.  And changes to the `content/` folder will rebuild the site.
+Running `npx xertz serve` will build the site and run a local web server listening at http://localhost:8080, pointing to the `_dist/` folder.  Any changes to the `content/` folder will rebuild the site.
 
 ## Deploying
 
