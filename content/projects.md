@@ -4,8 +4,8 @@ layout: post
 ---
 In my spare time I like to work on open source software projects.  Not only do I find it fun and a great way to keep learning new things, I have benefited greatly from other OSS projects and am glad to give back a little.  Here are some projects I own and maintain.
 
-- [pgFormatter](https://marketplace.visualstudio.com/items?itemName=bradymholt.pgFormatter) - A VS Code extension that formats PostgresSQL SQL
-- [aspnet-core-react-template](https://github.com/bradymholt/aspnet-core-react-template) - ASP.NET Core / React SPA Template App 
+- [pgFormatter](https://marketplace.visualstudio.com/items?itemName=bradymholt.pgFormatter) - A VS Code extension that formats PostgreSQL SQL
+- [aspnet-core-react-template](https://github.com/bradymholt/aspnet-core-react-template) - ASP.NET Core / React SPA Template App
 - [Cron Expression Descriptor](http://cronexpressiondescriptor.azurewebsites.net/) - A C# library that converts cron expressions into localized human readable strings
 - [jBash](https://github.com/bradymholt/jBash) - Helpers for Bash like shell scripting in JavaScript
 - [jQuery googleslides](http://bradymholt.github.io/jquery-googleslides/) - A jQuery plugin to display your Google Photos, including Picasa and Google+ albums in a slideshow format.  It supports photo captions, scaling, randomization, and other useful options.  There is an easy to use WordPress plugin available as well.
