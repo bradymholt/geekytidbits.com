@@ -35,8 +35,8 @@
 /**
  * Page
  */
-.page-content {
-  img {
+ .page-content {
+  :not(amp-img) > img {
     margin: 20px;
   }
 }
