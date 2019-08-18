@@ -10,7 +10,11 @@
     <item>
       <title>{{ title }}</title>
       <description>
+        {{#if content_html }}
+        <![CDATA[{{{ content_html }}}]]>
+        {{else}}
         <![CDATA[{{{ excerpt }}} <p><a href="{{ site_url }}/{{ this.path }}">Read more at {{ site_name }}.</a></p>]]>
+        {{/if}}
       </description>
       <pubDate>{{ dateFormat this.date "ddd, dd mmm yyyy HH:MM:ss +0000" }}</pubDate>
       <link>{{ site_url }}/{{ this.path }}</link>

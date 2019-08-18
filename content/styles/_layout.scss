@@ -164,7 +164,8 @@ img[src*="#pull-right"] {
 img[src*="#pull-left"] {
   float: left !important;
 }
-.block {
+.block,
+img[src*="#block"] {
   display: block;
 }
 .no-margin {
