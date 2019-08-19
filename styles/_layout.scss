@@ -39,6 +39,12 @@ header {
   &.right {
     grid-area: header-r;
   }
+
+  @media screen and (max-width: $small-screen-width) {
+    &.spacer {
+      display: none;
+    }
+  }
 }
 
 aside {
@@ -53,11 +59,11 @@ aside {
 
   // Small screens
   @media screen and (max-width: $small-screen-width) {
-     // Only show on root page
-     display: none;
-     body.root & {
-       display: flex;
-     }
+    // Only show on root page
+    display: none;
+    body.root & {
+      display: flex;
+    }
 
     font-size: 0.9rem;
     flex-direction: column;
