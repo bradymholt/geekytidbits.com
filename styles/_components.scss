@@ -1,0 +1,16 @@
+.pull-right,
+img[src*="#pull-right"] {
+  float: right;
+}
+.pull-left,
+img[src*="#pull-left"] {
+  float: left;
+}
+.block,
+img[src*="#block"] {
+  display: block;
+}
+
+ul.two-columns {
+  columns: 2;
+}

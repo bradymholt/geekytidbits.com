@@ -24,7 +24,7 @@ On that last point, just look at this survey of all the tools, technologies, con
 
 ## Server
 
-<ul class="condensed">
+<ul class="two-columns">
 <li>.NET Core</li>
 <li>ASP.NET Core</li>
 <li>Entity Framework Core</li>
@@ -36,7 +36,7 @@ On that last point, just look at this survey of all the tools, technologies, con
 </ul>
 
 ## Web / Client
-<ul class="condensed">
+<ul class="two-columns">
 <li>Node.js / npm</li>
 <li>Webpack</li>
 <li>HMR (Webpack Hot module Replacement)</li>
@@ -49,13 +49,13 @@ On that last point, just look at this survey of all the tools, technologies, con
 </ul>
 
 ## Testing
-<ul class="condensed">
+<ul class="two-columns">
 <li>xUnit for .NET Core</li>
 <li>Enzyme/Mocha/Chai for React</li>
 </ul>
 
 ## DevOps
-<ul class="condensed">
+<ul class="two-columns">
 <li>Ansible</li>
 <li>Docker</li>
 <li>Let's Encrypt (for SSL certs)</li>

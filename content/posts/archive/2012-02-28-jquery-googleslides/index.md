@@ -34,7 +34,7 @@ Anyway, since I have all my albums uploaded and synced automatically I wanted a 
 
 **jQuery googleslides** &#8211; A jQuery plugin to display your Google Photos, including Picasa and Google+ albums.
 
-<div class="google-slides no-margin" style="width:400px;" data-userid="115528839112598673902" data-albumid="5710317752556741025" data-imgmax="400"></div>
+<div class="google-slides" style="width:400px; margin: 0px !important;" data-userid="115528839112598673902" data-albumid="5710317752556741025" data-imgmax="400"></div>
 
 ### More Info
 

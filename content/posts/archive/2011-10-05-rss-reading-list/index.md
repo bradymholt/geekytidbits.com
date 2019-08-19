@@ -90,4 +90,3 @@ In an earlier post, I listed <a href="/my-development-toolbelt/" target="_blank"
 [50]: http://blogs.msdn.com/b/tomholl/
 [51]: http://syndication.thedailywtf.com/TheDailyWtf
 [52]: http://thedailywtf.com/
-[53]: /wp-content/uploads/brady-holt-development-feed.xml

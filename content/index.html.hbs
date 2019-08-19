@@ -1,19 +1,13 @@
 ---
-body_class: home
+body_class: root
 ---
-<div>
-  <h1>Latest Posts</h1>
-  <ul class="post-list">
-    {{#each (limit (filter pages "type" "post") 5) }}
-    <li>
-      <time class="post-meta" datetime="{{ date }}">{{ dateFormat this.date "mmmm d, yyyy" }}</time>
-      <h2>
-        <a class="post-link" href="/{{ this.path }}">{{this.title}}</a>
-      </h2>
-      <p>{{{ this.excerpt }}}</p>
-      <a href="/{{ this.path }}">Read More</a>
-    </li>
-    {{/each}}
-  </ul>
-  <a href="/posts">More Posts</a>
-</div>
+<h1>Latest Posts</h1>
+{{#each (limit (filter pages "type" "post") 5) }}
+<time class="post-meta" datetime="{{ date }}">{{ dateFormat this.date "mmmm d, yyyy" }}</time>
+<h2>
+  <a class="post-link" href="/{{ this.path }}">{{this.title}}</a>
+</h2>
+<p>{{{ this.excerpt }}}</p>
+<p><a href="/{{ this.path }}">Read More</a></p>
+{{/each}}
+<a href="/posts">More Posts</a>

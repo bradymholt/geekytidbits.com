@@ -1,49 +1,146 @@
-@charset "utf-8";
+$article-background-color: #ffffff;
 
-// Our variables
-$base-font-family: Palatino, 'Palatino Linotype', 'Palatino LT STD', 'Book Antiqua', Georgia, serif;
-$heading-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-$base-font-size: 21px;
-$heading-scale: 2;
-$small-font-size: 0.9em;
-$base-line-height: 1.5;
-$spacing-unit: 30px;
-$text-color: #444;
-$grey-color: #828282;
-$background-color: #f7f7f7;
-$content-background-color: #ffffff;
-$sidebar-width: 180px;
+/* These styles are based on and adapted from https://milligram.io/ (v.1.3.0) */
+html {
+  font-size: 25px;
+}
 
-// Header colors variables
-$brand-color: #237ab2;
+body {
+  font-family: "Avenir", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    "Oxygen", "Ubuntu", "Helvetica Neue", Arial, sans-serif;
+  font-weight: 300;
+
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+  color: #444;
+  background-color: #f7f7f7;
+  margin: 0px;
+}
+
+blockquote {
+  border-left: 0.3rem solid #d1d1d1;
+  margin-left: 0;
+  margin-right: 0;
+  padding: 1rem 1.5rem;
+}
+
+blockquote *:last-child {
+  margin-bottom: 0;
+}
+
+hr {
+  border: 0;
+  border-top: 0.1rem solid #f4f5f6;
+  margin: 3rem 0;
+}
+
+textarea {
+  min-height: 6.5rem;
+}
+
+label,
+legend {
+  display: block;
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+fieldset {
+  border-width: 0;
+  padding: 0;
+}
+
 $link-color: #126ca6;
-$brand-outline-color: #f68905;
+a {
+  color: $link-color;
+  text-decoration: none;
 
-// Width of the content area
-$content-width: 800px;
-$on-medium-width-device: $content-width + $sidebar-width + ($spacing-unit * 3);
-$on-small-width-device: 600px;
+  &:visited {
+    color: $link-color;
+  }
 
-// Using media queries with like this:
-// @include media-query($on-palm) {
-//     .wrapper {
-//         padding-right: $spacing-unit / 2;
-//         padding-left: $spacing-unit / 2;
-//     }
-// }
-@mixin media-query($device) {
-  @media screen and (max-width: $device) {
-    @content;
+  &:focus,
+  &:hover {
+    color: lighten($link-color, 10%);
   }
 }
 
-@mixin media-query-retina {
-  @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
-    only screen and (-moz-min-device-pixel-ratio: 1.5),
-    only screen and (-o-min-device-pixel-ratio: 3/2),
-    only screen and (min-device-pixel-ratio: 1.5) {
-    @content;
+.button,
+button,
+dd,
+dt,
+li {
+  margin-bottom: 1rem;
+}
+
+fieldset,
+input,
+select,
+textarea {
+  margin-bottom: 1.5rem;
+}
+
+blockquote,
+dl,
+figure,
+form,
+ol,
+p,
+pre,
+table,
+ul {
+  margin-bottom: 1.5rem;
+}
+
+table {
+  border-spacing: 0;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+td,
+th {
+  border-bottom: 0.1rem solid #e1e1e1;
+  padding: 1.2rem 1.5rem;
+  text-align: left;
+}
+
+td:first-child,
+th:first-child {
+  padding-left: 0;
+}
+
+td:last-child,
+th:last-child {
+  padding-right: 0;
+}
+
+time {
+  margin-right: 10px;
+}
+
+b,
+strong {
+  font-weight: bold;
+}
+
+p {
+  margin-top: 0;
+}
+
+img {
+  max-width: 100%;
+}
+
+$heading-scale: 0.15;
+@for $i from 1 through 6 {
+  h#{$i} {
+    font-size: (1+ ((6 - $i) * $heading-scale)) + rem;
+    font-weight: 900;
+    letter-spacing: -0.1rem;
+    margin: 0 0 2rem 0;
   }
 }
 
-@import "base", "layout", "elements";
+@import "mixins", "layout", "components";

@@ -2,46 +2,40 @@
 <html amp lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <title>{{ title }}</title>
-    <link rel="canonical" href="{{ site_url }}/{{ path }}" />
-    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-    <style>
-        {{{ styles.default.content }}}
-        .site-header img {
-            margin-top: 0px;
-        }
-        {{{ styles.prism.content }}}
-    </style>
-    <link href="/styles/prism.css" rel="stylesheet" />
-    <script async src="https://cdn.ampproject.org/v0.js"></script>
-    <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+  <meta charset="utf-8">
+  <title>{{ title }}</title>
+  <link rel="canonical" href="{{ site_url }}/{{ path }}" />
+  <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+  <style>
+    {{{ styles.default.content }}}
+    {{{ styles.prism.content }}}
+    .site-header img {
+      margin-top: 0px;
+    }
+  </style>
+  <link href="/styles/prism.css" rel="stylesheet" />
+  <script async src="https://cdn.ampproject.org/v0.js"></script>
+  <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
 </head>
+
 <body>
+  <div class="main-container">
     {{> header }}
-    <div class="page-content">
-        <div class="wrapper">
-            {{> sidebar }}
-            <div class="post">
-                <header class="post-header">
-                    <h1 class="post-title">
-                        {{ title }}
-                    </h1>
-                    {{#if date }}
-                    <time class="post-meta" datetime="{{ date }}">{{ dateFormat this.date "mmmm d, yyyy" }}</time>
-                    {{/if}}
-                </header>
-                <article class="post-content">
-                    {{{ content_html }}}
-                </article>
-            </div>
-        </div>
-    </div>
-    <div class="wrapper">
-        {{> footer }}
-    </div>
+    {{> sidebar }}
+    <article class="post amp">
+      <h1>
+        {{ title }}
+      </h1>
+      {{#if date }}
+      <p>
+        <time class="post-date" datetime="{{ date }}">{{ dateFormat this.date "mmmm d, yyyy" }}</time>
+      </p>
+      {{/if}}
+      {{{ content_html }}}
+    </article>
+    {{> footer }}
     <amp-analytics type="googleanalytics">
-        <script type="application/json">
+      <script type="application/json">
         { "vars": {
             "account": "{{ google_analytics_id }}"
             },
@@ -54,5 +48,9 @@
         }
         </script>
     </amp-analytics>
+
+  </div>
+
 </body>
+
 </html>

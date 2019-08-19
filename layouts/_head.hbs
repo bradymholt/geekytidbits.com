@@ -7,7 +7,10 @@
   <title>{{ site_name }}</title>
   {{/if}}
   <meta name="description" content="{{ iif excerpt site_description }}" />
-  <style>{{{ styles.default.content }}} {{{ styles.prism.content }}}</style>
+  <style>
+    {{{ styles.default.content }}}
+    {{{ styles.prism.content }}}
+  </style>
   <link rel="canonical" href="{{ site_url }}/{{ path }}">
   <link rel="sitemap" type="application/xml" title="Sitemap" href="{{ site_url }}/{{ sitemap_path }}" />
   <link rel="alternate" type="application/rss+xml" title="{{ site_name }}" href="{{ site_url }}/{{ rss_path }}" />
