@@ -72,7 +72,7 @@ function toggleGpioPinOn(pin, durationMilliseconds) {
 2. Connect 2 wires from each garage door opener switch contacts to the relay. The switch contacts are usually labeled White and Black and will be the same ones your wall switch(es) are attached to.
 3. Plug back in the Pi and let it boot
 
-<a href="relay_to_garage_door_connection.png" target="_blank"><img alt="Relay to Garage Door Connection" src="relay_to_garage_door_connection.png"/>
+<img alt="Relay to Garage Door Connection" src="relay_to_garage_door_connection.png"/>
 
 Here is what my Pi looks like all connected up:
 
