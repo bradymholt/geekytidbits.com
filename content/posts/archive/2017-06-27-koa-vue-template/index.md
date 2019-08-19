@@ -27,7 +27,7 @@ Here is a survey of all the tools, technologies, concepts, etc. that went into t
 
 ## Server
 
-<ul class="condensed">
+<ul class="two-columns">
 <li>Koa 2</li>
 <li>PostgresSQL</li>
 <li>TypeScript</li>
@@ -38,7 +38,7 @@ Here is a survey of all the tools, technologies, concepts, etc. that went into t
 
 ## Client
 
-<ul class="condensed">
+<ul class="two-columns">
 <li>Vue.js</li>
 <li>Single-file components (.vue)</li>
 <li>TypeScript</li>
@@ -49,7 +49,7 @@ Here is a survey of all the tools, technologies, concepts, etc. that went into t
 
 ## Testing
 
-<ul class="condensed">
+<ul class="two-columns">
 <li>Mocha</li>
 <li>Chai</li>
 <li>TypeScript</li>
@@ -58,7 +58,7 @@ Here is a survey of all the tools, technologies, concepts, etc. that went into t
 
 ## DevOps
 
-<ul class="condensed">
+<ul class="two-columns">
 <li>Ansible playbook for provisioning (Nginx reverse proxy, SSL via Let's Encrypt, PostgresSQL backups to S3)</li>
 <li>Ansible playbook for deployment</li>
 </ul>
