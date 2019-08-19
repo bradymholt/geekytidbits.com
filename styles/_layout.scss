@@ -53,14 +53,14 @@ aside {
 
   // Small screens
   @media screen and (max-width: $small-screen-width) {
+     // Only show on root page
+     display: none;
+     body.root & {
+       display: flex;
+     }
+
     font-size: 0.9rem;
     flex-direction: column;
-
-    // Only show on root page
-    display: none;
-    body.root & {
-      display: flex;
-    }
 
     p,
     ul {
@@ -87,7 +87,6 @@ aside {
     }
     .nav-links {
       font-size: 1.1rem;
-      font-weight: bold;
     }
   }
 
