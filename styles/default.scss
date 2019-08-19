@@ -1,6 +1,6 @@
-$article-background-color: #ffffff;
-
 /* These styles are based on and adapted from https://milligram.io/ (v.1.3.0) */
+$small-screen-width: 1050px;
+
 html {
   font-size: 25px;
 }
@@ -132,6 +132,10 @@ p {
 img {
   margin: 10px;
   max-width: 100%;
+
+  @media screen and (max-width: $small-screen-width) {
+    display: block;
+  }
 }
 
 $heading-scale: 0.15;
@@ -144,4 +148,4 @@ $heading-scale: 0.15;
   }
 }
 
-@import "mixins", "layout", "components";
+@import "layout", "components";

@@ -1,6 +1,3 @@
-$small-screen-width: 1050px;
-$tiny-screen-width: 700px;
-
 .main-container {
   display: grid;
   grid-row-gap: 15px;
@@ -15,17 +12,9 @@ $tiny-screen-width: 700px;
     grid-template-columns: 100%;
     grid-template-areas:
       "header"
+      "sidebar"
       "content"
       "footer";
-
-    body.root & {
-      // Show sidebar only on root page
-      grid-template-areas:
-        "header"
-        "sidebar"
-        "content"
-        "footer";
-    }
   }
 }
 
@@ -57,37 +46,49 @@ aside {
   font-size: 0.8rem;
   margin: 0 15px;
 
-  // Small screens
-  @media screen and (max-width: $small-screen-width) {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    p,
-    ul {
-      margin-bottom: 0px;
-    }
-    .bio {
-      max-width: 400px;
-    }
-    li {
-      margin: 0 5px;
-    }
-    .connect ul {
-      display: flex;
-    }
-  }
-
-  // Tiny screens
-  @media screen and (max-width: $tiny-screen-width) {
-    nav ul {
-      display: flex;
-    }
-  }
-
   p,
   ul {
     margin-bottom: 1.1rem;
+  }
+
+  // Small screens
+  @media screen and (max-width: $small-screen-width) {
+    font-size: 0.9rem;
+    flex-direction: column;
+
+    // Only show on root page
+    display: none;
+    body.root & {
+      display: flex;
+    }
+
+    p,
+    ul {
+      margin: 0px;
+    }
+    ul {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    li {
+      margin: 0 10px;
+    }
+    .nav-links,
+    .connect {
+      text-align: center;
+      margin: 10px 0;
+    }
+    .bio {
+      display: flex;
+      text-align: left;
+      align-items: center;
+      justify-content: center;
+    }
+    .nav-links {
+      font-size: 1.1rem;
+      font-weight: bold;
+    }
   }
 
   img.head-shot {
@@ -125,9 +126,10 @@ aside {
   }
 }
 
+$article-padding: 30px;
 article {
   grid-area: content;
-  background-color: $article-background-color;
+  background-color: #ffffff;
   padding: 30px;
 
   time.post-date {
@@ -140,4 +142,5 @@ article {
 
 footer {
   grid-area: footer;
+  padding: $article-padding;
 }

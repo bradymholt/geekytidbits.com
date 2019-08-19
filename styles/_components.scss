@@ -1,11 +1,14 @@
-.pull-right,
-img[src*="#pull-right"] {
-  float: right;
+@media screen and (min-width: $small-screen-width) {
+  .pull-right,
+  img[src*="#pull-right"] {
+    float: right;
+  }
+  .pull-left,
+  img[src*="#pull-left"] {
+    float: left;
+  }
 }
-.pull-left,
-img[src*="#pull-left"] {
-  float: left;
-}
+
 .block,
 img[src*="#block"] {
   display: block;
