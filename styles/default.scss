@@ -138,6 +138,10 @@ img {
   }
 }
 
+iframe {
+  max-width: 100%;
+}
+
 $heading-scale: 0.15;
 @for $i from 1 through 6 {
   h#{$i} {
