@@ -35,7 +35,7 @@ Using 4 Female to Female jumper wires, connect the Raspberry Pi to the relay:
 | Pin 12 (GPIO 1) | IN2       |
 | Pin 2 (5V)      | VCC       |
 
-<a href="raspberry-pi-3-pin-connections-relay.png" target="_blank"><img alt="Raspberry Pi Pin Connections to Relay" src="raspberry-pi-3-pin-connections-relay.png"/>
+<img alt="Raspberry Pi Pin Connections to Relay" src="raspberry-pi-3-pin-connections-relay.png"/>
 
 ## Software Setup
 
