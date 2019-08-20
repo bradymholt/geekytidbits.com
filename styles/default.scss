@@ -129,8 +129,9 @@ p {
   margin-top: 0;
 }
 
+$media-margin: 15px;
 img {
-  margin: 15px;
+  margin: $media-margin;
   max-width: 100%;
 
   @media screen and (max-width: $small-screen-width) {
@@ -139,7 +140,7 @@ img {
 }
 
 iframe {
-  margin: 15px;
+  margin: $media-margin;
   max-width: 100%;
 }
 
