@@ -28,7 +28,7 @@ It's time for my 2019 version.
 ## System
 
 - [macoS Mojave](http://www.apple.com/osx/) - I'm still using a MacBook.  I bought a Surface Laptop about 6 months ago to "try it out" but took it back to the store after about a week.  Maybe one day I'll switch back to Windows but I'm still enjoying macOS.  They really need to fix the keyboard problem though.
-- [1Password](https://1password.com/) - I used to use LastPass primarily because the 1Password Android client was unusable for me.  But, they've improved it greatly and I'm a happy 1Password user now.  I love the
+- [1Password](https://1password.com/) - I used to use LastPass primarily because the 1Password Android client was unusable for me.  But, they've improved it greatly and I'm a happy 1Password user now.
 - [Spectacle](https://www.spectacleapp.com/) - I use this to resize windows in macOS, particularly to snap windows to the left/right on my monitors.  It's very handy because I have 3 screens.
 - [iTerm2](https://www.iterm2.com/) - I'm a happy iTerm2 user.  It's really a fantastic terminal emulator for macOS.
 - [Zsh](http://www.zsh.org/) - I still prefer Zsh over Bash.  It has a lot of convienent, productive features.
@@ -45,7 +45,7 @@ It's time for my 2019 version.
 - [Trello](https://trello.com) - I don't use Trello as much as I use to but still find it useful for organizing projects or collecting thoughts.
 
 ## Misc Tools
-- [Gifox](https://gifox.io/) - This is a simple yet effective animated GIF recorder.  The killer feature for me is the simple drag-drop capability which I use all the time to uploading to GitHub and Slack.
+- [Gifox](https://gifox.io/) - This is a simple yet effective animated GIF recorder.  The killer feature for me is the simple drag-drop capability which I use all the time to upload to GitHub and Slack.
 - [Monosnap](https://monosnap.com) - I use this tool for screenshots and annotations.  It's fast, simple and free.
 - [dotfiles/bin](https://github.com/bradymholt/dotfiles/tree/master/bin) - I have a collection of scripts for handy things like abstracting Git commands and `ws` for starting a lightweight webserver from the current directory.
 - [Pixelmator Pro](https://www.pixelmator.com/pro/) - For the occasional image edits I do.
