@@ -25,7 +25,7 @@
         <time class="post-date" datetime="{{ date }}">{{ dateFormat this.date "mmmm d, yyyy" }}</time>
       </p>
       {{/if}}
-      {{{ content_html }}}
+      {{{ indent content_html 6 }}}
     </article>
     {{> footer }}
     <amp-analytics type="googleanalytics">
