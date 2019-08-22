@@ -37,11 +37,11 @@ It's time for my 2019 version.
 
 # Communication
 
-- [Franz](https://meetfranz.com/) - I use Franz to organize all the services I use to commicate (Slack, Gmail, Basecamp, etc).  I love how it shows me badge count notifications for each service so I know which ones I need to look at.
+- [Franz](https://meetfranz.com/) - I use Franz to organize all the services I use to commicate (Slack, Gmail, Basecamp, etc).  I love how it shows me badge count notifications for each service so I know which ones I need to look at.  I wrote a [Basecamp plugin](https://github.com/bradymholt/franz-recipe-basecamp) for it, since it wasn't supported by default.
 - [Zoom](https://zoom.us) - Zoom really has nailed video conference quality.
 - [Google Meet](https://meet.google.com) - This is a solid tool for a video conference and is really great when I need to share my screen.
 - [Slack](https://slack.com) - I use Slack heavily for team communication and audio calls.  I usually avoid using it when I want to share my screen or make video calls because it has some relability issues.
-- [Basecamp](https://www.basecamp.com)
+- [Basecamp](https://www.basecamp.com) - I use Basecamp for projects at work.
 - [Trello](https://trello.com) - I don't use Trello as much as I use to but still find it useful for organizing projects or collecting thoughts.
 
 ## Misc Tools
