@@ -8,9 +8,11 @@
   {{#each pages}}
     <url>
       <loc>{{ site_url }}/{{ this.path }}</loc>
-      <lastmod>{{ this.date }}</lastmod>
+      {{#if this.date }}
+      <lastmod>{{this.date}}</lastmod>
+      {{/if}}
       <changefreq>weekly</changefreq>
       <priority>1.0</priority>
     </url>
-  {{/each}}  
+  {{/each}}
 </urlset>
