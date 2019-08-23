@@ -33,12 +33,12 @@ The way I&#8217;ve usually shared videos on the web has been to upload them to <
 
 I wanted the following:
 
-* Support videos taken from my **iPhone**, which are MOV / QuickTime format.
-* Integration with <a href="http://wordpress.org/" target="_blank">WordPress</a> blogging software (self-hosted version).
-* Host and serve the videos from my **own server** without delegating to a 3rd party service like YouTube or Vimeo.
-* Support playback on most all browsers / platforms, including **platforms without Flash support**.
-* Take advantage of **HTML5** video.  It&#8217;s the future of the web so now is a good time to learn it and use it.
-* Be able to **quickly** and **easily** upload and share videos.  I didn&#8217;t want to have to run a video conversion program and convert to 4 different formats and write a ton of HTML markup just to share.  If it isn&#8217;t easy, I probably won&#8217;t use it long-term.
+- Support videos taken from my **iPhone**, which are MOV / QuickTime format.
+- Integration with <a href="http://wordpress.org/" target="_blank">WordPress</a> blogging software (self-hosted version).
+- Host and serve the videos from my **own server** without delegating to a 3rd party service like YouTube or Vimeo.
+- Support playback on most all browsers / platforms, including **platforms without Flash support**.
+- Take advantage of **HTML5** video.  It&#8217;s the future of the web so now is a good time to learn it and use it.
+- Be able to **quickly** and **easily** upload and share videos.  I didn&#8217;t want to have to run a video conversion program and convert to 4 different formats and write a ton of HTML markup just to share.  If it isn&#8217;t easy, I probably won&#8217;t use it long-term.
 
 ### Solution
 
@@ -50,21 +50,38 @@ I have a file watching service running on my Linux web server.  When it detects
 
 1. Install the following on your Linux box:
 
-   **<a href="http://inotify.aiken.cz/?section=incron&page=about&lang=en" target="_blank">incron</a>**- This is a daemon that is similar to cron except it is triggered by filesystem events rather than time intervals.
-   **<a href="http://www.ffmpeg.org/" target="_blank">ffmpeg</a>**-_The_ swiss-army knife for audio / video conversion.  This is one powerful program!  Note: you will likely need to compile ffmpeg yourself because most package repositories (i.e. yum install ffmpeg) contain a version of ffmpeg not compiled with options you will need.  I used the <a href="http://ubuntuforums.org/showthread.php?t=786095" target="_blank">HOWTO: Install and use the latest FFmpeg and x264</a> guide to install with the following ffmpeg configure / make statements: <pre class="brush: text;">./configure --enable-gpl --enable-version3 --enable-nonfree --enable-postproc --enable-libfaac --enable-libmp3lame --enable-libtheora --enable-libvorbis --enable-libx264 --enable-libxvid --enable-libvpx --enable-pthreads; make; make install</pre>
+   **<a href="http://inotify.aiken.cz/?section=incron&page=about&lang=en" target="_blank">incron</a>** - This is a daemon that is similar to cron except it is triggered by filesystem events rather than time intervals.
+   **<a href="http://www.ffmpeg.org/" target="_blank">ffmpeg</a>** -_The_ swiss-army knife for audio / video conversion.  This is one powerful program!  Note: you will likely need to compile ffmpeg yourself because most package repositories (i.e. yum install ffmpeg) contain a version of ffmpeg not compiled with options you will need.  I used the <a href="http://ubuntuforums.org/showthread.php?t=786095" target="_blank">HOWTO: Install and use the latest FFmpeg and x264</a> guide to install with the following ffmpeg configure / make statements:
+
+  ```shell
+  ./configure --enable-gpl \
+    --enable-version3
+    --enable-nonfree
+    --enable-postproc
+    --enable-libfaac
+    --enable-libmp3lame
+    --enable-libtheora
+    --enable-libvorbis
+    --enable-libx264
+    --enable-libxvid
+    --enable-libvpx
+    --enable-pthreads;
+  make; make install
+  ```
 
    **qt-faststart**- This is a tool that reorders MP4 meta-data for better web streaming.  qt-faststart is included as part of the ffmpeg source but you need to build it separately.  The ffmpeg HOWTO guide above includes instructions on building and installing qt-faststart so be sure to follow those.
+
    **<a href="http://v2v.cc/~j/ffmpeg2theora/" target="_blank">ffmpeg2theora</a>**- A simple converter to create Ogg Theora files.
 
-   * <a href="http://matroska.org/downloads/mkclean.html" target="_blank"><strong>mkclean</strong></a> &#8211; A command line tool to clean and optimize WebM video files for better web streaming.
+   <a href="http://matroska.org/downloads/mkclean.html" target="_blank"><strong>mkclean</strong></a> &#8211; A command line tool to clean and optimize WebM video files for better web streaming.
 
 2. Install and activate the <a href="http://wordpress.org/extend/plugins/degradable-html5-audio-and-video/" target="_blank">Degradable HTML5 audio and video</a> WordPress plugin.  This plugin is responsible for generating the HTML markup for us.
    1. Login to your WordPress admin console and click &#8220;Add New&#8221; under the Plugins area.
    2. Search for &#8220;Degradable HTML5 audio and video&#8221; and click to Install and then Activate when prompted.
 3. Create a bash script to handle the video conversions:
 
-   * Run **nano /usr/local/bin/convert_video_html5** from your Linux shell to create the bash script.
-   * Add the following contents to the script:
+   - Run **nano /usr/local/bin/convert_video_html5** from your Linux shell to create the bash script.
+   - Add the following contents to the script:
 
 ```shell
 #!/bin/bash
@@ -119,7 +136,7 @@ rm "$WEBM_FILENAME$TEMP_FILE_SUFFIX"
 fi
 ```
 
-* Run **chmod+x /usr/local/bin/convert_video_html5**
+- Run **chmod+x /usr/local/bin/convert_video_html5**
 
 4. Setup **incron**. 1. Start incron by running **service incrond start**.  This command may vary depending on the Linux distribution you are using. 2. Edit the incron action table table by runing **incrontab -e**and adding the following line (entry) to the table:
 
@@ -129,9 +146,9 @@ fi
 
 You should change _/var/www/html/wordpress/wp-content/uploads_ above to be the wp-content/uploads folder location of your own WordPress installation.</li>
 
-* The action entry above tells incron to execute /usr/local/bin/convert_video_html5 when a file is either written to (IN_CLOSE_WRITE) or moved (IN_MOVED_TO) into the /var/www/html/wordpress/wp-content/uploads folder.  $@/$# tells incron to pass in the full path of the created/moved file to our conversion script.</ol> </li>
+- The action entry above tells incron to execute /usr/local/bin/convert_video_html5 when a file is either written to (IN_CLOSE_WRITE) or moved (IN_MOVED_TO) into the /var/www/html/wordpress/wp-content/uploads folder.  $@/$# tells incron to pass in the full path of the created/moved file to our conversion script.</ol> </li>
 
-* Configure **web server**
+- Configure **web server**
 
   1. Locate your web server config file.  I use Apache and the location of the file is /etc/httpd/conf/httpd.conf
   2. Add mime-type definitions for (at least) the following extensions: .ogv, .m4v, .mp4, .webm
@@ -160,5 +177,5 @@ Phew.  That was a lot of work right?  But the payoff is huge!  It took quite 
 
 This is my laundry list of things to work on in the future to make this solution even better:
 
-* Support more than just iPhone (MOV/QuickTime) and AVI video file formats.  This shouldn&#8217;t be hard since ffmpeg can work with tons of codecs and container formats.  A tweak to the convert_video_html5 script should enable this.
-* Possibly add a trigger to the wp_posts WordPress MySql table so that default file upload syntax will automatically be changed to the shortcode syntax.  When you upload a video in WordPress, it adds an anchor link pointing to the new file (i.e. <a href=&#8221;/wp-content/uploads/video.mov&#8221;>Your Video</a>).  With a trigger I would not have to modify this markup to the [video src...] format and it would truly be a &#8220;hands-off&#8221; approach.  I generally despise database triggers (except for audit purposes) and this seems very hackish to me so I doubt I will ever do this but it is at least a thought.  Perhaps there is a more elegant way to accomplish this.
+- Support more than just iPhone (MOV/QuickTime) and AVI video file formats.  This shouldn&#8217;t be hard since ffmpeg can work with tons of codecs and container formats.  A tweak to the convert_video_html5 script should enable this.
+- Possibly add a trigger to the wp_posts WordPress MySql table so that default file upload syntax will automatically be changed to the shortcode syntax.  When you upload a video in WordPress, it adds an anchor link pointing to the new file (i.e. <a href=&#8221;/wp-content/uploads/video.mov&#8221;>Your Video</a>).  With a trigger I would not have to modify this markup to the [video src...] format and it would truly be a &#8220;hands-off&#8221; approach.  I generally despise database triggers (except for audit purposes) and this seems very hackish to me so I doubt I will ever do this but it is at least a thought.  Perhaps there is a more elegant way to accomplish this.
