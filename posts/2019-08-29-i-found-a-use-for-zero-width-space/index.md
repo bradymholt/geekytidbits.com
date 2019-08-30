@@ -9,7 +9,7 @@ Most of my experience with them has been negative because they usually show up i
 
 Well, despite my apathy for them, I actually found a good use for them.
 
-I've recently been building out [xertz](https://github.com/bradymholt/xertz), a static site generator written in TypeScript.  It's being used to build this here site.  Something that had been bugging me was the indentation of the rendered HTML.  I use Handlebar.js templates and include raw HTML which has been converted from Markdown.  My templates looks something like the following, where `{{ content_html }}` is the raw HTML bit:
+I've recently been building out [xertz](https://github.com/bradymholt/xertz), a static site generator written in TypeScript.  It's being used to build this here site.  Something that had been bugging me was the indentation of the rendered HTML.  I use Handlebars.js templates and include raw HTML which has been converted from Markdown.  My templates looks something like the following, where `{{ content_html }}` is the raw HTML bit:
 
 
 ```html
@@ -31,6 +31,9 @@ The problem is, newlines in `{{ content_html }}` do not get indented so the actu
   <aside>Sidebar here</aside>
   <article class="post">
     <p>Lorem ipsum dolor sit amet, usu an justo deterruisset. Est ad discere nominati,
+erroribus dissentias mei ne, appetere qualisque eloquentiam sea et.</p><img alt="An image" src="my-image.jpg"/><p>Lorem ipsum
+dolor sit amet, usu an justo deterruisset. Est ad discere nominati</p>
+<p>Lorem ipsum dolor sit amet, usu an justo deterruisset. Est ad discere nominati,
 erroribus dissentias mei ne, appetere qualisque eloquentiam sea et.</p><img alt="An image" src="my-image.jpg"/><p>Lorem ipsum
 dolor sit amet, usu an justo deterruisset. Est ad discere nominati</p>
   </article>
@@ -60,7 +63,7 @@ function indent(input: string, width: number) {
 }
 ```
 
-That worked pretty well untill my `<pre>` code blocks started looking like this:
+That worked pretty well until my `<pre>` code blocks started looking like this:
 
 ```
 const my_var;
@@ -98,7 +101,7 @@ into `<pre>` blocks.  It's quite easy to modify the output of these tags because
 return `<pre class="${className}"><code class="${className}">${code}</code></pre>`;
 ```
 
-Easy to modify, yes.  I thought, "can I add some character(s) to end of `<pre>` tags lines that my indent helper could skip?"  But since I'm using Regex to add the indentation in my **indent** helper, I can only use a single character to be able to include a negated character (e.g. **[^!]**) in my RegEx without having to do a negative look-behind (Javascript doesn't support these anyway).
+Easy to modify, yes.  I thought, "can I add some character(s) to end of `<pre>` tags lines that my indent helper could skip?"  But since I'm using Regex to add the indentation in my **indent** helper, I can only use a single character to be able to include a negated character (e.g. `[^!]`) in my RegEx without having to do a negative look-behind (Javascript doesn't support these anyway).
 
 Ok, so, I just need Prism to add a single character that will not be visible to the end of lines that are inside of `<pre>` blocks.  Then my **indent** helper can ignore these.  How do I do this?
 
