@@ -1,5 +1,5 @@
 ---
-title: "I Found a Use for a Zero-width Space"
+title: "I found a use for a zero-width space"
 ---
 
 ![Zero-width space](zero-width.png#block#center)
@@ -102,7 +102,7 @@ Easy to modify, yes.  I thought, "can I add some character(s) to end of `<pre>` 
 
 Ok, so, I just need Prism to add a single character that will not be visible to the end of lines that are inside of `<pre>` blocks.  Then my **indent** helper can ignore these.  How do I do this?
 
-Zero-width characters, of course!
+Zero-width spaces, of course!
 
 Now, my code formatting function preceeds newlines in my code blocks with a zero-width space.  It looks like this:
 
@@ -125,4 +125,4 @@ return input.replace(/\n/g, match => match.replace(/[^\u200b]\n/, `\n${intendati
 
 See that RegEx there?  `/[^\u200b]\n/` means only match newlines if they are _not_ preceded by a zero-width character (\u200b).  So, with this, indentation will only be added to lines not preceeded by these characters.
 
-I've gained a newfound respect Zero-width characters.
+I've gained a newfound respect zero-width spaces.
