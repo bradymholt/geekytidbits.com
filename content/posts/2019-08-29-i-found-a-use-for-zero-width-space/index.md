@@ -33,6 +33,9 @@ The problem is, newlines in `{{ content_html }}` do not get indented so the actu
     <p>Lorem ipsum dolor sit amet, usu an justo deterruisset. Est ad discere nominati,
 erroribus dissentias mei ne, appetere qualisque eloquentiam sea et.</p><img alt="An image" src="my-image.jpg"/><p>Lorem ipsum
 dolor sit amet, usu an justo deterruisset. Est ad discere nominati</p>
+<p>Lorem ipsum dolor sit amet, usu an justo deterruisset. Est ad discere nominati,
+erroribus dissentias mei ne, appetere qualisque eloquentiam sea et.</p><img alt="An image" src="my-image.jpg"/><p>Lorem ipsum
+dolor sit amet, usu an justo deterruisset. Est ad discere nominati</p>
   </article>
   <footer>My footer</footer>
 </body>
