@@ -14,6 +14,10 @@ img[src*="#block"] {
   display: block;
 }
 
+img[src*="#center"] {
+  margin: 0 auto;
+}
+
 ul.two-columns {
   columns: 2;
 }
