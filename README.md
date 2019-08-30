@@ -6,7 +6,7 @@ This blog uses [xertz](https://github.com/bradymholt/xertz), a static site gener
 
 ## Writing
 
-Create file in `content/posts` with a name in the format of YYYY-MM-DD-title.md.
+Create file in `posts/` with a name in the format of YYYY-MM-DD-title.md.
 
 ### Code Formatting
 
