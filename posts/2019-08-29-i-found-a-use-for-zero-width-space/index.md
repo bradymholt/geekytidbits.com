@@ -2,7 +2,7 @@
 title: "I found a use for a zero-width space"
 ---
 
-![Zero-width space](zero-width.png#block#center)
+![Zero-width space](zero-width.png#pull-left)
 
 You know about [zero-width spaces](https://en.wikipedia.org/wiki/Zero-width_space) right?  It's an invisible character that seems not so useful at first glace.
 Most of my experience with them has been negative because they usually show up in a random file I'm parsing and it is the cause of a bizarre bug. Or, it's been the cause of a copy/paste search that yields no results even though there are matches sitting in front of my eyes.
