@@ -21,3 +21,10 @@ img[src*="#center"] {
 ul.two-columns {
   columns: 2;
 }
+
+svg.social {
+  width: 25px;
+  height: 25px;
+  margin: 5px;
+  vertical-align: middle;
+}
