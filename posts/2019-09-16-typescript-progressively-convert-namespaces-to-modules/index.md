@@ -36,6 +36,7 @@ It looks like this:
     "module": "esnext"
   }
   "files": ["./MyClass.m.ts"],
+  "references": [{ "path": "./tsconfig.json" }]
 }
 ```
 
