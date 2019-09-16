@@ -6,7 +6,7 @@ We love TypeScript at <a href="http://youneedabudget.com">YNAB</a>.  One of our 
 
 We wanted to start converting this library over to using ES modules for the various benefits that gives including the ability to tree-shake and better development tooling.  But, it became obvious we needed to find a _progressive_ way to do this because a few attempts at an all-or-nothing approach proved daunting.  Thousands of errors and no simple or obvious way to automate the conversion.
 
-Guidance for progressively converting a project from namespaces to modules is slim.  There is [this](calendar.google.com/calendar/b/1/render#main_7) GitHub issue where some discuss approaches but there are still some gaps the approaches.
+Guidance for progressively converting a project from namespaces to modules is slim.  There is [this GitHub issue](https://github.com/Microsoft/TypeScript/issues/12473) where some discuss approaches but there are still some gaps the approaches.
 
 
 To setup progressive migration, we ended up doing the following which has been working well for us.
