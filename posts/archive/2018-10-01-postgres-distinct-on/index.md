@@ -28,7 +28,7 @@ Back to our log example.  To acomplish what we did above with `SELECT DISTINCT O
 ```sql
 SELECT DISTINCT ON (url) url, request_duration
 FROM logs
-ORDER BY timestamp DESC
+ORDER BY url, timestamp DESC
 ```
 
 That's it!  We're telling PostgreSQL to "put the logs into groups unique by url (`ON (url)`), sort each of these groups by most recent (`ORDER BY timestamp DESC`) and then return fields for the first record in each of these groups (`url, request_duration`).
