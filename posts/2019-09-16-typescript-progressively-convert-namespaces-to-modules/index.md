@@ -2,7 +2,7 @@
 title: "Progressive Conversion of TypeScript Namespaces to Modules"
 ---
 
-We love TypeScript at <a href="https://youneedabudget.com">YNAB</a>.  One of our main modules is something we called the "Shared Library" and it is a quite large TypeScript project.  Actually, it's comprised of 3 library projects and 3 test projects.  It's big.  And, it was initially written using TypeScript namespaces, before TypeScript had support for ES modules.
+We love TypeScript at <a href="https://youneedabudget.com">YNAB</a>.  One of our main modules is something we call the "Shared Library" and it is a quite large TypeScript project.  Actually, it's comprised of 3 library projects and 3 test projects.  It's big.  And, it was initially written using TypeScript namespaces, before TypeScript had support for ES modules.
 
 We wanted to start converting this library over to using ES modules for the various benefits that gives including the ability to tree-shake and better development tooling.  But, it became obvious we needed to find a _progressive_ way to do this because a few attempts at an all-or-nothing approach proved daunting.  Thousands of errors and no simple or obvious way to automate the conversion.
 
