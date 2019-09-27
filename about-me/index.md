@@ -1,6 +1,5 @@
 ---
 title: About Me
-layout: post
 ---
 ![Brady Holt and Family](family.jpg#pull-right)My name is **Brady Holt**.  I'm a **software developer** by day and **geek** by night.  Writing software is my profession, hobby and passion.  During the day, I am a developer at [You Need A Budget][2] and at night I am usually spending time with my family or hacking on one of my many pet projects.  You might catch me playing with TypeScript, PostgreSQL, Ruby, Node.js, Linux, C#, ASP.NET, SQL Server, Docker or the new shiny tool that just popped up.  I am an **open source developer** and have several active [projects][3].
 

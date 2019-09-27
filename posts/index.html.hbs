@@ -1,15 +1,14 @@
----
-title: Posts
-layout: default
----
-<h1>{{title}}</h1>
-{{#group pages by="year"}}
-<h2>{{value}}</h2>
-<ul>
-  {{#each items}}
-  <li>
-    <time datetime="{{date}}">{{dateFormat date "dd mmm"}}</time><a href="/{{path}}">{{title}}</a>
-  </li>
-  {{/each}}
-</ul>
-{{/group}}
+{{#> default title='Posts' }}
+      <h1>Posts</h1>
+      {{#group pages by="year"}}
+      <h2>{{value}}</h2>
+      <ul>
+        {{#each items}}
+        <li>
+          <time datetime="{{date}}">{{dateFormat date "dd mmm"}}</time><a href="/{{path}}">{{title}}</a>
+        </li>
+        {{/each}}
+      </ul>
+      {{/group}}
+
+{{/default}}

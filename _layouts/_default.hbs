@@ -6,11 +6,10 @@
   <div class="main-container">
     {{> header }}
     {{> sidebar }}
-    <article>
-      {{{ indent content_html 6 }}}
+    <article class="{{ layout }}">
+{{> @partial-block }}
     </article>
     {{> footer }}
-    {{> install_service_worker }}
     {{> google_analytics }}
   </div>
 </body>
