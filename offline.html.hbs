@@ -1,2 +1,38 @@
-<h1>Offline</h1>
-<p>You are currently offline!</p>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Offline</title>
+  <meta name="description" content="{{ iif excerpt site_description }}" />
+  <style>
+    {{{ indent styles.default.content 4 }}} {{{ indent styles.prism.content 4 }}}
+
+    body {
+      display: flex;
+      height: 100vh;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      font-size: 1rem;
+    }
+    img {
+      display: inline-block;
+    }
+    button {
+      font-size: 1rem;
+      cursor:pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <img src="/assets/icons/icon-192x192.png" alt="Logo" />
+    <h1>You are offline.</h1>
+    <button onClick="window.location.reload();">Retry</button>
+  </main>
+</body>
+
+</html>

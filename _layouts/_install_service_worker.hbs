@@ -1,7 +1,23 @@
-{{!-- <script>
-window.addEventListener("load", () => {
-  if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("/assets/service-worker.js");
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/service-worker.js');
+    });
   }
-});
-</script> --}}
+
+  // This event handler will fire on mouseover for <a rel="prefetch" /> elements and
+  // fetch the page immediately so it will be available in the cache.
+  if (self.fetch) {
+    document.addEventListener("mouseover", (event) => {
+      const target = event.target;
+      if (target instanceof HTMLAnchorElement) {
+        const attributes = target.attributes;
+        if (attributes.rel && attributes.rel.value == "prefetch") {
+          const href = attributes.href.value;
+          fetch(href);
+        }
+
+      }
+  });
+  }
+</script>

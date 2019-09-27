@@ -1,0 +1,55 @@
+const CACHE_NAME = "geekytidbits-cache:v1";
+
+self.addEventListener("install", event => {
+  event.waitUntil(
+    caches
+      .open(CACHE_NAME)
+      .then(cache => {
+        cache.addAll([
+          "/offline.html",
+          "/404.html",
+          "/assets/icons/icon-192x192.png",
+          "favicon.ico",
+          "http://s.gravatar.com/avatar/ae474dd4a074fd22e897c4c54770c05a?s=145",
+          {{#each (limit (filter pages "type" "post") 5) }}
+          "/{{ this.path }}",
+          {{/each}}
+        ]);
+      })
+      .then(() => {
+        // Don't wait for currently controlled clients to close
+        self.skipWaiting();
+      })
+  );
+});
+
+self.addEventListener("activate", event => {
+  // Start controlling all open clients (w/o having to reload them)
+  self.clients.claim();
+});
+
+self.addEventListener("fetch", event => {
+  // Cache then network (then offline.html) approach
+  event.respondWith(
+    (async function() {
+      const cache = await caches.open(CACHE_NAME);
+      const cachedResponse = await cache.match(event.request);
+      const networkResponsePromise = fetch(event.request);
+      const offlineResponse = cache.match("/offline.html");
+
+      // Fetch the latest and store in cache for next time
+      event.waitUntil(
+        // This waitUntil block will not block returning a cached response below
+        (async function() {
+          const networkResponse = await networkResponsePromise;
+          await cache.put(event.request, networkResponse.clone());
+        })()
+      );
+
+      // Returned the cached response if we have one, otherwise return the network response.
+      return (
+        cachedResponse || networkResponsePromise.catch(err => offlineResponse)
+      );
+    })()
+  );
+});
