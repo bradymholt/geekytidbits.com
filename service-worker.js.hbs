@@ -6,6 +6,7 @@ self.addEventListener("install", event => {
       .open(CACHE_NAME)
       .then(cache => {
         cache.addAll([
+          "/",
           "/about-me/",
           "/projects/",
           "/posts/",
