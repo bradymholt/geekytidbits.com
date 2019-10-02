@@ -38,7 +38,11 @@ self.addEventListener("fetch", event => {
       const cache = await caches.open(CACHE_NAME);
       const cachedResponse = await cache.match(event.request);
       const networkResponsePromise = fetch(event.request);
-      const offlineResponse = cache.match("/offline.html");
+      const offlineResponse = ()=>{
+        if (event.request.mode === 'navigate' || (event.request.method === 'GET' && event.request.headers.get('accept').includes('text/html'))) {
+          cache.match("/offline.html");
+        }
+      }
 
       // Fetch the latest and store in cache for next time
       event.waitUntil(
