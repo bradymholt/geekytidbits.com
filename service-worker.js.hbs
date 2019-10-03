@@ -40,7 +40,7 @@ self.addEventListener("fetch", event => {
       const networkResponsePromise = fetch(event.request);
       const offlineResponse = ()=>{
         if (event.request.mode === 'navigate' || (event.request.method === 'GET' && event.request.headers.get('accept').includes('text/html'))) {
-          cache.match("/offline.html");
+          return cache.match("/offline.html");
         }
       }
 
