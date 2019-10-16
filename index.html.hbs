@@ -3,7 +3,7 @@
       {{#each (limit (filter pages "type" "post") 5) }}
       <time class="post-meta" datetime="{{ date }}">{{ dateFormat this.date "mmmm d, yyyy" }}</time>
       <h2>
-        <a class="post-link" href="/{{ this.path }}" rel="prefetch">{{this.title}}</a>
+        <a class="post-link" href="/{{ this.path }}">{{this.title}}</a>
       </h2>
       <p>{{{ this.excerpt }}}</p>
       <p><a href="/{{ this.path }}">Read More</a></p>
