@@ -1,0 +1,8 @@
+{
+  "name": "geeky_tidbits",
+  "version": "1.0.0",
+  "description": "A site built with xertz.",
+  "dependencies": {
+    "xertz": "0.50.0"
+  }
+}
