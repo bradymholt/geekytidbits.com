@@ -2,12 +2,12 @@
 title: WH-CH500 disconnecting on Catalina
 ---
 
-![WH-CH-500](./WH-CH-500x2.jpg#pull-right)
+![WH-CH-500](/wh-ch500-catalina-disconnect/WH-CH-500x2.jpg#pull-right)
 I have a [Sony WH-CH500](https://www.sony.com/electronics/headband-headphones/wh-ch500) Wireless Bluetooth headset I use for conference calls with Google Meet, Slack, and Zoom.  It's an inexpensive, no frills, headset and has worked great for me.
 
 The one problem I had when I upgraded to macOS Catalina was strange.  When I would connect this headset, it would automatically disconnect after about 20 seconds.  Additionally, when trying to use it in an app, I'd get the dreaded macOS spinning pinwheel.  Other headsets work fine but not this one.  And it definitely only started to happen after upgrading to Catalina.
 
-![macOS Sound Settings](./sound-settings.png#pull-right)
+![macOS Sound Settings](/sound-settings.png#pull-right)
 I eventually noticed that if the app I was using was only playing music, the problem did not happen.  It only seemed to happen on apps that used the headset mic.  So, I changed the macOS mic input to the MBP Internal Microphone before starting an app that uses the mic.  It stopped disconnecting.  Strange.  But, that's progress.
 
 Great, so now I have figured how to get them to work without disconnecting.  But, each time I connect the headset, it defaults to using it for the headset mic and out the speakers so I'm left to change the mic input to the MBP Internal Microphone each time I connect.  That is a major problem and not realistic long-term.
