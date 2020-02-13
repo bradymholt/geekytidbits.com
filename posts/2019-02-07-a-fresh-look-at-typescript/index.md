@@ -32,7 +32,7 @@ Below, I'll give some examples of how the type system in TypeScript can be used.
 
 ### Basic Types
 
-The easiest part to understand of TypeScript is its type checking of basic types.  In TypeScript, you use _type annotations_ to describe the type of a paramter.  In the following example, notice the `person: string` parameter.  That `: string` suffix is the type annotation.  You are telling TypeScript that only strings should be accepted as the `person` parameter on the `greeter` function.
+The easiest part to understand of TypeScript is its type checking of basic types.  In TypeScript, you use _type annotations_ to describe the type of a parameter.  In the following example, notice the `person: string` parameter.  That `: string` suffix is the type annotation.  You are telling TypeScript that only strings should be accepted as the `person` parameter on the `greeter` function.
 
 
 ```typescript
