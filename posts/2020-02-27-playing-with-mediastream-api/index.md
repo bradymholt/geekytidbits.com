@@ -2,8 +2,7 @@
 title: Playing with MediaStream API
 ---
 
-I recently purchased a new headset for use on video conference calls at work.  I wanted to test out the microphone to see how it sounded compared to my internal MacBook microphone.  I started fiddling around with using macOS Voice Memos and it worked but it wasn't long until I was looking on the web for "test microphone" site.
- I couldn't help but want an experience akin to the [Skype Test Call](https://www.youtube.com/watch?v=-y8jqSNR_Is) because it's fun and effective. Sadly, the sites I found were full of ads and bloated with things I didn't want.
+I recently purchased a new headset for use on video conference calls at work.  I wanted to test out the microphone to see how it sounded compared to my internal MacBook microphone.  I started fiddling around with using macOS Voice Memos and it worked but it wasn't long until I was looking on the web for "test microphone" site.  Sadly, the sites I found were full of ads and bloated with things I didn't want.
 
 Since I'm a developer and can't help myself, I set out to build something to my own liking.  It was time to play with the [MediaStream API](https://developer.mozilla.org/en-US/docs/Web/API/Media_Streams_API), something I really haven't developed for before.
 
@@ -54,4 +53,3 @@ It looks like this:
 ![Test Microphone Demo](/playing-with-mediastream-api/test-microphone-demo.gif)
 
 You can see the working app here: https://bradymholt.github.io/test-microphone/ and view the source here: https://github.com/bradymholt/test-microphone.
-
