@@ -14,6 +14,8 @@
 [[redirects]]
   from = "/feed"
   to = "/rss.xml"
+  force = true
 [[redirects]]
   from = "/feed/index.xml"
   to = "/rss.xml"
+  force = true
