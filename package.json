@@ -3,6 +3,6 @@
   "version": "1.0.0",
   "description": "A site built with xertz.",
   "dependencies": {
-    "xertz": "0.51.0"
+    "xertz": "0.52.0"
   }
 }
