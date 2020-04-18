@@ -11,11 +11,6 @@
   to = "https://www.geekytidbits.com/:splat"
   force = true
 [[redirects]]
-  from = "/saturn"
-  to = "https://sites.google.com/view/kayla-saturn-adventure"
-  status = 200
-
-[[redirects]]
   from = "/feed"
   to = "/rss.xml"
   force = true
@@ -23,3 +18,8 @@
   from = "/feed/index.xml"
   to = "/rss.xml"
   force = true
+
+# For Kayla
+[[redirects]]
+  from = "/saturn"
+  to = "https://sites.google.com/view/kayla-saturn-adventure"
