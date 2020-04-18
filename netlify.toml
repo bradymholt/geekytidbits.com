@@ -10,6 +10,10 @@
   from = "https://frosty-benz-141b70.netlify.com/*"
   to = "https://www.geekytidbits.com/:splat"
   force = true
+[[redirects]]
+  from = "/saturn"
+  to = "https://sites.google.com/view/kayla-saturn-adventure"
+  status = 200
 
 [[redirects]]
   from = "/feed"
