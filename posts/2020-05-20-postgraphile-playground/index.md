@@ -8,7 +8,7 @@ I came across a server called [PostGraphile](https://www.graphile.org/postgraphi
 
 So, I decided to build a simple app with it.  I mean simple.  Login and show a table of data simple:
 
-![PostGraphile app](/postgraphile/postgraphile-app.gif)
+![PostGraphile app](/postgraphile-playground/postgraphile-app.gif)
 
 It went pretty well.  It was fun.  Would I use PostGraphile in a production app.  Maybe.  I'm not sure.  There were a few rough patches along the way (authentication and authorization) and some questions I still have (how do I integrate adjacent application logic so I can do something like send an email on signup?).  The fine folks behind the project have answers for these questions I'm sure.  I do like how it uses PostgreSQL for almost everything. They use it to generate JWT tokens and have an authorization system built on top of [Row Security Policies)](https://www.postgresql.org/docs/current/ddl-rowsecurity.html).  Adding a table or field to an existing table and having access to it via GraphQL on the frontend was trivial and is the kind of simplicity I am chasing.  So, I wouldn't be surprised if I reach for this app in the future for a smaller scale project I am working on.
 
