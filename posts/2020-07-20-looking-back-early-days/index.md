@@ -19,10 +19,13 @@ From: Brady Holt
 To:   comp.lang.pascal.borland
 Date: Aug 26, 1996, 3:46 PM
 
-Is there any easy way to explain TSRs? I just want to write a TSR that
-will delay characters when you type, THrow a message on the screen when
-you hut a certain number of keys, and also,,,,Start One of My Screen
-Savers when you hit a combination of Keys..
+Is there any easy way to explain TSRs? I just want
+to write a TSR that will delay characters when
+you type, THrow a message on the screen when
+you hut a certain number of keys, and also,,,,
+Start One of My Screen Savers when you hit a
+combination of Keys..
+
 Can Anyone HElp?
 
 Thanks,
