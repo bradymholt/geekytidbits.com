@@ -130,6 +130,10 @@ p {
   margin-top: 0;
 }
 
+pre {
+  white-space: pre-line;
+}
+
 $media-margin: 15px;
 img {
   margin: $media-margin;
