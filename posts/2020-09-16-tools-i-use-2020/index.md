@@ -40,7 +40,7 @@ I have previously written about computing apps and tools I use in [2011](http://
 - [Slack](https://slack.com) - We use Slack at work for chat and voice calls.  I like it just fine.  Although, our custom emoji use is a bit out of control.
 - [Basecamp](https://www.basecamp.com) - I use Basecamp primarily at work for collaborating on projects.
 - [Google Docs](https://docs.google.com) - I still love Google Docs and prefer it for documents, spreadsheets, and presentation.
-- [Tuple](https://tuple.app/) - Tuple is a code pairing tool.  Think screen sharing on steroids.  I've been using this tool more and more recently at work and it's been working great, especially when I need to allow the other person to control my my machine with keyboard and mouse.
+- [Tuple](https://tuple.app/) - Tuple is a code pairing tool.  Think screen sharing on steroids.  I've been using this tool more and more recently at work and it's been working great, especially when I need to allow the other person to control my machine with keyboard and mouse.
 - [CleanShot X](https://cleanshot.com/) - I am thrilled with this screenshot, annotation, and video capture tool.  It really is one of my favorite apps lately.  I had been on the search for quite awhile a tool that could take screenshots, annotate them, take screen videos and allow export to GIF, and more.  This app has all the features I need for grabbing visuals to communicate effectively.
 - [Monodraw](https://monodraw.helftone.com) - Plain-text diagramming!  This app is a joy to use and I love the simplicity of its output.  It feels good posting plan-text diagrams to the tools I use rather than a large image.
 
