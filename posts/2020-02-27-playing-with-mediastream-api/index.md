@@ -46,7 +46,7 @@ If you drop the above code in a `<script>` tag you have a working recorder / pla
 
 For the record, [this MDN article](https://developer.mozilla.org/en-US/docs/Web/API/MediaStream_Recording_API/Using_the_MediaStream_Recording_API) and corresponding [demo](https://mdn.github.io/web-dictaphone/) were really helpful in understanding how the MediaStream API works.
 
-Once I had that working, I iterated on the details and eventually landed with something I like and find useful: an app where you click 'Record', make some sound, click 'Stop' and then it automaitcally plays it back.  Simple, right?  Also, it shows a nice little realtime graph of the audio input.
+Once I had that working, I iterated on the details and eventually landed with something I like and find useful: an app where you click 'Record', make some sound, click 'Stop' and then it automatically plays it back.  Simple, right?  Also, it shows a nice little realtime graph of the audio input.
 
 It looks like this:
 
