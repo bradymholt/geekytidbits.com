@@ -29,8 +29,8 @@ I have previously written about computing apps and tools I use in [2011](http://
 
 ## DevOps
 
-- [Docker](https://www.docker.com/) - I've learned quite a bit more about Docker in the last few years and rely upon it for development environments.  I'm not using it for production (yet) but am feeling more and more confident with it.  It certainly simplifies app en environment management.
-- [Digital Ocean](https://m.do.co/c/974ef9a471c1) - This service is still great for simple servers to host apps.  We also use Digital Ocean at work for a few of our CI/CD boxes.
+- [Docker](https://www.docker.com/) - I've learned quite a bit more about Docker in the last few years and rely upon it for development environments.  I'm not using it for production (yet) but am feeling more and more confident with it.  It certainly simplifies app environment management.
+- [Digital Ocean](https://m.do.co/c/974ef9a471c1) - This service is still great for simple servers to host apps.  I also use Digital Ocean at work for a few of our CI/CD boxes.
 - [AWS](http://aws.amazon.com) - Good 'ole AWS.  I can't live without S3.
 
 ##  Communication and Collaboration
