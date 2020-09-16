@@ -46,7 +46,7 @@ I have previously written about computing apps and tools I use in [2011](http://
 
 # Hardware
 
-- [Jabra Evolve 40 Wired Headset](https://www.amazon.com/Jabra-Evolve-Headset-Headphones-Packaging/dp/B072C5QXCZ) - These thing is comfortable to wear and the microphone quality is superb!  No Bluetooth but I consider that a good thing.
+- [Jabra Evolve 40 Wired Headset](https://www.amazon.com/Jabra-Evolve-Headset-Headphones-Packaging/dp/B072C5QXCZ) - This headset is comfortable to wear and the microphone quality is superb!  No Bluetooth but I consider that a good thing.
 - [Cable Matters Thunderbolt 3 Dock](https://www.amazon.com/gp/product/B074G4X7CL) - My coworkers are surely tired of me raving about the day I finally brought a powered Thunderbolt Dock because I should have done it ages ago.  I was having so many issues with my small non-powered dongles and hubs and this solved most of them.  The thing I especially love about having a powered dock like this is there is a _single_ cable connected to my laptop that runs under the desk.  It's glorious.
 - [Bayside Mesh Office Chair](https://www.costco.com/bayside-furnishings-metrex-iv-mesh-office-chair.product.100522611.html) - It's no Herman Miller but this thing has been comfortable and I recommend it.
 - [ASUS PB278Q 27" WQHD Monitors](https://www.amazon.com/ASUS-PB278Q-2560x1440-DisplayPort-Monitor/dp/B009C3M7H0) - I have 2 of these monitors attached to my Thunderbolt Dock ([one is rotated](https://www.geekytidbits.com/multiple-displays/)) and really enjoy the screen real estate.  These monitors are wide enough so I can have 2 windows side-by-side.
