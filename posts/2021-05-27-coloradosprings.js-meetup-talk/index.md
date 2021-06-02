@@ -4,7 +4,7 @@ title: coloradoSprings.js Meetup Talk
 
 ![coloradoSprings.js Meetup Screengrab](cos-js-zoom.jpg)
 
-On Wednesday of this week, I had the opportunity to give a [tech talk](https://www.meetup.com/coloradospringsjs/events/jbpblpycchbjc/?comment_table_id=515041897&comment_table_name=event_comment) at [coloradoSrpings.js](https://www.meetup.com/coloradospringsjs), a Meetup in Colorado Springs, Colorado.
+On Wednesday of this week, I had the opportunity to give a [tech talk](https://www.meetup.com/coloradospringsjs/events/jbpblpycchbjc/?comment_table_id=515041897&comment_table_name=event_comment) at [coloradoSprings.js](https://www.meetup.com/coloradospringsjs), a Meetup in Colorado Springs, Colorado.
 
 I recently moved to Colorado Springs and had been looking forward to meeting other developers and talking shop.  After attending my first meeting, I was somehow nominated to give the next talk.  I joked with them about "how things around here" for new people.
 
