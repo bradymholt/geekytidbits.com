@@ -20,13 +20,13 @@ For each customer, we will return the 2 most recent orders. Without a `LATERAL` 
 ```sql
 SELECT c.id, o.order_id, o.date, o.amount
 FROM customers c
-    CROSS JOIN LATERAL (
-        SELECT id as order_id, date, amount
-        FROM orders
-        WHERE customer_id = c.id
-        ORDER BY date DESC
-        LIMIT 2
-    ) o
+CROSS JOIN LATERAL (
+    SELECT id as order_id, date, amount
+    FROM orders
+    WHERE customer_id = c.id
+    ORDER BY date DESC
+    LIMIT 2
+) o
 ORDER BY c.id;
 ```
 
@@ -39,7 +39,7 @@ If you have a User-Defined function that needs to be run for each row of a query
 ```sql
 SELECT t.id, s. p.pl_amount, p.pl_percentage
 FROM trades t
-    get_trade_pl(t.id) p;
+CROSS JOIN LATERAL get_trade_pl(t.id) p;
 ```
 
 **3. Reuse calculated values**
@@ -51,8 +51,8 @@ In the following example, start_timestamp and end_timestamp are being parsed to 
 ```sql
 SELECT l.id, c.start_date,  c.end_date, (c.end_date - c.start_date) as days_diff
 FROM log l
-    CROSS JOIN LATERAL (
-        SELECT to_date(l.start_timestamp, 'MM/dd/YYYY'),
-               to_date(l.end_timestamp, 'MM/dd/YYYY')
-    ) as c(start_date, end_date);
+CROSS JOIN LATERAL (
+    SELECT to_date(l.start_timestamp, 'MM/dd/YYYY'),
+            to_date(l.end_timestamp, 'MM/dd/YYYY')
+) as c(start_date, end_date);
 ```
