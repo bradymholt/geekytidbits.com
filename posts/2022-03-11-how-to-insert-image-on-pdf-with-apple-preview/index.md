@@ -1,5 +1,5 @@
 ---
-title: How to Paste an Image Into a PDF With Preview on macos
+title: How to Paste an Image Into a PDF With Preview on macOS
 ---
 
 The [Preview app](https://support.apple.com/bg-bg/guide/preview/welcome/mac) on macOS is a handy way to edit and annotate PDFs. Unfortunately it is not easy or obvious how to insert an image _into an existing_ PDF page. I recently wanted to do this because I have a PNG image with my signature I wanted to insert into a PDF so I could "sign" it. Preview does have a [Signature](https://www.howtogeek.com/201519/use-your-mac%E2%80%99s-preview-app-to-merge-split-mark-up-and-sign-pdfs/) tool but it does not support using an existing signature image file.
