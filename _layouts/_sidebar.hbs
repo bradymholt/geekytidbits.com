@@ -103,8 +103,8 @@
 
     const onMouseOrTouchMove = function (e) {
       if (ctx) {
-        const mouseX = e.clientX;
-        const mouseY = e.clientY;
+        const mouseX = e.clientX || e.targetTouches[0].clientX;
+        const mouseY = e.clientY || e.targetTouches[0].clientY;
         const relativeX = mouseX - canvasOffsetX;
         const relativeY = mouseY - canvasOffsetY;
 
