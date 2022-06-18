@@ -96,6 +96,16 @@ aside {
     }
   }
 
+  .bio {
+    position: relative;
+  }
+
+  canvas#head-shot-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
   img.head-shot {
     border-radius: 75px;
   }

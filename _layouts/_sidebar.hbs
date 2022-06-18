@@ -3,6 +3,7 @@
     <img class="head-shot" alt="{{ site_author }}" width="145" height="145"
       src="//s.gravatar.com/avatar/ae474dd4a074fd22e897c4c54770c05a?s=145"
       srcset="//s.gravatar.com/avatar/ae474dd4a074fd22e897c4c54770c05a?s=290 2x" />
+    <canvas id="head-shot-canvas" width="160" height="160"></canvas>
     <div>
       <div class="author-name"><strong>{{ site_author }}</strong></div>
       <p>
@@ -76,3 +77,44 @@
     </ul>
   </div>
 </aside>
+<script>
+  document.addEventListener('DOMContentLoaded', (e) => {
+    // Headshot drawing canvas
+    let canvas = document.getElementById('head-shot-canvas');
+    let ctx = null;
+    let canvasOffsetX = null;
+    let canvasOffsetY = null;
+
+    canvas.onmouseenter = function (e) {
+      if (!ctx) {
+        ctx = canvas.getContext('2d');
+        ctx.lineWidth = 1;
+        ctx.strokeStyle = '#237ab2';
+
+        const rect = canvas.getBoundingClientRect();
+        canvasOffsetX = rect.left;
+        canvasOffsetY = rect.top;
+      }
+
+      if (ctx) {
+        ctx.beginPath();
+      }
+    }
+
+    canvas.onmousemove = function (e) {
+      if (ctx) {
+        const mouseX = e.clientX;
+        const mouseY = e.clientY;
+        const relativeX = mouseX - canvasOffsetX;
+        const relativeY = mouseY - canvasOffsetY;
+
+        if (!e.ctrlKey) {
+          ctx.lineTo(relativeX, relativeY);
+          ctx.stroke();
+        } else {
+          ctx.moveTo(relativeX, relativeY);
+        }
+      }
+    }
+  });
+</script>

@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "A site built with xertz.",
   "engines": {
-    "node": ">=8.0.0 <=v12.22.1"
+    "node": ">=16"
   },
   "dependencies": {
-    "xertz": "0.53.0"
+    "xertz": "0.54.0"
   }
 }
