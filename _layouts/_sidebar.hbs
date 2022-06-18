@@ -85,7 +85,7 @@
     let canvasOffsetX = null;
     let canvasOffsetY = null;
 
-    canvas.onmouseenter = function (e) {
+    const onMouseOrTouchStart = function (e) {
       if (!ctx) {
         ctx = canvas.getContext('2d');
         ctx.lineWidth = 1;
@@ -101,7 +101,7 @@
       }
     }
 
-    canvas.onmousemove = function (e) {
+    const onMouseOrTouchMove = function (e) {
       if (ctx) {
         const mouseX = e.clientX;
         const mouseY = e.clientY;
@@ -116,5 +116,11 @@
         }
       }
     }
+
+    canvas.onmouseenter = onMouseOrTouchStart;
+    canvas.onmousemove = onMouseOrTouchMove;
+    canvas.ontouchstart = onMouseOrTouchStart;
+    canvas.ontouchmove = onMouseOrTouchMove;
+
   });
 </script>
