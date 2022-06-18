@@ -43,14 +43,16 @@ self.addEventListener("fetch", event => {
       let offlineResponse = isDocumentRequest ? cache.match("/offline.html") : networkResponsePromise;
 
       // Fetch the latest and store in cache for next time
-      event.waitUntil(
-        // This waitUntil block will not block returning a cached response below
-        (async function() {
-          const networkResponse = await networkResponsePromise;
-          console.info(`Cache Store: ${event.request.url}`);
-          await cache.put(event.request, networkResponse.clone());
-        })()
-      );
+      if (event.request.method != "POST") {
+        event.waitUntil(
+          // This waitUntil block will not block returning a cached response below
+          (async function() {
+            const networkResponse = await networkResponsePromise;
+            console.info(`Cache Store: ${event.request.url}`);
+            await cache.put(event.request, networkResponse.clone());
+          })()
+        );
+      }
 
       // Returned the cached response if we have one, otherwise return the network response.
       if (cachedResponse){
