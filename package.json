@@ -6,6 +6,6 @@
     "node": ">=16"
   },
   "dependencies": {
-    "xertz": "0.54.0"
+    "xertz": "0.55.0"
   }
 }

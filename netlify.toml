@@ -1,5 +1,5 @@
 [build]
-  command = "npx xertz@0.53.0"
+  command = "npx xertz"
   publish = "_dist"
 
 [[redirects]]
