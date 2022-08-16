@@ -3,7 +3,7 @@ title: Performance Tuning Queries in PostgreSQL
 permalink: /performance-tuning-postgres/
 ---
 
-Database performance tuning: developers usually either love it or loathe. I happen to be one that enjoys it and want to share some of the techniques I've been using lately to tune poor performing queries in PostgreSQL. This is not meant to be exhausive but more of a primer for those just getting their feet wet with tuning.
+Database performance tuning: developers usually either love it or loathe it. I happen to be one that enjoys it and want to share some of the techniques I've been using lately to tune poor performing queries in PostgreSQL. This is not meant to be exhaustive but more of a primer for those just getting their feet wet with tuning.
 
 ## Finding Slow Queries
 
@@ -34,11 +34,11 @@ ORDER BY
 
 The [auto_explain](http://www.postgresql.org/docs/current/static/auto-explain.html) module is also helpful for finding slow queries but has 2 distinct advantages: it logs the actual execution plan and supports logging _nested statements_ using the `log_nested_statements` option. Nested statements are those statements that are executed inside a function. If your application uses many functions, auto_explain is invaluable for getting detailed execution plans.
 
-The `log_min_duration` option controls which query execution plans are logged, based on how long they perform. For example, if you set this to 1000, all statments that run longer than 1 second will be logged.
+The `log_min_duration` option controls which query execution plans are logged, based on how long they perform. For example, if you set this to 1000, all statements that run longer than 1 second will be logged.
 
 ## Index Tuning
 
-Another important tuning strategy is to ensure indexes are being properly used. As a prerequsite, we need to turn on the Statistics Collector.
+Another important tuning strategy is to ensure indexes are being properly used. As a prerequisite, we need to turn on the Statistics Collector.
 
 The [Postgres Statistics Collector](http://www.postgresql.org/docs/current/static/monitoring-stats.html) is a first class subsystem that collects all sorts of performance statistics that are useful.
 
@@ -113,7 +113,7 @@ Let's dive in and start understanding the output of `EXPLAIN`. Here's an example
 
 ### Nodes
 
-The first thing to understand is that each indented block with a preceeding "->" (along with the top line) is called a _node_. A _node_ is a logical unit of work (a "step" if you will) with an associated cost and execution time. The costs and times presented at each node are cumulative and roll up all child nodes. This means that the very top line (node) shows a cumulative cost and actual time for the entire statement. This is important because you can easily drill down to determine which node(s) are the bottleneck(s).
+The first thing to understand is that each indented block with a preceding "->" (along with the top line) is called a _node_. A _node_ is a logical unit of work (a "step" if you will) with an associated cost and execution time. The costs and times presented at each node are cumulative and roll up all child nodes. This means that the very top line (node) shows a cumulative cost and actual time for the entire statement. This is important because you can easily drill down to determine which node(s) are the bottleneck(s).
 
 ### Cost
 
@@ -144,7 +144,7 @@ Now that you know which statements are performing poorly and able see their exec
 
 ### A note about data cache and comparing apples to apples
 
-As you make changes and evaluate the resuling execution plans to see if it is better, it is important to know that **subsequent executions might be relying upon data caching that yield the perception of better results**. If you run a query once, make a tweak and run it a second time, it is likely it will run much faster even if the execution plan is not more favorable. This is because PostgreSQL might have cached data used in the first run and is able to use it in the second run. Therefore, you should run queries at least 3 times and average the results to compare apples to apples.
+As you make changes and evaluate the resulting execution plans to see if it is better, it is important to know that **subsequent executions might be relying upon data caching that yield the perception of better results**. If you run a query once, make a tweak and run it a second time, it is likely it will run much faster even if the execution plan is not more favorable. This is because PostgreSQL might have cached data used in the first run and is able to use it in the second run. Therefore, you should run queries at least 3 times and average the results to compare apples to apples.
 
 Things I've learned that _may_ help get better execution plans:
 
