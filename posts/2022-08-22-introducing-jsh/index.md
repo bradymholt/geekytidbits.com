@@ -19,11 +19,11 @@ Also, I found myself wanting some extras that have no Bash equivalent.  Sure, yo
 
 Rather than doing a major version update to jBash, I decided to just create a new library, especially since I was able to acquire the `jsh` npm package name!
 
-A few weeks ago, I released [jsh](https://github.com/bradymholt/jsh) as a new library.  It's similar in spirit to jBash but adds some of the aforementioned niceties like usage helpers, argument parsing and validation, sound defaults for error handling.  Oh yes, and it has a spiffy logo to boot:
+A few weeks ago, I released [jsh](https://github.com/bradymholt/jsh) as a new library.  It's similar in spirit to jBash but adds some of the aforementioned niceties like usage helpers, argument parsing and validation, and sound defaults for error handling.  Oh yes, and it has a spiffy logo to boot:
 
 ![jsh logo](jsh-logo.png)
 
-Here is a simple script example that writings some text to a file and shows off some of these niceties:
+Here is a simple script example that writes some text to a file and shows off some of these niceties:
 
 ```
 #!/usr/bin/env npx jsh
