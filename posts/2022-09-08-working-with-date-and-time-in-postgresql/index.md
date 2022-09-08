@@ -100,7 +100,7 @@ SELECT DATE '2022-01-01' + 5
  2022-01-06
  ```
 
- ##### `date + interval -> timstamp` (Add an interval to a date)
+ ##### `date + interval -> timestamp` (Add an interval to a date)
  ```sql
  SELECT DATE '2022-01-01' + interval '1 month';
       timestamp
