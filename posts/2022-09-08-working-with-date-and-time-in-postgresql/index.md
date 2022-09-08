@@ -13,6 +13,8 @@ There are 4 types that contain date and/or time data.
 - `time` - time of day (with optional time zone)
 - `interval` - time interval
 
+Details about each time can be found in the [official documentation](https://www.postgresql.org/docs/current/datatype-datetime.html).
+
 ## Literal Input
 
 To create a constant of a date / time type, use the name of the type followed by the literal input string, enclosed in single quotes.
