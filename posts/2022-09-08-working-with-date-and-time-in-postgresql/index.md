@@ -83,7 +83,7 @@ SELECT extract(minute from now()); --> 4
 
 Calculates the difference, or age, between 2 timestamps.  It returns an interval type.
 
- ```
+ ```sql
 SELECT age(timestamp '2020-07-01', timestamp '2020-01-01'); --> 6 mons
 SELECT age(timestamp '2020-07-01', timestamp '2020-01-01'); --> -6 mons
 SELECT age(now(), now() - interval '3 months'); --> 3 mons
