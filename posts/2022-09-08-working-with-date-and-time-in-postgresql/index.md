@@ -2,7 +2,7 @@
 title: Date / Time Cheatsheet for PostgreSQL
 ---
 
-When working with dates and times in PostgreSQL I often forget the specifics so this post is an effort to make a cheatsheet that will help me (and hopefully others) remember the basis of working with date and time in Postgres.
+When working with dates and times in PostgreSQL I often forget the specifics so this post is an effort to make a cheatsheet that will help me (and hopefully others) remember the basics of working with date and time in Postgres.
 
 ## Types
 
@@ -70,7 +70,7 @@ SELECT current_time;
 
  ### `extract()`
 
- Retrieves subfields such as year or hour from date/time values.  Common field names are: `year`, `month`, `day`, `hour`, `minute`, `second`.  The field name parameter   The full list of fields names can be found in the [PostgreSQL documentation](https://www.postgresql.org/docs/current/functions-datetime.html#FUNCTIONS-DATETIME-EXTRACT).
+ Retrieves subfields such as year or hour from date/time values.  Common field names are: `year`, `month`, `day`, `hour`, `minute`, `second`.  The field name parameter   The full list of fields names can be found in the [official documentation](https://www.postgresql.org/docs/current/functions-datetime.html#FUNCTIONS-DATETIME-EXTRACT).
 
  ```
 SELECT extract(year from now()); --> 2022
@@ -91,7 +91,7 @@ SELECT age(now(), now() - interval '3 months 1 minutes'); --> 3 mons 00:01:00
 
 ## Operators
 
-### `date + integer -> date` - Add days to date
+#### `date + integer -> date` - Add days to date
 ```
 SELECT DATE '2022-01-01' + 5
     date
@@ -99,7 +99,7 @@ SELECT DATE '2022-01-01' + 5
  2022-01-06
  ```
 
- ### `date + interval -> timstamp` - Add an interval to a date
+ #### `date + interval -> timstamp` - Add an interval to a date
  ```
  SELECT DATE '2022-01-01' + interval '1 month';
       timestamp
@@ -107,7 +107,7 @@ SELECT DATE '2022-01-01' + 5
  2022-02-01 00:00:00
  ```
 
- ### `timestamp + interval -> timestamp` - Add an interval to a timestamp
+ #### `timestamp + interval -> timestamp` - Add an interval to a timestamp
  ```
  SELECT now() + interval '15 minutes';
           timestamp
@@ -115,7 +115,7 @@ SELECT DATE '2022-01-01' + 5
  2022-09-08 16:46:48.1535-06
  ```
 
-  ### `interval + interval -> interval` - Add interval
+  #### `interval + interval -> interval` - Add interval
  ```
  SELECT interval '1 day' + interval '15 minutes';
     interval
