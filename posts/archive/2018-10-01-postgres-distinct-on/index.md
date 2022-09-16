@@ -21,7 +21,7 @@ That `INNER JOIN` with a subquery is used to determine the last timestamp for ea
 
 Let's think about a regular `SELECT DISTINCT` clause for a moment.  When you use a `SELECT DISTINCT` clause, you are discarding duplicate rows and only retaining a single one.  But, the one that is kept is identical to the rest.  What if you could tell `DISTINCT` to only consider _some_ fields for distinction and then which row you want to pull from this group of mostly similar but slightly varying rows?  This is what `SELECT DISTINCT ON` does.
 
-**With `DISTINCT ON`, You tell PostgreSQL to return a single row for each distinct group defined by the `ON` clause.  _Which_ row in that group is returned is specified with the `ORDER BY` clause.**
+**With `DISTINCT ON`, you tell PostgreSQL to return a single row for each distinct group defined by the `ON` clause.  _Which_ row in that group is returned is specified with the `ORDER BY` clause.**
 
 Back to our log example.  To acomplish what we did above with `SELECT DISTINCT ON`, it looks like this:
 
