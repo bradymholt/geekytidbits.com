@@ -71,7 +71,7 @@ SELECT current_time;
 
 ### `extract()`
 
- Retrieves subfields such as year or hour from date/time values.  Common field names are: `year`, `month`, `day`, `hour`, `minute`, `second`.  The field name parameter   The full list of fields names can be found in the [official documentation](https://www.postgresql.org/docs/current/functions-datetime.html#FUNCTIONS-DATETIME-EXTRACT).
+ Retrieves subfields such as year or hour from date/time values.  Common field names are: `year`, `month`, `day`, `hour`, `minute`, `second`.  The full list of fields names can be found in the [official documentation](https://www.postgresql.org/docs/current/functions-datetime.html#FUNCTIONS-DATETIME-EXTRACT).
 
  ```sql
 SELECT extract(year from now()); --> 2022
