@@ -24,8 +24,9 @@ jobs:
     steps:
       - run: |
           npx ts-node <<EOF
-            const output: string = "Hello World!";
-            console.log(output);
+            const sleepMs:number = 5000;
+            console.log("Hello");
+            setTimeout(()=> console.log("Sleepyhead"), sleepMs);
           EOF
 ```
 
@@ -41,7 +42,8 @@ jobs:
       - run: |
           npm install ts-node
           node --loader ts-node/esm --no-warnings --input-type=module <<EOF
-            const output: string = "Hello World!";
-            console.log(output);
+            console.log("Hello");
+            await new Promise((resolve) => setTimeout(resolve, 5000));
+            console.log("Sleepyhead");
           EOF
 ```
