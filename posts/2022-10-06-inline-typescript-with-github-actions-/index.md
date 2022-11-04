@@ -14,7 +14,7 @@ jobs:
           echo 'Sleepyhead'
 ```
 
-That works just fine and is easy.  But, I enjoy writing shell scripts with TypeScript (checkout my library [jsh](https://github.com/bradymholt/jsh)!) but to do this with Actions, I've usually created a script file and then called it separately.  This requires checking out files from the repo which slows the workflow down and I prefer having most everything in the workflow file itself unless it is more complex.
+That works just fine and is easy.  But, I enjoy writing shell scripts with TypeScript (checkout my library [jsh](https://github.com/bradymholt/jsh)!) and to use TypeScript with Actions, I've usually created a script file and then called it separately.  This requires checking out files from the repo which slows the workflow down and I prefer having most everything in the workflow file itself unless it is more complex.
 
 Recently, I came across a pattern, using [ts-node](https://typestrong.org/ts-node/), to run TypeScript that is defined inline from the workflow file.  It looks like this:
 
