@@ -2,7 +2,7 @@
 title: Postgres Privilege Helper Queries
 ---
 
-Recently, I have been trying to get a better understanding of how privileges work in Postgres and one thing I wanted was an easy way to inspect the current privileges for users, databases, schemas, and tables within a schema.
+Recently, I have been trying to get a better understanding of how privileges work in Postgres and one thing I wanted was an easy way to inspect the current privileges for users, databases, schemas, and tables.
 
 When using psql, you can run `\du` (list roles) `\l` (list databases), `\dn+` (list schemas), `\dp mytable` (list privileges for table) to see "Access privileges" but the format is cryptic and hard to understand without referencing the [privileges documentation](https://www.postgresql.org/docs/current/ddl-priv.html).  An example is this:
 
