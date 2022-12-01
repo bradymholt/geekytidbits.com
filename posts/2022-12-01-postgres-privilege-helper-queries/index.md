@@ -171,7 +171,7 @@ Example Output:
 
 Documentation about table privileges can be found here: https://www.postgresql.org/docs/current/ddl-priv.html#PRIVILEGE-ABBREVS-TABLE.
 
-## Defaults
+## Default privileges
 
 Default access privileges (defined with `ALTER DEFAULT PRIVILEGES`) can be shown with the following query:
 
