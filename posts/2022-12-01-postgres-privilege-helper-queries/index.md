@@ -2,7 +2,7 @@
 title: Postgres Privilege Helper Queries
 ---
 
-Recently, I have been trying to get a better understanding of how privileges work in Postgres and one thing I wanted was an easy way to inspect the current privileges for users, databases, schemas, and tables.
+Recently, I have been trying to get a better understanding of how privileges work in Postgres and one thing I wanted was an easy way to inspect the current privileges for roles/users, databases, schemas, and tables.
 
 When using psql, you can run `\du` (list roles) `\l` (list databases), `\dn+` (list schemas), `\dp mytable` (list privileges for table) to see "Access privileges" but the format is cryptic and hard to understand without referencing the [privileges documentation](https://www.postgresql.org/docs/current/ddl-priv.html).  An example is this:
 
@@ -31,7 +31,7 @@ The following query will list all roles and their attributes which grant various
 
 ```sql
 SELECT
-  rolname AS user,
+  rolname AS role,
   REPLACE(TRIM(
     CASE WHEN rolcanlogin = TRUE THEN 'LOGIN ' ELSE '' END ||
     CASE WHEN rolsuper = TRUE THEN 'SUPERUSER ' ELSE '' END ||
@@ -46,7 +46,7 @@ FROM
 
 Example Output:
 ```
-   user    |                      privileges
+   role    |                      privileges
 -----------+-------------------------------------------------------------
 postgres   | LOGIN, SUPERUSER, INHERIT, CREATEROLE, CREATEDB, REPLICATION
 miriam     | LOGIN, CREATEROLE, CREATEDB, REPLICATION
@@ -58,13 +58,13 @@ Documentation about the role attributes and privileges can be found here: https:
 
 ## Databases
 
-To list all the databases and role (user) permissions for each, you can run the following query.
+To list all the databases and role permissions for each, you can run the following query.
 
 ```sql
 SELECT
   d.datname AS database,
-  pg_get_userbyid(d.datdba) AS owner_user,
-  CASE WHEN COUNT(a.privilege_type) > 0 THEN COALESCE(r.rolname, '[public]') ELSE '' END AS user,
+  pg_get_userbyid(d.datdba) AS owner_role,
+  CASE WHEN COUNT(a.privilege_type) > 0 THEN COALESCE(r.rolname, '[public]') ELSE '' END AS role,
   COALESCE(string_agg(a.privilege_type, ', '), '') AS privileges
 FROM
   pg_database d
@@ -86,7 +86,7 @@ ORDER BY
 
 Example Output:
 ```
-     database     | owner_user  |      user      |     privileges
+     database     | owner_role  |      role      |     privileges
 ------------------+-------------+----------------+--------------------
  postgres         | postgres    |                |
  primary_db       | miriam      | writer         | CONNECT
@@ -103,7 +103,7 @@ Example Output:
  ```sql
  SELECT
   nspname AS schema,
-  COALESCE(r.rolname, '[public]') AS user,
+  COALESCE(r.rolname, '[public]') AS role,
   string_agg(a.privilege_type, ', ') AS privileges
 FROM
   pg_namespace
@@ -123,8 +123,8 @@ ORDER BY
 
  Example Output:
  ```
-        schema       |      user      |  privileges
---------------------+----------------+---------------
+        schema      |      role      |  privileges
+-------------------+----------------+---------------
  information_schema | postgres       | USAGE, CREATE
  information_schema | [public]       | USAGE
  pg_catalog         | postgres       | CREATE, USAGE
@@ -143,7 +143,7 @@ To list all tables in the current database and privileges for each, you can run 
 SELECT
   table_name AS table,
   table_schema AS schema,
-  grantee AS user,
+  grantee AS role,
   string_agg(privilege_type, ', ') AS privileges
 FROM
   information_schema.role_table_grants
@@ -159,7 +159,7 @@ ORDER BY
 
 Example Output:
 ```
-   table   | schema |    user    |                          privileges
+   table   | schema |    role    |                          privileges
 -----------+--------+-------------+---------------------------------------------------------------
  mytable   | public | miriam     | SELECT, INSERT, TRIGGER, REFERENCES, TRUNCATE, DELETE, UPDATE
  mytable   | public | reader     | SELECT
@@ -177,7 +177,7 @@ Default access privileges (defined with `ALTER DEFAULT PRIVILEGES`) can be shown
 
 ```sql
 SELECT
-  pg_get_userbyid(a.defaclrole) AS owner_user,
+  pg_get_userbyid(a.defaclrole) AS owner_role,
   nspname AS schema,
   CASE a.defaclobjtype
   WHEN 'r' THEN
@@ -191,7 +191,7 @@ SELECT
   WHEN 'n' THEN
     'schema'
   END AS type,
-  r.rolname AS user,
+  r.rolname AS role,
   string_agg(acle.privilege_type, ', ') AS privileges
 FROM
   pg_default_acl a
@@ -215,7 +215,7 @@ ORDER BY
 
 Example Output:
 ```
- owner_user  | schema |   type   |   user   | privileges
+ owner_role  | schema |   type   |   role   | privileges
 -------------+--------+----------+----------+------------
  miriam      | public | table    | reader   | SELECT
  miriam      | public | sequence | writer   | SELECT, INSERT, UPDATE, DELETE
