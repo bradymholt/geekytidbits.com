@@ -27,7 +27,7 @@ So why did I switch?  It came down to 3 reasons:
 - Voice Dictation - Voice Dictation on iOS is not up to par with Android.  Android's voice dictation is much faster and more accurate.  I have come to rely upon it heavily, especially for texting.
 - Google Chrome interface - I don't like the interface Chrome has on iOS.  Undoubtedly, Google is trying to make its interface more iOS-like, but I prefer the layout on Android with tabs and navigation buttons on the top.
 - Physical button location - Maybe it's because I'm left handed but I very much prefer to have the power button on the left side of the phone and the volume buttons on the right side and on the iPhone 13, it is exactly the opposite of this.
-- Lightening adapter - Ugh, need I say more?  I had a buy a bunch of adapters which was not fun.
+- Lightening adapter - Ugh, need I say more?  I had to buy a bunch of adapters which was not fun.
 - The inability to schedule text messages - I love this feature on Android and it simply doesn't exist on iOS.
 
 With all things considered, I am very happy and glad I made the switch!
