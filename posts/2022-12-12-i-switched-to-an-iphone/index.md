@@ -10,7 +10,7 @@ For the past 10 years I've been an Android user.  And, I've exclusively had Goog
 
 So why did I switch?  It came down to 3 reasons:
 1. The size.  I like the smaller size and I can't find a new, flagship Android phone in this size.
-2. The app quality.  I like the Android operating system and think Google has really refined it.  But, the quality of the Google Play store apps are, in general, not as good as their iPhone counterparts.
+2. The app quality.  I like the Android operating system and think Google has really refined it.  But, the quality of the Google Play store apps are, in general, not as good as their iPhone counterparts.  It's sad but I think it's undeniably true.
 3. I wanted to try something new.  `¯\_(ツ)_/¯`
 
 ### Things I Like
