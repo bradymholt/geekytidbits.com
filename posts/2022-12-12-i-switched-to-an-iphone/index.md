@@ -2,7 +2,7 @@
 title: I switched to an iPhone
 ---
 
-For the past 10 years I've been an Android user.  And, I've exclusively had Google phones, starting with the [Nexus 5](https://en.wikipedia.org/wiki/Nexus_5) and most recently the [Pixel 3](https://en.wikipedia.org/wiki/Pixel_3).  Before that, I had an [iPhone 4](https://en.wikipedia.org/wiki/IPhone_4).  But, I just switched back and now have a shiny new and beautiful iPhone 13 mini.
+For the past 10 years I've been an Android user.  And, I've exclusively had Google phones, starting with the [Nexus 5](https://en.wikipedia.org/wiki/Nexus_5) and most recently the [Pixel 3](https://en.wikipedia.org/wiki/Pixel_3).  Before that, I had an [iPhone 4](https://en.wikipedia.org/wiki/IPhone_4).  But, I just switched back and now have a shiny new iPhone 13 mini.
 
 <div style="text-align: center;">
   <img src="iphone_13_mini.jpg" alt="iPhone 13 mini"/>
