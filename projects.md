@@ -9,6 +9,7 @@ In my spare time I like to work on open source software projects.  Not only do 
 - [aspnet-core-react-template](https://github.com/bradymholt/aspnet-core-react-template) - ASP.NET Core / React SPA Template App
 - [Cron Expression Descriptor](http://cronexpressiondescriptor.azurewebsites.net/) - A C# library that converts cron expressions into localized human readable strings
 - [jsh](https://github.com/bradymholt/jsh) - Helpers for Bash like shell scripting in JavaScript
+- [Daily WTF JavaScript](https://dailywtfjs.geekytidbits.com/) - A simple website that displays a WTF JavaScript snippet that rotates each day
 - [jQuery googleslides](http://bradymholt.github.io/jquery-googleslides/) - A jQuery plugin to display your Google Photos, including Picasa and Google+ albums in a slideshow format.  It supports photo captions, scaling, randomization, and other useful options.  There is an easy to use WordPress plugin available as well.
 - [cRonstrue](https://github.com/bradymholt/cronstrue) - A JavaScript library that converts cron expressions into human readable descriptions (ported to JavsScript from [Cron Expression Descriptor](https://github.com/bradymholt/cron-expression-descriptor)).
 - [dbup-consolescripts](https://github.com/bradymholt/dbup-consolescripts) - NuGet Package Manager Console scripts for [DbUp](https://dbup.github.io/)
