@@ -32,6 +32,10 @@ To learn even more about me, check out my 3-part post, [How I Got Geeky][4].
 - I ran the <a href="http://www.ingnycmarathon.org/" target="_blank">New York Marathon</a> in 2004.
 - I've been skydiving.
 
+# Updates
+
+To found out what I have been up to recently, see my [Now](/now/) page.
+
 [2]: http://www.youneedabudget.com/
 [3]: /projects/
 [4]: /how-i-got-geeky
