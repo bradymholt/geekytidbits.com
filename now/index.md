@@ -2,7 +2,10 @@
 title: Now
 ---
 
- <span class="post-date">Last updated: December 22, 2022</span>
+<p>
+  <time class="post-date" datetime="{{ date }}">Last updated: December 22, 2022</time>
+</p>
+
 
 ## Where am I?
 
@@ -28,6 +31,5 @@ Some recent work:
 - Programming
 - Home Automation
 - Watching a little TV
-
 
 _This page was inspired by [nownownow.com](https://nownownow.com)._
