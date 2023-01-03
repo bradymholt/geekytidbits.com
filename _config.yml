@@ -1,7 +1,7 @@
 ---
 site_name: Geeky Tidbits
 site_author: Brady Holt
-site_description: Tidbits on software development, technology, and other geeky stuff.
+site_description: Tidbits on software development, technology, and other geeky stuff
 site_url: https://www.geekytidbits.com
 google_analytics_id: UA-19416043-2
 rss_path: rss.xml
