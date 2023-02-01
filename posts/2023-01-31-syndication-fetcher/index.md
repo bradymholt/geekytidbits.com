@@ -8,7 +8,7 @@ The library package is named `syndication-fetcher`. The repository is located he
 
 ### Usage example
 
-```
+```javascript
 import { fetchFeed } from "syndication-fetcher";
 const feed = await fetchFeed("https://www.geekytidbits.com/rss.xml");
 
