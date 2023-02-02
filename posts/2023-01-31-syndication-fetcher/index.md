@@ -23,7 +23,7 @@ const feed = await fetchFeed("https://www.geekytidbits.com/rss.xml");
       title: string;
       description: string;
       link: string;
-      pubDate: string;
+      pubDate: Date | null;
       content: string;
     }
   ]
