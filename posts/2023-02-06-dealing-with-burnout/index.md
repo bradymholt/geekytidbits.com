@@ -12,7 +12,7 @@ According to [WebMB](https://www.webmd.com/mental-health/burnout-symptoms-signs)
 
 There are times when I am simply unmotivated or feeling a bit passionless about my work but this doesn't mean I am burned out.  Burnout is more of an intense feeling of _exhaustion_ and it usually follows a very intense period of work; at least this is what I have experienced.
 
-Here are three things I have learned about dealing with burnout:
+Here are four things I have learned about dealing with burnout:
 
 1. Don't panic
 
