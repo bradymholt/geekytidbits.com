@@ -4,7 +4,7 @@ title: Dealing with Burnout
 
 This year marks 20 years since I graduated from university and entered the real world as a software developer.  Throughout that time I have dealt with burnout many times and have learned a few things about working through it.
 
-How do you even describe or define "burnout", anyway?  For me, it's when I feel like I simply cannot go on.  I am _exhausted_, completely unmotivated, and either depressed or seemingly on the verge of depression.
+How do you even describe or define "burnout", anyway?  For me, it's when I feel like I simply cannot go on.  I am _exhausted_ and either depressed or seemingly on the verge of depression.
 
 According to [WebMB](https://www.webmd.com/mental-health/burnout-symptoms-signs):
 
