@@ -30,4 +30,4 @@ Making a change is good but doing something I really enjoy is important.  For me
 
 Forcing myself to be around people more has helped me in the past.  This one is not intuitive to me because my inclination is to isolate when I'm exhausted.  But, rubbing shoulders and socializing is helpful for me.
 
-As a bit of an aside, my tell-tale sign that I am burned out is when I have a desire to quit my job and take up a manual labor job such as delivering packages or working in a warehouse.  I don't understand the psychology behind it but it's my own indicator I need to act.
+As a bit of an aside, my tell-tale sign that I am burned out is when I have a desire to quit my job and take up a manual labor job such as delivering packages or working in a warehouse.  There is nothing wrong with those respectable jobs, of course.  I don't understand the psychology behind it but it's my own indicator I need to act.
