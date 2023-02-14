@@ -6,7 +6,7 @@ This year marks 20 years since I graduated from university and entered the real 
 
 How do you even describe or define "burnout", anyway?  For me, it's when I feel like I simply cannot go on.  I am _exhausted_ and either depressed or seemingly on the verge of depression.
 
-According to [WebMB](https://www.webmd.com/mental-health/burnout-symptoms-signs):
+According to [WebMD](https://www.webmd.com/mental-health/burnout-symptoms-signs):
 
 > Burnout is a form of exhaustion caused by constantly feeling swamped. It’s a result of excessive and prolonged emotional, physical, and mental stress. In many cases, burnout is related to one’s job.
 
