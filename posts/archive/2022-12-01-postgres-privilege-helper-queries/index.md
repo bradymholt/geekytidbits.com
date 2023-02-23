@@ -195,7 +195,7 @@ SELECT
   string_agg(acle.privilege_type, ', ') AS privileges
 FROM
   pg_default_acl a
-  JOIN pg_namespace b ON a.defaclnamespace = b.oid
+  LEFT JOIN pg_namespace b ON a.defaclnamespace = b.oid
   JOIN LATERAL (
     SELECT
       *
@@ -208,7 +208,7 @@ GROUP BY
   a.defaclobjtype,
   a.defaclrole
 ORDER BY
-  r.rolname,
+  pg_get_userbyid(a.defaclrole),
   nspname,
   a.defaclobjtype;
 ```
