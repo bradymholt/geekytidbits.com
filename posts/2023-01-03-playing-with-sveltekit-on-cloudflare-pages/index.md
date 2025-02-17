@@ -8,7 +8,7 @@ Since it just hit [v1.0](https://svelte.dev/blog/announcing-sveltekit-1.0) I tho
 
 The result of my playing is simple app template that implements user authentication.  You can register a new user, login with a new registration, initiate a Forgot Password flow including sending a reset email.  You can see the GitHub repo here: [https://github.com/bradymholt/sveltekit-auth-template](https://github.com/bradymholt/sveltekit-auth-template) and the live site here: [https://sveltekit-auth-template.pages.dev/](https://sveltekit-auth-template.pages.dev/).
 
-![SvelteKit Auth Template](template.png)
+![SvelteKit Auth Template](./template.png)
 
 Things I learned and worked with while building this template:
 
