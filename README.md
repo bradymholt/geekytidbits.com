@@ -22,4 +22,4 @@ Deployment is handled by [Netlify](http://netlify.com) using the `netlify.toml` 
 
 ### Social Posting
 
-[Zapier](https://zapier.com) is configured to cross post new blog posts found on the RSS feed to Twitter and LinkedIn.
+[Zapier](https://zapier.com) is configured to cross post new blog posts found on the RSS feed to X and LinkedIn.
