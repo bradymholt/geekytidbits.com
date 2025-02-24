@@ -69,7 +69,7 @@ Now, run the following command, specifying the specific migration file you locat
 npx wrangler d1 execute my-d1-database-name --local --file=./drizzle/0000_[migration_file].sql
 ```
 
-A .sqlite file will be created in `.wrangler/state/v3/d1/miniflare-D1DatabaseObject/`.  You should find this file name note it's name.
+A .sqlite file will be created in `.wrangler/state/v3/d1/miniflare-D1DatabaseObject/`.  You should find this file and note its name.
 
 ### drizzle.config.ts
 
