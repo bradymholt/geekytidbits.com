@@ -17,10 +17,10 @@ To learn even more about me, check out my 3-part post, [How I Got Geeky][4].
 - I believe in the Oxford comma.
 - I'm a Christian.
 - I can whistle _really_ loud.
-- I've seen the <a href="http://en.wikipedia.org/wiki/The_Matrix" target="_blank">The Matrix</a> movie at least 20 times.
-- I've never broken a bone in my body.
+- I've never broken a bone.
 - Google has <a href="https://groups.google.com/forum/#!searchin/comp.lang.pascal.borland/%22brady$20holt%22" target="_blank">Usenet history on me back to 1996</a>.
 - I play the acoustic guitar.
+- I was a choir nerd in high school and college.
 - Hawaii is my favorite place to visit.
 - I have a beautiful wife, daughter, and son.  I adore them.
 - A good word to describe me is _resourceful_.
@@ -28,10 +28,8 @@ To learn even more about me, check out my 3-part post, [How I Got Geeky][4].
 - I change the oil on my cars.
 - I played soccer and football when I was younger.
 - I started learning <a href="https://groups.google.com/forum/#!msg/news.newusers.questions/dM9JlghStWE/AYcV2WdybT8J" target="_blank">HTML on April 29th, 1996</a>.
-- I <a href="/iphone-control-house-alarm-and-garage-doors/" target="_blank">open garage doors with my phone</a>.
 - I ran the <a href="https://results.nyrr.org/event/a41107/result/16449" target="_blank">2004 New York City Marathon</a>.
-- I've been skydiving.
-
+- I've been skydiving and would do it again (if my wife would let me).
 
 [2]: http://www.ynab.com/
 [3]: /projects/
