@@ -29,13 +29,10 @@ To learn even more about me, check out my 3-part post, [How I Got Geeky][4].
 - I played soccer and football when I was younger.
 - I started learning <a href="https://groups.google.com/forum/#!msg/news.newusers.questions/dM9JlghStWE/AYcV2WdybT8J" target="_blank">HTML on April 29th, 1996</a>.
 - I <a href="/iphone-control-house-alarm-and-garage-doors/" target="_blank">open garage doors with my phone</a>.
-- I ran the <a href="http://www.ingnycmarathon.org/" target="_blank">New York Marathon</a> in 2004.
+- I ran the <a href="https://results.nyrr.org/event/a41107/result/16449" target="_blank">2004 New York City Marathon</a>.
 - I've been skydiving.
 
-# Updates
 
-To found out what I have been up to recently, see my [Now](/now/) page.
-
-[2]: http://www.youneedabudget.com/
+[2]: http://www.ynab.com/
 [3]: /projects/
 [4]: /how-i-got-geeky
