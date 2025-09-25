@@ -28,9 +28,7 @@ Let's explore the three main join strategies PostgreSQL uses: Nested Loop Join, 
 
 ## Nested Loop Join
 
-The Nested Loop join is the simplest and most intuitive join strategy. It works by iterating over each row in the outer table and for each row, it looks up matching rows in the inner table. If there is an index on the join column of the inner table, it can use that index to speed up the lookups.  You can think of it like a double for-loop in programming.  It is a good choice when the outer table is small or very selective, and/or the inner table has a good index on the join column.  In fact, it can be the very fastest strategy when the outer table is small and there is a hash index on the inner table. However, if both tables are large and there are no helpful indexes, this strategy can be very slow.
-
-Interesting side-note: This is the ‘default’ strategy when others cannot or will not be be used in PostgreSQL.
+The Nested Loop join is the simplest and most intuitive join strategy. It works by iterating over each row in the outer table and for each row, it looks up matching rows in the inner table. If there is an index on the join column of the inner table, it can use that index to speed up the lookups.  You can think of it like a double for-loop in programming.  It is a good choice when the outer table is small or very selective, and/or the inner table has a good index on the join column.  In fact, it can be the very fastest strategy when the outer table is small and there is a hash index on the inner table. However, if both tables are large and there are no helpful indexes, this strategy can be very slow.  Interesting side-note: This is the ‘default’ strategy when others cannot or will not be be used in PostgreSQL.
 
 ### Time Complexity
 
@@ -53,7 +51,7 @@ To ensure a Nested Loop join is as efficient as possible:
 
 ## Hash Map Join
 
-The Hash Map join strategy works by building a hash table in memory for one of the input tables (usually the smaller one) based on the join key. Then, it scans the other input table and for each row, it "probes" the hash table to find matching rows. This strategy is very efficient for large, unsorted tables and can handle large datasets well, as long as there is enough memory to hold the hash table. However, if the hash table is too large to fit in memory, PostgreSQL may need to write it to disk, which can slow down performance. It is a very flexible strategy and can be thought of as a workhorse as it is often used in practice.
+The Hash Map join strategy works by building a hash table in memory for one of the input tables (usually the smaller one) based on the join key. Then, it scans the other input table and for each row, it "probes" the hash table to find matching rows. This strategy is very efficient for large, unsorted tables and can handle large datasets well, as long as there is enough memory to hold the hash table. However, if the hash table is too large to fit in memory, PostgreSQL may need to write it to disk (called a 'spill'), which can slow down performance. It is a very flexible strategy and can be thought of as a workhorse as it is often used in practice.
 
 The Hash Map join requires an equality condition (e.g., `ON a.id = b.a_id`) and is not suitable for non-equality joins.
 
