@@ -28,7 +28,7 @@ Let's explore the three main join strategies PostgreSQL uses: Nested Loop Join, 
 
 ## Nested Loop Join
 
-The Nested Loop join is the simplest and most intuitive join strategy. It works by iterating over each row in the outer table and for each row, it looks up matching rows in the inner table. If there is an index on the join column of the inner table, it can use that index to speed up the lookups.  You can think of it like a double for-loop in programming.  It is a good choice when the outer table is small or very selective, and/or the inner table has a good index on the join column.  In fact, it can be the very fastest strategy when the outer table is small and there is a hash index on inner table. However, if both tables are large and there are no helpful indexes, this strategy can be very slow.
+The Nested Loop join is the simplest and most intuitive join strategy. It works by iterating over each row in the outer table and for each row, it looks up matching rows in the inner table. If there is an index on the join column of the inner table, it can use that index to speed up the lookups.  You can think of it like a double for-loop in programming.  It is a good choice when the outer table is small or very selective, and/or the inner table has a good index on the join column.  In fact, it can be the very fastest strategy when the outer table is small and there is a hash index on the inner table. However, if both tables are large and there are no helpful indexes, this strategy can be very slow.
 
 Interesting side-note: This is the ‘default’ strategy when others cannot or will not be be used in PostgreSQL.
 
@@ -125,11 +125,11 @@ If your join condition involves multiple columns, consider creating a multi-colu
 
 ### Be careful with `SELECT` columns
 
-Selecting only the columns you need and/or are included in indexes can reduce impact performance more than you might expect.  This is especially true when using the Hash Map join strategy where reducing row width can help prevent 'spilling' to disk.  Also, if you select only columns that are included in an index, Postgres can use an index-only scan which can be significantly faster than a regular scan.
+Selecting only the columns you need and/or are included in indexes can impact performance more than you might expect.  This is especially true when using the Hash Map join strategy where reducing row width can help prevent 'spilling' to disk.  Also, if you select only columns that are included in an index, Postgres can use an index-only scan which can be significantly faster than a regular scan.
 
 ### Perturbing the Join Strategy
 
-If your query is still slow even after ensuring you are giving Postgres everything possible to chose the most efficient join strategy, you can perturb the join strategy by disabling certain strategies using the following commands:
+If your query is still slow even after ensuring you are giving Postgres everything possible to chose the most efficient join strategy, you can perturb the join strategy by disabling certain strategies (for the current session) using the following commands:
 
 ```sql
 SET enable_hashjoin = off;
