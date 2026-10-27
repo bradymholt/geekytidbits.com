@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "blog",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["xertz", "serve"],
+      "port": 8080
+    }
+  ]
+}
