@@ -6,12 +6,12 @@ We love TypeScript at <a href="https://youneedabudget.com">YNAB</a>.  One of our
 
 We wanted to start converting this library over to using ES modules for the various benefits that gives including the ability to tree-shake and better development tooling.  But, it became obvious we needed to find a _progressive_ way to do this because a few attempts at an all-or-nothing approach proved daunting.  Thousands of errors and no simple or obvious way to automate the conversion.
 
-Guidance for progressively converting a project from namespaces to modules is slim.  There is [this GitHub issue](https://github.com/Microsoft/TypeScript/issues/12473) where some discuss approaches but there are still some gaps the approaches.
+Guidance for progressively converting a project from namespaces to modules is slim.  There is [this GitHub issue](https://github.com/Microsoft/TypeScript/issues/12473) where some discuss approaches but there are still some gaps in the approaches.
 
 
-To setup progressive migration, we ended up doing the following which has been working well for us.
+To set up progressive migration, we ended up doing the following which has been working well for us.
 
-1. Add `"exclude": ["**/*.m.ts"]` to the tsconfig.json file in the original global / namespace project.  This allows you to create modules with .m.ts extention and keep the `outFile` config.
+1. Add `"exclude": ["**/*.m.ts"]` to the tsconfig.json file in the original global / namespace project.  This allows you to create modules with .m.ts extension and keep the `outFile` config.
 2. Create a `tsconfig.module.json` file adjacent to the main tsconfig.json file.
 3. Use a [project reference](https://www.typescriptlang.org/docs/handbook/project-references.html) in the tsconfig.module.json file pointing to the namespace project: `"references": [{ "path": "./tsconfig.json" }]`.  This makes the global / namespace _types_ available from within the modules project.  It doesn't emit the code for this project but it tells TypeScript to assume these types will be available at runtime.
 

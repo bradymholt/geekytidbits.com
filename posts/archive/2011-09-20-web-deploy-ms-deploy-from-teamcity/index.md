@@ -47,10 +47,10 @@ permalink: /web-deploy-ms-deploy-from-teamcity/
 
 - Utilize <a href="http://msdn.microsoft.com/en-us/library/dd465318.aspx" target="_blank">Web.config Transformations</a> so that your web.config file can be automatically changed to environment specific setting at deployment time.
 - Add a TeamCity build step to your project to run your unit tests before the MsBuild step.
-- Read up on the <a href="http://learn.iis.net/page.aspx/516/configure-the-web-deployment-handler/" target="_blank">Web Deployment Handler</a> and fine tune it to your needs.
+- Read up on the <a href="https://learn.microsoft.com/en-us/iis/publish/using-web-deploy/configure-the-web-deployment-handler" target="_blank">Web Deployment Handler</a> and fine tune it to your needs.
 - Use &#8220;IIS Manager&#8221; permission to avoid having to use an administrator account on the target server.
 
 ### Credit and Reference
 
-- <a href="http://weblogs.asp.net/scottgu/archive/2010/09/13/automating-deployment-with-microsoft-web-deploy.aspx" target="_blank">Automating Deployment with Microsoft Web Deploy</a>
+- <a href="https://weblogs.asp.net/scottgu/automating-deployment-with-microsoft-web-deploy" target="_blank">Automating Deployment with Microsoft Web Deploy</a>
 - <a href="http://www.troyhunt.com/2010/11/you-deploying-it-wrong-teamcity_25.html" target="_blank">You&#8217;re deploying it wrong! TeamCity, Subversion & Web Deploy part 4: Continuous builds with TeamCity</a>

@@ -9,9 +9,9 @@ Along with helping to build the new API, I have played with building a few thing
 
 The most recent project for the API I've worked on is a proof-of-concept project called [Bank Alerts to YNAB](https://github.com/bradymholt/bank-alerts-to-ynab) which "routes spending alert emails from your bank to YNAB so your transactions appear in YNAB seconds after they occur".  So, if your bank is supported, you can swipe your Visa at Costco and have the transaction automatically imported into YNAB by the time you can say "I love YNAB and I cannot lie".
 
-I set out with some goals in mind when I started this project: **free** and **easy** and was able, I think, to acheive both of those.  I used [Glitch](https://glitch.com) to host the webhook server and [CloudMalin](https://cloudmailin.com) to route emails to the webhook.  This was a project project and I hope others find it useful.
+I set out with some goals in mind when I started this project: **free** and **easy** and was able, I think, to achieve both of those.  I used [Glitch](https://glitch.com) to host the webhook server and [CloudMailin](https://cloudmailin.com) to route emails to the webhook.  This was a project and I hope others find it useful.
 
-You can learn more about this project on the [GitHub repo page](https://github.com/bradymholt/bank-alerts-to-ynab) and also checkout my 2 minutes setup video:
+You can learn more about this project on the [GitHub repo page](https://github.com/bradymholt/bank-alerts-to-ynab) and also check out my 2 minute setup video:
 
 <a href="https://www.youtube.com/watch?v=PDiMCY-NngQ" target="_blank"><img class="alignnone wp-image-2190 size-full" src="https://camo.githubusercontent.com/135a8b22aff4b81b906978f17f54f6dfb385c299/68747470733a2f2f63646e2e676c697463682e636f6d2f31316230666639612d633337352d346563622d393364322d633463303962313064353839253246646f776e6c6f61642e706e673f31353335373439353533313334" /></a>
 

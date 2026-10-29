@@ -38,4 +38,4 @@ Anyway, since I have all my albums uploaded and synced automatically I wanted a 
 
 ### More Info
 
-Go to the project page for more info: <a href="http://bradymholt.github.com/jquery-googleslides" target="_blank">http://bradymholt.github.com/jquery-googleslides</a>.
+Go to the project page for more info: <a href="https://bradymholt.github.io/jquery-googleslides/" target="_blank">https://bradymholt.github.io/jquery-googleslides/</a>.

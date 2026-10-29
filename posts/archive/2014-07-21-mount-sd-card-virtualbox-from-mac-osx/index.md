@@ -3,7 +3,7 @@ title: Mount SD card in VirtualBox from Mac OS X Host
 permalink: /mount-sd-card-virtualbox-from-mac-osx/
 ---
 
-Somehow I forgot the password to one of my Raspberry Pi boxes and needed to reset it.  The only way I know how to do this is to mount the root partition from the context of another machine and then edit the /etc/shadow file.  Since I own a MacBook Air and it can&#8217;t read ext3 natively (not that I know of at least) I thought I would just just spin up a virtual machine in VirtualBox, mount the SD card from the Raspberry Pi, make the change and be done.  It wasn&#8217;t as easy as I thought because, for some reason, getting VirtualBox to pass the SD card reader to a virtual machine as a virtual device is not quite easy.  Below are the steps I had to take to get it working.
+Somehow I forgot the password to one of my Raspberry Pi boxes and needed to reset it.  The only way I know how to do this is to mount the root partition from the context of another machine and then edit the /etc/shadow file.  Since I own a MacBook Air and it can&#8217;t read ext3 natively (not that I know of at least) I thought I would just spin up a virtual machine in VirtualBox, mount the SD card from the Raspberry Pi, make the change and be done.  It wasn&#8217;t as easy as I thought because, for some reason, getting VirtualBox to pass the SD card reader to a virtual machine as a virtual device is not quite easy.  Below are the steps I had to take to get it working.
 
 First, insert the SD card into the reader, open a terminal window and type **mount**.
 
@@ -11,7 +11,7 @@ First, insert the SD card into the reader, open a terminal window and type **mo
 
 Take note of the SD card device that shows up.  In my case, it was **/dev/disk1s1** (NO NAME matches the title that showed up in Finder when I inserted the card so this is a hint as to which one is the one I am looking for) listed at the bottom of the mount command.  You don&#8217;t want to get this wrong so make sure it&#8217;s right!  For a sanity check you could always run mount before inserting the card and then after, to see the difference.
 
-Next, open up **Disk Utility**, click on the the mounted partition from the card (NO NAME in my case), and then click the **Unmount** button at the top.  Do not click the eject button, just the **Unmount** button.
+Next, open up **Disk Utility**, click on the mounted partition from the card (NO NAME in my case), and then click the **Unmount** button at the top.  Do not click the eject button, just the **Unmount** button.
 
 <img class="alignnone size-full wp-image-1966" src="Screen-Shot-2014-07-20-at-3.08.37-PM1.png" alt="Screen Shot 2014-07-20 at 3.08.37 PM" width="742" height="640" />
 
@@ -19,7 +19,7 @@ Now, you need to create a VirtualBox vmdk file that points to the SD card so tha
 
 <img class="alignnone size-full wp-image-1969" src="Screen-Shot-2014-07-20-at-3.25.23-PM.png" alt="Screen Shot 2014-07-20 at 3.25.23 PM" width="744" height="157" />
 
-Now that you have a vmdk file pointing to your raw SD card device, you need to set permisisons on the vmdk file and /dev/disk1 device.  Run **sudo chmod 777 /dev/disk1** and **sudo chmod 777 ./sd-card.vmdk**.  This will ensure you are able to access and mount the vmdk file in VirtualBox.
+Now that you have a vmdk file pointing to your raw SD card device, you need to set permissions on the vmdk file and /dev/disk1 device.  Run **sudo chmod 777 /dev/disk1** and **sudo chmod 777 ./sd-card.vmdk**.  This will ensure you are able to access and mount the vmdk file in VirtualBox.
 
 <img class="alignnone size-full wp-image-1970" src="Screen-Shot-2014-07-20-at-3.26.04-PM.png" alt="Screen Shot 2014-07-20 at 3.26.04 PM" width="744" height="241" />
 

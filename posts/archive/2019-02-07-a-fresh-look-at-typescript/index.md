@@ -15,7 +15,7 @@ In the [Stack Overflow Developer Survey Results 2017](https://insights.stackover
 
 ## Birdseye View
 
-At its core, TypeScript is superset of JavaScript that was designed by [Anders Hejlsberg](https://en.wikipedia.org/wiki/Anders_Hejlsberg) and initially released in 2012.  It is made up of a  <strong>language service</strong> and a <strong>type checking transpiler</strong>.  The transpiler is run with the command `tsc` and takes TypeScript and converts it to JavaScript.  The language service is a JavaScript based interface that development tools (think editors and CLI commands) can utilize to give development time support for things such as Intellisense, refactoring tooling, and symbol searching.  Each of these parts are incredibly useful independently but when combined are even more powerful.
+At its core, TypeScript is a superset of JavaScript that was designed by [Anders Hejlsberg](https://en.wikipedia.org/wiki/Anders_Hejlsberg) and initially released in 2012.  It is made up of a  <strong>language service</strong> and a <strong>type checking transpiler</strong>.  The transpiler is run with the command `tsc` and takes TypeScript and converts it to JavaScript.  The language service is a JavaScript based interface that development tools (think editors and CLI commands) can utilize to give development time support for things such as Intellisense, refactoring tooling, and symbol searching.  Each of these parts are incredibly useful independently but when combined are even more powerful.
 
 ## Notable Features
 
@@ -44,11 +44,11 @@ var user = [0, 1, 2];
 greeter(user); // ERROR: Argument of type 'number[]' is not assignable to parameter of type 'string'.
 ```
 
-A TypeScript error will be rasied when calling `greeter(user);` with an array of numbers because TypeScript knows `person` should only be a string.
+A TypeScript error will be raised when calling `greeter(user);` with an array of numbers because TypeScript knows `person` should only be a string.
 
 ### Function Types
 
-Functions in JavaScript are [first-class](https://developer.mozilla.org/en-US/docs/Glossary/First-class_Function) objects and TypeScript has first-class support for type checking them.  When specifying a function type, you can specify the type of parameters it has and also the return type expected.  This is powerful.  In the following example, we tell TypeScript that the `save` function takes a `getUserId` function paramter that must accept a string parameter and must return a number.
+Functions in JavaScript are [first-class](https://developer.mozilla.org/en-US/docs/Glossary/First-class_Function) objects and TypeScript has first-class support for type checking them.  When specifying a function type, you can specify the type of parameters it has and also the return type expected.  This is powerful.  In the following example, we tell TypeScript that the `save` function takes a `getUserId` function parameter that must accept a string parameter and must return a number.
 
 ```typescript
 function save(entity,
@@ -57,7 +57,7 @@ function save(entity,
     let userId = getUserId(username);
 }
 
-save(entity, (username)=>{ // This anonymous function must match the type struture!
+save(entity, (username)=>{ // This anonymous function must match the type structure!
   return 123;
 });
 ```
@@ -128,7 +128,7 @@ queue.push("1"); // ERROR: cannot push a string. Only numbers allowed.
 
 ### Strict Null Checks
 
-If you try to reference a property that _could_ be null because to haven't given it a value, TypeScript will error out.  This is a huge deal to know this at build time!
+If you try to reference a property that _could_ be null because you haven't given it a value, TypeScript will error out.  This is a huge deal to know this at build time!
 
 ```typescript
 interface Member {
@@ -149,7 +149,7 @@ Per the [TC39 proposal](https://github.com/wycats/javascript-decorators#summary)
 
 You can think of them as giving you the ability to augment or _wrap_ functionality around other functions.  Decorators are becoming standardized in JavaScript itself but have been supported in TypeScript for some time.
 
-In the following example, we have a `fetch` method that we decorated with `@protected`.  This allows to to run the `protected` function first, and then run the `fetch` function.
+In the following example, we have a `fetch` method that we decorated with `@protected`.  This allows you to run the `protected` function first, and then run the `fetch` function.
 
 ```typescript
 class PeopleController {

@@ -7,7 +7,7 @@ I have a Rails app that needs to sync events to a Google Calendar and I had been
 
 I decided to use the [official Google API Client for Ruby][2].  It took a bit of time to get up to speed with using this client, particularly because of the OAuth authentication requirement in v3 of the API.
 
-The steps to get setup are:
+The steps to get set up are:
 
 1. Go to Google Developers Console &#8211; <https://console.developers.google.com/project>
 2. Create a new Project

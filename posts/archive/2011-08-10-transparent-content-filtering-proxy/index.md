@@ -36,7 +36,7 @@ filterport = 8888
 proxyport = 3128
 ```
 
-- Start DansGuardian by running **/etc/rc.d/dansguradian start**
+- Start DansGuardian by running **/etc/rc.d/dansguardian start**
 
 ### Configure Your Router
 
@@ -50,10 +50,10 @@ iptables -t nat -A PREROUTING -i br0 -s ! 192.168.1.2 -d ! 192.168.1.2 -p tcp --
 
 - 192.168.1.2 is the IP address of our proxy server.  You&#8217;ll need to change this to match your own server&#8217;s address.
 - It is likely that if you change anything through the web admin interface of your router, the iptables information will get overwritten.  You will need to re-run the above command if/when you make changes.  I actually setup a cron job that runs daily to reset the iptables configuration.  It first uses wget with http authentication to access the /setup.cgi?todo=debug page so that telnet access will be enabled and then issues remote telnet commands to configure iptables.  This is not necessary but makes for a more stable setup.
-- To further ensure no machines are able to access the internet directly, I recommend configuring (through web admin interface) your router to block outgoing port 80 traffic from all IP addresses except the IP of your proxy server (192.158.1.2 in my case).  This is usually pretty easy to do and varies depending on the router you use. Remember, as mentioned above, you might need to re-run the iptables command after locking down outgoing traffic.
+- To further ensure no machines are able to access the internet directly, I recommend configuring (through web admin interface) your router to block outgoing port 80 traffic from all IP addresses except the IP of your proxy server (192.168.1.2 in my case).  This is usually pretty easy to do and varies depending on the router you use. Remember, as mentioned above, you might need to re-run the iptables command after locking down outgoing traffic.
 
 ### That&#8217;s It!
 
 Now, if you browse to a website on a  client machine in your local network, it should send all the data through your  proxy server and provide content filtering.  There is no client configuration (i.e. proxy settings) needed as we have set things up in a transparent manner.
 
-A good next step would be to read up on <a href="http://dansguardian.org/downloads/detailedinstallation2.html" target="_blank">configuring DansGuardian</a> and make it work to suite your needs.
+A good next step would be to read up on <a href="http://dansguardian.org/downloads/detailedinstallation2.html" target="_blank">configuring DansGuardian</a> and make it work to suit your needs.

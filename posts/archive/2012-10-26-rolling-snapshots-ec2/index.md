@@ -5,9 +5,9 @@ permalink: /rolling-snapshots-ec2/
 
 One of the best things about EBS backed EC2 instances is the ability to create <a href="http://docs.amazonwebservices.com/AWSEC2/latest/UserGuide/ebs-creating-snapshot.html" target="_blank">snapshots</a>.  To say this makes backing up your instances &#8220;easy&#8221; would be an understatement.  You can create these snapshots manually through the AWS Management Console and also using the <a href="http://docs.amazonwebservices.com/AWSEC2/latest/CommandLineReference/ApiReference-cmd-CreateSnapshot.html" target="_blank">ec2-create-snapshot</a> API command line tool.  The cost of these snapshots is just \$0.125 per GB of data stored and incremental snapshots only store changed data so it&#8217;s really cheap to make lots of snapshots.
 
-I wanted to be able to setup a daily cron job to automatically snapshot my EC2 instance so I wouldn&#8217;t have to worry about backups.  If I ever had a failure or data loss I could simply grab the automatically created snapshot from the previous day and restore it.  Running ec2-create-snapshop with cron is easy enough but there is a 500 count limit to snapshots and I really don&#8217;t want to keep hundreds of snapshots.  I really wanted to just keep a handful of &#8216;latest&#8221; snapshots.
+I wanted to be able to setup a daily cron job to automatically snapshot my EC2 instance so I wouldn&#8217;t have to worry about backups.  If I ever had a failure or data loss I could simply grab the automatically created snapshot from the previous day and restore it.  Running ec2-create-snapshot with cron is easy enough but there is a 500 count limit to snapshots and I really don&#8217;t want to keep hundreds of snapshots.  I really wanted to just keep a handful of &#8216;latest&#8221; snapshots.
 
-Searching around I came cross a script that handled &#8220;rolling&#8221; snapshots which basically means it will create a snapshot and delete older ones to keep a specified number of latest snapshots.  This is exactly what I wanted.  The script I found was a bit outdated and needed some updates but I was able to make the needed changes fairly easily.  Here&#8217;s how you use it:
+Searching around I came across a script that handled &#8220;rolling&#8221; snapshots which basically means it will create a snapshot and delete older ones to keep a specified number of latest snapshots.  This is exactly what I wanted.  The script I found was a bit outdated and needed some updates but I was able to make the needed changes fairly easily.  Here&#8217;s how you use it:
 
 **Usage**:
 
@@ -228,7 +228,7 @@ For my own use, I wrapped this script in another script called from cron so I ca
 ```shell
 #!/bin/sh
 
-#Stop mysql to ensure snapshot consistancy
+#Stop mysql to ensure snapshot consistency
 echo "Stopping mysql..."
 /sbin/service mysqld stop
 echo "Creating snapshot..."
@@ -243,4 +243,4 @@ echo "Starting mysql..."
 /sbin/service mysqld start
 ```
 
-I&#8217;ve had this setup and running for about 2 months now and it works great. I love a hands-off approach to backing up my server and the piece of mind knowing that I can easily grab and restore a snapshot from last night (or 3 days ago) with a few clicks.
+I&#8217;ve had this setup and running for about 2 months now and it works great. I love a hands-off approach to backing up my server and the peace of mind knowing that I can easily grab and restore a snapshot from last night (or 3 days ago) with a few clicks.

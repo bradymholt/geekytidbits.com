@@ -2,10 +2,10 @@
 title: Moving from Raspberry Pi to ODROID-N2+ for Home Assistant
 ---
 
-I have been having a lot of fun playing with [Home Assistant](https://www.home-assistant.io/) (HA) as part of getting my new house setup with smart automation.  I recently switched from using a Raspberry Pi 4 to an ODRIOD-N2+ because I was having stability issues.
+I have been having a lot of fun playing with [Home Assistant](https://www.home-assistant.io/) (HA) as part of getting my new house setup with smart automation.  I recently switched from using a Raspberry Pi 4 to an ODROID-N2+ because I was having stability issues.
 
 ### First Generation
-I first installed HA on a Raspberry Pi 4, using a cheap SD Card from Micro Center.  It wasn't long before the SD card failed and I learned about how write heavy HA is and the need to use a high quality SD Card or SSD.  I switched over to a SSD and things got better.  But, once I upgraded past Home Assistant OS 5.2 my system become unstable and would freeze up weekly and sometimes only 24 hours after a reboot.  But, I was fairly invested in using it and determined to figure out the cause.  I tried all sorts of things and following a [GitHub issue](https://github.com/home-assistant/operating-system/issues/1119#issuecomment-919088077) tracking the problem.  Unfortunately the problem is still occurring (as of the date of this post) and seems to be specific to Raspberry Pi usage.
+I first installed HA on a Raspberry Pi 4, using a cheap SD Card from Micro Center.  It wasn't long before the SD card failed and I learned about how write heavy HA is and the need to use a high quality SD Card or SSD.  I switched over to an SSD and things got better.  But, once I upgraded past Home Assistant OS 5.2 my system became unstable and would freeze up weekly and sometimes only 24 hours after a reboot.  But, I was fairly invested in using it and determined to figure out the cause.  I tried all sorts of things and followed a [GitHub issue](https://github.com/home-assistant/operating-system/issues/1119#issuecomment-919088077) tracking the problem.  Unfortunately the problem is still occurring (as of the date of this post) and seems to be specific to Raspberry Pi usage.
 
 ### Next Generation
 
@@ -23,4 +23,4 @@ I plugged everything in and mounted it in my tech closet:
 
 ![Home Assistant in Tech Room](home-assistant-tech-room.jpg)
 
-The system has been running for over a month with no issues.  I am very glad I decided to switch over to the ODRIOD.
+The system has been running for over a month with no issues.  I am very glad I decided to switch over to the ODROID.

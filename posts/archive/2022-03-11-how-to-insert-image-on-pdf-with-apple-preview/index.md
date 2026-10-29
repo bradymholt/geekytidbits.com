@@ -15,7 +15,7 @@ It _is possible_ to paste an image into a PDF page from the clipboard but you mu
    - **⌘+V** (paste the image on top of the original as an "object image")
 1. Click on the object image you just pasted on top of the original image
 1. Press **⌘+C** to copy the new object image to the clipboard
-1. Click on to target page and press **⌘+V** to paste the image into it
+1. Click on the target page and press **⌘+V** to paste the image into it
 
 ### Demo
 <video width="700" controls="controls" autoplay muted loop>

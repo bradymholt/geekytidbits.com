@@ -11,7 +11,7 @@ I have an ASP.NET web application that uses <a href="http://support.microsoft.co
 
 Everything was working fine until about a month ago.  Then, I started noticing that when I deployed my website to production the styles were all messed up.  But strangely, it would fix itself after a couple of minutes.  It worked like a charm every time locally but not in production.  Using Firebug I noticed that the calls to the WebResource.axd files were causing a 302 Redirect to GenericErrorPage.htm which obviously means something is going very wrong.  I checked the Application event log in Windows but didn&#8217;t see anything.
 
-After some fiddling around and pulling my hair our for a few hours, I changed the web.config so that debug=&#8221;true&#8221; and noticed some w3wp.exe errors show up in the event log.
+After some fiddling around and pulling my hair out for a few hours, I changed the web.config so that debug=&#8221;true&#8221; and noticed some w3wp.exe errors show up in the event log.
 
 ```
 Process information:

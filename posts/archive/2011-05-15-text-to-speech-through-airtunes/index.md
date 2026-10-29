@@ -13,7 +13,7 @@ Anyway, setting up a cron job to call JustePort and pass in some music files was
 
 I finally settled on using [The Unofficial Google Text-To-Speech API][1], which responds with mp3 speech given some text, to generate the audio. I looked at using espeak or festival but the natural voice quality of the Google service is much better. Once I figured out how to use <a href="http://www.gnu.org/software/wget/" target="_blank">wget </a>to download a mp3 of some text, I needed to pad it with some silence on the end because I found that if the audio was less than 8 seconds (or so), JustePort (or the Airtunes) wouldn&#8217;t play it. In addition to padding, I found that I needed to change the sample rate because when I played it, it sounded like chipmunks who inhaled a couple of helium balloons. The awesome <a href="http://sox.sourceforge.net/" target="_blank">sox</a> utility came to the rescue to perform the padding and sample rate conversion.
 
-**With the help of Google Translate, wget, sox, Mono and JustePort I can send dynamic text speech to my Airtunes device and effectively enable my server talk to me.**
+**With the help of Google Translate, wget, sox, Mono and JustePort I can send dynamic text speech to my Airtunes device and effectively enable my server to talk to me.**
 
 Here&#8217;s the single command (heavy piping!) to say &#8220;Hello World&#8221; through the speakers connected to my Airtunes device.
 

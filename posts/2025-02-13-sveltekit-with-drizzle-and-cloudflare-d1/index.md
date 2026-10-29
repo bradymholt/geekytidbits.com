@@ -6,11 +6,11 @@ I recently started a little side project for my wife and decided to use [SvelteK
 
 ## Instructions
 
-First off, you'll want to follow the [Get Started with Drizzle and SQLite](https://orm.drizzle.team/docs/get-started/sqlite-new) docs to get a local SQLite database setup and working within SvelteKit. This will involve installing some npm packages and creating a few files including the `drizzle.config.ts` file and the `schema.ts` file. Be sure to run `npx drizzle-kit generate && npx drizzle-kit migrate` to create and run the initial migration file from `./drizzle` folder. The guide [SvelteKit with SQLite and Drizzle](https://fullstacksveltekit.com/blog/sveltekit-sqlite-drizzle) might be helpful here.
+First off, you'll want to follow the [Get Started with Drizzle and SQLite](https://orm.drizzle.team/docs/get-started/sqlite-new) docs to get a local SQLite database set up and working within SvelteKit. This will involve installing some npm packages and creating a few files including the `drizzle.config.ts` file and the `schema.ts` file. Be sure to run `npx drizzle-kit generate && npx drizzle-kit migrate` to create and run the initial migration file from `./drizzle` folder. The guide [SvelteKit with SQLite and Drizzle](https://fullstacksveltekit.com/blog/sveltekit-sqlite-drizzle) might be helpful here.
 
-**Before proceeding with the instructions below, your app should be setup to work with a local SQLite database using Drizzle.**
+**Before proceeding with the instructions below, your app should be set up to work with a local SQLite database using Drizzle.**
 
-Now, you'll want to get your app configured to work with Cloudflare Pages.  Follow the SvelteKit [Cloudflare Pages](https://svelte.dev/docs/kit/adapter-cloudflare) instructions.  You will basically install a npm package and and modify the `svelte.config.js` file.
+Now, you'll want to get your app configured to work with Cloudflare Pages.  Follow the SvelteKit [Cloudflare Pages](https://svelte.dev/docs/kit/adapter-cloudflare) instructions.  You will basically install an npm package and modify the `svelte.config.js` file.
 
 #### svelte.config.js changes
 

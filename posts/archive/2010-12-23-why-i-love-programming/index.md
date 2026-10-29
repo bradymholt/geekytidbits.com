@@ -5,7 +5,7 @@ Software development, in a nutshell, is a disciplined approach to creating softw
 
 *Programming*, on the other hand, is raw slinging of code. It is writing code to make your computer do something; anything.  Sure, software development involves a good deal of actual programming but I think you  need to distinguish the two.
 
-One thing I know for sure about about programming itself is that **I love it!** Here is why why:
+One thing I know for sure about programming itself is that **I love it!** Here is why:
 
   1. **You get to create stuff.** When I was a kid I used to daydream about inventing things.  When I program something, I am *creating* something that didn't exist before.
   2. **It is challenging.** Being faced with different problems to solve causes my mind to be actively engaged.

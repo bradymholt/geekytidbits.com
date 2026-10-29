@@ -6,7 +6,7 @@ _Preface: this post contains a specific implementation to a common problem.  Al
 
 ### In Short
 
-In this post, I explain how to setup and configure a combination of software and tools on a Linux server running a WordPress blog that enables **painless** uploading and sharing of videos hosted directly from your own server, rather than a third party service like YouTube.  Once everything is setup, adding a video to a blog post is as easy as uploading it through WordPress and using a shortcode such as [video src="/media/myvideo"] to stream your video using HTM5 and Flash as a fallback option.  The initial setup for this solution is a bit of work but the payoff is huge!
+In this post, I explain how to setup and configure a combination of software and tools on a Linux server running a WordPress blog that enables **painless** uploading and sharing of videos hosted directly from your own server, rather than a third party service like YouTube.  Once everything is setup, adding a video to a blog post is as easy as uploading it through WordPress and using a shortcode such as [video src="/media/myvideo"] to stream your video using HTML5 and Flash as a fallback option.  The initial setup for this solution is a bit of work but the payoff is huge!
 
 Watch the video below to see a demo of just how painless it is!
 
@@ -138,7 +138,7 @@ fi
 
 - Run **chmod+x /usr/local/bin/convert_video_html5**
 
-4. Setup **incron**. 1. Start incron by running **service incrond start**.  This command may vary depending on the Linux distribution you are using. 2. Edit the incron action table table by runing **incrontab -e**and adding the following line (entry) to the table:
+4. Setup **incron**. 1. Start incron by running **service incrond start**.  This command may vary depending on the Linux distribution you are using. 2. Edit the incron action table by running **incrontab -e**and adding the following line (entry) to the table:
 
 ```
 /var/www/html/wordpress/wp-content/uploads IN_CLOSE_WRITE,IN_MOVED_TO,IN_NO_LOOP /usr/local/bin/convert_video_html5 $@/$#
@@ -161,13 +161,13 @@ You should change _/var/www/html/wordpress/wp-content/uploads_ above to be the w
 
 #### Usage
 
-Now, with everything setup it is easy to upload a video and embed it in a WordPress blog post.  All I need to do is use the [video] shortcode with the following syntax.  Assuming I uploaded a video name myvideo.mov, you would use:
+Now, with everything setup it is easy to upload a video and embed it in a WordPress blog post.  All I need to do is use the [video] shortcode with the following syntax.  Assuming I uploaded a video named myvideo.mov, you would use:
 
 ```
 [video src="/media/myvideo"]
 ```
 
-Notice the omission of the mov file extension above.  This is because the WordPress plugin we installed (&#8220;Degradable HTML5 audio and video&#8221;)  auto detect the videos present of the file system and generates the markup accordingly.  Our bash script (convert_video_html5) does all the video conversion behind the scenes and drops newly converted files in the same directory and the WordPress plugin finds them to use them.  If some of the conversions are still in process, the plugin will only use those currently available.
+Notice the omission of the mov file extension above.  This is because the WordPress plugin we installed (&#8220;Degradable HTML5 audio and video&#8221;)  auto-detects the videos present on the file system and generates the markup accordingly.  Our bash script (convert_video_html5) does all the video conversion behind the scenes and drops newly converted files in the same directory and the WordPress plugin finds them to use them.  If some of the conversions are still in process, the plugin will only use those currently available.
 
 ### Conclusion
 

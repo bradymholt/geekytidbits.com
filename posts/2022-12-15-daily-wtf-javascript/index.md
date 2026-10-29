@@ -12,6 +12,6 @@ As always when building things, I learned plenty:
 - [Vite](https://vitejs.dev/) - I used Vite as a build tool and wow was I impressed.  This felt so much better than using webpack or one of its derivatives.
 - `place-items: center;` for centering an HTML element horizontally and vertically
 - GitHub Actions with GitHub Pages - My [workflow](https://github.com/bradymholt/daily-wtf-js/blob/main/.github/workflows/gh-pages.yml) to publish the site to GitHub Pages uses GitHub Actions, which is the new generation method for working with pages.  I can now use this template as a baseline for other projects.
-- Although I've used [jsdom](https://github.com/jsdom/jsdom) before, it's been awhile and I was able to reintroduce myself to its usefulness to parse HTML on the server side.
+- Although I've used [jsdom](https://github.com/jsdom/jsdom) before, it's been a while and I was able to reintroduce myself to its usefulness to parse HTML on the server side.
 - I was exposed to the wonderful world of [CSS Gradient Swatches](https://cssgradient.io/swatches/).
 - I learned more about [PostCSS](https://postcss.org/) and want to continue learning and using it further.

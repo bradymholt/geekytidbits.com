@@ -50,7 +50,7 @@ find /srv/surveillance/driveway/* -mtime +10 -exec /bin/rm {} \;
 
 ### iPhone Integration
 
-<img class="alignright" title="iphone alarm keypad with security camera image" alt="" src="photo3.png" width="230" height="346" />] In <a href="/iphone-control-house-alarm-and-garage-doors/" target="_blank">another project last year</a>, I wrote several components to monitor my alarm system.  One of the components was something I called AlarmWeb which is basically a HTML5 application that displays nicely on the iPhone (and Andriod for that matter).  After setting up the surveillance camera I decided it would be nice to integrate it with this interface.  I simply included `<a href="http://192.168.1.7/VIDEO.CGI"><img src="http://192.168.1.7/IMAGE.JPG"/></a>` on the page so that an image still will show (IMAGE.JPG) and then clicking the image will take me to the live video feed (VIDEO.CGI) directly from the camera.
+<img class="alignright" title="iphone alarm keypad with security camera image" alt="" src="photo3.png" width="230" height="346" />] In <a href="/iphone-control-house-alarm-and-garage-doors/" target="_blank">another project last year</a>, I wrote several components to monitor my alarm system.  One of the components was something I called AlarmWeb which is basically an HTML5 application that displays nicely on the iPhone (and Android for that matter).  After setting up the surveillance camera I decided it would be nice to integrate it with this interface.  I simply included `<a href="http://192.168.1.7/VIDEO.CGI"><img src="http://192.168.1.7/IMAGE.JPG"/></a>` on the page so that an image still will show (IMAGE.JPG) and then clicking the image will take me to the live video feed (VIDEO.CGI) directly from the camera.
 
 [
 ][3]

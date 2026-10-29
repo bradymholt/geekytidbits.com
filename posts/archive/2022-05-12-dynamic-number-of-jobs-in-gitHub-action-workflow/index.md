@@ -3,7 +3,7 @@ title: Dynamic number of jobs in a GitHub Action workflow
 ---
 
 Recently I had the need to run a GitHub Action workflow job that would take well over the [6 hour execution time limit](https://docs.github.com/en/actions/learn-github-actions/usage-limits-billing-and-administration#usage-limits) and needed to figure out how to break it up into multiple jobs.  Out of that work emerged a
-handy pattern for setting up a workflow with a variable number jobs, each of which can be executed serially or in parallel.
+handy pattern for setting up a workflow with a variable number of jobs, each of which can be executed serially or in parallel.
 
 #### Workflow Pattern
 
@@ -49,7 +49,7 @@ That string will be specified as an output named `job-strategy-matrix` so that i
 
 In the second defined job (named "job"), we will define a [strategy matrix](https://docs.github.com/en/actions/using-jobs/using-a-matrix-for-your-jobs) using the `job-strategy-matrix` output from the first job.  For strategy matrices, you usually define a static array like `[node-12, node-16]` but using `fromJson` you can define a [dynamic matrix](https://www.cynkra.com/blog/2020-12-23-dynamic-gha/).
 
-Now, GitHub Actions will use `[1,2,3,4,5,6,7,8,9,10]` as the job matrix and run 10 jobs.  These jobs will be run _serially_ because of the `max-parallel: 1` config.  If you wanted to run all the jobs in parallel you change to `max-parallel: ${{ github.event.inputs.number_of_jobs }}`.
+Now, GitHub Actions will use `[1,2,3,4,5,6,7,8,9,10]` as the job matrix and run 10 jobs.  These jobs will be run _serially_ because of the `max-parallel: 1` config.  If you wanted to run all the jobs in parallel you would change to `max-parallel: ${{ github.event.inputs.number_of_jobs }}`.
 
 When you go to manually run this workflow, it will default to 10 jobs but you can change it.
 

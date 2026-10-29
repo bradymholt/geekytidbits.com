@@ -30,7 +30,7 @@ CROSS JOIN LATERAL (
 ORDER BY c.id;
 ```
 
-NOTE: I use `CROSS JOIN LATERAL` above which is eqivalent to `LEFT JOIN LATERAL (...) a ON true` (as shown in LATERAL examples elsewhere) but I find it more readable. Effectively, it behaves like a `LEFT JOIN`.
+NOTE: I use `CROSS JOIN LATERAL` above which is equivalent to `LEFT JOIN LATERAL (...) a ON true` (as shown in LATERAL examples elsewhere) but I find it more readable. Effectively, it behaves like a `LEFT JOIN`.
 
 **2. Call User-Defined Function for each row**
 

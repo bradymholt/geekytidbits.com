@@ -11,7 +11,7 @@ Searching for a source for the data, I quickly found the [Johns Hopkins CSSE Dat
 Now that I had easy access to the data, it was time to start learning D3.js.  When I started looking at line chart examples linked from the documentation site, like this one: [https://observablehq.com/@d3/line-chart](https://observablehq.com/@d3/line-chart) I honestly got a little intimidated.  There's quite a bit going on with the code to render a simple line chart.  I read the code and comments and tried to follow along.  Also, I came across this line chart example: [https://bl.ocks.org/d3noob/402dd382a51a4f6eea487f9a35566de0](https://bl.ocks.org/d3noob/402dd382a51a4f6eea487f9a35566de0) which I found a bit easier to follow.  I created a simple index.html file, loaded in D3.js and started playing around to understand how it works.
 
 
-I took the data from the API and mapped into a format that looks like this:
+I took the data from the API and mapped it into a format that looks like this:
 
 ```json
 {
@@ -113,7 +113,7 @@ function renderData(chartConfig, chartData) {
 }
 ```
 
-After I worked on this chart, I came across [How to learn D3.js](https://wattenberger.com/blog/d3), by Amelia Wattenberger, which is a wonderful resource I wish I had found initially.  If you are interesting in learned D3.js I highly recommend taking a look at it.
+After I worked on this chart, I came across [How to learn D3.js](https://2019.wattenberger.com/blog/d3), by Amelia Wattenberger, which is a wonderful resource I wish I had found initially.  If you are interested in learning D3.js I highly recommend taking a look at it.
 
 That's it!  This was a fun project to build and I learned a bit about D3.js that I can hopefully put to use in the future.
 

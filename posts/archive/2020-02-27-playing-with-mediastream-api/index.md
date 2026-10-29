@@ -44,7 +44,7 @@ navigator.mediaDevices.getUserMedia({ audio: true }).then(function(stream) {
 
 If you drop the above code in a `<script>` tag you have a working recorder / playback.  Easy and simple!
 
-For the record, [this MDN article](https://developer.mozilla.org/en-US/docs/Web/API/MediaStream_Recording_API/Using_the_MediaStream_Recording_API) and corresponding [demo](https://mdn.github.io/web-dictaphone/) were really helpful in understanding how the MediaStream API works.
+For the record, [this MDN article](https://developer.mozilla.org/en-US/docs/Web/API/MediaStream_Recording_API/Using_the_MediaStream_Recording_API) and corresponding [demo](https://mdn.github.io/dom-examples/media/web-dictaphone/) were really helpful in understanding how the MediaStream API works.
 
 Once I had that working, I iterated on the details and eventually landed with something I like and find useful: an app where you click 'Record', make some sound, click 'Stop' and then it automatically plays it back.  Simple, right?  Also, it shows a nice little realtime graph of the audio input.
 

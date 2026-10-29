@@ -16,7 +16,7 @@ New to EC2?  Take a look at the <a href="http://ec2dream.webs.com/AWS-Manageme
 <li style="text-align: left;">
   On the Configure Firewall step, create a new security group and add an inbound rule for ports 80 (HTTP) and 22 (SSH).<img class="alignnone" title="ec2-firewall" src="firewall.png" alt="" width="637" height="344" />
 </li>
-  * **Connect** to your new instance using the ssh client of your choice. Note, you’ll need to use the Key Pair your generated when you launched your instance to connect. When asked for the username enter **ec2-user**. I use PuTTY from Windows and it was a little tricky to get connected but the [Appendix: PuTTY][1] helped.  The thing is, you need to use puttygen.exe to convert a .pem key pair file to .ppk format so that Putty can use it.
+  * **Connect** to your new instance using the ssh client of your choice. Note, you’ll need to use the Key Pair you generated when you launched your instance to connect. When asked for the username enter **ec2-user**. I use PuTTY from Windows and it was a little tricky to get connected but the [Appendix: PuTTY][1] helped.  The thing is, you need to use puttygen.exe to convert a .pem key pair file to .ppk format so that Putty can use it.
   * **Install** the needed software with yum.
 
     ```shell

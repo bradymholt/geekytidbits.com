@@ -7,13 +7,13 @@ permalink: /how-i-got-geeky/
 
 When I was young, my grandfather gave me a hand-held CB radio.  The thing was huge but really cool since I was able to use it while playing cops and robbers with my buddy across the street growing up.  He had a stationary radio in his back room and I had the hand-held.  I would go out on bicycle &#8220;field missions&#8221; and report back to him as to the whereabouts of the neighborhood robbers.  Good stuff.
 
-One day a few years later, I was was at a garage sale down the street and saw a newer, nicer, _digital_ CB radio for sale and they only wanted 5 bucks for it.  I snatched that thing right up and put it to good use.
+One day a few years later, I was at a garage sale down the street and saw a newer, nicer, _digital_ CB radio for sale and they only wanted 5 bucks for it.  I snatched that thing right up and put it to good use.
 
 ### The Go-Cart
 
 A few years later I was riding my bike down a nearby alleyway and saw a seemingly trashed go-cart sitting in a driveway and obviously not taken care of.  I had always wanted a go-cart.  We had a huge open field behind my house which was pretty much perfect for a go-cart.  I saw potential in this abandoned go-cart and wanted it.  After asking around I figured out who the boy was that lived in the house and approached him a few days later.  I had a plan in mind.  I would offer to trade my digital CB radio I bought a few years earlier (for 5 bucks!) for his trashed, non-running go-cart.  He jumped on that offer and it was mine!
 
-So the go-cart turned out to be a really fun project for my dad and me to fix up and get running.  My dad knew how to work on small engines and we worked together on it for a few months.  I learned a lot mechanically and it was good bonding time for me and my dad.  One day after a lot of hard work and persistence we cranked it it 15-20 times and it finally fired up!  After a few more tweaks I was riding that bad boy in the field behind the house and having a blast.  It was funny how all the boys in the neighborhood would flock to the field every afternoon when I got home from school and would bring it out for a spin.
+So the go-cart turned out to be a really fun project for my dad and me to fix up and get running.  My dad knew how to work on small engines and we worked together on it for a few months.  I learned a lot mechanically and it was good bonding time for me and my dad.  One day after a lot of hard work and persistence we cranked it 15-20 times and it finally fired up!  After a few more tweaks I was riding that bad boy in the field behind the house and having a blast.  It was funny how all the boys in the neighborhood would flock to the field every afternoon when I got home from school and would bring it out for a spin.
 
 ### The Dirt Bike
 

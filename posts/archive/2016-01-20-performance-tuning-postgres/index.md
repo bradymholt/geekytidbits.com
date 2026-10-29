@@ -9,9 +9,9 @@ Database performance tuning: developers usually either love it or loathe it. I h
 
 One obvious way to start with tuning is to find specific statements that are performing poorly.
 
-### pg_stats_statements
+### pg_stat_statements
 
-The [pg_stats_statements](http://www.postgresql.org/docs/current/static/pgstatstatements.html) module is a great place to start. It simply tracks execution statistics of SQL statements and can be an easy way to find poor performing queries.
+The [pg_stat_statements](http://www.postgresql.org/docs/current/static/pgstatstatements.html) module is a great place to start. It simply tracks execution statistics of SQL statements and can be an easy way to find poor performing queries.
 
 Once you have this module installed, a system view named `pg_stat_statements` will be available with all sorts of goodness. Once it has had a chance to collect a good amount of data, look for
 queries that have relatively high `total_time` value. Focus on these statements first.
@@ -95,7 +95,7 @@ WHERE
 Relying upon statistics generated from a local development database can be problematic. Ideally you are able to pull the above statistics from your production machine or generate them from a restored production backup. Why? Environmental factors can and do change the way Postgres query optimizer works. Two examples:
 
 * when a machine has less memory PostgreSQL may not be able to perform a Hash Join when otherwise it would be able to and would make the join faster.
-* if there are not many rows in a table (like in a development database), PostgresSQL may chose to do Sequential Scans on a table rather than utilize an available index. When table sizes are small, a Seq Scan can be faster. (Note: you can run `SET enable_seqscan = OFF;` in a session to get the optimizer to prefer using indexes even when a Sequential Scan may be faster. This is useful when working with development databases that do not have much data in them)
+* if there are not many rows in a table (like in a development database), PostgreSQL may choose to do Sequential Scans on a table rather than utilize an available index. When table sizes are small, a Seq Scan can be faster. (Note: you can run `SET enable_seqscan = OFF;` in a session to get the optimizer to prefer using indexes even when a Sequential Scan may be faster. This is useful when working with development databases that do not have much data in them)
 
 ## Understanding Execution Plans
 
@@ -121,7 +121,7 @@ The first thing to understand is that each indented block with a preceding "->" 
 
 The first number is start up cost (cost to retrieve first record) and the second number is the cost incurred to process entire node (total cost from start to finish).
 
-The cost is effectively how much work PostgreSQL _estimates_ it will have to do to run the statement. This number is _not_ how much time is required, although there is usually direct correlation to time required for execution. Cost is a combination of 5 work components used to estimate the work required: sequential fetch, non-sequential (random) fetch, processing of row, processing operator (function), and processing index entry. The cost represents I/O and CPU activity and the important thing to know here is that a relatively higher cost means PostgresSQL thinks it will have to do more work. The optimizer makes its decision on which execution plan to use based on the the cost. Lower costs are preferred by the optimizer.
+The cost is effectively how much work PostgreSQL _estimates_ it will have to do to run the statement. This number is _not_ how much time is required, although there is usually direct correlation to time required for execution. Cost is a combination of 5 work components used to estimate the work required: sequential fetch, non-sequential (random) fetch, processing of row, processing operator (function), and processing index entry. The cost represents I/O and CPU activity and the important thing to know here is that a relatively higher cost means PostgreSQL thinks it will have to do more work. The optimizer makes its decision on which execution plan to use based on the cost. Lower costs are preferred by the optimizer.
 
 ### Actual time
 
@@ -140,7 +140,7 @@ There are some really great articles on understanding the output of `EXPLAIN` an
 
 ## Query Tuning
 
-Now that you know which statements are performing poorly and able see their execution plans, it is time to start tweaking the query to get better performance. This is where you make changes to the queries and/or add indexes to try and get a better execution plan. Start with the bottlenecks and see if there are changes you can make that reduce costs and/or execution times.
+Now that you know which statements are performing poorly and able to see their execution plans, it is time to start tweaking the query to get better performance. This is where you make changes to the queries and/or add indexes to try and get a better execution plan. Start with the bottlenecks and see if there are changes you can make that reduce costs and/or execution times.
 
 ### A note about data cache and comparing apples to apples
 
@@ -158,8 +158,8 @@ Things I've learned that _may_ help get better execution plans:
   * Avoid large IN() statements
 * JOINs
   * When joining tables, try to use a simple equality statement in the ON clause (i.e. `a.id = b.person_id`). Doing so allows more efficient join techniques to be used (i.e. Hash Join rather than Nested Loop Join)
-  * Convert subqueries to JOIN statements when possible as this usually allows the optimizer to understand the intent and possibly chose a better plan
-  * Use JOINs properly: Are you using GROUP BY or DISTINCT just because you are getting duplicate results? This usually indicates improper JOIN usage and may result in a higher costs
+  * Convert subqueries to JOIN statements when possible as this usually allows the optimizer to understand the intent and possibly choose a better plan
+  * Use JOINs properly: Are you using GROUP BY or DISTINCT just because you are getting duplicate results? This usually indicates improper JOIN usage and may result in higher costs
   * If the execution plan is using a Hash Join it can be very slow if table size estimates are wrong. Therefore, make sure your table statistics are accurate by reviewing your [vacuuming strategy](http://www.postgresql.org/docs/current/static/routine-vacuuming.html)
   * Avoid [correlated subqueries](https://en.wikipedia.org/wiki/Correlated_subquery) where possible; they can significantly increase query cost
   * Use [EXISTS](http://www.postgresql.org/docs/current/static/functions-subquery.html) when checking for existence of rows based on criterion because it "short-circuits" (stops processing when it finds at least one match)
@@ -168,6 +168,6 @@ Things I've learned that _may_ help get better execution plans:
   * Do more with less; CPU is faster than I/O
   * Utilize [Common Table Expressions](http://www.postgresql.org/docs/current/static/queries-with.html) and temporary tables when you need to run chained queries
   * Avoid LOOP statements and prefer SET operations
-  * Avoid COUNT(\*) as PostgresSQL does table scans for this ([versions <= 9.1 only](https://wiki.postgresql.org/wiki/FAQ#Why_is_.22SELECT_count.28.2A.29_FROM_bigtable.3B.22_slow.3F))
+  * Avoid COUNT(\*) as PostgreSQL does table scans for this ([versions <= 9.1 only](https://wiki.postgresql.org/wiki/FAQ#Why_is_.22SELECT_count.28.2A.29_FROM_bigtable.3B.22_slow.3F))
   * Avoid ORDER BY, DISTINCT, GROUP BY, UNION when possible because these cause high startup costs
   * Look for a large variance between estimated rows and actual rows in the `EXPLAIN` statement. If the count is very different, the table statistics could be outdated and PostgreSQL is estimating cost using inaccurate statistics. For example: `Limit (cost=282.37..302.01 rows=93 width=22) (actual time=34.35..49.59 rows=2203 loops=1)`. The estimated row count was 93 and the actual was 2,203. Therefore, it is likely making a bad plan decision. You should review your [vacuuming strategy](http://www.postgresql.org/docs/current/static/routine-vacuuming.html) and ensure `ANALYZE` is being run frequently enough.

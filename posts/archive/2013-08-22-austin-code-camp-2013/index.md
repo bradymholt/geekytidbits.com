@@ -5,7 +5,7 @@ permalink: /austin-code-camp-2013/
 
 I attended <a href="http://codecamp13.adnug.org/" target="_blank">Austin Code Camp </a>this past Saturday and enjoyed the time. I know these types of events are a lot of work to plan so kudos to <a href="https://twitter.com/jbogard" target="_blank">Jimmy Bogard</a> and others who helped make it happen. I went to the following sessions:
 
-- **Designing and Building Hybrid Solutions use Azure Cloud and In Premise ESB** &#8211; Justin Yanta
+- **Designing and Building Hybrid Solutions using Azure Cloud and In Premise ESB** &#8211; Justin Yanta
 - **Onion Architecture for Distributed Systems** &#8211; Jeffrey Palermo
 - **fun(ctional) with f#** &#8211; Chris Holt
 - **Lightning Talks** &#8211; Various

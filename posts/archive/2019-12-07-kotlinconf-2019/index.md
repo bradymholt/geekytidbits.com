@@ -6,7 +6,7 @@ This week I had the opportunity to attend [KotlinConf 2019 in Copenhagen, Denmar
 
 ![YNAB at KotlinConf 2019](kotlinconf-team-pic.jpg)
 
-Kotlin is not a language I use (yet) but at YNAB we are evaluating using its [multiplatform capability](https://kotlinlang.org/docs/reference/multiplatform.html) to enable writing code in Kotlin that can be compiled down to JVM (for Andriod), Native (for iOS), and JavaScript (for Web).  The prospect of us being able to share code in this way is compelling so we want to learn more.
+Kotlin is not a language I use (yet) but at YNAB we are evaluating using its [multiplatform capability](https://kotlinlang.org/docs/reference/multiplatform.html) to enable writing code in Kotlin that can be compiled down to JVM (for Android), Native (for iOS), and JavaScript (for Web).  The prospect of us being able to share code in this way is compelling so we want to learn more.
 
 I walked away admiring the Kotlin language, impressed with its community, and hopeful for the future in regards to multiplatform support and features.
 

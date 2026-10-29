@@ -18,7 +18,7 @@ _settings.json_
 }
 ```
 
-Drop the module file [json_mod](https://gist.github.com/bradymholt/17cb99185c7b80b0f34a) in a folder name `/library` in your playbook directory and use it like this:
+Drop the module file [json_mod](https://gist.github.com/bradymholt/17cb99185c7b80b0f34a) in a folder named `/library` in your playbook directory and use it like this:
 
 ```yaml
 - name: update config values
@@ -29,7 +29,7 @@ Drop the module file [json_mod](https://gist.github.com/bradymholt/17cb99185c7b8
 ```
 
 That's it. The implementation is pretty simple and it only supports top level properties in the JSON file but I'd like to eventually improve it to support nested objects and array items
-using [this nify JavaScript function to access nested properties by key](http://stackoverflow.com/a/6491621/626911).
+using [this nifty JavaScript function to access nested properties by key](http://stackoverflow.com/a/6491621/626911).
 
 Here's the _json_mod_ module. Enjoy!
 

@@ -7,15 +7,15 @@ Have you heard about the new Raspberry Pi computer?  From the <a href="http://w
 
 **Basically, it&#8217;s an insanely cheap computer ($35) that you can do all sorts of geeky things with.  Go get one NOW (and then come back).**
 
-I waited 3 long months for my Raspberry Pi to arrive after ordering and boy was it was worth the wait!  I love this little thing.  I loaded the recommended image &#8220;Wheezy&#8221; on it and played around for awhile before quickly moving to <a href="http://archlinuxarm.org/platforms/armv6/raspberry-pi" target="_blank">Arch Linux ARM</a> which I know well since I&#8217;ve had it running on my <a href="/my-pogoplug-geek-toy/" target="_blank">PogoPlug</a> for almost 2 years.
+I waited 3 long months for my Raspberry Pi to arrive after ordering and boy was it worth the wait!  I love this little thing.  I loaded the recommended image &#8220;Wheezy&#8221; on it and played around for awhile before quickly moving to <a href="http://archlinuxarm.org/platforms/armv6/raspberry-pi" target="_blank">Arch Linux ARM</a> which I know well since I&#8217;ve had it running on my <a href="/my-pogoplug-geek-toy/" target="_blank">PogoPlug</a> for almost 2 years.
 
 After tinkering for awhile I kept trying to come up with a project for it.  There are<a href="http://pingbin.com/2012/12/30-cool-ideas-raspberry-pi-project/" target="_blank"> so many cool Raspberry Pi projects</a> out there right now and it&#8217;s easy to get excited about tackling one of them.  I&#8217;ve had my eye on the <a href="http://www.daveakerman.com/?p=592" target="_blank">High Altitude Ballooning Pi project</a> where you send your Pi to space to take pictures and track its movement with GPS.  Come on now, tell me that isn&#8217;t cool.
 
-Anyway, I finally came up with an idea for a project.  I am responsible for recording the Sunday morning lesson in our church Sunday school class.  For the last 3 years the Sunday morning process has been to buy and bring CDRs, queue up the mic and recording system setup in the room, take the CDR home, rip it, encode the WAV to MP3 and upload it so it is available for Podcasting.  Whew, that&#8217;s a lot of steps.  Because it&#8217;s such a cumbersome process, it&#8217;s been hard to keep up with and easy to &#8220;forget&#8221; from time to time.  Also, it&#8217;s hard to train other volunteers on how to do the process end-to-end.  Since we already have a nice high quality microphone and mic amp setup in the room, I thought I would use the Pi to automatically record the audio and make it available as a Podcast.
+Anyway, I finally came up with an idea for a project.  I am responsible for recording the Sunday morning lesson in our church Sunday school class.  For the last 3 years the Sunday morning process has been to buy and bring CDRs, cue up the mic and recording system setup in the room, take the CDR home, rip it, encode the WAV to MP3 and upload it so it is available for Podcasting.  Whew, that&#8217;s a lot of steps.  Because it&#8217;s such a cumbersome process, it&#8217;s been hard to keep up with and easy to &#8220;forget&#8221; from time to time.  Also, it&#8217;s hard to train other volunteers on how to do the process end-to-end.  Since we already have a nice high quality microphone and mic amp setup in the room, I thought I would use the Pi to automatically record the audio and make it available as a Podcast.
 
 <img class="wp-image-1359" alt="IMG_0037" src="IMG_0037.jpg" width="592" height="443" />
 
-So, that&#8217;s exactly what I did.  It turned out to be a fun project and has been working for the last couple of weeks.  I found an old USB Belkin Wireless G Adapter (F5D7050/v4000) lying around which I used for wifi connectivity to our church&#8217;s wifi hotspot.  Since the Pi doesn&#8217;t have mic input capability I bought a $10 USB Sabrent sound card w/ mic input (SBCV/UP-100) from Micro Center which was easy to get up and working with the help of the <a href="https://wiki.archlinux.org/index.php/Advanced_Linux_Sound_Architecture" target="_blank">ALSA guide on the Arch Linux wiki</a>.   I bought an RCA to 3.5mm audio cable to hook up the mic amp output to the 3.5mm mic input on the USB sound card.
+So, that&#8217;s exactly what I did.  It turned out to be a fun project and has been working for the last couple of weeks.  I found an old USB Belkin Wireless G Adapter (F5D7050/v4000) lying around which I used for wifi connectivity to our church&#8217;s wifi hotspot.  Since the Pi doesn&#8217;t have mic input capability I bought a $10 USB Sabrent sound card w/ mic input (SBCV/UP-100) from Micro Center which was easy to get up and working with the help of the <a href="https://wiki.archlinux.org/title/Advanced_Linux_Sound_Architecture" target="_blank">ALSA guide on the Arch Linux wiki</a>.   I bought an RCA to 3.5mm audio cable to hook up the mic amp output to the 3.5mm mic input on the USB sound card.
 
 I have cron running the following script every Sunday morning at 11:00AM (when class starts) to record for one hour (podcast-record.sh 3600).  Obviously, I took out my credentials and such but this should be enough to give you an idea of what I&#8217;m doing.  This script does the following:
 
@@ -33,7 +33,7 @@ I have cron running the following script every Sunday morning at 11:00AM (when c
 
 FILENAME=$(date +"%Y%m%d_%H%M")
 
-#record with sudo since arecord seems to want root privledges
+#record with sudo since arecord seems to want root privileges
 sudo arecord -f dat -d $1 ./record/${FILENAME}.wav
 [ $? -eq 0 ] || exit $?
 

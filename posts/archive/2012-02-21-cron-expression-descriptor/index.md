@@ -15,7 +15,7 @@ So, I wrote my own.  Why not?  It turned out to be a fun programming challenge
 
 ## Introducing Cron Expression Descriptor
 
-Cron Expression Descriptor is an open source C# library that converts cron expressions into human readable string.
+Cron Expression Descriptor is an open source C# library that converts cron expressions into human readable strings.
 
 ### Examples
 
@@ -31,4 +31,4 @@ Cron Expression Descriptor is an open source C# library that converts cron expr
 
 ## More Info / Download
 
-To learn more about this project and to get information on downloading, visit the project page at <a href="http://cronexpressiondescriptor.azurewebsites.net/" target="_blank">http://cronexpressiondescriptor.azurewebsites.net/</a>
+To learn more about this project and to get information on downloading, visit the project page at <a href="https://github.com/bradymholt/cron-expression-descriptor" target="_blank">https://github.com/bradymholt/cron-expression-descriptor</a>

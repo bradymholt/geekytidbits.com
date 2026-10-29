@@ -45,7 +45,7 @@ This approach has the advantage that it still lets the client leverage its cache
 
 #### A Working Example
 
-Below is a full-blown ASP.NET working example that demonstrates how to write the correct headers and respond with a 304 Not Modified response. Note: ImageContainer shown below is an arbitrary type containing an image I defined elsewhere in my own solution. In your case, you might be storing your image in a different way but the only thing that matters is being able to determine a timestamp (UpdatedAtUTC property in my case) so you know if the image has changed. If, for example, you are using handling an image stored on the server filesystem you might use something like File.GetLastWriteTime(@&#8221;c:\\images\\myimage.png&#8221;) to get the timestamp.
+Below is a full-blown ASP.NET working example that demonstrates how to write the correct headers and respond with a 304 Not Modified response. Note: ImageContainer shown below is an arbitrary type containing an image I defined elsewhere in my own solution. In your case, you might be storing your image in a different way but the only thing that matters is being able to determine a timestamp (UpdatedAtUTC property in my case) so you know if the image has changed. If, for example, you are handling an image stored on the server filesystem you might use something like File.GetLastWriteTime(@&#8221;c:\\images\\myimage.png&#8221;) to get the timestamp.
 
 ```csharp
 public class MyImageResourceHandler : IHttpHandler, IReadOnlySessionState

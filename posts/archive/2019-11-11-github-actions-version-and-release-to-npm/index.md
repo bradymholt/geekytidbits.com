@@ -4,7 +4,7 @@ title: GitHub Actions Version and Release to npm
 
 I have been playing with [GitHub Actions](https://github.com/features/actions) quite a bit recently at YNAB and for some personal projects and it has been fun.  Most recently I got [xertz](https://github.com/bradymholt/xertz), my static site generator project, running on GitHub Actions for build/test and releases to the npm registry.
 
-I wanted to walk through the workflow I wrote to release a new version to the npm registry.  With this workflow, when I merge a PR, a new release will be tagged and pushed up to npm.  This is one less thing I have to do manually when I want to get a change out to a package I manage.  Automated scripts for deploying to npm are certainly not a new things but getting this working on GitHub Actions was a new thing for me.
+I wanted to walk through the workflow I wrote to release a new version to the npm registry.  With this workflow, when I merge a PR, a new release will be tagged and pushed up to npm.  This is one less thing I have to do manually when I want to get a change out to a package I manage.  Automated scripts for deploying to npm are certainly not a new thing but getting this working on GitHub Actions was a new thing for me.
 
 The full workflow script is [in the xertz repository](https://github.com/bradymholt/xertz/blob/master/.github/workflows/publish.yml) so if you just want to take a quick look, please do.
 
@@ -52,7 +52,7 @@ So far, my workflow will run using the latest commit on the master branch, after
 - name: npm install
   run: npm install
 ```
-Next, I'm going to setup some git config (user.name and user.email) in preparation of pushing new git tags up to GitHub.  `$GITHUB_ACTOR` is an automatically available environment variable and is the "the name of the person or app that initiated the workflow", which in this case will be my down GitHub username (bradymholt) since I will be the one merging Pull Requests which triggers the workflow.
+Next, I'm going to setup some git config (user.name and user.email) in preparation of pushing new git tags up to GitHub.  `$GITHUB_ACTOR` is an automatically available environment variable and is "the name of the person or app that initiated the workflow", which in this case will be my own GitHub username (bradymholt) since I will be the one merging Pull Requests which triggers the workflow.
 
 ```yaml
 - name: version and publish

@@ -13,13 +13,13 @@ The line was already wrapped around the building.  In line, I chatted with some 
 were skeptical and fearing Microsoft was moving in the direction of Apple where settings were abstracted and you had less control.  Others had nothing but excitement
 for the world's newest operating system.  My opinion was somewhere between these extremes.
 
-Once I finally made it inside the store and grabbed my Windows 95 _uprade_ box, I headed for the cashier line and prepared to pay the $109.95 (plus tax) price tag.  I
+Once I finally made it inside the store and grabbed my Windows 95 _upgrade_ box, I headed for the cashier line and prepared to pay the $109.95 (plus tax) price tag.  I
 had been mowing lawns to save up for this important purchase.  That was a lot of money for me but I didn't think twice about it.
 
-My mom came back and got me around 9:30 and when we got home I popped the CD in my Unisys 386 computer and started the installation process.  It took for what seemed
+My mom came back and got me around 9:30 and when we got home I popped the CD in my Unisys 386 computer and started the installation process.  It took what seemed
 like forever but once it installed and booted, I was ecstatic.  The interface was clean, fresh, and it felt so much more advanced than Windows 3.1.
 
-It didn't take too before I discovered and kicked back to watch the 2 music videos on the installation CD: [Edie Brickell - Good Times](https://www.youtube.com/watch?v=iqL1BLzn3qc) and [Weezer - Buddy Holly](https://www.youtube.com/watch?v=ApN2eLI4d-4).
+It didn't take too long before I discovered and kicked back to watch the 2 music videos on the installation CD: [Edie Brickell - Good Times](https://www.youtube.com/watch?v=iqL1BLzn3qc) and [Weezer - Buddy Holly](https://www.youtube.com/watch?v=ApN2eLI4d-4).
 
 
 

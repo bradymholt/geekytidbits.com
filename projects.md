@@ -7,16 +7,16 @@ In my spare time I like to work on open source software projects.  Not only do 
 
 - [pgFormatter](https://marketplace.visualstudio.com/items?itemName=bradymholt.pgFormatter) - A VS Code extension that formats PostgreSQL SQL
 - [aspnet-core-react-template](https://github.com/bradymholt/aspnet-core-react-template) - ASP.NET Core / React SPA Template App
-- [Cron Expression Descriptor](http://cronexpressiondescriptor.azurewebsites.net/) - A C# library that converts cron expressions into localized human readable strings
+- [Cron Expression Descriptor](https://github.com/bradymholt/cron-expression-descriptor) - A C# library that converts cron expressions into localized human readable strings
 - [jsh](https://github.com/bradymholt/jsh) - Helpers for Bash like shell scripting in JavaScript
 - [Daily WTF JavaScript](https://dailywtfjs.geekytidbits.com/) - A simple website that displays a WTF JavaScript snippet that rotates each day
-- [cRonstrue](https://github.com/bradymholt/cronstrue) - A JavaScript library that converts cron expressions into human readable descriptions (ported to JavsScript from [Cron Expression Descriptor](https://github.com/bradymholt/cron-expression-descriptor)).
+- [cRonstrue](https://github.com/bradymholt/cronstrue) - A JavaScript library that converts cron expressions into human readable descriptions (ported to JavaScript from [Cron Expression Descriptor](https://github.com/bradymholt/cron-expression-descriptor)).
 - [dbup-consolescripts](https://github.com/bradymholt/dbup-consolescripts) - NuGet Package Manager Console scripts for [DbUp](https://dbup.github.io/)
 - [dbup-sqlserver-scripting](https://github.com/bradymholt/dbup-sqlserver-scripting) - SQL Server object definition scripting for [DbUp](https://dbup.github.io/) (NuGet, SQL Server)
 - [veritas](https://github.com/bradymholt/veritas) - A web application for social groups to share contact info, calendar events, track attendance and more. (Rails, jQuery, MySQL)
 - [vistaicm-server](https://github.com/bradymholt/vistaicm-server) - A Node.js app that works with the VISTA-ICM module to control VISTA (10/15/20/21/50/128/250) alarm panels
 - [openbank](https://github.com/bradymholt/openbank) - A friendly REST service wrapper for OFX bank servers (Nancy, C#, PhantomJS, CasperJS)
 - [Bento Budget](https://github.com/bradymholt/bento-budget-app) - Envelope based budgeting web application (Rails, MySQL, jQuery)
-- [ansible-rails](https://github.com/bradymholt/ansible-rails) - Ansible playbooks for provisioning and depoying to a Rails webserver
+- [ansible-rails](https://github.com/bradymholt/ansible-rails) - Ansible playbooks for provisioning and deploying to a Rails webserver
 
 For a complete list, check out my [GitHub Repositories](https://github.com/bradymholt?tab=repositories).
