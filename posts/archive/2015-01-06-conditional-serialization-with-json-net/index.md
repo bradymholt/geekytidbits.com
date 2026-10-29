@@ -31,4 +31,4 @@ public class UserViewModel {
 ```
 
 [1]: http://lostechies.com/jimmybogard/2012/04/10/asp-net-web-api-mvc-viewmodels-and-formatters/
-[2]: http://james.newtonking.com/json
+[2]: https://www.newtonsoft.com/json

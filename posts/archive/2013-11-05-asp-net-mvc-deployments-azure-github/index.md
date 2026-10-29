@@ -13,7 +13,7 @@ Here&#8217;s an example of  how you do it:
 
 ### Create ASP.NET MVC Solution
 
-Normally you&#8217;ll already have a solution you&#8217;re working with you want to use but for demonstration purposes I will create new ASP.NET MVC 4 Solution called _foo_ and save it locally.
+Normally you&#8217;ll already have a solution you&#8217;re working with that you want to use but for demonstration purposes I will create new ASP.NET MVC 4 Solution called _foo_ and save it locally.
 
 <img class="wp-image-1876 alignnone" alt="aspmvc4" src="aspmvc4.png" width="613" height="160" />
 
@@ -33,7 +33,7 @@ git remote add origin git@github.com:username/foo.git
 git push -u origin master</pre>
 ```
 
-### Setup new Azure Website
+### Set up new Azure Website
 
 If you know how to use the Azure Management interface then you know this is easy.  Just click &#8220;Web Sites&#8221; on the left bar, then click &#8220;New&#8221; at the bottom left.  Click &#8220;Quick Create&#8221;, give it a name and then you are good to go.  It will initialize and be ready in a matter of seconds.
 
@@ -51,7 +51,7 @@ You&#8217;ll want to pull up the new web site you just created and then go to th
 
 When Azure pulls your source from GitHub and compiles it, it will have to resolve any assembly references.  There are two ways to handle this:
 
-1. **Check your packages folder (from the solution directory) into GitHub &#8211;** This is straight forward and the least issue prone way to handle references.  Just ensure you commit the packages folder which contain all your assembly .dll references.  If all your external dependencies were added from NuGet you should be good to go.  If you have any assembly references that are not in NuGet you can place them in the packages folder directly and change the reference to point to this location.  This way, when Azure compiles your site, all the assembly .dll files will be available in the packages folder and you&#8217;ll be set.
-2. **Enable NuGet Package Restore** &#8211; To avoid checking in the packages folder (which could be quite large and go against everything that has been pounded in your head about source control best practices), you can <a href="http://blog.maartenballiauw.be/post/2012/06/07/Use-NuGet-Package-Restore-to-avoid-pushing-assemblies-to-Windows-Azure-Websites.aspx" target="_blank">Enable NuGetPackage Restore</a> which will tell Azure to download package references from NuGet.  You need to make sure and commit the **packages.config **file from your project directory so Azure will know which packages to install.
+1. **Check your packages folder (from the solution directory) into GitHub &#8211;** This is straightforward and the least issue prone way to handle references.  Just ensure you commit the packages folder which contain all your assembly .dll references.  If all your external dependencies were added from NuGet you should be good to go.  If you have any assembly references that are not in NuGet you can place them in the packages folder directly and change the reference to point to this location.  This way, when Azure compiles your site, all the assembly .dll files will be available in the packages folder and you&#8217;ll be set.
+2. **Enable NuGet Package Restore** &#8211; To avoid checking in the packages folder (which could be quite large and go against everything that has been pounded in your head about source control best practices), you can <a href="https://blog.maartenballiauw.be/post/2012/06/07/use-nuget-package-restore-to-avoid-pushing-assemblies-to-windows-azure-websites.html" target="_blank">Enable NuGet Package Restore</a> which will tell Azure to download package references from NuGet.  You need to make sure and commit the **packages.config **file from your project directory so Azure will know which packages to install.
 
 [2]: http://git-scm.com/downloads/guis

@@ -2,7 +2,7 @@
 title: Automatic installation of recommended VS Code Extensions
 ---
 
-[Recommended extensions](https://code.visualstudio.com/docs/editor/extension-marketplace#_recommended-extensions) in VS Code are a useful way to keep a development team on the same page.  You can recommend extensions that perform formatting when saving files, show lint warning, and many other things that are useful when collaborating together on a codebase.
+[Recommended extensions](https://code.visualstudio.com/docs/editor/extension-marketplace#_recommended-extensions) in VS Code are a useful way to keep a development team on the same page.  You can recommend extensions that perform formatting when saving files, show lint warnings, and many other things that are useful when collaborating together on a codebase.
 
 If extensions are recommended, VS Code users should see the following popup when opening the workspace folder:
 

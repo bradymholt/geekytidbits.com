@@ -3,7 +3,7 @@ title: Opening Garage Doors with a Raspberry Pi
 permalink: /open-garage-doors-raspberry-pi/
 ---
 
-About 5 years ago, [I wrote about a solution](/iphone-control-house-alarm-and-garage-doors/) I had for controlling my garage doors from my phone. It was a fun project and generally has been working well. However, the triggering mechanism relies upon X10 through my Honeywell Vista 20-P alarm panel and is therefore not very transferable to others wanting to do a similar project. When friends ask about it and the possibility of doing their own similar project, I always have to hestitate a bit and say "well, it's a pretty specific setup to my house and equipment". I really have wanted to say "sure, here's a blog post showing you each step so you can do a project for yourself".
+About 5 years ago, [I wrote about a solution](/iphone-control-house-alarm-and-garage-doors/) I had for controlling my garage doors from my phone. It was a fun project and generally has been working well. However, the triggering mechanism relies upon X10 through my Honeywell Vista 20-P alarm panel and is therefore not very transferable to others wanting to do a similar project. When friends ask about it and the possibility of doing their own similar project, I always have to hesitate a bit and say "well, it's a pretty specific setup to my house and equipment". I really have wanted to say "sure, here's a blog post showing you each step so you can do a project for yourself".
 
 I've been having more issues with X10 interference lately and decided to dust off one of my Raspberry Pi devices and put it to use as an alternative solution that should surely be more reliable and a fun project along the way!
 
@@ -41,17 +41,17 @@ Using 4 Female to Female jumper wires, connect the Raspberry Pi to the relay:
 
 Now that the relay is connected to the pins, it's time to setup the OS and software we will use to control the relays.
 
-[Arch Linux ARM](https://archlinuxarm.org/) will be used as the OS and the [raspberrypi-relay-controller](https://github.com/bradymholt/raspberrypi-relay-controller) project will be used to provision the Pi with Ansible and install all necessary software. This will make setting up the Raspberry Pi software very straightforward. Rather than rehashing all the raspberrypi-relay-controller instructions here, simply follow the [README](https://github.com/bradymholt/raspberrypi-relay-controller/blob/master/README.md) step-by-step. In short, you will doing the following:
+[Arch Linux ARM](https://archlinuxarm.org/) will be used as the OS and the [raspberrypi-relay-controller](https://github.com/bradymholt/raspberrypi-relay-controller) project will be used to provision the Pi with Ansible and install all necessary software. This will make setting up the Raspberry Pi software very straightforward. Rather than rehashing all the raspberrypi-relay-controller instructions here, simply follow the [README](https://github.com/bradymholt/raspberrypi-relay-controller/blob/master/README.md) step-by-step. In short, you will be doing the following:
 
 1. Install Arch Linux ARM on SD card and then booting the Raspberry Pi
-2. Setup up key-based authentication for root user
+2. Set up key-based authentication for root user
 3. Run Ansible playbook to provision all necessary software and configuration
 
 Once you are done with the instructions, you should be able to open http://[raspberry_ip_address]:3000 in a browser and see the following simple web interface that allows triggering of the relays.
 
 ![Relay Web Interface](relay-controller-web-interface.png)
 
-Although there are several components at play, the actual control of the relay is handled by a [Node.js process](https://github.com/bradymholt/raspberrypi-relay-controller/blob/master/roles/relay-rest-api/templates/server.js.j2) that utilizies [rpio](https://github.com/jperkin/node-rpio) to trigger the relay temporarily using this block of code:
+Although there are several components at play, the actual control of the relay is handled by a [Node.js process](https://github.com/bradymholt/raspberrypi-relay-controller/blob/master/roles/relay-rest-api/templates/server.js.j2) that utilizes [rpio](https://github.com/jperkin/node-rpio) to trigger the relay temporarily using this block of code:
 
 ```js
 function toggleGpioPinOn(pin, durationMilliseconds) {
@@ -66,7 +66,7 @@ function toggleGpioPinOn(pin, durationMilliseconds) {
 }
 ```
 
-## Conection to Garage Door Openers
+## Connection to Garage Door Openers
 
 1. Run `sudo shutdown` and then unplug the Pi
 2. Connect 2 wires from each garage door opener switch contacts to the relay. The switch contacts are usually labeled White and Black and will be the same ones your wall switch(es) are attached to.
@@ -89,6 +89,6 @@ Here's a video showing the final setup:
 ## Going Further
 
 1. Get a [project box like this one](https://www.amazon.com/dp/B0002BBQUU) and enclose everything nicely.
-2. Fork [raspberrypi-relay-controller](https://github.com/bradymholt/raspberrypi-relay-controller) and customize the web interface, such as [changing the button labels](https://github.com/bradymholt/raspberrypi-relay-controller/blob/master/roles/relay-rest-api/templates/index.html#L41-L42). Then, simply run `./provision.sh` again to push out the updates.
+2. Fork [raspberrypi-relay-controller](https://github.com/bradymholt/raspberrypi-relay-controller) and customize the web interface, such as [changing the button labels](https://github.com/bradymholt/raspberrypi-relay-controller/blob/master/roles/relay-rest-api/templates/index.html.j2#L41-L42). Then, simply run `./provision.sh` again to push out the updates.
 3. Integrate with another system utilizing the [simple REST API](https://github.com/bradymholt/raspberrypi-relay-controller/blob/master/roles/relay-rest-api/templates/server.js.j2#L39-L40).
 4. Get a [magnetic contact switch like this](https://www.amazon.com/Honeywell-951WG-WH-Recessed-Magnetic-Contact/dp/B001UKY1A4) and use [rpio](https://github.com/jperkin/node-rpio) to detect if the door is open or closed.

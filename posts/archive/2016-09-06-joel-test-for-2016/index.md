@@ -23,7 +23,7 @@ The Joel Test was **written 16 years ago** in the year 2000!  That is a _really_
 - 2001 - Agile Alliance formed
 - 2001 - OS X released
 - 2002 - .NET Framework initial release
-- 2004 - FaceBook launch
+- 2004 - Facebook launch
 - 2005 - Ruby on Rails initial release
 - 2006 - Amazon Web Services launched
 - 2007 - Twitter launch
@@ -36,7 +36,7 @@ The Joel Test was **written 16 years ago** in the year 2000!  That is a _really_
 
 A lot of things have happened since then.  I certainly realize that the passage of time does not automatically prescribe that things change and I will be one of the first to point out that fundamentals rarely change in the world of software development.  However, 16 years is long enough that some fundamentals can start to be challenged.  It should be long enough for mistakes to have been made and more lessons to have been learned.
 
-Lately I have been seeing some blog posts around that pitch what an updated Joel Test would look like.  I like this idea and thought it would be fun to propose my own.  Please know, just because I drop a few of the original items from the original test, this does not mean I do not think they are not important.  Rather, I chose to list things that I think are important and _relevant_ in the current software development landscape.  So, for example, below you'll notice I omit Joel's original #1 - "Do you use source control?".  I still think source control is a _must_ but thankfully so do 98% of other software developers out there today (maybe in no small part thanks to The Joel Test!).
+Lately I have been seeing some blog posts around that pitch what an updated Joel Test would look like.  I like this idea and thought it would be fun to propose my own.  Please know, just because I drop a few of the original items from the original test, this does not mean I think they are not important.  Rather, I chose to list things that I think are important and _relevant_ in the current software development landscape.  So, for example, below you'll notice I omit Joel's original #1 - "Do you use source control?".  I still think source control is a _must_ but thankfully so do 98% of other software developers out there today (maybe in no small part thanks to The Joel Test!).
 
 So, here we go.  In no particular order, this is **my list**:
 
@@ -51,6 +51,6 @@ So, here we go.  In no particular order, this is **my list**:
 1. **Does the team communicate regularly?** - Be it a daily stand-up, culture supporting ad-hoc meetings or scheduled one-on-ones, is there regular communication among the team members that supports collaboration, accountability and productivity?
 1. **Do new candidates write code during their interview?** - This is another one I'll certainly leave on the list.  I am glad to see most shops requiring candidates write code during interviews these days.  Be it an in-person whiteboard exercise or a remote [CoderPad](https://coderpad.io/) problem, candidates should be writing code during the interview process!
 
-Look there, I only have 10.  I'm fine with that and think the above list is good litmus test for a healthy, productive modern software development team.  I'd be proud to be on a team where all 10 of these are present.  Actually, I am on a team like this, at [YNAB](https://www.youneedabudget.com/)!
+Look there, I only have 10.  I'm fine with that and think the above list is a good litmus test for a healthy, productive modern software development team.  I'd be proud to be on a team where all 10 of these are present.  Actually, I am on a team like this, at [YNAB](https://www.youneedabudget.com/)!
 
- ¹ - quote pulled from [SO jobs](http://www.stackoverflow.com/jobs")
+ ¹ - quote pulled from [SO jobs](http://www.stackoverflow.com/jobs)

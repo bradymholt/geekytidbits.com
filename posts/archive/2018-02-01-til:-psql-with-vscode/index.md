@@ -3,7 +3,7 @@ title: "TIL: psql with VS Code"
 permalink: /til:-psql-with-vscode/
 ---
 
-I was catching up on my Feedly yesterday and ran across [Postgres Hidden Gems](http://www.craigkerstiens.com/2018/01/31/postgres-hidden-gems/) by Craig Kerstein.  There are some really neat things in that list!
+I was catching up on my Feedly yesterday and ran across [Postgres Hidden Gems](http://www.craigkerstiens.com/2018/01/31/postgres-hidden-gems/) by Craig Kerstiens.  There are some really neat things in that list!
 One thing that caught my eye was this one:
 
 > @l_avrot – The fact that we can use vim editor in psql
@@ -12,7 +12,7 @@ Really?  I didn't know that.  Tell me more.  So I Googled a bit and of course an
 
 My "editor of choice" is [VS Code](https://code.visualstudio.com/) and when I attempted to use `\e` with my `EDITOR` var set to "code" it did not work.  The current query was not passed to VS Code and when saving the file from VS Code, nothing got sent back to psql.
 
-More Googling and fiddling and I found that I needed to add the `-w` parameter when launching VS Code so that it would "Wait for the files to be closed before returning.", per the `--help` output.  Also, I learned that you can use `PSQL_EDITOR` to set the editor specific to psql, which I prefer because I like keeping `EDITOR` set to vim for varios shell things.  Editing SQL, however, I would much prefer to do in VS Code rather than vim, thank you very much.  So, now I have the following environment variable defined in my .zshrc:
+More Googling and fiddling and I found that I needed to add the `-w` parameter when launching VS Code so that it would "Wait for the files to be closed before returning.", per the `--help` output.  Also, I learned that you can use `PSQL_EDITOR` to set the editor specific to psql, which I prefer because I like keeping `EDITOR` set to vim for various shell things.  Editing SQL, however, I would much prefer to do in VS Code rather than vim, thank you very much.  So, now I have the following environment variable defined in my .zshrc:
 
 ```
 export PSQL_EDITOR="code -w"

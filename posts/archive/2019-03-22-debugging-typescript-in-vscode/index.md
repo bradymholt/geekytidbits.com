@@ -46,7 +46,7 @@ Now, start debugging in VSCode:
 
 ![Start Debug in VSCode](vscode-debugging.png)
 
-Volila!  You're now debugging your TypeScript without having to fuss with an intermediate transpile step or fussing with sourcemap settings.
+Voila!  You're now debugging your TypeScript without having to fuss with an intermediate transpile step or fussing with sourcemap settings.
 
 I've created a repo called [vscode-debugging-ts-code](https://github.com/bradymholt/vscode-debugging-ts-code) that has all of the setup correctly.  Using this project looks like this:
 

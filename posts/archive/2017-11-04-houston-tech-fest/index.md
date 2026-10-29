@@ -9,4 +9,4 @@ Here is the [presentation](https://docs.google.com/presentation/d/1FVZNNydOBIe7J
 
 <iframe src="https://docs.google.com/presentation/d/1FVZNNydOBIe7JOPXx-Zrf1ZqAA8gOzIdFVuJvVtkzRo/embed?start=false&loop=false&delayms=3000" frameborder="0" width="750" height="450" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 
-The example skill is demonstrated was called "Guitar Ace" and the source code for it is here on GitHub: [https://github.com/bradymholt/alexa-guitar-ace](https://github.com/bradymholt/alexa-guitar-ace).
+The example skill I demonstrated was called "Guitar Ace" and the source code for it is here on GitHub: [https://github.com/bradymholt/alexa-guitar-ace](https://github.com/bradymholt/alexa-guitar-ace).

@@ -1,11 +1,11 @@
 ---
-title: Foot Pedal Facet
+title: Foot Pedal Faucet
 permalink: /foot-pedal-facet/
 ---
 
-About a year ago I was visiting a friend, Greg, at his home and went to wash my hands in his kitchen sink.  The facet was already on and I couldn&#8217;t figure out why the water wasn&#8217;t coming out.  He laughed and said &#8220;push the pedal with your foot&#8221;.  Sure enough, there was a foot pedal on the floor and pressing it down made the water come out.  Cool!  Besides being interesting and geeky, he pointed out that it actually helps save water when doing dishes because you can push the pedal down to wash a dish and then easily release temporarily before doing the next dish.  I spent the next 20 minutes asking questions about how he got it working and Greg was more than happy to give me the details and take me on a tour under his sink.  It was a pretty neat setup, complete with a manual bypass and switch override, but the heart of the system was a couple of electric solenoids.  Solenoids are water valves that are normally closed but open when given some direct current electricity.
+About a year ago I was visiting a friend, Greg, at his home and went to wash my hands in his kitchen sink.  The faucet was already on and I couldn&#8217;t figure out why the water wasn&#8217;t coming out.  He laughed and said &#8220;push the pedal with your foot&#8221;.  Sure enough, there was a foot pedal on the floor and pressing it down made the water come out.  Cool!  Besides being interesting and geeky, he pointed out that it actually helps save water when doing dishes because you can push the pedal down to wash a dish and then easily release temporarily before doing the next dish.  I spent the next 20 minutes asking questions about how he got it working and Greg was more than happy to give me the details and take me on a tour under his sink.  It was a pretty neat setup, complete with a manual bypass and switch override, but the heart of the system was a couple of electric solenoids.  Solenoids are water valves that are normally closed but open when given some direct current electricity.
 
-A few months later, for my birthday, my parents and wife got me the parts needed to make my own foot pedal sink.  I called up Greg and get some details on the setup and he walked me through what I would need do.  I installed it a few weeks later and have had it working for months.
+A few months later, for my birthday, my parents and wife got me the parts needed to make my own foot pedal sink.  I called up Greg and got some details on the setup and he walked me through what I would need to do.  I installed it a few weeks later and have had it working for months.
 
 <iframe src="//www.youtube.com/embed/4RB7EyK_rxA" height="315" width="560" allowfullscreen="" frameborder="0"></iframe>
 
@@ -26,7 +26,7 @@ The installation at first glance seems a bit complex but it is fairly straightfo
 2. Connect the negative D/C side of the supply directly to both the hot/cold side solenoids.  You will do a &#8220;Y&#8221; wiring configuration so both solenoids are getting the same negative D/C wire connection.
 3. Send positive D/C through both the bypass light-switch and foot pedal and then join the output from both back before doing a &#8220;Y&#8221; connection to both the hot/cold solenoid sides.  This allows either the bypass switch or the foot pedal to close the circuit and provide positive D/C current to the solenoids.
 
-<img class="alignnone size-full wp-image-1929" alt="Foot Pedal Facet" src="Foot-Pedal-Facet1.png" width="522" height="339" />
+<img class="alignnone size-full wp-image-1929" alt="Foot Pedal Faucet" src="Foot-Pedal-Facet1.png" width="522" height="339" />
 
 <img src="IMG_20130526_165208.jpg" class="attachment-thumbnail" alt="IMG_20130526_165208" />
 <img src="IMG_20130526_165311.jpg" class="attachment-thumbnail" alt="IMG_20130526_165311" />

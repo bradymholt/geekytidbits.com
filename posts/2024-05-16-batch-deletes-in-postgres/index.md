@@ -5,7 +5,7 @@ title: Batch Deletes in Postgres
 If you need to delete many, many rows in a Postgres table, issuing a single `DELETE` statement can be problematic for a few reasons:
 - It can take a very long time to complete
 - It can lock rows for the duration of the delete leading to blocked queries
-- It can cause the the transaction log to become huge because the delete transaction is so large
+- It can cause the transaction log to become huge because the delete transaction is so large
 
 To work around these issues, you can delete rows in batches.  There are various ways to do this but I prefer the following approach, using a `DELETE ... WHERE ... IN (SELECT ... LIMIT)` query with a [\watch command in psql](https://www.postgresql.org/docs/current/app-psql.htm#APP-PSQL-META-COMMAND-WATCH).
 

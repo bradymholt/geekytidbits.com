@@ -9,7 +9,7 @@ When I originally setup my WordPress site I decided to go with the &#8220;Month 
 
 But once I changed this setting my old post urls were resulting in 404 responses.  Posts linked from other sites and search engines now wouldn&#8217;t come up correctly because WordPress is hosting these at a different url.
 
-I looked for a easy plugin to 301 redirect requests from my old format Urls to the new format (i.e. http://www.geekytidbits.com/**2011/05/geeky-post** to http://www.geekytidbits.com/**geeky-post**) but couldn&#8217;t find one that fit the bill.
+I looked for an easy plugin to 301 redirect requests from my old format Urls to the new format (i.e. http://www.geekytidbits.com/**2011/05/geeky-post** to http://www.geekytidbits.com/**geeky-post**) but couldn&#8217;t find one that fit the bill.
 
 In the end, I simply added the following RedirectMatch rule to my root .htaccess file.
 

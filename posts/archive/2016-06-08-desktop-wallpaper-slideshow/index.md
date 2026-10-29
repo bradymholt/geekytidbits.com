@@ -3,7 +3,7 @@ title: Desktop Wallpaper Slideshow
 permalink: /desktop-wallpaper-slideshow/
 ---
 
-A coworker [@ynab](https://twitter.com/ynab) recently posted on Slack about how they loved the [National Park New Tab Chrome Extenstion](https://chrome.google.com/webstore/detail/national-park-new-tab/kbhpocomjebacaaofccpbkaglnhnghee). I gave it a try and yes, I love it too. I also have a Chromecast and am often calling my wife in the room to see the amazing photo that just popped on as the latest Chromecast background. Being a left-brain person, pretty pictures usually don't get me juiced up but hey, I like what I like.
+A coworker [@ynab](https://twitter.com/ynab) recently posted on Slack about how they loved the [National Park New Tab Chrome Extension](https://chrome.google.com/webstore/detail/national-park-new-tab/kbhpocomjebacaaofccpbkaglnhnghee). I gave it a try and yes, I love it too. I also have a Chromecast and am often calling my wife in the room to see the amazing photo that just popped on as the latest Chromecast background. Being a left-brain person, pretty pictures usually don't get me juiced up but hey, I like what I like.
 
 So, I thought it might be nice to create a script that could automatically change my Desktop Wallpaper on an interval and pull from various sources. You know, a Desktop Wallpaper Slideshow of sorts. I thought it would be fun and might even get my creative juices flowing during the day when I see that amazing photo pop up.
 

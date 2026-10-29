@@ -7,7 +7,7 @@ permalink: /google-assistant-arm-alarm/
   <a href="https://www.youtube.com/watch?v=V_INz5tQLGI"><img src="https://img.youtube.com/vi/V_INz5tQLGI/0.jpg"/></a>
 </iframe>
 
-I've had a [Google Home](https://madeby.google.com/home/) up and running at the house for about two month and finally decided to create a Google Assistant Action for it. I already have [vistaicm-server](https://github.com/bradymholt/vistaicm-server) running and connected to my Honeywell Vista 20P alarm panel so I thought I would create an Action so I could arm and disarm my house alarm system with my voice.
+I've had a [Google Home](https://madeby.google.com/home/) up and running at the house for about two months and finally decided to create a Google Assistant Action for it. I already have [vistaicm-server](https://github.com/bradymholt/vistaicm-server) running and connected to my Honeywell Vista 20P alarm panel so I thought I would create an Action so I could arm and disarm my house alarm system with my voice.
 
 The [Actions Overview](https://developers.google.com/actions/) points you to [API.AI](https://api.ai/) because using it makes Action development very easy. I started building the Action out in the API.AI interface but I ran into 2 issues:
 
@@ -16,7 +16,7 @@ The [Actions Overview](https://developers.google.com/actions/) points you to [AP
 
 Somewhere along the way I realized I didn't need to go through API.AI and it would be a bit more of a learning experience to not do so. It turns out that writing the Action by hand is not terribly hard.
 
-Below is what I learned and how I got it all setup.
+Below is what I learned and how I got it all set up.
 
 ## Overview
 
@@ -86,7 +86,7 @@ With this setup, I can say any of the following:
 
 ### Fulfillment
 
-There is a npm package called [actions-on-google](https://www.npmjs.com/package/actions-on-google) that is the client library for implementing the Conversation API in Node. This client makes it super easy to create a fulfillment service.
+There is an npm package called [actions-on-google](https://www.npmjs.com/package/actions-on-google) that is the client library for implementing the Conversation API in Node. This client makes it super easy to create a fulfillment service.
 
 Here is what my service looks like:
 
@@ -140,7 +140,7 @@ assistant.handleRequest(actionMap);
 
 ## google-action-tiger
 
-After some refining, the final result is a project called [google-action-tiger](https://github.com/bradymholt/google-action-tiger). This project contains all the necessary parts for the Action: The action package, fulfillment code, and provisioning (i.e. "deploy") script. I decided to host the fulfillment service on AWS Lambda because it is really suitable for this type of type of application, especially since HTTPS is baked in.
+After some refining, the final result is a project called [google-action-tiger](https://github.com/bradymholt/google-action-tiger). This project contains all the necessary parts for the Action: The action package, fulfillment code, and provisioning (i.e. "deploy") script. I decided to host the fulfillment service on AWS Lambda because it is really suitable for this type of application, especially since HTTPS is baked in.
 
 ## Usage
 
@@ -157,4 +157,4 @@ I really like how everything is in a single repository and updates are deployed 
 
 ### deploy.sh
 
-I decided to use a bash script for the `deploy.sh` (rather than node) script because the primary interaction is with the AWS and gactions CLI and doing that from node would have ended up just being a bunch of spawning of child processes. Wanting to use the `config` file for _all_ config but also update the `actions.json` file with the `httpExecution.url` from `config` without creating a node script was a little tricky but I settled on passing straight JavsScript code to node using the `-e` parameter [here](https://github.com/bradymholt/google-action-tiger/blob/master/deploy-google-assistant.sh#L10). I am quite happy with how the `deploy.sh` file turned out.
+I decided to use a bash script for the `deploy.sh` (rather than node) script because the primary interaction is with the AWS and gactions CLI and doing that from node would have ended up just being a bunch of spawning of child processes. Wanting to use the `config` file for _all_ config but also update the `actions.json` file with the `httpExecution.url` from `config` without creating a node script was a little tricky but I settled on passing straight JavaScript code to node using the `-e` parameter [here](https://github.com/bradymholt/google-action-tiger/blob/master/deploy-google-assistant.sh#L10). I am quite happy with how the `deploy.sh` file turned out.

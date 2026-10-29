@@ -2,7 +2,7 @@
 title: Communicating Visually While Working Remotely
 ---
 
-One thing I have learned in since I started working remotely about five years ago is that communicating clearly is very important.  Remote working has many benefits but inherently better communication is not one of them.
+One thing I have learned since I started working remotely about five years ago is that communicating clearly is very important.  Remote working has many benefits but inherently better communication is not one of them.
 
 Context can be easily lost.  The other person may be in a different timezone.  Cultural jargon you understand can be lost with other cultures.  There is a time delay when using asynchronous means of communicating (chat, comments).
 
@@ -14,7 +14,7 @@ I've spent quite awhile finding tools I like and setting things up to make me pr
 
 - [macOS screenshots](https://support.apple.com/en-us/HT201361) - The built in tool to "Copy picture of selected area to the clipboard" (mapped to Command + Control + Shift + 4 by default) is easy, fast, and a good tool for quickly selecting an area of my screen.  I use it when I don't need to annotate and I can copy/paste from clipboard to my target app.  ![macOS Screenshot](macos-screenshot.png)
 - [Monosnap](https://monosnap.com/) - When adding some text, drawing a box, or pointing with an arrow will help communicate something more clearly, I use Monosnap.  Also, I like using Monosnap for making videos since it supports easy sharing.  ![Monosnap](monosnap.png)
-- [Gifox](https://gifox.io/) - This is a simple tool for record animated GIFs and has drag/drop support which makes it suitable for quick sharing on GitHub and Slack.  ![Gifox](gifox.png)
+- [Gifox](https://gifox.io/) - This is a simple tool for recording animated GIFs and has drag/drop support which makes it suitable for quick sharing on GitHub and Slack.  ![Gifox](gifox.png)
 
 ## Keyboard Shortcuts
 

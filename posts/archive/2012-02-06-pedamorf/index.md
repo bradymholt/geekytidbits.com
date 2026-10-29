@@ -3,11 +3,11 @@ title: "New Project: pedamorf"
 permalink: /pedamorf/
 ---
 
-There have been many many times when I need to convert *something* to PDF format from a back-end application.  It seems like it&#8217;s hard to find a tool to do the job the way I want it done.  I&#8217;ve resorted to third-party tools on occasion but hate overpaying for tools that bother me with their annoying licensing tricks and do more than what I need for the price I pay.  I decided I needed a server that would accept many types of sources (documents, images, Urls, etc.) and convert them to PDF without a fuss.  Fortunately there  are some great open source tools that I was able to leverage to accomplish this.  I decided assimilate these tools and write an production grade, open source PDF conversion server.
+There have been many many times when I need to convert *something* to PDF format from a back-end application.  It seems like it&#8217;s hard to find a tool to do the job the way I want it done.  I&#8217;ve resorted to third-party tools on occasion but hate overpaying for tools that bother me with their annoying licensing tricks and do more than what I need for the price I pay.  I decided I needed a server that would accept many types of sources (documents, images, Urls, etc.) and convert them to PDF without a fuss.  Fortunately there  are some great open source tools that I was able to leverage to accomplish this.  I decided to assimilate these tools and write a production grade, open source PDF conversion server.
 
 ### Introducing pedamorf
 
-**pedamorf** is a server that converts documents, images, urls, html and text to PDF. It relies heavily upon the excellent open-source projects wkhtml2pdf, Libre Office and iTextSharp. A .NET client library is provided for easy usage.
+**pedamorf** is a server that converts documents, images, urls, html and text to PDF. It relies heavily upon the excellent open-source projects wkhtmltopdf, LibreOffice and iTextSharp. A .NET client library is provided for easy usage.
 
 ### Features
 

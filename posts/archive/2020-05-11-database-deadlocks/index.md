@@ -2,7 +2,7 @@
 title: Database deadlocks
 ---
 
-In a database system, a deadlock happens when two or more transactions wait for one another to release a lock.  When this happens, the only course of action for the database engine is to kill one  of the transaction to unblock the others.
+In a database system, a deadlock happens when two or more transactions wait for one another to release a lock.  When this happens, the only course of action for the database engine is to kill one of the transactions to unblock the others.
 
 Here is a simple visualization of a deadlock:
 

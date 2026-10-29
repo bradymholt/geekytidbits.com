@@ -2,7 +2,7 @@
 title: Introducing jsh
 ---
 
-Back in 2017, I released [jBash](/jbash/), which is a JavaScript library that provides helpers and Bash-like syntax.  The idea was to make writing scripts in JavaScript less verbose and approachable.  I've used it for some side projects and we've used it at [YNAB](https://www.youneedabudget.com/).  I've been generally happy with it and enjoyed not having struggle with the syntax of Bash scripts as much.
+Back in 2017, I released [jBash](/jbash/), which is a JavaScript library that provides helpers and Bash-like syntax.  The idea was to make writing scripts in JavaScript less verbose and approachable.  I've used it for some side projects and we've used it at [YNAB](https://www.youneedabudget.com/).  I've been generally happy with it and enjoyed not having to struggle with the syntax of Bash scripts as much.
 
 Over time, I began to form some stronger opinions for changes I thought would be good for this library.  In particular, while I enjoyed the syntax staying fairly close to Bash, I felt that some of it was a little _too_ close and started to become a burden.  Some examples:
 -  In Bash, to echo all commands you run `set -x` at the top of a script and similarly in jBash, you run `set("-x")`.  While that works and is very similar to Bash, it's not very intuitive.

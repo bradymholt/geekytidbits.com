@@ -18,7 +18,7 @@ Sometimes I come across an existing system that is using DataTables and DataSets
   }
   ```
 
-* Use the the following syntax to fire up a `List<Person>`.
+* Use the following syntax to fire up a `List<Person>`.
 
   ```csharp
   List<Person> people = AutoMapper.Mapper.DynamicMap<IDataReader, List<Person>>(

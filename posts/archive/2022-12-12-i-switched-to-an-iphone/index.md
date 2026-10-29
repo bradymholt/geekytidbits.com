@@ -20,14 +20,14 @@ So why did I switch?  It came down to 3 reasons:
 - Widgets - I always enjoyed Android home screen widgets but in recent years it appears they have fallen out of interest of app developers.  iOS has widgets and they are very polished and useful.  The Weather and Google Calendar widgets are two of my favorites (so far...).
 - The ability to enable "Do Not Disturb" mode "Until I Leave" a location.
 - macOS interoperability:
-  - Universal Clipboard - I love being able to copy text on my MacBook and paste it on my iPhone (and vise-versa)! This is very useful.
+  - Universal Clipboard - I love being able to copy text on my MacBook and paste it on my iPhone (and vice versa)! This is very useful.
   - Calls and Messages - it is very convenient to be able to make / receive phone calls and send / receive messages on my Mac without having to pick up my phone, while sitting at my desk.  Granted, Google has "Messages for Web" that allows you to send / receive messages from a web app but this is only for messages and its _pairing_ mechanism is finicky sometimes.
 
 ### Things I Don't Like
 - Voice Dictation - Voice Dictation on iOS is not up to par with Android.  Android's voice dictation is much faster and more accurate.  I have come to rely upon it heavily, especially for texting.
 - Google Chrome interface - I don't like the interface Chrome has on iOS.  Undoubtedly, Google is trying to make its interface more iOS-like, but I prefer the layout on Android with tabs and navigation buttons on the top.
 - Physical button location - Maybe it's because I'm left handed but I very much prefer to have the power button on the left side of the phone and the volume buttons on the right side and on the iPhone 13, it is exactly the opposite of this.
-- Lightening adapter - Ugh, need I say more?  I had to buy a bunch of adapters which was not fun.
+- Lightning adapter - Ugh, need I say more?  I had to buy a bunch of adapters which was not fun.
 - The inability to schedule text messages - I love this feature on Android and it simply doesn't exist on iOS.
 
 With all things considered, I am very happy and glad I made the switch!

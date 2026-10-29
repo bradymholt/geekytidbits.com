@@ -3,7 +3,7 @@ title: start-stop-daemon with mono-service2
 permalink: /start-stop-daemon-with-mono-service2/
 ---
 
-I wrote a .NET service (i.e. System.ServiceProcess.ServiceBase) and was running it in Arch Linux with the help of mono-service2. I wanted it to behave like another other Linux daemon with start / stop / restart ability so I could start the service at boot easily.
+I wrote a .NET service (i.e. System.ServiceProcess.ServiceBase) and was running it in Arch Linux with the help of mono-service2. I wanted it to behave like any other Linux daemon with start / stop / restart ability so I could start the service at boot easily.
 
 Here is the bash script I finally came up with which I placed in the /etc/rc.d folder and added a DAEMON reference to in the /etc/rc.conf file. If you are using another distribution of Linux, most likely you&#8217;ll want to use the chkconfig command to register the service.
 

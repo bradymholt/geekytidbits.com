@@ -3,7 +3,7 @@ title: CREATE TABLE Contact
 permalink: /create-table-contact/
 ---
 
-From time to time I need to create a table to hold contact information. It seems like almost every (ok maybe not _every_) database has a table that contains information about contacts and/or users.  In an effort to reduce the time it takes write the DDL for this common table, here&#8217;s a simple CREATE statement (SQL Server syntax) to do the work.  Modify and execute to your heart&#8217;s content.
+From time to time I need to create a table to hold contact information. It seems like almost every (ok maybe not _every_) database has a table that contains information about contacts and/or users.  In an effort to reduce the time it takes to write the DDL for this common table, here&#8217;s a simple CREATE statement (SQL Server syntax) to do the work.  Modify and execute to your heart&#8217;s content.
 
 ```sql
 CREATE TABLE dbo.Contact (

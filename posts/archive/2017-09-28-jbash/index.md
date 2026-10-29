@@ -5,7 +5,7 @@ permalink: /jBash/
 
 I love Bash. I hate Bash.
 
-Yeah, that sums of up relationship with Bash pretty well, when it comes to using it for writing shell scripts. The great (and horrible) thing about Bash is that it is bare metal. Using Bash for shell scripts is great because it is such a small abstaction from the commands you are actually going to be running. Want to write a release script for your OSS project to build, package, and upload it to your favorite package manager and then create an associated GitHub release? Bash is a natrual tool for this since you can use it to orchestrate simply calling the various commands to do what you need, just as if you were typing the commands into the shell manually. But, if you go beyond anything basic, things get confusing _fast_. I can barely write anything in Bash non-trival without doing a Google search. To me, that's a problem.
+Yeah, that sums up my relationship with Bash pretty well, when it comes to using it for writing shell scripts. The great (and horrible) thing about Bash is that it is bare metal. Using Bash for shell scripts is great because it is such a small abstraction from the commands you are actually going to be running. Want to write a release script for your OSS project to build, package, and upload it to your favorite package manager and then create an associated GitHub release? Bash is a natural tool for this since you can use it to orchestrate simply calling the various commands to do what you need, just as if you were typing the commands into the shell manually. But, if you go beyond anything basic, things get confusing _fast_. I can barely write anything in Bash non-trivial without doing a Google search. To me, that's a problem.
 
 ## Bash Pitfalls
 
@@ -42,7 +42,7 @@ A one liner! It's so clean and simple in Bash.
 
 Wouldn't it be nice to have the best of both worlds? The simplicity and terseness of Bash with the pleasant and familiar syntax of JavaScript? Also, wouldn't it be nice if we could tap into npm packages easily to use them from our shell scripts? There is a package for just about everything, anyway.
 
-Those were my thoughts and so I wrote jBash. It's a simple JavaScript library that adds Bash like helpers for writing shell scripts in JavaScript. It abstracts some of the verbosity of JavaScript and matches the sytax of your favorite commands in Bash.
+Those were my thoughts and so I wrote jBash. It's a simple JavaScript library that adds Bash like helpers for writing shell scripts in JavaScript. It abstracts some of the verbosity of JavaScript and matches the syntax of your favorite commands in Bash.
 
 Want to echo a variable to the console? It's easy with:
 

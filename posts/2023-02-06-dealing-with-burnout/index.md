@@ -16,11 +16,11 @@ Here are four things I have learned about dealing with burnout:
 
 1. Don't panic
 
-It's temping to freak out when I start to get burned out.  "What does this mean?"  "I can't go on...what am I going to do?"  The thing is, burnout passes so if you're patient you'll get through it.
+It's tempting to freak out when I start to get burned out.  "What does this mean?"  "I can't go on...what am I going to do?"  The thing is, burnout passes so if you're patient you'll get through it.
 
 2. Make a change
 
-Although my situation has many times been out my control I still have the control over other areas of my time and am able to make one or more changes.  Simply making a change in my daily routines and habits has helped me.  In the past I've implemented changes like exercising more, picking up a new hobby, avoiding television, taking a few days off and going on a trip.  Yes, sometimes changing jobs is the right change to make, especially if you are in an environment that is perpetually exhausting and demanding.
+Although my situation has many times been out of my control I still have the control over other areas of my time and am able to make one or more changes.  Simply making a change in my daily routines and habits has helped me.  In the past I've implemented changes like exercising more, picking up a new hobby, avoiding television, taking a few days off and going on a trip.  Yes, sometimes changing jobs is the right change to make, especially if you are in an environment that is perpetually exhausting and demanding.
 
 3. Do something you enjoy
 

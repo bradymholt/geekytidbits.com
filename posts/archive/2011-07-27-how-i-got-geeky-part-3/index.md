@@ -3,7 +3,7 @@ title: How I Got Geeky (Part 3)
 permalink: /how-i-got-geeky-part-3/
 ---
 
-In [Part 1][1] and [Part 2][2] of How I Got Geeky, you learned how I bought a CB radio for $5 at a garage sell and through a series of buys and sells ended up getting my first computer for $150 when I was 14 years old.
+In [Part 1][1] and [Part 2][2] of How I Got Geeky, you learned how I bought a CB radio for $5 at a garage sale and through a series of buys and sells ended up getting my first computer for $150 when I was 14 years old.
 
 ### Playing with Computers
 
@@ -11,7 +11,7 @@ I had a lot of fun with my x386 computer. Although limited with what I could run
 
 I eventually bought and installed a modem (2400 _baud_, remember?) and started a BBS (Bulletin Board System) called &#8220;The Hard Drive&#8221;, powered by <a href="http://en.wikipedia.org/wiki/RemoteAccess" target="_blank">RemoteAccess</a>, which ended up being lots of fun. It had some games and file downloads mostly. In the pre-mainstream internet days, BBS was your way to &#8220;connect&#8221;. Since I didn&#8217;t have a dedicated phone line I could only have it running at night while my folks were sleeping. I don&#8217;t think I ever told them about that!
 
-After having a blast with my x386 computer for about a year, lightening struck our house and zapped it. With some insurance money (and probably some extra \$ thrown in by my parents that I didn&#8217;t know about) I was able to get a custom built (by a family friend) x486 that had decent specs. It had a 200MB hard drive, 4MB of RAM, and a VGA monitor. I was now able to use AOL, play games that had decent graphics and other cool things I hadn&#8217;t been able to do with my older x386, because it had the very limited CGA monitor.
+After having a blast with my x386 computer for about a year, lightning struck our house and zapped it. With some insurance money (and probably some extra \$ thrown in by my parents that I didn&#8217;t know about) I was able to get a custom built (by a family friend) x486 that had decent specs. It had a 200MB hard drive, 4MB of RAM, and a VGA monitor. I was now able to use AOL, play games that had decent graphics and other cool things I hadn&#8217;t been able to do with my older x386, because it had the very limited CGA monitor.
 
 ### Programming
 

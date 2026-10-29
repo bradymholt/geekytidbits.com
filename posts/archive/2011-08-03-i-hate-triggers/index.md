@@ -5,7 +5,7 @@ permalink: /i-hate-triggers/
 
 I understand the initial appeal of database triggers from a developer&#8217;s perspective.  Among other things, they enable you to tack business logic to existing database structures without having to change applications that sit on top of them.
 
-For example, let&#8217;s say you have an e-commerce database that has several applications sitting on top of it.  When these applications were developed, a business assumption was made to charge a flat shipping fee of $10.00 for every order of $100.00 or more.  This $10.00 value is stored in a configuration table within the database.  Times changed and now, we have different flat shipping rates, depending upon which state the customer lives.  It might be tempting to simply write an Insert trigger on the Order table to change the $10.00 shipping charge to an amount determined by a State_Flat_Shipping_Rate table.  After all, this would be fairly quick to implement and you wouldn&#8217;t have to dig through old code of several existing applications.  But, as with many things in life,_ the simple path is not always the best path_.
+For example, let&#8217;s say you have an e-commerce database that has several applications sitting on top of it.  When these applications were developed, a business assumption was made to charge a flat shipping fee of $10.00 for every order of $100.00 or more.  This $10.00 value is stored in a configuration table within the database.  Times changed and now, we have different flat shipping rates, depending upon which state the customer lives in.  It might be tempting to simply write an Insert trigger on the Order table to change the $10.00 shipping charge to an amount determined by a State_Flat_Shipping_Rate table.  After all, this would be fairly quick to implement and you wouldn&#8217;t have to dig through old code of several existing applications.  But, as with many things in life,_ the simple path is not always the best path_.
 
 I can&#8217;t tell you how many times I have come across an issue that was caused by a trigger.  I&#8217;ve gotten to the point where, when I see a trigger culprit, I raise my fist in the air and say &#8220;damn you, trigger!&#8221;.
 
@@ -14,7 +14,7 @@ Here&#8217;s why I _generally_ hate them:
 - They can introduce &#8220;**data bugs**&#8221; that are extremely hard to trace.
 - They can (and usually do) **slow down CRUD operations**.
 - Since they work in a transparent manner, it is **hard to performance trace** them with tools such as SQL Profiler.
-- They **hide business logic**.  Things that seem to happen in an application magically could be attributed to an unknown trigger.  Not having visibility into the all the business logic for a particular domain creates &#8220;blind spots&#8221; for developers and therefore increases the chances of defects.
+- They **hide business logic**.  Things that seem to happen in an application magically could be attributed to an unknown trigger.  Not having visibility into all the business logic for a particular domain creates &#8220;blind spots&#8221; for developers and therefore increases the chances of defects.
 
 The only scenarios I like to see triggers used are:
 

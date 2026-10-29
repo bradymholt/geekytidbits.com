@@ -38,4 +38,4 @@ Here&#8217;s how to get it setup:
   </rewrite>
   ```
 
-- That&#8217;s it.  Now IIS will read you `Web.RewriteMaps.config` file and perform a `301 Moved Permanently` on all your old pages and redirect the user to the new page.
+- That&#8217;s it.  Now IIS will read your `Web.RewriteMaps.config` file and perform a `301 Moved Permanently` on all your old pages and redirect the user to the new page.

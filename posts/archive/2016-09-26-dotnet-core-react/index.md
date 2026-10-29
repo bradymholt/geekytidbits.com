@@ -3,7 +3,7 @@ title: ASP.NET Core / React SPA Template
 permalink: /asp-dotnet-core-react-template/
 ---
 
-**Update** - I have updated this template and [wrote about it here](/asp-dotnet-core-react-template-update/).
+**Update** - I have updated this template and [written about it here](/dotnet-core-react-update/).
 
 
 A few weeks ago, I really wanted to build something new.  As I tweeted, I really wanted to build something as an excuse to play with some new tools.  There are so many languages, frameworks, tools out there today for building software!
@@ -31,8 +31,8 @@ On that last point, just look at this survey of all the tools, technologies, con
 <li>Entity Framework Migrations</li>
 <li>OpenIddict (for JWT auth)</li>
 <li>REST</li>
-<li>PostgresSQL</li>
-<li>Docker for development PostgresSQL database</li>
+<li>PostgreSQL</li>
+<li>Docker for development PostgreSQL database</li>
 </ul>
 
 ## Web / Client
@@ -59,13 +59,13 @@ On that last point, just look at this survey of all the tools, technologies, con
 <li>Ansible</li>
 <li>Docker</li>
 <li>Let's Encrypt (for SSL certs)</li>
-<li>PostgresSQL</li>
+<li>PostgreSQL</li>
 <li>Nginx</li>
 <li>Supervisor (supervisord)</li>
 <li>Digital Ocean</li>
 </ul>
 
-Wow, that's a lot of stuff!  The end result though, is a pretty solid template to build apps with.  Just about everything is baked in including asset bundling, database migrations, testings, DevOps scripts for provisioning and deployment.  Also, the ASP.NET Core SpaServices support for Webpack HMR feels very productive: just fire up the server with `npm start` and everythng just works.
+Wow, that's a lot of stuff!  The end result though, is a pretty solid template to build apps with.  Just about everything is baked in including asset bundling, database migrations, testing, DevOps scripts for provisioning and deployment.  Also, the ASP.NET Core SpaServices support for Webpack HMR feels very productive: just fire up the server with `npm start` and everything just works.
 
 ## Demo
 

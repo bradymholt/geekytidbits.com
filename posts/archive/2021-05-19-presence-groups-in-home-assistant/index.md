@@ -15,7 +15,7 @@ Here are the steps to create a Group for Presence Detection.
 1. Open the File editor from the Sidebar.  Click on the Folder icon ![Folder icon](folder-icon.png) and select the `groups.yaml` file.
 
     ![Edit groups.yaml File editor](edit-groups.png)
-1. Use the following yaml format to define a new group.  In this example, the entity ID of my group is "presence_home", it's display name is "Presence Home" and is comprised of 2 persons: brady and katie (You can reference the users in Home Assistant by going to Configuration => People).  Save the changes to `groups.yaml`.
+1. Use the following yaml format to define a new group.  In this example, the entity ID of my group is "presence_home", its display name is "Presence Home" and is comprised of 2 persons: brady and katie (You can reference the users in Home Assistant by going to Configuration => People).  Save the changes to `groups.yaml`.
 
     ![groups.yaml config](groups-config.png)
 
